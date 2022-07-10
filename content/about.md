@@ -55,4 +55,4 @@ A：因为服务器对外带宽只有1M的水管，本站目前配置了Cloudfla
  [1]: /2021/12/31/153.html "孩子"
  [2]: /2020/09/02/82.html "孤岛"
  [3]: /2022/02/27/247.html "容灾"
- [4]: /category/i-am-a-reader "I am a Reader"
+ [4]: /categories/i-am-a-reader "I am a Reader"
