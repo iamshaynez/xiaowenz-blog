@@ -1,0 +1,82 @@
+baseurl: "https://xiaowenz.com/"
+languageCode: "en-us"
+title: "Xiaowen.Z Deployed..."
+theme: "hugo-ivy"
+ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
+hasCJKLanguage: true
+enableEmoji: true
+footnotereturnlinkcontents: "↩"
+rssLimit: 10
+
+permalinks:
+  blog: "/:sections/:year/:month/:slug.html"
+
+menu:
+  main:
+    - name: "Blog"
+      url: "/blog/"
+      weight: 1
+    - name: "About"
+      url: "/about/"
+      weight: 2
+    - name: "Categories"
+      url: "/categories/"
+      weight: 3
+    - name: "Tags"
+      url: "/tags/"
+      weight: 4
+    - name: "Subscribe"
+      url: "/index.xml"
+
+  
+
+params:
+  description: "\"We all learn by making mistakes, and make mistakes again to learn more.\""
+  footer: "Powered by Hugo &copy; [Xiaowen.Z](/) Deployed...  2007 - {Year}"
+  
+  customJS:
+    - "fix-toc.js"
+    - "center-img.js"
+    - "right-quote.js"
+    - "no-highlight.js"
+    - "fix-footnote.js"
+    - "math-code.js"
+    - "hash-notes.js"
+    - "toggle-notes.js"
+    - "external-link.js"
+    - "alt-title.js"
+    - "header-link.js"
+
+  # options for highlight.js (version, additional languages, and theme)
+  highlightjsVersion: "9.12.0"
+  highlightjsCDN: "//cdnjs.cloudflare.com/ajax/libs"
+  highlightjsLang: ["r", "yaml", "tex"]
+  highlightjsTheme: "github"
+
+  logo:
+    blog:
+      img: "/images/logo.jpg"
+      url: "/"
+      alt: "Yihui Xie"
+      tag: ""
+    
+
+  author:
+    blog: "Xiaowen Zhang"
+    
+
+
+blackfriday:
+    extensionsmask: ["noIntraEmphasis"]
+    fractions: false
+
+markup:
+  highlight:
+    codeFences: false
+  goldmark:
+    renderer:
+      unsafe: true
+    parser:
+      autoHeadingIDType: blackfriday
+  tableOfContents:
+    startLevel: 1
