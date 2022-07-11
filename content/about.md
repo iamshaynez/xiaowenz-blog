@@ -8,7 +8,9 @@ slug: "about"
 
 年轻的时候，人们总是愿意把自己的创作冲动误以为是创作才能。在写了十几年博客以后，我深刻的认识到了自己确实是没有创作才能的，但偶尔写点东西的习惯却保留了下来。这个博客也几次易名，希望这是我的最后一个博客。如今的互联网时代，我们创造的每一丁点数据都被不同的app们分割成了[孤岛][2]，传统意义上的HTML站点和内容越来越少，十年前风靡一时的个人博客如今也大多停止了更新，互联网似乎也并不如你想的那样有长久的记忆。
 
-于是，我很传统的坚持选择了Wordpress，感谢<a href="https://profiles.wordpress.org/utsumit/" target="_blank" rel="noreferrer noopener" title="Takao Utsumi">Takao Utsumi</a>的干净主题<a href="https://themegraphy.com/wordpress-themes/write/" target="_blank" rel="noreferrer noopener" title="Write Pro">Write Pro</a>，轻微调整了CSS并安装了<a href="https://fonts.google.com/noto/specimen/Noto+Serif+SC" target="_blank" rel="noreferrer noopener" title="思源宋体">思源宋体</a>让它更适合中文展示，感谢Cloudflare提供免费的缓存和加速，感觉Onedrive提供了本站的每日备份[容灾][3]。
+~~于是，我很传统的坚持选择了Wordpress，感谢<a href="https://profiles.wordpress.org/utsumit/" target="_blank" rel="noreferrer noopener" title="Takao Utsumi">Takao Utsumi</a>的干净主题<a href="https://themegraphy.com/wordpress-themes/write/" target="_blank" rel="noreferrer noopener" title="Write Pro">Write Pro</a>，轻微调整了CSS并安装了<a href="https://fonts.google.com/noto/specimen/Noto+Serif+SC" target="_blank" rel="noreferrer noopener" title="思源宋体">思源宋体</a>让它更适合中文展示，感谢Cloudflare提供免费的缓存和加速，感觉Onedrive提供了本站的每日备份[容灾][3]。~~
+
+> **Update 20220711: ** 终究，因为不想续费VPS，也不太愿意运维自己的服务，我抛弃了用了十几年的Wordpress。现在，这个博客跑在免费的Cloudflare Pages上，博客引擎是静态的Hugo。曾经我有多不喜欢Markdown，如今就有多习惯这种Plain Text的快感。
 
 ## **摄影 Photography** {.has-text-align-center}
 
