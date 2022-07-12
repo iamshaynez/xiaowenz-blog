@@ -1,6 +1,6 @@
 baseurl: "https://xiaowenz.com/"
 languageCode: "en-us"
-title: "Xiaowen.Z Deployed..."
+title: "Xiaowen.Z Deployed"
 theme: "hugo-ivy"
 ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
 hasCJKLanguage: true
@@ -46,7 +46,7 @@ menu:
 
 params:
   description: "\"We all learn by making mistakes, and make mistakes again to learn more.\""
-  footer: "Proudly powered by [Hugo](https://gohugo.io) and [Cloudflare Pages](https://pages.cloudflare.com) | &copy; [Xiaowen.Z](/) Deployed...  2007 - {Year}"
+  footer: "Proudly powered by [Hugo](https://gohugo.io) and [Cloudflare Pages](https://pages.cloudflare.com) </br> &copy; [Xiaowen.Z](/) Deployed  2007 - {Year}"
   
   customJS:
     - "fix-toc.js"
