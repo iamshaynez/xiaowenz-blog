@@ -9,7 +9,7 @@ footnotereturnlinkcontents: "↩"
 rssLimit: 10
 
 permalinks:
-  blog: "/:sections/:year/:month/:slug.html"
+  blog: "/:sections/:year/:month/:slug"
 
 menu:
   main:
