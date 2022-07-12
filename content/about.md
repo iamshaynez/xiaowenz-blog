@@ -10,7 +10,7 @@ slug: "about"
 
 ~~于是，我很传统的坚持选择了Wordpress，感谢<a href="https://profiles.wordpress.org/utsumit/" target="_blank" rel="noreferrer noopener" title="Takao Utsumi">Takao Utsumi</a>的干净主题<a href="https://themegraphy.com/wordpress-themes/write/" target="_blank" rel="noreferrer noopener" title="Write Pro">Write Pro</a>，轻微调整了CSS并安装了<a href="https://fonts.google.com/noto/specimen/Noto+Serif+SC" target="_blank" rel="noreferrer noopener" title="思源宋体">思源宋体</a>让它更适合中文展示，感谢Cloudflare提供免费的缓存和加速，感觉Onedrive提供了本站的每日备份[容灾][3]。~~
 
-> **Update 20220711: ** 终究，因为不想续费VPS，也不太愿意运维自己的服务，我抛弃了用了十几年的Wordpress。现在，这个博客跑在免费的Cloudflare Pages上，博客引擎是静态的Hugo。曾经我有多不喜欢Markdown，如今就有多习惯这种Plain Text的快感。
+> **Update 20220711:** 终究，因为不想续费VPS，也不太愿意运维自己的服务，我抛弃了用了十几年的Wordpress。现在，这个博客跑在免费的Cloudflare Pages上，博客引擎是静态的Hugo。曾经我有多不喜欢Markdown，如今就有多习惯这种Plain Text的快感。
 
 ## **摄影 Photography** {.has-text-align-center}
 
@@ -36,9 +36,7 @@ slug: "about"
 
 ## **常见问题 Q&A** {.has-text-align-center}
 
-Q：为什么部分页面信息不同步，留言不显示，搜索功能有时候不好用？
-
-A：因为服务器对外带宽只有1M的水管，本站目前配置了Cloudflare全站缓存，缓存时间2H。2023年初计划更换大带宽计流量的服务器，会改良这个策略。
+目前没有了。
 
 ## **没有友情的链接 Links I Like** {.has-text-align-center}
 
