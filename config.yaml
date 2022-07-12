@@ -46,7 +46,7 @@ menu:
 
 params:
   description: "\"We all learn by making mistakes, and make mistakes again to learn more.\""
-  footer: "Powered by [Hugo](https://gohugo.io) and [Cloudflare Pages](https://pages.cloudflare.com) | &copy; [Xiaowen.Z](/) Deployed...  2007 - {Year}"
+  footer: "Proudly powered by [Hugo](https://gohugo.io) and [Cloudflare Pages](https://pages.cloudflare.com) | &copy; [Xiaowen.Z](/) Deployed...  2007 - {Year}"
   
   customJS:
     - "fix-toc.js"
