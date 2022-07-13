@@ -32,7 +32,7 @@ slug: "about"
 
 我的部分书评：[I am a Reader][4]
 
-我的部分书单和个人评分：<a href="https://notion.xiaowenz.com/98b1754b7d6a4a6daa70a201730def6b?v=296f261a59444a2a96c6c602a6c6cfff" target="_blank" rel="noreferrer noopener" title="Notion ReadDB">Notion ReadDB</a>
+我的读书笔记主页：[Read](/read)
 
 ## **常见问题 Q&A** {.has-text-align-center}
 
