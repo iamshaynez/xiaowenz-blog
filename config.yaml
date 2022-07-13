@@ -16,30 +16,33 @@ menu:
     - name: "Blog"
       url: "/blog/"
       weight: 1
+    - name: "Read"
+      url: "/read/"
+      weight: 2
     - name: "Gallery"
       url: "https://xiaowenz.myportfolio.com/"
-      weight: 1.2
+      weight: 3
     - name: "About"
       url: "/about/"
-      weight: 2
+      weight: 4
     - name: "Categories"
       url: "/categories/"
-      weight: 3
+      weight: 5
     - name: "Tags"
       url: "/tags/"
-      weight: 4
+      weight: 6
     - name: "Subscribe"
       url: "/feed"
-      weight: 5
+      weight: 7
     - name: ""
       url: ""
-      weight: 6
+      weight: 8
     - name: "Twitter"
       url: "https://twitter.com/iamshaynez"
-      weight: 7
+      weight: 9
     - name: "Weibo"
       url: "https://weibo.com/u/1802310420"
-      weight: 8
+      weight: 10
     
 
   

@@ -3,7 +3,7 @@ title: Homepage
 disable_mathjax: true
 disable_highlight: true
 ---
-## 碎片的信息时代
+# **碎片的信息时代**
 
 这是一个信息碎片化的时代，抖音和TickTok占据了大部分人的闲暇时光，人们热爱一次次的上划，越过光怪陆离的30秒人生，去往不知在哪里的未来。
 
@@ -18,4 +18,4 @@ disable_highlight: true
 
 > "Everything is hard before it is easy." - Goethe
 
-## [日志文章请看这里](/blog)
+## **[日志文章请看这里](/blog)**
