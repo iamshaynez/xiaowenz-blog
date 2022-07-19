@@ -37,10 +37,10 @@ menu:
     - name: ""
       url: ""
       weight: 8
-    - name: "Twitter"
+    - name: "Twitter 🐦"
       url: "https://twitter.com/iamshaynez"
       weight: 9
-    - name: "Weibo"
+    - name: "Weibo 🕸"
       url: "https://weibo.com/u/1802310420"
       weight: 10
     
