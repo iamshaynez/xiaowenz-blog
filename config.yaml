@@ -86,6 +86,7 @@ params:
 blackfriday:
     extensionsmask: ["noIntraEmphasis"]
     fractions: false
+    hrefTargetBlank: true
 
 markup:
   highlight:
