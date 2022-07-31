@@ -2,14 +2,13 @@
 title: Weekly | 朋友和中风。
 author: xiaowenz
 type: post
-date: 2022-07-31T13:12:11+00:00
+date: 2022-07-31T11:26:39+08:00
 slug: weekly-stroke
 categories:
   - I am a Writer
 tags:
   - 周报
   - 思考
-
 ---
 
 # **Weekly**
