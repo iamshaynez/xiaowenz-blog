@@ -1,25 +1,28 @@
 ---
 title: "Photography"
 date: 2022-08-03T08:13:16+08:00
-draft: true
+draft: false
 slug: "photography"
 ---
 
-# Bio
+# **关于摄影 About Photography**
 
 I think I get this whole photography thing from my mom. This is 46 years ago vs 6 years ago.
 
+这事儿大概是遗传的。
+
+![like mother](/resources/images/photo1.png)![like son](/resources/images/photo2.png)
 
 
-# Gallery
+# **相册 Gallery**
 
-Adobe Cloud Plan provides a free personal gallery solution.
+Adobe Cloud Plan provides a free personal gallery solution.It allows you publish your photos in the LR Drive directly as a gallery site, very handful.
 
-It allows you publish your photos in the Cloud Drive directly as a gallery site, very handful.
+Adobe订阅最值的大概就是LR Cloud了，提供跨平台的LR授权和一个1T的网盘。重点是允许你直接把照片发布成Adobe Portfolio站点，非常方便。
 
 > [Xiaowen Gallery](https://xiaowenz.myportfolio.com/)
 
-## 器材党
+## **器材党 Cameras**
 
 - ~~海鸥4B~~
 - Canon EOS1
