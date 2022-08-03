@@ -11,7 +11,7 @@ I think I get this whole photography thing from my mom. This is 46 years ago vs 
 
 这事儿大概是遗传的。
 
-![like mother](/resources/images/photo1.png)![like son](/resources/images/photo2.png)
+![like mother](/images/photo1.png)![like son](/images/photo2.png)
 
 
 # **相册 Gallery**
