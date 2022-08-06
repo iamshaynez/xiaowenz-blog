@@ -19,9 +19,6 @@ tags:
   - 软件
 
 ---
-<div class="wp-block-image">
-  <figure class="aligncenter size-large is-resized"><img loading="lazy" src="https://www.xiaowenz.com/wp-content/uploads/2021/12/nubelson-fernandes-xqckh_xvu4-unsplash-1024x1024.jpeg" alt="black and white ceramic mug on black table" class="wp-image-139" width="484" height="484" srcset="https://www.xiaowenz.com/wp-content/uploads/2021/12/nubelson-fernandes-xqckh_xvu4-unsplash-1024x1024.jpeg 1024w, https://www.xiaowenz.com/wp-content/uploads/2021/12/nubelson-fernandes-xqckh_xvu4-unsplash-300x300.jpeg 300w, https://www.xiaowenz.com/wp-content/uploads/2021/12/nubelson-fernandes-xqckh_xvu4-unsplash-150x150.jpeg 150w, https://www.xiaowenz.com/wp-content/uploads/2021/12/nubelson-fernandes-xqckh_xvu4-unsplash-768x768.jpeg 768w, https://www.xiaowenz.com/wp-content/uploads/2021/12/nubelson-fernandes-xqckh_xvu4-unsplash-1536x1536.jpeg 1536w, https://www.xiaowenz.com/wp-content/uploads/2021/12/nubelson-fernandes-xqckh_xvu4-unsplash-2048x2048.jpeg 2048w, https://www.xiaowenz.com/wp-content/uploads/2021/12/nubelson-fernandes-xqckh_xvu4-unsplash-200x200.jpeg 200w, https://www.xiaowenz.com/wp-content/uploads/2021/12/nubelson-fernandes-xqckh_xvu4-unsplash-720x720.jpeg 720w" sizes="(max-width: 484px) 100vw, 484px" /></figure>
-</div>
 
 从工作的第一天开始，作为一个技术人员，我就从来都不写技术博客。我的博客永远只有我的生活，我的照片，我读的书，我走的路，我的喜怒哀乐，但不会有我的工作。
 
