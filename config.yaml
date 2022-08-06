@@ -7,7 +7,7 @@ hasCJKLanguage: true
 enableEmoji: true
 footnotereturnlinkcontents: "↩"
 rssLimit: 10
-googleAnalytics: 326267206
+googleAnalytics: G-326267206
 
 permalinks:
   blog: "/:sections/:year/:month/:slug"
