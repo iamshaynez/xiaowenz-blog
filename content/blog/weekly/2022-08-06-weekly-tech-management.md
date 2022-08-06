@@ -4,6 +4,7 @@ author: xiaowenz
 type: post
 date: 2022-08-06T10:37:23+08:00
 slug: weekly-technology-management
+description: "这周事故复盘的时候，我惊讶的发现，这个世界上绝大部分人的对于“科技管理”这四个字，是没有概念的...."
 categories:
   - I am a Writer
 tags:

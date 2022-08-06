@@ -53,7 +53,8 @@ menu:
 params:
   description: "\"We all learn by making mistakes, and make mistakes again to learn more.\""
   footer: "Proudly powered by [Hugo](https://gohugo.io) and [Cloudflare Pages](https://pages.cloudflare.com) </br> &copy; [Xiaowen.Z](/) Deployed  2007 - {Year}"
-  
+  images:
+    - "/images/published.png"
   customJS:
     - "fix-toc.js"
     - "center-img.js"
@@ -77,12 +78,13 @@ params:
     blog:
       img: "/images/logo.jpg"
       url: "/"
-      alt: "Yihui Xie"
+      alt: ""
       tag: ""
     
 
   author:
     blog: "Xiaowen Zhang"
+    post: "Xiaowen Zhang"
     
 
 
