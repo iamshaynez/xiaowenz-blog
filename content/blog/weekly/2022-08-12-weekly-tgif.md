@@ -2,7 +2,7 @@
 title: Weekly | TGIF。
 author: xiaowenz
 type: post
-date: 2022-08-12T15:37:23+08:00
+date: 2022-08-12T14:37:23+08:00
 slug: tgif
 description: "每年这个时候，整个科技部门都会被撸掉一层皮……"
 categories:
