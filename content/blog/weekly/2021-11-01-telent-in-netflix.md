@@ -4,11 +4,6 @@ author: xiaowenz
 type: post
 date: 2021-11-01T05:40:00+00:00
 url: /2021/11/01/105.html
-featured_image: /wp-content/uploads/2021/12/launchpresso-iom28xwsk-g-unsplash.jpeg
-sseo_meta_description:
-  - '#post_excerpt'
-sseo_meta_title:
-  - '#post_title #separator_sa #site_title'
 categories:
   - I am a Writer
 tags:
