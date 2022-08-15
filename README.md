@@ -4,23 +4,26 @@
 
 ```
 hugo server --bind="0.0.0.0" -D
+hugo new blog/posts/my-first-post.md
+hugo new blog/weekly/my-first-post.md
 ```
 
 ## New Post Header Template
 
 ```
 ---
-title: Test
+title: "test"
+date: 2022-08-15T13:45:17+08:00
+draft: true
 author: xiaowenz
 type: post
-date: 2018-07-20T12:49:00+00:00
-draft: true
 slug: test
+description: "xxx……"
 categories:
   - I am a Writer
 tags:
-  - 工作
-  - 思考
+  - 周报
+  - 辛苦
 ---
 ```
 
