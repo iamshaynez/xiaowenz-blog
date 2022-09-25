@@ -68,6 +68,7 @@ params:
     - "external-link.js"
     - "alt-title.js"
     - "header-link.js"
+  cusdis: "0c8f5787-1a16-489e-810b-8893a58fee7c"
 
   # options for highlight.js (version, additional languages, and theme)
   highlightjsVersion: "9.12.0"
