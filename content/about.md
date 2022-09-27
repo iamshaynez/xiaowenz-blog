@@ -11,6 +11,7 @@ slug: "about"
 ~~于是，我很传统的坚持选择了Wordpress，感谢<a href="https://profiles.wordpress.org/utsumit/" target="_blank" rel="noreferrer noopener" title="Takao Utsumi">Takao Utsumi</a>的干净主题<a href="https://themegraphy.com/wordpress-themes/write/" target="_blank" rel="noreferrer noopener" title="Write Pro">Write Pro</a>，轻微调整了CSS并安装了<a href="https://fonts.google.com/noto/specimen/Noto+Serif+SC" target="_blank" rel="noreferrer noopener" title="思源宋体">思源宋体</a>让它更适合中文展示，感谢Cloudflare提供免费的缓存和加速，感觉Onedrive提供了本站的每日备份[容灾][3]。~~
 
 > **Update 20220711:** 终究，因为不想续费VPS，也不太愿意运维自己的服务，我抛弃了用了十几年的Wordpress。现在，这个博客跑在免费的Cloudflare Pages上，博客引擎是静态的Hugo。曾经我有多不喜欢Markdown，如今就有多习惯这种Plain Text的快感。
+> **Update 20220927:** 还是添加了评论系统，万一有人用呢？目前选择了[Cusdis](https://cusdis.com)，非常轻，很喜欢。希望能早日收费，持续运营下去。
 
 ## **摄影 Photography** 
 
@@ -51,6 +52,7 @@ slug: "about"
   * <a href="https://nova.moe/" target="_blank" rel="noreferrer noopener" title="Nova Kwok">Nova Kwok</a>：赏心悦目的工程师博客大约长这样呀。
   * <a href="https://i50mm.com/" target="_blank" rel="noreferrer noopener" title="i50mm">i50mm</a>：一个了不起的摄影师，一个了不起的Leica，胶片大全。
   * <a href="https://Linmi.cc" target="_blank" rel="noreferrer noopener" title="Linmi">Linmi</a>：Notion中文社区负责人，一个有内容很Notion的博客。
+  * [Randy's Blog](https://lutaonan.com/): 了不起的年轻技术工作者，加油。
 
 未完……
 
