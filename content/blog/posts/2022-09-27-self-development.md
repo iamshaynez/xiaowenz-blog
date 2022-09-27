@@ -2,7 +2,7 @@
 title: 打工者个人成长指北。
 author: xiaowenz
 type: post
-date: 2022-09-27T06:57:00+00:00
+date: 2022-09-27T05:33:23+08:00
 slug: self-development
 description: "作为内部培训材料的提纲，写完以后觉得还真就只是个提纲而已……"
 categories:
