@@ -49,7 +49,7 @@ tags:
 
 > 我正在整理我自己整个时间和任务管理的工作框架，下一篇应该会提到，希望能够有所启发吧……我的整个生活，都构建在Todoist Free Plan中。
 
-![Todoist](https://s2.loli.net/2022/09/27/Zgxbejk1ws4HEyC.jpg)
+![Todoist](https://vip2.loli.io/2022/09/29/gZ7nKhqvCSQ8r2f.jpg)
 
 
 
@@ -71,11 +71,11 @@ tags:
 
 这里推荐教你吸收知识和整理资料的[CODE](https://www.keepproductive.com/blog/how-to-build-a-second-brain)方法和[PARA方法](https://fortelabs.com/blog/para/)。
 
-![CODE](https://s2.loli.net/2022/09/27/VrTLiKCRak3Nz8W.jpg)
+![CODE](https://vip2.loli.io/2022/09/29/i4qmo7Aw9TIljPG.jpg)
 
 方法只是参考，无需照搬。对我来说，我的知识库和日常的学习过程，并非完全按照这两个系统来执行的。**CODE**更多的告诉了你知识是如何从获取，吸收，到真的变成你大脑里的一部分的。而**PARA**则提供了一个更科学的管理资料的系统的，让你对你的资料更游刃有余的进行管理和使用，不会出现“需要的时候找不到”的尴尬。
 
-![PARA](https://s2.loli.net/2022/09/27/sJQGc9f18KZTez6.jpg)
+![PARA](https://vip2.loli.io/2022/09/29/7pMY1lx9bVktRXd.jpg)
 
 
 ## 最后是**人格魅力**。
