@@ -4,7 +4,7 @@ author: xiaowenz
 type: post
 date: 2022-10-08T09:14:23+08:00
 slug: baby-care-and-hiit-seven
-description: "总的来说，并不希望在博客里写自己的工作……"
+description: "这种段子里的梗，如今却实实在在烙印成了生活里的坎……"
 categories:
   - I am a Father
   - I am a Writer
