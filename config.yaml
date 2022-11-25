@@ -44,9 +44,6 @@ menu:
     - name: "Twitter 🐦"
       url: "https://twitter.com/iamshaynez"
       weight: 19
-    - name: "Weibo 🕸"
-      url: "https://weibo.com/u/1802310420"
-      weight: 20
     
 
   
