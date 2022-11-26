@@ -1,8 +1,9 @@
 ---
 title: 推理与脑洞的宇宙
 author: xiaowenz
-date: 2022-07-19T08:57:38+08:00
+date: 2022-11-26T08:57:38+08:00
 slug: read-detective
+type: post
 categories:
   - I am a Reader
 tags:
