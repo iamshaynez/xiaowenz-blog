@@ -2,7 +2,7 @@
 title: 银行卡组织和中国卡市场的前世今生。
 author: xiaowenz
 type: post
-date: 20223-02-03T13:00:00+08:00
+date: 2023-02-03T13:00:00+08:00
 slug: card-network-in-china
 description: "在Twitter上发了这么一个调查，发现结果真是五味在Twitter上发了这么一个调查，发现结果真是五味杂陈……"
 categories:
