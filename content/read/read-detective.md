@@ -268,7 +268,8 @@ draft: false
   - 格局，信息量之大，叹为观止。而核心犯罪的黑暗底色，足够让人san值完全掉光。
 - [《狂骨之梦》](https://book.douban.com/subject/3316174/)
 - [《铁鼠之槛》](https://book.douban.com/subject/3715833/)
-- [《络新妇之理》](https://book.douban.com/subject/4038672/)
+- [《络新妇之理》](https://book.douban.com/subject/4038672/)👍👍
+  - 庞大的故事，密度极高的妖怪知识，最后网一般的收尾并和开头呼应。妖怪推理大师真的好强。
 - [《涂佛之宴》](https://book.douban.com/subject/5395153/)
 - [《阴摩罗鬼之瑕》](https://book.douban.com/subject/10485010/)
 - [《邪魅之雫》](https://book.douban.com/subject/26435483/)
@@ -332,7 +333,7 @@ draft: false
 - **京极夏彦**
   - [ ] 《狂骨之梦》
   - [ ] 《铁鼠之槛》
-  - [ ] 《络新妇之理》
+  - [x] 《络新妇之理》
   - [ ] 《涂佛之宴》
   - [ ] 《阴摩罗鬼之瑕》
   - [ ] 《邪魅之雫》
