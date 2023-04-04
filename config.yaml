@@ -20,9 +20,6 @@ menu:
     - name: "Read"
       url: "/read/"
       weight: 2
-    - name: "Gallery"
-      url: "https://xiaowenz.myportfolio.com/"
-      weight: 4
     - name: "Photography"
       url: "/photography/"
       weight: 5
