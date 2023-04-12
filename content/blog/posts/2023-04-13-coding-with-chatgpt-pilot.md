@@ -150,6 +150,8 @@ async function handleRequest(request) {
 #### You:
 假设第一张表名为account，字段如下：
 
+> 这个地方手误了，直接敲了回车……
+
 #### ChatGPT:
 假设`account`表有以下字段：
 
@@ -296,6 +298,8 @@ async function createAccount(request, db) {
 #### You:
 请问如何在worker.js中输出日志？
 
+> 穿插极其低端的问题……
+
 #### ChatGPT:
 在Cloudflare Workers中，可以使用`console.log()`、`console.info()`、`console.warn()`或`console.error()`方法将日志输出到控制台。这些日志可以在Cloudflare Workers的Dashboard中查看。
 
@@ -360,6 +364,8 @@ import worker from './worker.js';
 
 #### You:
 account.js中如何引用util.js里面的方法？
+
+> 再问一个低端问题。
 
 #### ChatGPT:
 要在`account.js`中引用`util.js`里的方法，首先需要在`util.js`文件中导出你想要引用的方法，然后在`account.js`中使用`import`语句导入它们。以下是一个示例：
