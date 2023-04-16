@@ -5,7 +5,7 @@ theme: "hugo-ivy"
 ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
 hasCJKLanguage: true
 enableEmoji: true
-Victor_Hugo: "true"
+Victor_Hugo: true
 Focus_Keyword: "Technology and Reading and Photography and AI."
 footnotereturnlinkcontents: "↩"
 rssLimit: 10
@@ -101,3 +101,8 @@ markup:
       autoHeadingIDType: blackfriday
   tableOfContents:
     startLevel: 1
+
+sitemap:
+  changefreq: always
+  filename: sitemap.xml
+  priority: 0.5

@@ -17,5 +17,3 @@ disable_highlight: true
 > "The world is full of nice people. If you can't find one, be one." - Nishan Panwar
 
 > "Everything is hard before it is easy." - Goethe
-
-## **[日志文章请看这里](/blog)**
