@@ -5,6 +5,8 @@ theme: "hugo-ivy"
 ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
 hasCJKLanguage: true
 enableEmoji: true
+Victor_Hugo: "true"
+Focus_Keyword: "Technology and Reading and Photography and AI."
 footnotereturnlinkcontents: "↩"
 rssLimit: 10
 googleAnalytics: G-6YYBJ105E4
