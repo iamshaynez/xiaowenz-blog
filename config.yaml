@@ -24,6 +24,9 @@ menu:
       weight: 2
     - name: "Photography"
       url: "/photography/"
+      weight: 4
+    - name: "Story"
+      url: "https://storywith.in"
       weight: 5
     - name: "About"
       url: "/about/"
