@@ -6,10 +6,10 @@ date: 2023-05-06T06:00:00+08:00
 slug: msoptics-lens
 description: "有时候觉得，器材党和其他任何一种玩物党并没有太多区别，我们被外貌吸引，被做工感动，被物件独有的气质折服。宫崎的镜头似乎就是这样一个存在，用手工的方式，记录下人类和光线之间不停争斗的故事。"
 categories:
-  - I am a Writer
+  - I am a Photography
 tags:
-  - 金融
-  - 风险
+  - 摄影
+  - 镜头
 ---
 
 ![image.png](https://vip2.loli.io/2023/05/06/BTeLD2FWZwSoC1g.png)
