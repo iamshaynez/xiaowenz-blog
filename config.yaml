@@ -54,7 +54,7 @@ params:
   description: "\"We all learn by making mistakes, and make mistakes again to learn more.\""
   footer: "Proudly powered by [Hugo](https://gohugo.io) | [Cloudflare Pages](https://pages.cloudflare.com) | [Cusdis](https://cusdis.com) </br> &copy; [Xiaowen.Z](/) Deployed  2007 - {Year}"
   images:
-    - "/images/published.jpg"
+    - "/images/xiaowenz_twitter_image.webp"
   customJS:
     - "fix-toc.js"
     - "center-img.js"
