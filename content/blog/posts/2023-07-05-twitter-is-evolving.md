@@ -1,5 +1,5 @@
 ---
-title: 一些关于职业生涯的思考，我没有答案。
+title: Twitter 要去哪里。
 author: xiaowenz
 type: post
 date: 2023-07-05T06:00:00+08:00
