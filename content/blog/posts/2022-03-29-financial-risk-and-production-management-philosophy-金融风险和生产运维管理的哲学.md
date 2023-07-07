@@ -15,21 +15,16 @@ tags:
   - 风险
 
 ---
-## **金融风险？Financial Risk？**
 
-<blockquote class="wp-block-quote">
-  <p>
-    不知道为什么，突然回想起了被Gordon growth model支配的恐惧……
-  </p>
-</blockquote>
+![image.png](https://vip2.loli.io/2023/07/07/pzmNonkvDjBZQg5.png)
+
+## 金融风险？Financial Risk？
+
+> 不知道为什么，突然回想起了被Gordon growth model支配的恐惧……
 
 金融风险的核心定义之一，便是所谓的风险并不等同于损失。风险是对不确定性的一种表达，在金融的世界里，风险可能同时代表机会成本和损失概率。这是从统计学意义上，对世界运行的一种重新建模，也重新教育人们从不同的两面去看待这个世界：确定的，和不确定的。
 
-<blockquote class="wp-block-quote">
-  <p>
-    <strong>Risk is uncertainty.</strong>
-  </p>
-</blockquote>
+> Risk is uncertainty.
 
 风险管理的核心框架，往往包含风险的定义（Define Category），识别（Identification），控制（Mitigation），接受（Accept）等阶段性的过程。而这个生命周期的本质，便是逐渐通过定义好的方法论，发现未知，并将未知转化为已知，从而让不可控变得可控，让不可控变得可以量化，最终让整个企业胸有成竹的过程。
 
@@ -39,7 +34,7 @@ tags:
 
 突然，串起来了。
 
-## **监控的艺术 Art Of Monitoring**
+## 监控的艺术 Art Of Monitoring
 
 他们谈监控的时候，往往喜欢谈告警——在问题发生的时候，是否能够准确的告知。而事实上，告警往往只是生产监控中，最被动的一环。如果监控中心手里只有告警平台，这将是最绝望的场面——你知道有东西坏了，除此之外你一无所知。
 
@@ -49,15 +44,11 @@ tags:
 
 Unkown越少，风险自然越少。
 
-<blockquote class="wp-block-quote">
-  <p>
-    <strong>“If you can&#8217;t measure it, you can&#8217;t manage it.”</strong>
-  </p>
-</blockquote>
+> “If you can't measure it, you can't manage it.”
 
 Refer 推荐一本：
 
-[The Art of Monitoring][1]
+[The Art of Monitoring](https://artofmonitoring.com/)
 
 ## 处置之刃 Blade of Incident Management
 
@@ -67,13 +58,9 @@ Refer 推荐一本：
 
 未知，因为不可控；未知，所以恐惧。
 
-<blockquote class="wp-block-quote">
-  <p>
-    <strong>Fear comes from unknown.</strong>
-  </p>
-</blockquote>
+> Fear comes from unknown.
 
-## **你才有问题 Whos Problem**
+## 你才有问题 Whos Problem
 
 相比较于事故（Incident），问题（Problem）描述的是一种可能产生事故的概率，是一种对于已知风险的量化表达。在生产管理的核心流程中，问题管理才是最直接等同于风险管理的那一个。
 
@@ -81,15 +68,11 @@ Refer 推荐一本：
 
 很多时候，问题看起来像是指责，像是让让人难堪，像是揭出来的别人的伤疤。优秀的企业文化，理应认同问题是改进（Improvement）的起点，识别问题和解决问题应是团队的正向考核的一部分而非相反的。
 
-<blockquote class="wp-block-quote">
-  <p>
-    <strong>“The first step in solving any problem is recognizing there is one.”</strong>
-  </p>
-</blockquote>
+> “The first step in solving any problem is recognizing there is one.”
 
-## **傻逼才需要准备变更 Everyone Hates Change Management**
+## 傻逼才需要准备变更 Everyone Hates Change Management
 
-“优秀的工程师都是裸写代码一次过，傻逼才需要手把手的写文档。”<s>并不是</s>
+“优秀的工程师都是裸写代码一次过，傻逼才需要手把手的写文档。”
 
 事实上，这个世界上80%的生产事故来自变更，即便是Google这种SRE鼻祖的地方，太阳之下也并无新鲜事。
 
@@ -103,16 +86,11 @@ Refer 推荐一本：
 
 如果你曾站在在一个全球服务台的视角，观察过上万个奇形怪状的生产事故，你会惊讶的发现，仅仅是最简单的“重启”造成的事故，都有无数中意料之外的形态。你会惊讶的发现，生产事故发生的概率和工程师的技术能力，从来都没有相关性（解决问题的时效MTTR倒是可能有）。
 
-<blockquote class="wp-block-quote">
-  <p>
-    <strong>敬畏生产环境，不要心存侥幸。</strong>
-  </p>
-</blockquote>
+> 敬畏生产环境，不要心存侥幸。
 
-## **风险厌恶人格 Risk Averse**
+## 风险厌恶人格 Risk Averse
 
 这些年，阴差阳错的考了CFA，FRM这种对工作无用，对人生有益的东西。其中，关于风险的部分确的的确确的重构了我许多底层的人生观，也触发了我对科技管理的很多重新思考。金融风险管理本质上是以概率和数学的视角对未知进行建模，并试图量化的描述（EL，VaR）；而科技管理的许多最佳实践，实际上就像一个风险厌恶的家伙，拿着鞭子让人们把所有不可控变得可控，把所有未知的玩意都放到阳光下来解剖（Post Mortem哈哈），然后很变态的打上标签，分门别类进行观察。
 
 我确实是个风险厌恶型人格的家伙。
 
- [1]: https://artofmonitoring.com/
