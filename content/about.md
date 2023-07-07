@@ -38,6 +38,16 @@ slug: "about"
 
 我的读书笔记主页：[Read](/read)
 
+## **关于我的其他** 
+
+目前，因为不可告人的目的，我尝试同时维护一个用AI写故事的小站，并把本博客的内容和AI写的每日小故事，发布到微信生态的订阅号中。（是的，2023年了，我开始维护公众号了）。
+
+订阅号欢迎关注：
+
+![image.png](https://vip2.loli.io/2023/07/07/T7hPIf5D39EiUSW.png)
+
+AI写故事的小站在这里：[StoryWith.In](https://storywith.in)，大部分故事都是ChatGPT或Claude+胡诌出来的。
+
 ## **常见问题 Q&A** 
 
 目前没有了。
