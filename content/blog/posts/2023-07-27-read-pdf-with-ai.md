@@ -44,4 +44,20 @@ tags:
 
 ![image.png](https://vip2.loli.io/2023/07/27/EgXMrpa3Q6kSuhv.png)
 
+## 案例 3 - 英文文献
+
+目前最优秀的几个大模型，基本也都支持了多语言的能力，意味着英文的论文也是可以用类似的方式辅助阅读的。
+
+> Prompt:
+>
+> 请总结论文中的信息，汇总成翻译成中文的大纲格式，最多分三级，并以 Markdown 的格式输出给我。大纲中需要报告关键内容，关键引用的数据等信息。
+
+数据源：Scientists Perspectives on the Potential for Generative AI in their Fields.pdf
+
+![image.png](https://vip2.loli.io/2023/07/27/9s8ZU1kVhWzH4JN.png)
+
+## 最后
+
+目前的人工智能拥有了相对来说海量的脑容量（100K Token 可以容纳完整的书籍，笔记，论文），因此从非结构化的语意生成结构化的归纳甚至通过链式思考，进一步进化为更明确的结论性的答案（如分级，分类）也成为了可能。
+
 供参考。
