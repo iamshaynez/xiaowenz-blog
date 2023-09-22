@@ -248,3 +248,5 @@ CREATE TABLE IF NOT EXISTS count_log (
 感谢 Cloudflare，业界良心。免费的提供了足够大部分人构件任何系统的基础设施。
 
 **本程序基于 Claude 编写，因为 ChatGPT 的模型构建的时候， Cloudflare D1 还没有发布。**
+
+Github 仓库在 [这里](https://github.com/iamshaynez/telegram-counter)
