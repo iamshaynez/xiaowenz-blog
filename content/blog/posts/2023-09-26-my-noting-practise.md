@@ -15,6 +15,8 @@ tags:
   - 社交媒体
 ---
 
+![image.png](https://vip2.loli.io/2023/09/26/1JvgaQusWMBLzGS.png)
+
 最开始接触笔记的时候，应该是看了一个基于 Logseq 的笔记使用的分享。
 
 当时看到的场景大概是这样的：
@@ -36,20 +38,25 @@ Evergreen notes： https://notes.andymatuschak.org/About_these_notes?stackedNote
 
 Evergreen Notes 的核心仍然基于所谓的卡片笔记法，但是更明确的约定了一些最佳实践：
 
-1. Evergreen notes should be atomic 笔记应该具有原子性
--- 和大部分的笔记实践一样，一篇笔记只写一件事。值得一提的是，从学习过程的角度，笔记不应该是「摘抄」，你应该至少用你自己的语言，一句话来概括一篇笔记的内容——如果一句话做不到，大概率你需要再拆一次。
+**1. Evergreen notes should be atomic 笔记应该具有原子性**
 
-1. Evergreen notes should be concept-oriented 笔记应该基于概念/观念 （而不是名词）
--- 这一条是对我的影响最大的，因为这才是符合知识在大脑里生长的规律的，也符合当我们产生记录的欲望的时候，脑子里大概率出现是基于名词的一些年头，而不是名词本身。
+> 和大部分的笔记实践一样，一篇笔记只写一件事。值得一提的是，从学习过程的角度，笔记不应该是「摘抄」，你应该至少用你自己的语言，一句话来概括一篇笔记的内容——如果一句话做不到，大概率你需要再拆一次。
 
-1. Evergreen notes should be densely linked 笔记之间应该自然的连接起来
--- 减少手工维护笔记之间的关联，或者有能力自动的发现笔记之间的关联，是笔记工具最重要的能力之一了。
+**2. Evergreen notes should be concept-oriented 笔记应该基于概念/观念 （而不是名词）**
 
-1. Prefer associative ontologies to hierarchical taxonomies 尽量用关联去替代层级管理你的笔记
--- 我曾经在花了很多的脑力在如何物理上设计层级（因为 Obsidian 这样的工具需要你管理文件的层级，Notion 也有这个问题），这并不是人脑需要的。
+> 这一条是对我的影响最大的，因为这才是符合知识在大脑里生长的规律的，也符合当我们产生记录的欲望的时候，脑子里大概率出现是基于名词的一些年头，而不是名词本身。
 
-1. Write notes for yourself by default, disregarding audience 为自己记笔记，不要考虑受众
--- 这一点，对我个人其实没有啥影响。但很多笔记工具都有类似于直接 Publish 的功能（包括 Notion），于是也许会容易影响写的时候的考量，让人过多的考虑排班，内容，措辞等不必要的东西。
+**3. Evergreen notes should be densely linked 笔记之间应该自然的连接起来**
+
+> 减少手工维护笔记之间的关联，或者有能力自动的发现笔记之间的关联，是笔记工具最重要的能力之一了。
+
+**4. Prefer associative ontologies to hierarchical taxonomies 尽量用关联去替代层级管理你的笔记**
+
+> 我曾经在花了很多的脑力在如何物理上设计层级（因为 Obsidian 这样的工具需要你管理文件的层级，Notion 也有这个问题），这并不是人脑需要的。
+
+**5. Write notes for yourself by default, disregarding audience 为自己记笔记，不要考虑受众**
+
+> 这一点，对我个人其实没有啥影响。但很多笔记工具都有类似于直接 Publish 的功能（包括 Notion），于是也许会容易影响写的时候的考量，让人过多的考虑排班，内容，措辞等不必要的东西。
 
 基于这些：我的实践是，笔记基于 Concept，而 Tag 基于名词去连接（类似于 Map of Content 的概念）
 
@@ -64,3 +71,5 @@ Evergreen Notes 的核心仍然基于所谓的卡片笔记法，但是更明确�
 写了这么多，主要是希望给 @Heptabase 提个需求：
 
 希望提供让 ChatGPT 阅读 Note，然后自动分析出相关的名词并生成 Tag 的能力，实现自动化的笔记在 MoC 角度上的关联的能力。
+
+> 用本地的 Stable diffusion 免费配图真方便啊。
