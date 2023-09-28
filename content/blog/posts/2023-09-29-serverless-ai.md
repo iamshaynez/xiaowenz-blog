@@ -73,9 +73,9 @@ Cloudflare 作为全球基础设施的基础设施，有更好的条件去摊平
 
 ## 等什么
 
-等等吧，等 Cloudflare 提供 Serverless 的模型部署，更多模型的接入，甚至是 Fine-tune 的 Serverless 方案。
+等等吧，等 Cloudflare 提供 Serverless 的私有化模型部署（那个时候肯定就会出真正的收费模型，当前的开源模型都是免费的），更多开源模型的接入（如 Stable Diffusion 来几个啊），甚至是 Fine-tune 模型的 Serverless 方案。
 
-小企业，就有了更低入局的门槛。
+小企业，甚至个人开发者，就有了更低入局的门槛。
 
 ## 最后
 
