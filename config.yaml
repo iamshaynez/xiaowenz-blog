@@ -22,6 +22,9 @@ menu:
     - name: "Read"
       url: "/read/"
       weight: 2
+    - name: "Service"
+      url: "/service/"
+      weight: 3
     - name: "Photography"
       url: "/photography/"
       weight: 4
