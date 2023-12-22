@@ -1,8 +1,7 @@
 ---
-title: 书单和笔记
-disable_mathjax: true
-disable_highlight: true
+title: Read
 draft: false
+slug: "read"
 ---
 
 # **阅读**

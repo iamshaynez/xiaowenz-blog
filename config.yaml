@@ -1,115 +1,220 @@
-baseurl: "https://xiaowenz.com/"
-languageCode: "en-us"
+#baseurl: "https://xiaowenz.com/"
+# G-7T4RZQ5V58
 title: "Xiaowen.Z Deployed"
-theme: "hugo-ivy"
+theme: "hugo-theme-stack"
 ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
 hasCJKLanguage: true
 enableEmoji: true
-Victor_Hugo: true
-Focus_Keyword: "Technology and Reading and Photography and AI."
-footnotereturnlinkcontents: "↩"
-rssLimit: 10
-googleAnalytics: 
 
 permalinks:
   blog: "/:sections/:year/:month/:slug"
 
 menu:
   main:
-    - name: "Blog"
-      url: "/blog/"
-      weight: 1
     - name: "Read"
       url: "/read/"
       weight: 2
+      identifier: "Read"
+      params:
+        icon: "messages"
     - name: "Service"
       url: "/service/"
       weight: 3
+      params:
+        icon: "hash"
     - name: "Photography"
       url: "/photography/"
       weight: 4
+      params:
+        icon: "arrow-back"
     - name: "Story"
       url: "https://storywith.in"
       weight: 5
+      params:
+        icon: "link"
+        newTab: true
     - name: "About"
       url: "/about/"
       weight: 6
-    - name: "Categories"
-      url: "/categories/"
-      weight: 7
-    - name: "Tags"
-      url: "/tags/"
-      weight: 8
+      params:
+        icon: "user"
     - name: "Subscribe"
       url: "/feed"
       weight: 9
+      params:
+        icon: "rss"
+        newTab: true
     - name: "Status Page"
       url: "https://stats.uptimerobot.com/4YW25Iz64n"
       weight: 10
+      params:
+        icon: "clock"
+        newTab: true
     - name: ""
       url: ""
       weight: 15
     - name: "Twitter 🐦"
       url: "https://twitter.com/iamshaynez"
       weight: 19
-    
+      params:
+        icon: "brand-twitter"
+        newTab: true
 
-  
+module:
+    hugoVersion:
+        extended: true
+        min: "0.87.0"
 
 params:
-  description: "\"We all learn by making mistakes, and make mistakes again to learn more.\""
-  footer: "Proudly powered by [Hugo](https://gohugo.io) | [Cloudflare Pages](https://pages.cloudflare.com) | [Cusdis](https://cusdis.com) </br> &copy; [Xiaowen.Z](/) Deployed  2007 - {Year}"
-  images:
-    - "/images/xiaowenz_twitter_image.webp"
-  customJS:
-    - "fix-toc.js"
-    - "center-img.js"
-    - "right-quote.js"
-    - "no-highlight.js"
-    - "fix-footnote.js"
-    - "math-code.js"
-    - "hash-notes.js"
-    - "toggle-notes.js"
-    - "external-link.js"
-    - "alt-title.js"
-    - "header-link.js"
-  cusdis: "0c8f5787-1a16-489e-810b-8893a58fee7c"
+    description: "\"We all learn by making mistakes, and make mistakes again to learn more.\""
+    mainSections:
+        - blog
+        - post
+    featuredImageField: image
+    rssFullContent: true
+    favicon: /images/logo.jpg
 
-  # options for highlight.js (version, additional languages, and theme)
-  highlightjsVersion: "9.12.0"
-  highlightjsCDN: "//cdnjs.cloudflare.com/ajax/libs"
-  highlightjsLang: ["r", "yaml", "tex"]
-  highlightjsTheme: "github"
+    footer:
+        since: 2007
+        customText: 
 
-  logo:
-    blog:
-      img: "/images/logo.jpg"
-      url: "/"
-      alt: ""
-      tag: ""
-    
+    dateFormat:
+        published: Jan 02, 2006
+        lastUpdated: Jan 02, 2006 15:04 MST
 
-  author:
-    blog: "Xiaowen Zhang"
-    post: "Xiaowen Zhang"
-    
+    sidebar:
+        compact: false
+        emoji: 🤦‍♂️
+        subtitle: "\"We all learn by making mistakes, and make mistakes again to learn more.\""
+        avatar:
+            enabled: true
+            local: true
+            src: /img/logo.jpg
 
+    article:
+        math: false
+        toc: true
+        readingTime: true
+        license:
+            enabled: true
+            default: Licensed under CC BY-NC-SA 4.0
 
-blackfriday:
-    extensionsmask: ["noIntraEmphasis"]
-    fractions: false
-    hrefTargetBlank: true
+    comments:
+        enabled: false
+        provider: disqus
 
-markup:
-  highlight:
-    codeFences: false
-  goldmark:
-    renderer:
-      unsafe: true
-    parser:
-      autoHeadingIDType: blackfriday
-  tableOfContents:
-    startLevel: 1
+        disqusjs:
+            shortname:
+            apiUrl:
+            apiKey:
+            admin:
+            adminLabel:
+
+        utterances:
+            repo:
+            issueTerm: pathname
+            label:
+
+        remark42:
+            host:
+            site:
+            locale:
+
+        vssue:
+            platform:
+            owner:
+            repo:
+            clientId:
+            clientSecret:
+            autoCreateIssue: false
+
+        # Waline client configuration see: https://waline.js.org/en/reference/client.html
+        waline:
+            serverURL:
+            lang:
+            visitor:
+            avatar:
+            emoji:
+                - https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo
+            requiredMeta:
+                - nick
+                - mail
+            placeholder:
+            locale:
+                admin: Admin
+
+        twikoo:
+            envId:
+            region:
+            path:
+            lang:
+
+        giscus:
+            repo:
+            repoID:
+            category:
+            categoryID:
+            mapping:
+            strict:
+            lightTheme:
+            darkTheme:
+            reactionsEnabled: 1
+            emitMetadata: 0
+            inputPosition:
+            lang:
+
+        gitalk:
+            owner:
+            admin:
+            repo:
+            clientID:
+            clientSecret:
+
+        cusdis:
+            host:
+            id:
+
+    widgets:
+        homepage:
+            - type: search
+            - type: categories
+              params:
+                  limit: 20
+            - type: archives
+              params:
+                  limit: 20
+            - type: tag-cloud
+              params:
+                  limit: 30
+        page:
+            - type: toc
+
+    opengraph:
+        twitter:
+            # Your Twitter username
+            site: iamshaynez
+
+            # Available values: summary, summary_large_image
+            card: summary_large_image
+
+    defaultImage: 
+        opengraph:
+            enabled: false
+            local: false
+            src: 
+
+    colorScheme:
+        # Display toggle
+        toggle: true
+
+        # Available values: auto, light, dark
+        default: light
+
+    imageProcessing:
+        cover:
+            enabled: false
+        content:
+            enabled: false
 
 sitemap:
   changefreq: always

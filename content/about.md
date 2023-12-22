@@ -1,5 +1,5 @@
 ---
-title: "关于"
+title: "About"
 slug: "about"
 ---
 ## **我是谁 WHO AM I？** 

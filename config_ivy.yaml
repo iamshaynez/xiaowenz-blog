@@ -1,0 +1,117 @@
+baseurl: "https://xiaowenz.com/"
+languageCode: "en-us"
+title: "Xiaowen.Z Deployed"
+theme: "hugo-ivy"
+ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
+hasCJKLanguage: true
+enableEmoji: true
+Victor_Hugo: true
+Focus_Keyword: "Technology and Reading and Photography and AI."
+footnotereturnlinkcontents: "↩"
+rssLimit: 10
+googleAnalytics: 
+
+permalinks:
+  blog: "/:sections/:year/:month/:slug"
+
+menu:
+  main:
+    - name: "Blog"
+      url: "/blog/"
+      weight: 1
+    - name: "Read"
+      url: "/read/"
+      weight: 2
+    - name: "Service"
+      url: "/service/"
+      weight: 3
+    - name: "Photography"
+      url: "/photography/"
+      weight: 4
+    - name: "Story"
+      url: "https://storywith.in"
+      weight: 5
+    - name: "About"
+      url: "/about/"
+      weight: 6
+    - name: "Categories"
+      url: "/categories/"
+      weight: 7
+    - name: "Tags"
+      url: "/tags/"
+      weight: 8
+    - name: "Subscribe"
+      url: "/feed"
+      weight: 9
+    - name: "Status Page"
+      url: "https://stats.uptimerobot.com/4YW25Iz64n"
+      weight: 10
+    - name: ""
+      url: ""
+      weight: 15
+    - name: "Twitter 🐦"
+      url: "https://twitter.com/iamshaynez"
+      weight: 19
+    
+
+  
+
+params:
+  description: "\"We all learn by making mistakes, and make mistakes again to learn more.\""
+  footer: "Proudly powered by [Hugo](https://gohugo.io) | [Cloudflare Pages](https://pages.cloudflare.com) | [Cusdis](https://cusdis.com) </br> &copy; [Xiaowen.Z](/) Deployed  2007 - {Year}"
+  images:
+    - "/images/xiaowenz_twitter_image.webp"
+  customJS:
+    - "fix-toc.js"
+    - "center-img.js"
+    - "right-quote.js"
+    - "no-highlight.js"
+    - "fix-footnote.js"
+    - "math-code.js"
+    - "hash-notes.js"
+    - "toggle-notes.js"
+    - "external-link.js"
+    - "alt-title.js"
+    - "header-link.js"
+  cusdis: "0c8f5787-1a16-489e-810b-8893a58fee7c"
+
+  # options for highlight.js (version, additional languages, and theme)
+  highlightjsVersion: "9.12.0"
+  highlightjsCDN: "//cdnjs.cloudflare.com/ajax/libs"
+  highlightjsLang: ["r", "yaml", "tex"]
+  highlightjsTheme: "github"
+
+  logo:
+    blog:
+      img: "/images/logo.jpg"
+      url: "/"
+      alt: ""
+      tag: ""
+    
+
+  author:
+    blog: "Xiaowen Zhang"
+    post: "Xiaowen Zhang"
+    
+
+
+blackfriday:
+    extensionsmask: ["noIntraEmphasis"]
+    fractions: false
+    hrefTargetBlank: true
+
+markup:
+  highlight:
+    codeFences: false
+  goldmark:
+    renderer:
+      unsafe: true
+    parser:
+      autoHeadingIDType: blackfriday
+  tableOfContents:
+    startLevel: 1
+
+sitemap:
+  changefreq: always
+  filename: sitemap.xml
+  priority: 0.5

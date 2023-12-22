@@ -1,7 +1,7 @@
 ---
 title: Weekly | 不写工作。
 author: xiaowenz
-type: post
+
 date: 2022-09-04T11:23:23+08:00
 slug: no-work-in-blog
 description: "总的来说，并不希望在博客里写自己的工作……"
