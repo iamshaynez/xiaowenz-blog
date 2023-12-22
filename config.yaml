@@ -12,7 +12,7 @@ permalinks:
 menu:
   main:
     - name: "Read"
-      url: "/read/"
+      url: "/read-books/"
       weight: 2
       identifier: "Read"
       params:

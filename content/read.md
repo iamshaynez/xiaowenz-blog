@@ -1,7 +1,7 @@
 ---
 title: Read
 draft: false
-slug: "read"
+slug: "read-books"
 ---
 
 # **阅读**
