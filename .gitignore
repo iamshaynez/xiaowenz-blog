@@ -3,4 +3,4 @@ public
 resources
 assets/jsconfig.json
 .hugo_build.lock
-themes/hugo-theme-stack
+themes/hugo-theme-stack/*

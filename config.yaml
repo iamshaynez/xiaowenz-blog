@@ -199,7 +199,7 @@ params:
 
     defaultImage: 
         opengraph:
-            enabled: false
+            enabled: true
             local: false
             src: 
 
@@ -212,9 +212,9 @@ params:
 
     imageProcessing:
         cover:
-            enabled: false
+            enabled: true
         content:
-            enabled: false
+            enabled: true
 
 sitemap:
   changefreq: always
