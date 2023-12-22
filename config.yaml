@@ -100,8 +100,8 @@ params:
             default: Licensed under CC BY-NC-SA 4.0
 
     comments:
-        enabled: false
-        provider: disqus
+        enabled: true
+        provider: cusdis
 
         disqusjs:
             shortname:
@@ -171,8 +171,8 @@ params:
             clientSecret:
 
         cusdis:
-            host:
-            id:
+            host: "https://cusdis.com"
+            id: "0c8f5787-1a16-489e-810b-8893a58fee7c"
 
     widgets:
         homepage:
