@@ -54,7 +54,7 @@ menu:
     - name: ""
       url: ""
       weight: 15
-    - name: "Twitter 🐦"
+    - name: "Twitter"
       url: "https://twitter.com/iamshaynez"
       weight: 19
       params:
@@ -74,7 +74,7 @@ params:
     featuredImageField: image
     rssFullContent: true
     favicon: /images/logo.jpg
-
+    twitterImage: "/images/xiaowenz_twitter_image.webp"
     footer:
         since: 2007
         customText: 
