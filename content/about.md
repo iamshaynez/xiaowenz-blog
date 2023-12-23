@@ -12,7 +12,9 @@ slug: "about"
 
 > **Update 20220711:** 终究，因为不想续费VPS，也不太愿意运维自己的服务，我抛弃了用了十几年的Wordpress。现在，这个博客跑在免费的Cloudflare Pages上，博客引擎是静态的Hugo。曾经我有多不喜欢Markdown，如今就有多习惯这种Plain Text的快感。
 > 
-> **Update 20220927:** 还是添加了评论系统，万一有人用呢？目前选择了[Cusdis](https://cusdis.com)，非常轻，很喜欢。希望能早日收费，持续运营下去。
+> **Update 20220927:** 还是添加了评论系统，万一有人用呢？目前选择了[Cusdis](https://cusdis.com)，非常轻，很喜欢。~~希望能早日收费~~，已经开始收费了，虽然 Randy 说并没有明显的收入，持续运营下去。
+> 
+> **Update 20231224:** 更换了主题到[Stack](https://github.com/CaiJimmy/hugo-theme-stack)。
 
 ## **摄影 Photography** 
 
@@ -36,7 +38,7 @@ slug: "about"
 
 我的部分书评：[I am a Reader][4]
 
-我的读书笔记主页：[Read](/read)
+我的读书笔记主页：[Read](/read-books)
 
 ## **关于我的其他** 
 
