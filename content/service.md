@@ -56,7 +56,13 @@ slug: "service"
 
 ## 如何找我 How to connect?
 
-请邮件 talk(a)xiaowenz.com 找我预约时间和讨论具体沟通的方式。
+请移步[给我买啤酒的服务页](https://www.buymeacoffee.com/xiaowenz)查看具体沟通方式和流程。
+
+## 一些参考的话题
+
+和很多朋友沟通以后，深深的感觉到很多疑惑是有共性的。让我尝试慢慢汇总起来……
+
+- [聊天之后的总结：技术岗位除了技术最应该关注公司里的啥……](https://xiaowenz.com/blog/2024/01/technology-in-business/)
 
 ## 然后呢 What's next?
 
