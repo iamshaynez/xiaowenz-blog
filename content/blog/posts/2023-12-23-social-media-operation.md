@@ -4,7 +4,7 @@ author: xiaowenz
 type: post
 date: 2023-12-23T06:00:00+08:00
 slug: social-media-operation
-description: ""
+description: "今年的 2 月，我注册了 X Premium，准备用「长文」功能认真的记录自己关于生活，工作，思考的痕迹，所谓的 Thinking in Public。"
 draft: false
 categories:
   - I am a Writer

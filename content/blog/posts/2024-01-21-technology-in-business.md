@@ -4,7 +4,7 @@ author: xiaowenz
 type: post
 date: 2024-01-21T06:00:00+08:00
 slug: technology-in-business
-description: ""
+description: "这是第一个话题，技术岗位除了技术最应该关注公司里的啥……"
 draft: false
 categories:
   - I am a Writer
