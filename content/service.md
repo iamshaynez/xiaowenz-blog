@@ -63,6 +63,7 @@ slug: "service"
 和很多朋友沟通以后，深深的感觉到很多疑惑是有共性的。让我尝试慢慢汇总起来……
 
 - [聊天之后的总结：技术岗位除了技术最应该关注公司里的啥……](https://xiaowenz.com/blog/2024/01/technology-in-business/)
+- [聊天之后的总结：关于职场里的焦虑……](https://xiaowenz.com/blog/2024/01/where-does-anxiety-come-from/)
 
 ## 然后呢 What's next?
 
