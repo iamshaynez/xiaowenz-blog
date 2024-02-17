@@ -86,6 +86,8 @@ Wise Business 开设账户的目的，是你可以拥有一套（注意，一套
 - 找淘宝上的代支付服务
 - 找朋友从境外个人账户转账
 
+通过我的[Wise Invite](https://wise.com/invite/dic/xiaowenz41)地址，我可能可以获得一些返利。
+
 ## 维护英国公司的流程 - 声明和报税
 
 TBD
