@@ -13,7 +13,7 @@ slug: "run-a-uk-company"
 
 > 局限: 对于「英国公司」和「美国公司」或其他地区的境外企业的优劣，特别是在税，资金，提供具体的业务对应的合规成本上，我没有能力提供详尽的比较。如果有任何资料，欢迎提供给我，我会补充在本文中作为参考。英国因为在欧洲，因此如果您计划提供软件服务（SaaS），需要面对更详尽的个人信息保护的合规要求和成本，并考虑起草对应的数据保护声明。
 
-> 利益相关：下面的 1stFormation 和 Wise 的地址都是我个人的推荐地址。我不知道是否有返利，暂且请作为利益相关考虑进去，感谢！
+> 利益相关：下面的 1stFormation 和 Wise 的地址都是我个人的推荐地址。我不知道怎么样计算会有返利，暂且请作为利益相关考虑进去。不强求，佛系佛系～
 
 
 ### 拥有一个境外企业实体的好处及一些对比
@@ -29,14 +29,15 @@ slug: "run-a-uk-company"
 - Firstbase 地址邮箱每年 $350
 - Firstbase 公司代理（含年报、税务申报工具）每年 $299
 
-这个成本，如果你不是确实的拥有「Business」，这个成本还是比较**显著**的。
+如果你不是确实的拥有能确定盈利的「Business」，这个成本还是比较**显著**的。
 
 对应，一个英国公司的成本，大约是：
 
-- 注册部分
+- 首次注册部分
   - 首次注册费用：小于 35 英镑（含税）
+  - 开户 Wise 45 英镑（如果选择其他银行或收单，另算）
 - 每年维护部分
-  - 次年开始的维护费用（这部分是我自己总结的，目前还没有完全亲自实施过，2024 年 9 月我会更新这部分）
+  - 次年开始的维护费用（这部分是我自己总结的，目前还没有完全亲自实施过，2024 年 9 月内我会更新这部分）
     - Confirmation Statement：13 英镑
     - 公司注册地址服务的总费用：78 英镑含税
   - 美国或英国电话号码的费用 $36 或更低
@@ -49,7 +50,9 @@ slug: "run-a-uk-company"
 
 ### 通过 1stFormations 首次注册
 
-选择 1stFormations 的 [Privacy Package](https://1st-formations-limited.sjv.io/anmPaN)。
+选择 1stFormations 的 [Privacy Package](https://1st-formations-limited.sjv.io/anmPaN)。其他选择可以让你更省事，但总体上可能稍微多花一些钱，因为我当时选了最便宜的，因此没有办法直接推荐其他套餐。下面是 1stFormations 的 Partner 客户提供的信息，供参考。
+
+![1stFormations Packages](https://cdn.sa.net/2024/02/20/DSdyhCqKGugjWbf.png)
 
 > 参考官方的流程图更好的理解你需要做什么：[https://www.gov.uk/set-up-limited-company](https://www.gov.uk/set-up-limited-company)
 
