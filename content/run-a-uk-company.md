@@ -182,7 +182,7 @@ Micro-entities are very small companies. Your company will be a micro-entity if 
 
 这篇文章是我注册公司的笔记，会持续更新，因为反正都写了这么多了，索性也就放上了有自己返利的链接，佛系参考。
 
-如果有任何不正确或不详细的，请随时留言联系我，我会更正。如果有需要咨询的，也欢迎移步[About](/about)联系我沟通。
+如果有任何不正确或不详细的，请随时留言联系我，我会更正。如果有需要咨询的，也欢迎移步[Service](/service)联系我或在这里留言沟通。
 
 ## 参考资料
 
