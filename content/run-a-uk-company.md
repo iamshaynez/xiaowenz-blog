@@ -5,11 +5,16 @@ draft: false
 slug: "run-a-uk-company"
 ---
 
-## 背景和时效
+## 背景信息
 
 > 时效：我的公司注册于 2023 年 8 月，部分内容可能会失效。
 
-> 重要更新：目前 Wise Business 因为业务繁忙（或其他原因），暂定了基于英国公司的开户。
+> 重要更新：目前 Wise Business 因为业务繁忙（或其他原因），暂定了基于英国公司的开户，需要等待 Wise 的进一步通知。一个推特上的替代方案是使用**万里汇**，由于我个人没有尝试过，所以流程无法确保。请移步: [万里汇](https://www.worldfirst.com/)
+
+> 局限: 对于「英国公司」和「美国公司」或其他地区的境外企业的优劣，特别是在税，资金，提供具体的业务对应的合规成本上，我没有能力提供详尽的比较。如果有任何资料，欢迎提供给我，我会补充在本文中作为参考。英国因为在欧洲，因此如果您计划提供软件服务（SaaS），需要面对更详尽的个人信息保护的合规要求和成本，并考虑起草对应的数据保护声明。
+
+> 利益相关：下面的 1stFormation 和 Wise 的地址都是我个人的推荐地址。我不知道是否有返利，暂且请作为利益相关考虑进去，感谢！
+
 
 ### 拥有一个境外企业实体的好处及一些对比
 
@@ -44,7 +49,7 @@ slug: "run-a-uk-company"
 
 ### 通过 1stFormations 首次注册
 
-选择 1stFormations 的 [Privacy Package](https://www.1stformations.co.uk/package/privacy/)。
+选择 1stFormations 的 [Privacy Package](https://1st-formations-limited.sjv.io/anmPaN)。
 
 > 参考官方的流程图更好的理解你需要做什么：[https://www.gov.uk/set-up-limited-company](https://www.gov.uk/set-up-limited-company)
 
@@ -90,14 +95,98 @@ Wise Business 开设账户的目的，是你可以拥有一套（注意，一套
 
 ## 维护英国公司的流程 - 声明和报税
 
-TBD
+根据 [What are the filing requirements of a limited company](https://www.1stformations.co.uk/blog/what-are-the-filing-requirements-of-a-limited-company/) 中的介绍，一个 LTD 每年需要义务填报的内容如下：
 
+- Confirmation statement
+- Annual accounts
+- Changes of Company(If)
+  
+对大部分一人小微企业来说，主要是前两项，[官方视频教程](https://www.youtube.com/playlist?list=PLmQfMXVVhmXyUeVqB7Nw6Po2X4BjdS2Hg)
 
+### Confirmation Statement 公司信息确认声明
+
+> 时间：Confirmation statement 开始时间是注册成功一年后开始计算的 2 周内。
+
+总体上，你有两个选择：购买 1stFormation 提供的或其他机构提供的待填报服务；或自己搞定 -> [官方教程](https://www.gov.uk/guidance/confirmation-statement-guidance)
+
+登录官方提供的 [WebFiling](https://idam-ui.company-information.service.gov.uk/) 工具，首次使用需要注册。
+
+> 注意，WebFiling Account 和 Company Information Account 是两个不同的东西，要分别注册，密码要求也不同，有点坑。
+
+官方有一个 New Service 提供给足够小的企业：
+
+![New Service](https://cdn.sa.net/2024/02/20/mTNEw149CaIHdn8.png)
+
+You can only use this service if the company:
+
+- is a private company limited by shares
+- has only one shareholder
+- has between 1 and 5 officers
+- has 5 people with significant control (PSCs) or less
+
+也许能进一步简化这个流程，但需要我到 8 月的时候测试完成后更新给大家。正常填报费用为 13 英镑，这笔钱不可省。
+
+![Company Information](https://cdn.sa.net/2024/02/20/Vp6cmfT2IG8ejru.png)
+
+### Annual accounts 公司财务数据
+
+> 时间：财务数据首次上报开始时间是公司注册成功后的一年，截止时间是这开始的 9 个月内，准确描述：21 months after the date you registered with Companies House
+> 首次上报完成后的时间：9 months after your company’s financial year ends
+> 关于审计（Audit）：因为大部分人应该都属于小微企业，因此是免于审计的。参考 [Audit Exemptions](https://www.gov.uk/audit-exemptions-for-private-limited-companies)
+
+根据公司类型，规模的不同，你可以允许的填报方式，内容，途径都不同。移步 -> [官方攻略](https://www.gov.uk/annual-accounts)
+
+对于小额经营或几乎没有经营的个人小微企业，我们先说你大概率会落入的几个类别及对应的上报方式和内容。
+
+![企业分类及上报方式](https://cdn.sa.net/2024/02/20/2iTZGyHdJRnXmOC.png)
+
+可以看到，其中两类是允许通过 WebFiling 自行上报的，其他的需要通过专门购买软件或渠道。
+
+- Dormant companies 休眠状态的公司
+- Micro entity 微型实体
+
+**Dormant companies 休眠状态的公司**的定义：英国《公司法2006》第1169条说明，如该英国公司自公司注册成立或自指定日期起没有相关会计交易时，则该公司被视为处于休眠状态。
+
+简单来说，如果你的公司有任何的营业性的交易产生（比如收款，付营业款），除了少量的公司注册费等交易外，其他任何交易都会让你公司不被认定为「休眠」。
+
+**Micro entity 微型实体**的定义：
+
+Micro-entities are very small companies. Your company will be a micro-entity if it has any 2 of the following:
+
+- a turnover of £632,000 or less
+- £316,000 or less on its balance sheet
+- 10 employees or less
+
+大部分的一人企业，应该不太容易达到……因此可认为是名副其实的小微企业。因此，If your company is a micro-entity, you can:
+
+- prepare simpler accounts that meet statutory minimum requirements
+- send only your balance sheet with less information to Companies House
+- benefit from the same exemptions available to small companies
+
+因此，只需要提供最基础的资产负债表即可（Balance Sheet），移步 -> [Filing your Companies House accounts](https://www.gov.uk/government/publications/life-of-a-company-annual-requirements)
+
+> 注：这部分我会在 2024 年度上报完成后更新财务数据的记录方式和上报格式等信息
+
+## Close 关闭公司
+
+> 参考 [Close your company](https://find-and-update.company-information.service.gov.uk/close-a-company/?_ga=2.127622349.1153015059.1708434818-163991333.1708132424)
+
+你可以选择 1stFormations 的服务[Company Dissolution Service](https://1st-formations-limited.sjv.io/y23OeW)，价格是 69.99 英镑。
+
+如果要自己走完所有流程，参考 [Strike Off your company](https://www.gov.uk/strike-off-your-company-from-companies-register)，看起来相当麻烦……我暂时没有经验，如果有，我会也会更新本文。
+
+## 关于这篇文章
+
+这篇文章是我注册公司的笔记，会持续更新，因为反正都写了这么多了，索性也就放上了有自己返利的链接，佛系参考。
+
+如果有任何不正确或不详细的，请随时留言联系我，我会更正。如果有需要咨询的，也欢迎移步[About](/about)联系我沟通。
 
 ## 参考资料
 
 - [What are the filing requirements of a limited company](https://www.1stformations.co.uk/blog/what-are-the-filing-requirements-of-a-limited-company/)
-
-
+- [Confirmation Statement Guidance](https://www.gov.uk/guidance/confirmation-statement-guidance)
+- [Annual Accounts](https://www.gov.uk/annual-accounts)
+- [Filing your Companies House accounts](https://www.gov.uk/government/publications/life-of-a-company-annual-requirements)
+- [Close your company](https://find-and-update.company-information.service.gov.uk/close-a-company/?_ga=2.127622349.1153015059.1708434818-163991333.1708132424)
 
 

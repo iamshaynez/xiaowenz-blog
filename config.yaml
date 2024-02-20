@@ -45,8 +45,8 @@ menu:
       params:
         icon: "rss"
         newTab: true
-    - name: "Status Page"
-      url: "https://stats.uptimerobot.com/4YW25Iz64n"
+    - name: "UK Company Guide"
+      url: "/run-a-uk-company"
       weight: 10
       params:
         icon: "clock"
