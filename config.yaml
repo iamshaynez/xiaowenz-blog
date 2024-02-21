@@ -202,7 +202,7 @@ params:
         opengraph:
             enabled: true
             local: false
-            src: 
+            src: https://cdn.sa.net/2024/02/21/x69uWYqrJMTRczb.png
 
     colorScheme:
         # Display toggle
