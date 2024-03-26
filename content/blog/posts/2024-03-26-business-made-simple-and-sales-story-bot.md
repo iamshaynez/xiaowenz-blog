@@ -49,6 +49,8 @@ tags:
 
 ## 但这篇文章不是书评……
 
+![Sales Story AI Bot](https://cdn.sa.net/2024/03/26/PVBe9uCyljfMEmA.png)
+
 之所以说这不是书评，重点在后面：
 
 我出于好玩的目的，写了一个 Poe 上的机器人，可以根据你提供一个产品的描述给他，他会帮你创造一个 Sales Story，帮助你建立你的销售灵感和具体的用户故事。
