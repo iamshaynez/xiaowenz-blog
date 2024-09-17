@@ -1,9 +1,14 @@
 ---
-title: "如何注册和维护一个英国公司"
-date: 2024-02-17T08:13:16+08:00
+title: "如何注册和维护一个英国公司 更新于 2024年9月"
+date: 2024-09-16T08:13:16+08:00
 draft: false
 slug: "run-a-uk-company"
 ---
+
+## 更新历史
+
+- 20240901: Confirmation Statement 年度提交
+- 20240917: 完整记录了年度申报，账务和税务的处理。我们 2025 年见。
 
 ## 背景信息
 
@@ -106,7 +111,7 @@ Wise Business 开设账户的目的，是你可以拥有一套（注意，一套
   
 对大部分一人小微企业来说，主要是前两项，[官方视频教程](https://www.youtube.com/playlist?list=PLmQfMXVVhmXyUeVqB7Nw6Po2X4BjdS2Hg)
 
-### Confirmation Statement 公司信息确认声明
+### Confirmation Statement 公司信息确认声明（202409 亲测完成）
 
 > 时间：Confirmation statement 开始时间是注册成功一年后开始计算的 2 周内。
 
@@ -127,7 +132,7 @@ You can only use this service if the company:
 - has between 1 and 5 officers
 - has 5 people with significant control (PSCs) or less
 
-也许能进一步简化这个流程，但需要我到 8 月的时候测试完成后更新给大家。正常填报费用为 13 英镑，这笔钱不可省。
+也许能进一步简化这个流程，但需要我到 8 月的时候测试完成后更新给大家。正常填报费用为 ~~13~~ 英镑，这笔钱不可省。20240901 更新：这笔费用官方从 13 英镑提高到了 34 英镑。
 
 ![Company Information](https://cdn.sa.net/2024/02/20/Vp6cmfT2IG8ejru.png)
 
@@ -168,8 +173,6 @@ Micro-entities are very small companies. Your company will be a micro-entity if 
 
 因此，只需要提供最基础的资产负债表即可（Balance Sheet），移步 -> [Filing your Companies House accounts](https://www.gov.uk/government/publications/life-of-a-company-annual-requirements)
 
-> 注：这部分我会在 2024 年度上报完成后更新财务数据的记录方式和上报格式等信息
-
 ## Close 关闭公司
 
 > 参考 [Close your company](https://find-and-update.company-information.service.gov.uk/close-a-company/?_ga=2.127622349.1153015059.1708434818-163991333.1708132424)
@@ -177,6 +180,71 @@ Micro-entities are very small companies. Your company will be a micro-entity if 
 你可以选择 1stFormations 的服务[Company Dissolution Service](https://1st-formations-limited.sjv.io/y23OeW)，价格是 69.99 英镑。
 
 如果要自己走完所有流程，参考 [Strike Off your company](https://www.gov.uk/strike-off-your-company-from-companies-register)，看起来相当麻烦……我暂时没有经验，如果有，我会也会更新本文。
+
+## 2024年9月年度申报 Updated 20240917
+
+### 申报 Statement Confirmation
+
+如上教程，已经很简单的提交了年度的公司信息确认。公司信息确认的目的，主要是定期的通告公司的股权，经营者，关键业务没有变化。如果确实没有变化，1 分钟时间确认后交纳费用就完成了。30 分钟内就收到了确认邮件。
+
+注意，这个费用现在是 34 英镑。
+
+确认邮件：
+
+![Confirmation Statement](https://cdn.sa.net/2024/09/01/ZKB7q6Md2iWv58n.png)
+
+> 注意：如果你申报休眠，则无需提供账务信息并免税。但从合规的角度，如果你的企业在英国境内的银行有流水发生，有注册企业身份的出版或其他服务资质，则并不属于休眠的定义，为了避免麻烦请合规申报。（我看文章有很多人以前会无脑申报休眠来免税，但这两年会有抽查，建议不要以身犯险）
+
+### 账和税 Account and Tax
+
+小微企业只需要提交资产负债表即可，并且只需要记录和提交英镑资产的负债表。（Wise中英镑账户相当于英国本地银行账户，这个是企业是否在英国境内有经营的依据，并影响税。如果一整年你的流水只发生在境外如美元，澳元等区域，英镑账户为 0，应该可以申报休眠。）
+
+地址：https://www.gov.uk/file-your-company-accounts-and-tax-return
+
+> 注：你只要有基本的资产负债表知识就可以自行完成这个工作。
+
+最简单的办法，从 Wise 中把英镑账户的所有信息全部拉出来。
+
+- 所有的收入加总是你的收入 turnover（除非有股东出资直接充值到 Wise 的）
+- 所有的支出是成本 Cost
+- 差额自动计算，就是你这个周期的利润 profit（根据实际情况，可以是负数）
+- 利润加上上个周期的存留资产就是你现在的资产，应该是等于 Wise 中英镑账户余额的
+
+我的数字供参考。
+
+![image.png](https://cdn.sa.net/2024/09/17/HxS1i5vDLkMpAfq.png)
+
+你可以选择提交账户信息的时候自动同步提交 Tax Return 税务信息，提交以后很快就可以收到确认邮件，应该就算完成了。
+
+![image.png](https://cdn.sa.net/2024/09/17/rNsPZQTGDIov4Wh.png)
+
+> 税的部分我自己给自己挖了个坑，下面单独写。
+
+### 税的问题
+
+> 税的部分我给自己挖了个坑，基于我今年重新查阅相关官方资料后，目前我对税的理解如下文。（如果有不正确的请随时留言告诉我）
+
+英国企业离岸经营是免税的，而在岸和离岸的判断差异，主要是英国境内的对公银行账户的流水情况。也就是说，以我自己的例子，如果我 Wise 英镑账户之外的其他账户的经营活动，无需申报和纳税，但英镑账户中的利润是可能需要报税的。（这里我存疑，但目前我是这么操作的）
+
+参考：[https://www.gov.uk/corporation-tax](https://www.gov.uk/corporation-tax)
+
+不同于英国的个人免税额，英国的企业利润**全部需要**征税。大于五万英镑税率是 25%，小于税率是 19%。
+
+因此，如果你希望免税或少税，你需要做的是：
+
+- 经营活动（特别是收入）尽量用非英国本地开户的非英镑账户进行（我后面会刻意使用 Wise Business 的 USD 账户）
+- Wise 中的英镑账户作为英国本地银行账户，保持收支平衡，差额会是下一个账务周期的利润并产生税款。
+
+如果你的英国企业开设的是完全离岸的银行账户，则这个企业在英国本土你可以申报休眠，并适用于完全免税。但因为这不是我的实际情况，从合规的角度我选择了如实申报，如实纳税（😭）。明年我会
+
+查询和报税记录和缴纳税款都在 HMRC 官方网站：[https://www.gov.uk/hmrconline](https://www.gov.uk/hmrconline)
+
+参考：
+
+- [如何判断—你的英国公司需不需要交税？](https://www.sohu.com/a/781270236_121869184)
+- [Corporate - Taxes on corporate income](https://taxsummaries.pwc.com/united-kingdom/corporate/taxes-on-corporate-income)
+- [The Bionic guide to corporation tax for small business](https://bionic.co.uk/business-finance/guides/corporation-tax/)
+
 
 ## 关于这篇文章
 
