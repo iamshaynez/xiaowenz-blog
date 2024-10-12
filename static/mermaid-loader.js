@@ -8,7 +8,11 @@
     var script = document.createElement('script');
     script.src = 'https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js';
     script.onload = function() {
-      mermaid.initialize({ startOnLoad: true });
+      // 配置 Mermaid，增加最大文本大小限制
+      mermaid.initialize({ 
+        startOnLoad: true,
+        maxTextSize: 100000  // 增加最大文本大小限制，可以根据需要调整
+      });
   
       // 从同域名下获取 Mermaid 数据
       fetch('/mermaid.txt')
