@@ -39,7 +39,7 @@ slug: "run-a-uk-company"
 对应，一个英国公司的成本，大约是：
 
 - 首次注册部分
-  - 首次注册费用：小于 35 英镑（含税）
+  - 首次注册费用：~~小于 35 英镑（含税）~~ 小于 70 英镑
   - 开户 Wise 45 英镑（如果选择其他银行或收单，另算）
 - 每年维护部分
   - 次年开始的维护费用（这部分是我自己总结的，目前还没有完全亲自实施过，2024 年 9 月内我会更新这部分）
@@ -58,6 +58,8 @@ slug: "run-a-uk-company"
 选择 1stFormations 的 [Privacy Package](https://1st-formations-limited.sjv.io/anmPaN)。其他选择可以让你更省事，但总体上可能稍微多花一些钱，因为我当时选了最便宜的，因此没有办法直接推荐其他套餐。下面是 1stFormations 的 Partner 客户提供的信息，供参考。
 
 ![1stFormations Packages](https://cdn.sa.net/2024/02/20/DSdyhCqKGugjWbf.png)
+
+> 2024年 10 月更新：因为从 2024年 4 月英国政府提高的公司注册的费用（从 12 到 50），因此对应的 Privacy Package 的价格也有上涨。
 
 > 参考官方的流程图更好的理解你需要做什么：[https://www.gov.uk/set-up-limited-company](https://www.gov.uk/set-up-limited-company)
 
