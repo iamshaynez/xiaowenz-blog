@@ -54,8 +54,8 @@ menu:
     - name: ""
       url: ""
       weight: 15
-    - name: "Twitter"
-      url: "https://twitter.com/iamshaynez"
+    - name: "X(Twitter)"
+      url: "https://x.com/ixiaowenz"
       weight: 19
       params:
         icon: "brand-twitter"
