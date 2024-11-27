@@ -110,7 +110,7 @@ def get_next_book_number(filename):
 
 
 if __name__ == "__main__":
-    url = 'https://book.douban.com/subject/35703185/'
+    url = 'https://book.douban.com/subject/36579654/'
 
     process(url)
     #count = get_next_book_number('./content/read/read-2024.md')
