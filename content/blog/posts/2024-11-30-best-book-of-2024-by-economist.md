@@ -438,4 +438,3 @@ Z 世代正遭受着前所未有的心理健康问题。一位[著名的社会�
 我们的亚洲外交编辑撰写了关于定义当代缅甸政治的三种关系的文章，认为当前的革命比昂山素季之前的政府提供了更多希望的理由。印度尼西亚外交官 Marty Natalegawa 称其为“重大贡献”。■
 
 _想了解更多关于最新书籍、电影、电视节目、专辑和争议的信息，请注册订阅我们每周一次的[Plot Twist](https://www.economist.com/culture/2022/11/23/introducing-plot-twist-our-new-culture-newsletter)通讯_
-```

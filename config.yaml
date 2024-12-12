@@ -45,9 +45,15 @@ menu:
       params:
         icon: "rss"
         newTab: true
+    - name: "Newsletter"
+      url: "https://world.hey.com/xiaowen/post-e21b61eb"
+      weight: 10
+      params:
+        icon: "rss"
+        newTab: true
     - name: "UK Company Guide"
       url: "/run-a-uk-company"
-      weight: 10
+      weight: 11
       params:
         icon: "clock"
         newTab: true
