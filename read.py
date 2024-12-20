@@ -7,6 +7,7 @@ import re
 import os
 from dotenv import load_dotenv
 from smms import SMMS
+import random
 
 load_dotenv()
 
@@ -40,14 +41,17 @@ class ImageService(object):
         return link
 
 def response(url):
-    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.11 TaoBrowser/2.0 Safari/536.11'}
+
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/536.11 (KHTML, like Gecko) Chrome/20.0.1132.11 TaoBrowser/2.0 Safari/536.11',
+               'Cookie': os.environ["DOUBAN_COOKIE"]
+               }
     resposn = requests.get(url=url, headers=headers).text
     return resposn
 
 def process(url):
     resposn = response(url)
     etree_html = etree.HTML(resposn)
-
+    #print(resposn)
     # parse book page html
     book_title = etree_html.xpath('.//h1/span/text()')[0]
     img_small = etree_html.xpath('.//div/a[@class="nbg"]/img/@src')
@@ -110,7 +114,7 @@ def get_next_book_number(filename):
 
 
 if __name__ == "__main__":
-    url = 'https://book.douban.com/subject/36579654/'
+    url = 'https://book.douban.com/subject/36518892/'
 
     process(url)
     #count = get_next_book_number('./content/read/read-2024.md')
