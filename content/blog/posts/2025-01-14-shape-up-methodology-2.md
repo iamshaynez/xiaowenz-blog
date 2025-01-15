@@ -17,7 +17,7 @@ tags:
   - 思考
 ---
 
-![image.png](https://cdn.sa.net/2025/01/14/M1YJT759kUEWRwo.png)
+![](https://cdn.sa.net/2025/01/15/1sz6KO2tr4ETYog.png)
 
 ## Shape Up 的基本工作模式
 
