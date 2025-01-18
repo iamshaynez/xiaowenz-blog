@@ -3,7 +3,7 @@ title: 'Shape Up 阅读笔记（5）- Building: 软件项目应该有的样子'
 author: xiaowenz
 type: post
 date: 2025-01-17T06:00:00+08:00
-slug: shape-up-methodology-4
+slug: shape-up-methodology-5
 description: ""
 draft: false
 categories:
