@@ -17,7 +17,7 @@ tags:
   - 思考
 ---
 
-![image.png](./image.png)
+![](https://cdn.sa.net/2025/01/20/QDkXIJFRKmYNLG7.png)
 
 > 思考：
 >
