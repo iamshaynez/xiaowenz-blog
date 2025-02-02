@@ -11,7 +11,7 @@ import random
 
 load_dotenv()
 
-READ_FILE = './content/read/read-2024.md'
+READ_FILE = './content/read/read-2025.md'
 class ImageService(object):
     def __init__(self):
         self.service = SMMS(os.environ["SMMS_KEY"])
@@ -114,7 +114,7 @@ def get_next_book_number(filename):
 
 
 if __name__ == "__main__":
-    url = 'https://book.douban.com/subject/36518892/'
+    url = 'https://book.douban.com/subject/37054102/'
 
     process(url)
     #count = get_next_book_number('./content/read/read-2024.md')
