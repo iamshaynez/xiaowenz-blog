@@ -42,13 +42,9 @@ OpenAI 的 Deep Search 功能发布后，很多人打呼「一个月 200刀太�
 于是增加了：
 
 - 先把用户 Query 翻译成英文，以便所有信息来源使用英文世界的
-
 - 因为无论是 AI 调用还是搜索都使用付费接口，所以过程数据需要持久化，以便「断点续传」，节约成本。
-
 - 不同的场景使用不同的 AI，降低成本
-
 - 材料需要先一次汇总和梳理，降低幻觉
-
 - 最终输出的报告使用的语言用户可以指定
 
 ![Design](https://cdn.sa.net/2025/02/09/3UPtxEc6eDK4RvA.png)
@@ -56,17 +52,13 @@ OpenAI 的 Deep Search 功能发布后，很多人打呼「一个月 200刀太�
 ## 实现
 
 - 95% 的代码由字节国际发布的 Trae AI Coding IDE 完成。
-
 - 但需要自己设计模块，并按照模块，一块一块的用提示词指导，不可能一蹴而就。
-
 - 看了一下历史，交互大概三十来次而已。
-
 - Trae 当前免费，使用 Sonnet 3.5，免费的就是无敌。
 
 ![Trae](https://cdn.sa.net/2025/02/09/ozENhaij7xCIZ5r.png)
 
 - 最终，AI 网关使用 OpenRouter 家的，因为需要 Gemini 的 2M 上下文能力。思考和编写使用 DeepSeek-R1，每次报告总成本大概 1.5 人民币左右。
-
 - 搜索使用 Tavily，每月免费 1000 个 Token，每个报告平均需要 100 个 Token，折合人民币 5 元左右。
 
 ## 例子
@@ -78,4 +70,8 @@ OpenAI 的 Deep Search 功能发布后，很多人打呼「一个月 200刀太�
 
 鞠躬感谢 AI 时代。
 
-还在整理和拓展代码，晚些才能开源出来（现在还在 IDE 里面跑）。
+~~还在整理和拓展代码，晚些才能开源出来（现在还在 IDE 里面跑）。~~
+
+## 代码
+
+[https://github.com/iamshaynez/deep-research-cli](https://github.com/iamshaynez/deep-research-cli)
