@@ -7,7 +7,7 @@ slug: deep-research-dev-by-python
 description: ""
 draft: false
 aliases:
-  - research
+  - "/research"
 categories:
   - I am a Developer
 tags:
@@ -18,6 +18,11 @@ tags:
 ---
 
 ![Deep Search](https://cdn.sa.net/2025/02/09/u7ARWveNC89rUhF.png)
+
+## 不断补充的例子(持续更新留档)
+
+- [小米汽车全球汽车行业北极星指标对标及战略分析报告](/research/xiaomi-auto-strategy-report-deep-research)
+- [中国信用卡消费市场综合分析报告(2015-2030)](/research/china-credit-card-market-deep-research-analysis)
 
 ## 背景
 
@@ -78,7 +83,3 @@ OpenAI 的 Deep Search 功能发布后，很多人打呼「一个月 200刀太�
 
 [https://github.com/iamshaynez/deep-research-cli](https://github.com/iamshaynez/deep-research-cli)
 
-## 不断补充的例子
-
-- [小米汽车全球汽车行业北极星指标对标及战略分析报告](/research/xiaomi-auto-strategy-report-deep-research)
-- [中国信用卡消费市场综合分析报告(2015-2030)](/research/china-credit-card-market-deep-research-analysis)
