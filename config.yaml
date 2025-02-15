@@ -51,9 +51,15 @@ menu:
       params:
         icon: "rss"
         newTab: true
+    - name: "Research"
+      url: "/research"
+      weight: 11
+      params:
+        icon: "rss"
+        newTab: true
     - name: "UK Company Guide"
       url: "/run-a-uk-company"
-      weight: 11
+      weight: 12
       params:
         icon: "clock"
         newTab: true
