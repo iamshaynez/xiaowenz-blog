@@ -23,6 +23,7 @@ tags:
 
 - [小米汽车全球汽车行业北极星指标对标及战略分析报告](/research/xiaomi-auto-strategy-report-deep-research)
 - [中国信用卡消费市场综合分析报告(2015-2030)](/research/china-credit-card-market-deep-research-analysis)
+- [微信R1搜索整合对内容生态的战略影响评估报告](/research/wechat-r1-deep-research-search-strategy-analysis)
 
 ## 背景
 
