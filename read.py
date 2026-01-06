@@ -66,6 +66,18 @@ def process(url):
     book_info_result = reg.sub("", etree.tostring(book_info_test[0], encoding='UTF-8').decode('UTF-8'))
     book_info_result = re.sub(' +','', book_info_result)
     book_info_result = re.sub('\n+','\n', book_info_result)
+
+    lines = book_info_result.split('\n')
+    merged_lines = []
+    for line in lines:
+        stripped_line = line.strip()
+        if not stripped_line:
+            continue
+        if ':' not in stripped_line and merged_lines:
+            merged_lines[-1] += stripped_line
+        else:
+            merged_lines.append(stripped_line)
+    book_info_result = '\n'.join(merged_lines)
     #print(book_info_result)
 
 
@@ -114,7 +126,7 @@ def get_next_book_number(filename):
 
 
 if __name__ == "__main__":
-    url = 'https://book.douban.com/subject/36488645/'
+    url = 'https://book.douban.com/subject/37472802/'
 
     process(url)
     #count = get_next_book_number('./content/read/read-2024.md')
