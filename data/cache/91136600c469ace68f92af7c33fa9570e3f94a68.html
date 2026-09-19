@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+  <link rel="preconnect" href="https://typlog.com/">
+  <link rel="preconnect" href="https://s.typlog.com/">
+  <link rel="preconnect" href="https://i.typlog.com/">
+  <meta name="generator" content="Typlog 3.1">
+  <meta name="provider" content="https://typlog.com">
+    <meta name="theme" content="xiaowenyf 0.2.0">
+    <link rel="icon" type="image/png" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss">
+    <link rel="apple-touch-icon" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+  <title>一小时自研一个人工智能海龟汤游戏。 - 三杯过后 | Xiaowen.Z Deployed</title>
+  <meta name="description" content="海龟汤是什么 海龟汤的游戏规则，是出题者（煲汤）提出一个令人匪夷所思的事件（汤面），游戏者对出题者进行询问并推理出结局。 游戏者可以提出任何问题，但出题者只能用简单的判断词做出回答，一般而言回答包括四种：是、不是、是也不是、与此无关。 Po...">
+  <meta name="page:id" content="85945">
+  <meta name="page:slug" content="turtle-soup-game">
+  <meta name="page:type" content="post">
+      <link rel="amphtml" href="https://xiaowenz.com/amp/85945">
+    <link rel="webmention" href="https://typlog.com/s/xiaowenz/webmention">
+  <link rel="canonical" href="https://xiaowenz.com/blog/turtle-soup-game.html">
+  <meta property="og:site_name" content="三杯过后 | Xiaowen.Z Deployed">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="一小时自研一个人工智能海龟汤游戏。">
+  <meta property="og:description" content="海龟汤是什么 海龟汤的游戏规则，是出题者（煲汤）提出一个令人匪夷所思的事件（汤面），游戏者对出题者进行询问并推理出结局。 游戏者可以提出任何问题，但出题者只能用简单的判断词做出回答，一般而言回答包括四种：是、不是、是也不是、与此无关。 Po...">
+  <meta property="og:url" content="https://xiaowenz.com/blog/turtle-soup-game.html">
+    <meta property="og:image" content="https://cdn.sa.net/2024/10/01/FkXLJxOqcbjfGRP.png">
+      <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@typlog">
+  <script>SITE={"active": true, "algolia_id": "9X73WK7G3L", "algolia_key": "95e5a920d7081c87c0d57b1fbe5920d6", "base_url": "https://xiaowenz.com/", "icon": "https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss", "id": 4810, "level": "pro", "name": "\u4e09\u676f\u8fc7\u540e | Xiaowen.Z Deployed", "slug": "xiaowenz", "socials": {"behance": "", "email": "xiaowen.z@outlook.com", "github": "iamshaynez", "instagram": "", "linkedin": "zhangxiaowen", "telegram": "", "twitter": "ixiaowenz", "unsplash": "", "vsco": "", "weibo": "", "zhihu": null}, "subscriber": true}</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T4RZQ5V58"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-7T4RZQ5V58');
+    </script>
+<link rel="stylesheet" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.css">  <style>:root{ --t-rc-primary:0,0,0;--primary-color-hex:#000;--primary-color-rgb:0,0,0;--t-on-primary:255,255,255;--primary-text-rgb:255,255,255;--t-rc-secondary:255,255,255;--secondary-color-hex:#fff;--secondary-color-rgb:255,255,255;--t-on-secondary:0,0,0;--secondary-text-rgb:0,0,0 }</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F1F1EF">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/css/app.css">
+
+  <link rel="preload" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js" as="script">
+</head>
+<body>
+
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="site-header site-header--hybrid">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/" aria-label="三杯过后 | Xiaowen.Z Deployed">
+      <span class="site-brand__mark" aria-hidden="true">酒</span>
+      <span class="site-brand__text">三杯过后 | Xiaowen.Z Deployed</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <ul class="site-nav__list">
+
+            <li>
+              <a class="site-nav__link" href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="https://xiaowenz.com/episodes/">
+                本站播客
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/read-books">
+                Read
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/tags/newsletter/">
+                Newsletter
+              </a>
+            </li>
+
+          <li class="site-nav__more">
+            <button
+              type="button"
+              class="site-nav__link site-nav__more-btn"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="nav-more-menu"
+              id="nav-more-btn"
+            >
+              更多
+              <span class="site-nav__more-caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-more-menu" role="menu" hidden>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/run-a-uk-company">
+                      UK Company
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/service-and-afdian">
+                      Service 和爱发电
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/business-reports">
+                      Business 商业分析
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/about">
+                      About
+                    </a>
+                  </li>
+                <li class="site-nav__dropdown-sep" role="separator" aria-hidden="true"></li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://xiaowenz.com/episodes/">
+                    本站播客
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                    Spotify
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                    Apple Podcast
+                  </a>
+                </li>
+            </ul>
+          </li>
+
+          <li>
+            <button type="button" class="site-nav__link js-search" aria-label="搜索">搜索</button>
+          </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="site-main" id="main">
+
+
+  <article class="container article h-entry" itemscope itemtype="http://schema.org/Article">
+    <header class="article__header">
+      <div class="article__eyebrow">
+        <span class="hero__eyebrow-line" aria-hidden="true"></span>
+          <span class="section-index">
+            <a href="/tags/technology/" style="color:inherit">科技</a>
+          </span>
+      </div>
+
+      <h1 class="article__title p-name" itemprop="headline">一小时自研一个人工智能海龟汤游戏。</h1>
+
+
+      <div class="article__meta-row meta">
+          <time class="dt-published" datetime="2024-10-01T10:47:22Z" itemprop="datePublished">
+            2024.10.01
+          </time>
+          <span class="dot" aria-hidden="true"></span>
+          <span>
+              <a href="/by/xiaowenz/" class="p-author">Xiaowen Zhang</a>          </span>
+      </div>
+    </header>
+
+      <figure class="reveal" style="margin-bottom: var(--space-7);">
+        <img src="https://cdn.sa.net/2024/10/01/FkXLJxOqcbjfGRP.png" alt="一小时自研一个人工智能海龟汤游戏。" style="width:100%;border-radius:var(--radius);">
+      </figure>
+
+
+    <div class="article__body prose e-content js-content" itemprop="articleBody">
+          <div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2024/10/01/FkXLJxOqcbjfGRP.png" type="image/webp"><img src="https://cdn.sa.net/2024/10/01/FkXLJxOqcbjfGRP.png" alt="海龟汤游戏"loading="lazy" decoding="async" width="1024" height="576" /></picture></figure></div><h2>海龟汤是什么</h2>
+<div class="blockquote"><blockquote><p>海龟汤的游戏规则，是出题者（煲汤）提出一个令人匪夷所思的事件（汤面），游戏者对出题者进行询问并推理出结局。 游戏者可以提出任何问题，但出题者只能用简单的判断词做出回答，一般而言回答包括四种：是、不是、是也不是、与此无关。</p>
+</blockquote></div>
+<h2>Poe 上的聊天机器人</h2>
+<p>很早以前我就在 Poe 上挂了一个海龟汤的游戏，本质上就是把谜题写到提示词里，然后玩家可以和机器人交互，效果还不错。</p>
+<p>但 Poe 上最大的问题就是很难分享给喜欢玩的朋友，而且同一时间只能支持一个游戏（故事写进了提示词里）。</p>
+<h2>自己开发一个吧</h2>
+<p>国庆休假，于是动手自己开发一个吧。需求已经有了，现在就差一个程序员了不是吗？</p>
+<p>咱这不是 AI 时代了吗？</p>
+<p><strong>第一段提示词（Sonnet 3.5）：</strong></p>
+<div class="block-code"><pre><code>请帮我写一个一个页面的程序，前后端一体。使用 NodeJS，Html 等技术栈。
+
+功能：
+
+- 前端有一个固定的密码保护，输入密码才能进入
+- 前端提供用户一个 ChatBox 的功能，有一个欢迎语。
+- 用户在一个 Conversation 中允许不断交互
+- Conversation 的内容和后端固定的提示词会一起跟 OpenAI 的 LLM 模型进行交互
+
+请输出给我完整的代码和工程结构</code></pre></div>
+<p>于是，你会得到一个初始的版本。这时候的工程量和代码量都不小了，后续要继续修改的话需要有意识的控制上下文。</p>
+<div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2024/10/01/mXNCZdjtpBfKn3F.png" type="image/webp"><img src="https://cdn.sa.net/2024/10/01/mXNCZdjtpBfKn3F.png" alt="Sonnet Coding"loading="lazy" decoding="async" width="1182" height="812" /></picture></figure></div><p><strong>迭代用的提示词模版（Sonnet 3.5 - 200K）：</strong></p>
+<div class="blockquote"><blockquote><p>使用下面的通用模板，先把当前版本的程序更新进去，然后讲解你需要进一步增加或修改的功能。一次一个，不断迭代。</p>
+</blockquote></div>
+<div class="block-code"><pre><code>我有一个应用，前端有三个文件：index.html, style.css, script.js，后端一个文件 server.js
+
+功能是一个海龟汤的游戏，用户输入密码进入后，会在一个 Chatbox 内输入问题，后端会和 AI 交互并产生结果返回给前端。
+
+文件内容分别是：
+
+*** 此处省略
+
+---
+
+现在请帮我继续修改：
+
+- 输入密码的页面增加一个文本框，让我展示游戏规则（举例）</code></pre></div>
+<p>很快，你就得到了一个画面不丑，功能完整的海龟汤游戏壳子了。</p>
+<p>登录界面：</p>
+<div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2024/10/01/Pje568odAOcQvk3.png" type="image/webp"><img src="https://cdn.sa.net/2024/10/01/Pje568odAOcQvk3.png" alt="海龟汤游戏登录"loading="lazy" decoding="async" width="840" height="1096" /></picture></figure></div><p>选择游戏：</p>
+<div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2024/10/01/bZAjzRDJFwBC1ry.png" type="image/webp"><img src="https://cdn.sa.net/2024/10/01/bZAjzRDJFwBC1ry.png" alt="海龟汤游戏选择"loading="lazy" decoding="async" width="1240" height="1462" /></picture></figure></div><p>游戏交互：</p>
+<div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2024/10/01/rUP1swd23AKtjID.png" type="image/webp"><img src="https://cdn.sa.net/2024/10/01/rUP1swd23AKtjID.png" alt="海龟汤游戏交互"loading="lazy" decoding="async" width="840" height="1434" /></picture></figure></div><h2>AI的部分</h2>
+<p>AI 交互的部分其实很简单，就是把玩家输入的信息发到后台，然后跟系统提示词一起发给 LLM 并返回和更新前端页面。</p>
+<p>但从游戏体验和经济成本均衡的角度，仍然有几个关键点：</p>
+<ul>
+<li>要提供尽可能稳定的游戏体验，经过测试，<strong>4o-mini</strong>，<strong>deepseek-2.5</strong> 这一类的廉价快速模型效果并不好，容易出现幻觉并难以对复杂指令做准确的逻辑处理。</li>
+<li>经过测试，最终我选择的是 <strong>qwen/qwen-2.5-72b-instruct</strong> 和 <strong>meta-llama/llama-3.2-90b-vision-instruct</strong>。这俩属于廉价的价格和介于顶级模型能力和初级模型之间的高水平模型，性价比极高。（阿里和 Meta 都是开源流派，真好。）</li>
+<li>虽然界面展示的是一个 Conversation，但实际上每次交互只包含一个系统提示词和最新的一个消息，并不会发送历史 Conversation，既可以省钱，也可以提高准确度。</li>
+<li>模型温度需要降低，幻觉不是游戏引擎希望的。</li>
+</ul>
+<p>交互代码如下：</p>
+<div class="block-code" data-language="javascript"><div class="highlight"><pre><span></span><code><div class="line"><span class="nx">socket</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;chat message&#39;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">gameId</span><span class="p">,</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</div><div class="line"><span class="w">    </span>
+</div><div class="line"><span class="w">    </span><span class="k">try</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</div><div class="line"><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">game</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">games</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">g</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">g</span><span class="p">.</span><span class="nx">id</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="nx">gameId</span><span class="p">);</span><span class="w"></span>
+</div><div class="line"><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">game</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</div><div class="line"><span class="w">        </span><span class="k">throw</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="ne">Error</span><span class="p">(</span><span class="s1">&#39;Game not found&#39;</span><span class="p">);</span><span class="w"></span>
+</div><div class="line"><span class="w">      </span><span class="p">}</span><span class="w"></span>
+</div><div class="line">
+</div><div class="line"><span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">openai</span><span class="p">.</span><span class="nx">chat</span><span class="p">.</span><span class="nx">completions</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span><span class="w"></span>
+</div><div class="line"><span class="w">        </span><span class="nx">model</span><span class="o">:</span><span class="w"> </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">OPENAI_MODEL</span><span class="p">,</span><span class="w"></span>
+</div><div class="line"><span class="w">        </span><span class="nx">messages</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+</div><div class="line"><span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;system&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nx">game</span><span class="p">.</span><span class="nx">systemPrompt</span><span class="w"> </span><span class="p">},</span><span class="w"></span>
+</div><div class="line"><span class="w">          </span><span class="p">{</span><span class="w"> </span><span class="nx">role</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">content</span><span class="o">:</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+</div><div class="line"><span class="w">        </span><span class="p">],</span><span class="w"></span>
+</div><div class="line"><span class="w">        </span><span class="nx">temperature</span><span class="o">:</span><span class="w"> </span><span class="mf">0.3</span><span class="p">,</span><span class="w"></span>
+</div><div class="line"><span class="w">      </span><span class="p">});</span><span class="w"></span>
+</div><div class="line"><span class="w">      </span><span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;chat message&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">response</span><span class="p">.</span><span class="nx">choices</span><span class="p">[</span><span class="mf">0</span><span class="p">].</span><span class="nx">message</span><span class="p">.</span><span class="nx">content</span><span class="p">);</span><span class="w"></span>
+</div><div class="line"><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">catch</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</div><div class="line"><span class="w">      </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Error:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span><span class="w"></span>
+</div><div class="line"><span class="w">      </span><span class="kd">let</span><span class="w"> </span><span class="nx">errorMessage</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;An error occurred while processing your request.&#39;</span><span class="p">;</span><span class="w"></span>
+</div><div class="line"><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</div><div class="line"><span class="w">        </span><span class="nx">errorMessage</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="sb">` Status: </span><span class="si">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">status</span><span class="si">}</span><span class="sb">. </span><span class="si">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span><span class="w"></span>
+</div><div class="line"><span class="w">      </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</div><div class="line"><span class="w">        </span><span class="nx">errorMessage</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="sb">` </span><span class="si">${</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span><span class="w"></span>
+</div><div class="line"><span class="w">      </span><span class="p">}</span><span class="w"></span>
+</div><div class="line"><span class="w">      </span><span class="nx">socket</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;error&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">errorMessage</span><span class="p">);</span><span class="w"></span>
+</div><div class="line"><span class="w">    </span><span class="p">}</span><span class="w"></span>
+</div><div class="line"><span class="w">  </span><span class="p">});</span><span class="w"></span>
+</div></code></pre></div>
+</div>
+<h2>海龟汤游戏体验</h2>
+<p>体验很好。</p>
+<p>世面上能搜到的海龟汤游戏，大多把线下自由度极高的游戏，抽象成了「猜词」或者「做选择题」形式的游戏交互。</p>
+<p>基于人工智能的海龟汤游戏，因为自由度极高，基本上可以获得跟真人法官类似的自由体验，毕竟真的什么都可以问。好几个朋友玩的乐此不疲，并有朋友已经独立打完了目前所有的剧本。</p>
+<div class="blockquote"><blockquote><p>但也因为是人工智能，所以有很多办法可以 Hack 然后直接通关。不鼓励这么做，毕竟游戏的目标是快乐，而不是获胜不是吗？</p>
+</blockquote></div>
+<h2>彩蛋</h2>
+<p><strong>大部分的剧本本身也是人工智能创作的，来自 Sonnet 3.5。</strong></p>
+
+    
+      <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="https://cdn.sa.net/2024/10/01/FkXLJxOqcbjfGRP.png">
+        <meta itemprop="width" content="1024">
+        <meta itemprop="height" content="576">
+    </div>
+    <meta itemprop="dateModified" content="2026-02-20T02:27:03Z"/>
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+        <meta itemprop="width" content="768">
+        <meta itemprop="height" content="768">
+      </div>
+    <meta itemprop="name" content="三杯过后 | Xiaowen.Z Deployed"/>
+    <meta itemprop="url" content="https://xiaowenz.com/"/>
+  </div>
+
+
+    </div>
+
+    <footer class="article__footer">
+        <ul class="tag-list">
+            <li>
+              <a class="tag p-category" href="/tags/technology/">科技</a>
+            </li>
+        </ul>
+
+        <div class="article__actions" style="margin-top: var(--space-6);">
+<div class="entry-enjoy">
+  <button class="enjoy js-enjoy">Enjoy</button>
+</div>
+<div class="entry-share">
+  <a class="js-share" data-type="tw" href="#" aria-label="Share to Twitter"><i class="icon icon-twitter"></i></a>
+    <a class="js-share" data-type="wb" href="#" aria-label="分享到微博"><i class="icon icon-weibo"></i></a>
+    <a class="js-share" data-type="wx" href="#" aria-label="分享到微信"><i class="icon icon-wechat"></i></a>
+  <a class="js-share" data-type="tg" href="#" aria-label="Share to Telegram">
+    <i class="icon icon-telegram"></i></a>
+</div>        </div>
+
+        <nav class="post-nav" aria-label="文章导航">
+            <a class="nav-card" href="/blog/shi-king-translator.html">
+              <span class="nav-card__label">← 上一篇</span>
+              <span class="nav-card__title">用诗经来讲任何故事。</span>
+            </a>
+            <a class="nav-card nav-card--next" href="/blog/chengdu-and-sausage.html">
+              <span class="nav-card__label">下一篇 →</span>
+              <span class="nav-card__title">老房子和香肠。</span>
+            </a>
+        </nav>
+
+
+  <div class="entry-section sponsorship">
+    <div class="inner">
+        <a href="https://afdian.com/a/xiaowenz" class="afdian">
+          <i class="icon icon-afdian"></i>
+          <span>去爱发电上赞助</span>
+        </a>
+    </div>
+  </div>
+
+  <section class="entry-section subscribe">
+    <div class="inner">
+      <h2>Subscribe</h2>
+      <form method="post" class="js-subscribe">
+        <input name="name" placeholder="Your name">
+        <input name="email" type="email" placeholder="Your email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+    <section class="entry-section prev-subject">
+      <div class="inner">
+          <h2>Read This</h2>
+          <div class="item" lang="zh">
+            <a class="item-main" href="/blog/shi-king-translator.html">
+              <h3>用诗经来讲任何故事。</h3>
+            </a>
+          </div>
+      </div>
+    </section>
+
+  <section class="entry-section comment">
+    <div class="inner">
+        <div id="comment_thread"></div>
+    </div>
+  </section>
+    </footer>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div>
+        <div class="site-footer__brand">三杯过后 | Xiaowen.Z Deployed</div>
+        <p class="site-footer__desc">新的博客设计来自 Grok + Kimi，以杂志的版式重新想象博客：强反差字号、克制的红色点睛、每一次点击都有回应。</p>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">导航</div>
+        <ul class="site-footer__links">
+          <li><a href="/">首页</a></li>
+              <li>
+                <a href="/">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="/read-books">
+                  Read
+                </a>
+              </li>
+              <li>
+                <a href="/tags/newsletter/">
+                  Newsletter
+                </a>
+              </li>
+              <li>
+                <a href="/run-a-uk-company">
+                  UK Company
+                </a>
+              </li>
+              <li>
+                <a href="/service-and-afdian">
+                  Service 和爱发电
+                </a>
+              </li>
+              <li>
+                <a href="/business-reports">
+                  Business 商业分析
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                  Spotify
+                </a>
+              </li>
+              <li>
+                <a href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                  Apple Podcast
+                </a>
+              </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">社交</div>
+        <ul class="site-footer__links">
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>
+        © 三杯过后 | Xiaowen.Z Deployed
+ · {&#39;key&#39;: &#39;cc.by-nc-sa&#39;, &#39;title&#39;: &#39;Attribution-NonCommercial-ShareAlike&#39;}      </span>
+      <span>
+        以 <span class="site-footer__red">冷漆红</span> 点睛 · 玄墨主题
+      </span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<div class="typlog-foot">
+  <div>Powered by <a class="title" href="https://typlog.com/?utm_source=xiaowenz&utm_medium=foot">Typlog</a></div>
+</div><script async src="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js"></script>  <script src="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/js/main.js" defer></script>
+</body>
+</html>

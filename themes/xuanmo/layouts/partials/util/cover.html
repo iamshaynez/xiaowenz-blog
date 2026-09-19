@@ -1,0 +1,15 @@
+{{/* util/cover.html — input: a Page. returns the cover/image URL string or ""
+     chain: cover (string|map.src) → image → audio_image → images[0] */}}
+{{ $p := . }}
+{{ $img := "" }}
+{{ with $p.Params.cover }}
+  {{ if reflect.IsMap . }}
+    {{ $img = index . "src" | default "" }}
+  {{ else }}
+    {{ $img = . }}
+  {{ end }}
+{{ end }}
+{{ if not $img }}{{ with $p.Params.image }}{{ $img = . }}{{ end }}{{ end }}
+{{ if not $img }}{{ with $p.Params.audio_image }}{{ $img = . }}{{ end }}{{ end }}
+{{ if not $img }}{{ with $p.Params.images }}{{ if gt (len .) 0 }}{{ $img = index . 0 }}{{ end }}{{ end }}{{ end }}
+{{ return $img }}

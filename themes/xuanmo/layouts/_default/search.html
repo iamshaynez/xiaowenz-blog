@@ -1,0 +1,47 @@
+{{ define "main" }}
+{{/* search.html — Pagefind UI page (layout: search). Assets loaded lazily from /pagefind/. */}}
+<div class="container">
+  <header class="page-header">
+    <div class="masthead-bar">
+      <span><span class="masthead-bar__red">SEARCH</span></span>
+      <span>pagefind</span>
+      <span>{{ .Title | default "搜索" }}</span>
+    </div>
+
+    <h1 class="page-header__title display">{{ .Title | default "搜索" }}</h1>
+
+    {{ with .Params.description }}
+      <p class="page-header__desc">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  <div id="search" class="xw-search">
+    <noscript><p class="empty-state">搜索需要启用 JavaScript。</p></noscript>
+  </div>
+</div>
+<script>
+(function () {
+  function fail() {
+    var el = document.getElementById("search");
+    if (el && !el.dataset.pagefindReady) {
+      el.innerHTML = '<p class="empty-state">搜索索引尚未生成（/pagefind/ 不存在）。构建后运行 <code>pagefind --site public</code> 生成索引。</p>';
+    }
+  }
+  var css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = "{{ "pagefind/pagefind-ui.css" | relURL }}";
+  document.head.appendChild(css);
+  var s = document.createElement("script");
+  s.src = "{{ "pagefind/pagefind-ui.js" | relURL }}";
+  s.onload = function () {
+    var el = document.getElementById("search");
+    if (el) {
+      el.dataset.pagefindReady = "1";
+      new PagefindUI({ element: "#search", showSubResults: true, showImages: false });
+    }
+  };
+  s.onerror = fail;
+  document.head.appendChild(s);
+})();
+</script>
+{{ end }}

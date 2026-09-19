@@ -1,0 +1,12 @@
+{{ "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
+{{/* index.rss.xml — full-content RSS 2.0 at /feed.xml.
+     items = recent 15 of blog+episodes by date; guid=permalink; episodes carry podcast item structure. */}}
+{{ $params := .Site.Params }}
+{{ $author := $params.author | default "Xiaowen Zhang" }}
+{{ $afdian := $params.afdian | default "https://afdian.com/a/xiaowenz" }}
+{{ $items := (where .Site.RegularPages "Section" "in" (slice "blog" "episodes")).ByDate.Reverse }}
+{{ $last := now }}{{ if gt (len $items) 0 }}{{ $last = (index $items 0).Date }}{{ end }}
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" version="2.0"><channel><generator>Hugo {{ hugo.Version }} (https://gohugo.io)</generator>{{ partial "feeds/cdtitle.html" .Site.Title | safeHTML }}<description>{{ partial "feeds/cdata.html" ($params.description | default "") | safeHTML }}</description><link>{{ .Site.BaseURL | html }}</link><copyright>{{ partial "feeds/cdata.html" (printf "Copyright %d %s" now.Year .Site.Title) | safeHTML }}</copyright><image><url>{{ "apple-touch-icon.jpg" | absURL | html }}</url>{{ partial "feeds/cdtitle.html" .Site.Title | safeHTML }}<link>{{ .Site.BaseURL | html }}</link></image><atom:link href="{{ "feed.xml" | absURL | html }}" rel="self" type="application/rss+xml"/><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/><pubDate>{{ $last.UTC.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>{{ range $p := first 50 $items }}{{ if eq $p.Section "episodes" }}
+{{ partial "feeds/episode-item.html" $p | safeHTML }}{{ else }}
+<item>{{ partial "feeds/cdtitle.html" $p.Title | safeHTML }}<guid>{{ partial "util/canonical-url.html" $p | html }}</guid><link>{{ partial "util/canonical-url.html" $p | html }}</link><description>{{ partial "feeds/cdata.html" ($p.Params.subtitle | default ($p.Summary | plainify | truncate 200)) | safeHTML }}</description><dc:creator>{{ partial "feeds/cdata.html" $author | safeHTML }}</dc:creator><pubDate>{{ $p.Date.UTC.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate><content:encoded>{{ partial "feeds/cdata.html" (printf "%s<hr /><p><a rel=\"payment\" href=\"%s\">爱发电上赞助</a></p>" $p.Content $afdian) | safeHTML }}</content:encoded></item>{{ end }}{{ end }}
+</channel></rss>

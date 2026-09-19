@@ -1,0 +1,30 @@
+{{/* util/duration.html — input: raw duration (int seconds | "S" | "M:SS" | "H:MM:SS")
+     returns dict: display "M:SS" (or input string verbatim when it contains ":"), seconds int, iso8601 "PT.." */}}
+{{ $raw := . }}
+{{ $display := "" }}
+{{ $seconds := 0 }}
+{{ if eq (printf "%T" $raw) "string" }}
+  {{ $s := string $raw }}
+  {{ if strings.Contains $s ":" }}
+    {{ $display = $s }}
+    {{ $sec := 0 }}
+    {{ range $p := split $s ":" }}
+      {{ $digits := strings.TrimLeft "0" $p }}{{ if not $digits }}{{ $digits = "0" }}{{ end }}
+      {{ $sec = add (mul $sec 60) (int $digits) }}
+    {{ end }}
+    {{ $seconds = $sec }}
+  {{ else }}
+    {{ $seconds = int $s }}
+  {{ end }}
+{{ else }}
+  {{ $seconds = int $raw }}
+{{ end }}
+{{ if not $display }}
+  {{ $display = printf "%d:%02d" (div $seconds 60) (mod $seconds 60) }}
+{{ end }}
+{{ $h := div $seconds 3600 }}
+{{ $m := mod (div $seconds 60) 60 }}
+{{ $s := mod $seconds 60 }}
+{{ $iso := printf "PT%dM%dS" $m $s }}
+{{ if gt $h 0 }}{{ $iso = printf "PT%dH%dM%dS" $h $m $s }}{{ end }}
+{{ return (dict "display" $display "seconds" $seconds "iso8601" $iso) }}

@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+  <link rel="preconnect" href="https://typlog.com/">
+  <link rel="preconnect" href="https://s.typlog.com/">
+  <link rel="preconnect" href="https://i.typlog.com/">
+  <meta name="generator" content="Typlog 3.1">
+  <meta name="provider" content="https://typlog.com">
+    <meta name="theme" content="xiaowenyf 0.2.0">
+    <link rel="icon" type="image/png" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss">
+    <link rel="apple-touch-icon" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+  <title>论文赏析 - 弱智吧才是中文世界的瑰宝。 - 三杯过后 | Xiaowen.Z Deployed</title>
+  <meta name="description" content="背景 In case 你不知道弱智吧是什么。 弱智吧是百度贴吧里的一个著名板块，以超出理性和常识的弱智而闻名。这个吧里有严格的规矩，任何稍微正常一点的言论都会被立刻删帖…… 地址在这里：https://tieba.baidu.com/f?i...">
+  <meta name="page:id" content="85942">
+  <meta name="page:slug" content="ruozhiba-cqia-fine-tuning-benchmark">
+  <meta name="page:type" content="post">
+      <link rel="amphtml" href="https://xiaowenz.com/amp/85942">
+    <link rel="webmention" href="https://typlog.com/s/xiaowenz/webmention">
+  <link rel="canonical" href="https://xiaowenz.com/blog/ruozhiba-cqia-fine-tuning-benchmark.html">
+  <meta property="og:site_name" content="三杯过后 | Xiaowen.Z Deployed">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="论文赏析 - 弱智吧才是中文世界的瑰宝。">
+  <meta property="og:description" content="背景 In case 你不知道弱智吧是什么。 弱智吧是百度贴吧里的一个著名板块，以超出理性和常识的弱智而闻名。这个吧里有严格的规矩，任何稍微正常一点的言论都会被立刻删帖…… 地址在这里：https://tieba.baidu.com/f?i...">
+  <meta property="og:url" content="https://xiaowenz.com/blog/ruozhiba-cqia-fine-tuning-benchmark.html">
+    <meta property="og:image" content="https://cdn.sa.net/2024/04/03/Xy5IRmnW7bvxqdB.png">
+      <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@typlog">
+  <script>SITE={"active": true, "algolia_id": "9X73WK7G3L", "algolia_key": "95e5a920d7081c87c0d57b1fbe5920d6", "base_url": "https://xiaowenz.com/", "icon": "https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss", "id": 4810, "level": "pro", "name": "\u4e09\u676f\u8fc7\u540e | Xiaowen.Z Deployed", "slug": "xiaowenz", "socials": {"behance": "", "email": "xiaowen.z@outlook.com", "github": "iamshaynez", "instagram": "", "linkedin": "zhangxiaowen", "telegram": "", "twitter": "ixiaowenz", "unsplash": "", "vsco": "", "weibo": "", "zhihu": null}, "subscriber": true}</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T4RZQ5V58"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-7T4RZQ5V58');
+    </script>
+<link rel="stylesheet" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.css">  <style>:root{ --t-rc-primary:0,0,0;--primary-color-hex:#000;--primary-color-rgb:0,0,0;--t-on-primary:255,255,255;--primary-text-rgb:255,255,255;--t-rc-secondary:255,255,255;--secondary-color-hex:#fff;--secondary-color-rgb:255,255,255;--t-on-secondary:0,0,0;--secondary-text-rgb:0,0,0 }</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F1F1EF">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/css/app.css">
+
+  <link rel="preload" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js" as="script">
+</head>
+<body>
+
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="site-header site-header--hybrid">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/" aria-label="三杯过后 | Xiaowen.Z Deployed">
+      <span class="site-brand__mark" aria-hidden="true">酒</span>
+      <span class="site-brand__text">三杯过后 | Xiaowen.Z Deployed</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <ul class="site-nav__list">
+
+            <li>
+              <a class="site-nav__link" href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="https://xiaowenz.com/episodes/">
+                本站播客
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/read-books">
+                Read
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/tags/newsletter/">
+                Newsletter
+              </a>
+            </li>
+
+          <li class="site-nav__more">
+            <button
+              type="button"
+              class="site-nav__link site-nav__more-btn"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="nav-more-menu"
+              id="nav-more-btn"
+            >
+              更多
+              <span class="site-nav__more-caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-more-menu" role="menu" hidden>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/run-a-uk-company">
+                      UK Company
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/service-and-afdian">
+                      Service 和爱发电
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/business-reports">
+                      Business 商业分析
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/about">
+                      About
+                    </a>
+                  </li>
+                <li class="site-nav__dropdown-sep" role="separator" aria-hidden="true"></li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://xiaowenz.com/episodes/">
+                    本站播客
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                    Spotify
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                    Apple Podcast
+                  </a>
+                </li>
+            </ul>
+          </li>
+
+          <li>
+            <button type="button" class="site-nav__link js-search" aria-label="搜索">搜索</button>
+          </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="site-main" id="main">
+
+
+  <article class="container article h-entry" itemscope itemtype="http://schema.org/Article">
+    <header class="article__header">
+      <div class="article__eyebrow">
+        <span class="hero__eyebrow-line" aria-hidden="true"></span>
+          <span class="section-index">
+            <a href="/tags/technology/" style="color:inherit">科技</a>
+          </span>
+      </div>
+
+      <h1 class="article__title p-name" itemprop="headline">论文赏析 - 弱智吧才是中文世界的瑰宝。</h1>
+
+        <p class="article__lead lead p-summary">也许，只有硅基生命才能看破人类的本质，弱智吧里的智慧是远高于人类样本平均的。弱智吧里的文本才是中文世界的瑰宝。</p>
+
+      <div class="article__meta-row meta">
+          <time class="dt-published" datetime="2024-04-03T10:43:41Z" itemprop="datePublished">
+            2024.04.03
+          </time>
+          <span class="dot" aria-hidden="true"></span>
+          <span>
+              <a href="/by/xiaowenz/" class="p-author">Xiaowen Zhang</a>          </span>
+      </div>
+    </header>
+
+      <figure class="reveal" style="margin-bottom: var(--space-7);">
+        <img src="https://cdn.sa.net/2024/04/03/Xy5IRmnW7bvxqdB.png" alt="论文赏析 - 弱智吧才是中文世界的瑰宝。" style="width:100%;border-radius:var(--radius);">
+      </figure>
+
+
+    <div class="article__body prose e-content js-content" itemprop="articleBody">
+          <div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2024/04/03/Xy5IRmnW7bvxqdB.png" type="image/webp"><img src="https://cdn.sa.net/2024/04/03/Xy5IRmnW7bvxqdB.png" alt="Ruozhiba saves the world"loading="lazy" decoding="async" width="500" height="500" /></picture></figure></div><h2>背景</h2>
+<p>In case 你不知道弱智吧是什么。</p>
+<p>弱智吧是百度贴吧里的一个著名板块，以超出理性和常识的弱智而闻名。这个吧里有严格的规矩，任何稍微正常一点的言论都会被立刻删帖……</p>
+<p>地址在这里：<a href="https://tieba.baidu.com/f?ie=utf-8&amp;kw=%E5%BC%B1%E6%99%BA&amp;fr=search">https://tieba.baidu.com/f?ie=utf-8&amp;kw=%E5%BC%B1%E6%99%BA&amp;fr=search</a></p>
+<p>画风大概是这样的：</p>
+<div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2024/04/03/jlnvAPZK5e6BfJs.png" type="image/webp"><img src="https://cdn.sa.net/2024/04/03/jlnvAPZK5e6BfJs.png" alt="Ruozhiba"loading="lazy" decoding="async" width="500" height="500" /></picture></figure></div><h2>关于大语言模型的中文能力</h2>
+<div class="blockquote"><blockquote><p>虽然大型语言模型（LLMs），如GPT-3、LLaMA和PaLM，在理解和执行英语指令方面取得了显著进展，但中文指令调优仍存在不小的差距。中文的独特语言特征和文化深度使得指令调优任务面临挑战。</p>
+</blockquote></div>
+<p>以上，是一项研究的背景。</p>
+<h2>论文：COIG-CQIA: Quality is All You Need for Chinese Instruction Fine-tuning</h2>
+<div class="blockquote"><blockquote><p>地址在这里：<a href="https://arxiv.org/pdf/2403.18058.pdf">https://arxiv.org/pdf/2403.18058.pdf</a></p>
+</blockquote></div>
+<p>论文大概的内容如下（由 LLM 翻译和总结）：</p>
+<ul>
+<li><strong>研究背景</strong>：虽然大型语言模型（LLMs），如GPT-3、LLaMA和PaLM，在理解和执行英语指令方面取得了显著进展，但中文指令调优仍存在不小的差距。中文的独特语言特征和文化深度使得指令调优任务面临挑战。</li>
+<li><strong>COIG-CQIA数据集</strong>：为了缩小这一差距，研究团队创造了COIG-CQIA数据集，这是一个高质量的中文指令调优数据集。该数据集从中文网络的多个来源（如问答社区、维基百科、考试和现有NLP数据集等）收集了高质量的人类编写语料，经过严格筛选和处理，旨在更好地将模型行为与人类交互对齐。</li>
+<li><strong>数据分析</strong>：通过对不同子集的CQIA数据集训练不同规模的模型，并进行深入的评估和分析，研究发现了一些有价值的见解，这些见解有助于选择和开发中文指令调优数据集。</li>
+<li><strong>模型性能</strong>：实验表明，基于CQIA-Subset训练的模型在人类评估以及知识和安全基准测试中取得了竞争性的结果。</li>
+<li><strong>研究贡献</strong>：提出了一个高质量的中文指令微调数据集，专门设计用于符合人类交互；探索了不同数据来源对模型性能的影响；验证了基于CQIA数据集微调的模型展现出优越的性能。</li>
+<li><strong>数据可用性</strong>：COIG-CQIA数据集可在Hugging Face网站上获取。</li>
+<li><strong>相关研究</strong>：文中还讨论了指令调优数据集的构建方法，包括纯手工注释、从现有数据集转换、以及使用LLM自动生成；以及SFT数据混合的重要性和策略。</li>
+</ul>
+<h2>一切的关键是数据集</h2>
+<p>文中表述：为了确保我们所采集的数据具有高质量和多样性,我们精心从中国互联网上的优质网站和数据库中精挑细选了 13 个数据源。这些数据源覆盖了社区问答论坛、百科全书网站、内容创作平台、考试题库等多个领域。我们还加入了一些高质量的中文自然语言处理(NLP)数据集,从而使任务类型更加丰富多样。具体来说,我们将所有数据源分为 4 大类:社交媒体和论坛、世界常识知识、NLP 任务数据以及考试题库。下面是这些数据源及其简要描述。</p>
+<p>这就是所谓的<strong>COIG-CQIA数据集</strong>，包括这些来自社交媒体的数据：知乎，豆瓣，SegmentFault中文，小红书，和<strong>弱智吧</strong>（认真的吗？）</p>
+<h2>一切的关键是数据集和效果</h2>
+<p>以下是分别使用这些数据集调优后的模型的表现评分：</p>
+<div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2024/04/03/JzVg3FUZCAQLnta.png" type="image/webp"><img src="https://cdn.sa.net/2024/04/03/JzVg3FUZCAQLnta.png" alt="Yi-6B and 34B"loading="lazy" decoding="async" width="500" height="500" /></picture></figure></div><p>安全评分：</p>
+<div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2024/04/03/pQZEf2FkxDevXz6.png" type="image/webp"><img src="https://cdn.sa.net/2024/04/03/pQZEf2FkxDevXz6.png" alt="Safty Benchmark"loading="lazy" decoding="async" width="500" height="500" /></picture></figure></div><p>基于「弱智吧」训练出的模型能力，胜出其他所有。</p>
+<h2>大智若愚</h2>
+<p>也许，只有硅基生命才能看破人类的本质，弱智吧里的智慧是远高于人类样本平均的。弱智吧里的文本才是中文世界的瑰宝。</p>
+<h2>一些资料</h2>
+<ul>
+<li>文论地址：<a href="https://arxiv.org/pdf/2403.18058.pdf">https://arxiv.org/pdf/2403.18058.pdf</a></li>
+<li>弱智吧数据训练集：<a href="https://github.com/Leymore/ruozhiba">https://github.com/Leymore/ruozhiba</a></li>
+</ul>
+<h2>最后</h2>
+<p>很有趣吧，感谢你读完。</p>
+
+    
+      <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="https://cdn.sa.net/2024/04/03/Xy5IRmnW7bvxqdB.png">
+        <meta itemprop="width" content="1280">
+        <meta itemprop="height" content="720">
+    </div>
+    <meta itemprop="dateModified" content="2026-08-23T04:02:03Z"/>
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+        <meta itemprop="width" content="768">
+        <meta itemprop="height" content="768">
+      </div>
+    <meta itemprop="name" content="三杯过后 | Xiaowen.Z Deployed"/>
+    <meta itemprop="url" content="https://xiaowenz.com/"/>
+  </div>
+
+
+    </div>
+
+    <footer class="article__footer">
+        <ul class="tag-list">
+            <li>
+              <a class="tag p-category" href="/tags/technology/">科技</a>
+            </li>
+            <li>
+              <a class="tag p-category" href="/tags/fun/">娱乐</a>
+            </li>
+        </ul>
+
+        <div class="article__actions" style="margin-top: var(--space-6);">
+<div class="entry-enjoy">
+  <button class="enjoy js-enjoy">Enjoy</button>
+</div>
+<div class="entry-share">
+  <a class="js-share" data-type="tw" href="#" aria-label="Share to Twitter"><i class="icon icon-twitter"></i></a>
+    <a class="js-share" data-type="wb" href="#" aria-label="分享到微博"><i class="icon icon-weibo"></i></a>
+    <a class="js-share" data-type="wx" href="#" aria-label="分享到微信"><i class="icon icon-wechat"></i></a>
+  <a class="js-share" data-type="tg" href="#" aria-label="Share to Telegram">
+    <i class="icon icon-telegram"></i></a>
+</div>        </div>
+
+        <nav class="post-nav" aria-label="文章导航">
+            <a class="nav-card" href="/blog/vision-and-design-by-llm.html">
+              <span class="nav-card__label">← 上一篇</span>
+              <span class="nav-card__title">大模型的视觉和设计能力。</span>
+            </a>
+            <a class="nav-card nav-card--next" href="/blog/2-stories-and-2-projects.html">
+              <span class="nav-card__label">下一篇 →</span>
+              <span class="nav-card__title">两个故事和一个社会实践。</span>
+            </a>
+        </nav>
+
+
+  <div class="entry-section sponsorship">
+    <div class="inner">
+        <a href="https://afdian.com/a/xiaowenz" class="afdian">
+          <i class="icon icon-afdian"></i>
+          <span>去爱发电上赞助</span>
+        </a>
+    </div>
+  </div>
+
+  <section class="entry-section subscribe">
+    <div class="inner">
+      <h2>Subscribe</h2>
+      <form method="post" class="js-subscribe">
+        <input name="name" placeholder="Your name">
+        <input name="email" type="email" placeholder="Your email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+    <section class="entry-section prev-subject">
+      <div class="inner">
+          <h2>Read This</h2>
+          <div class="item" lang="zh">
+            <a class="item-main" href="/blog/vision-and-design-by-llm.html">
+              <h3>大模型的视觉和设计能力。</h3>
+                <div class="item-subtitle">尝试让 LLM 做出对色彩的判断的过程其实非常有趣，显然，在足够多的语料的堆砌下，大语言模型是可以产生对色彩，色号的「理解」的。</div>
+            </a>
+          </div>
+      </div>
+    </section>
+
+  <section class="entry-section comment">
+    <div class="inner">
+        <div id="comment_thread"></div>
+    </div>
+  </section>
+    </footer>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div>
+        <div class="site-footer__brand">三杯过后 | Xiaowen.Z Deployed</div>
+        <p class="site-footer__desc">新的博客设计来自 Grok + Kimi，以杂志的版式重新想象博客：强反差字号、克制的红色点睛、每一次点击都有回应。</p>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">导航</div>
+        <ul class="site-footer__links">
+          <li><a href="/">首页</a></li>
+              <li>
+                <a href="/">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="/read-books">
+                  Read
+                </a>
+              </li>
+              <li>
+                <a href="/tags/newsletter/">
+                  Newsletter
+                </a>
+              </li>
+              <li>
+                <a href="/run-a-uk-company">
+                  UK Company
+                </a>
+              </li>
+              <li>
+                <a href="/service-and-afdian">
+                  Service 和爱发电
+                </a>
+              </li>
+              <li>
+                <a href="/business-reports">
+                  Business 商业分析
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                  Spotify
+                </a>
+              </li>
+              <li>
+                <a href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                  Apple Podcast
+                </a>
+              </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">社交</div>
+        <ul class="site-footer__links">
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>
+        © 三杯过后 | Xiaowen.Z Deployed
+ · {&#39;key&#39;: &#39;cc.by-nc-sa&#39;, &#39;title&#39;: &#39;Attribution-NonCommercial-ShareAlike&#39;}      </span>
+      <span>
+        以 <span class="site-footer__red">冷漆红</span> 点睛 · 玄墨主题
+      </span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<div class="typlog-foot">
+  <div>Powered by <a class="title" href="https://typlog.com/?utm_source=xiaowenz&utm_medium=foot">Typlog</a></div>
+</div><script async src="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js"></script>  <script src="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/js/main.js" defer></script>
+</body>
+</html>

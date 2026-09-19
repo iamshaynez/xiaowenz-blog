@@ -1,0 +1,41 @@
+{{ define "main" }}
+{{/* term.html — single tag page: masthead + full tag list + list cards (oldest first, live parity). */}}
+{{ $terms := .Site.Taxonomies.tags.Alphabetical }}
+{{ $items := .Pages.ByDate }}
+<div class="container">
+  <header class="page-header">
+    <div class="masthead-bar">
+      <span><span class="masthead-bar__red">TAG</span></span>
+      <span>{{ .Data.Term }}</span>
+      <span>{{ len $items }} 篇</span>
+    </div>
+
+    <h1 class="page-header__title display">{{ .Title }}</h1>
+
+    {{ with .Params.description }}
+      <p class="page-header__desc">{{ . }}</p>
+    {{ end }}
+
+    {{ if $terms }}
+      <ul class="tag-list" style="margin-top: var(--space-5);">
+        {{ range $terms }}
+          <li>
+            <a class="tag{{ if eq .Page.RelPermalink $.RelPermalink }} is-active{{ end }}"
+               href="{{ partial "util/canonical-url.html" .Page | relURL }}">{{ .Page.Title }}</a>
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+  </header>
+
+  {{ if $items }}
+    <div class="post-list">
+      {{ range $i, $p := $items }}
+        {{ partial "card.html" (dict "post" $p "style" "list" "index" (add $i 1)) }}
+      {{ end }}
+    </div>
+  {{ else }}
+    <div class="empty-state">暂无内容</div>
+  {{ end }}
+</div>
+{{ end }}

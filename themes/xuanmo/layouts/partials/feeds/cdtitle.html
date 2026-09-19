@@ -1,0 +1,4 @@
+{{/* feeds/cdtitle.html — a complete <title><![CDATA[..]]></title> element as ONE safe string.
+     (html/template escapes everything inside literal <title> RCDATA — the element must be
+     emitted as a single safe string; pipe the call through safeHTML.) */}}
+{{ return (printf "<title><![CDATA[%s]]></title>" (replace . "]]>" "]]]]><![CDATA[>")) }}

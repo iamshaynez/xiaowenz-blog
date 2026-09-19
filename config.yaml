@@ -1,264 +1,111 @@
 baseurl: "https://xiaowenz.com/"
-# G-7T4RZQ5V58
-title: "Xiaowen.Z Deployed"
-theme: "hugo-theme-stack"
-ignoreFiles: ["\\.Rmd$", "\\.Rmarkdown$", "_cache$"]
+title: "三杯过后 | Xiaowen.Z Deployed"
+theme: "xuanmo"
 hasCJKLanguage: true
 enableEmoji: true
-# GA Tracking ID
-googleAnalytics: "G-7T4RZQ5V58"
+defaultContentLanguage: zh
+timeZone: "Asia/Shanghai"
+summaryLength: 90
+
+# URL 冻结：与 Typlog 现状 1:1，迁移零 301
 permalinks:
-  blog: "/:sections/:year/:month/:slug"
+  blog: "/blog/:slug.html"
+  episodes: "/episodes/:slug"
+
+taxonomies:
+  tag: "tags"
+
+# /feed.xml（全文 RSS）与 /feed/audio.xml（播客 iTunes RSS）
+outputFormats:
+  rss:
+    baseName: feed
+  podcast:
+    mediaType: "application/rss+xml"
+    baseName: audio
+    path: feed
+
+outputs:
+  home: [HTML, RSS, PODCAST]
+  section: [HTML]
+  page: [HTML]
+  taxonomy: [HTML]
+  term: [HTML]
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true   # 迁移内容含 HTML 块（表格、figure）
+    parser:
+      attribute:
+        block: true
+  highlight:
+    noClasses: false
+    style: monokailight
+
+sitemap:
+  changefreq: weekly
+  priority: 1.0
+  filename: sitemap.xml
+
+minify:
+  minifyOutput: true
 
 menu:
   main:
-    - name: "Read"
-      url: "/read/"
+    - name: "Home"
+      url: "/"
+      weight: 1
+    - name: "本站播客"
+      url: "/episodes/"
       weight: 2
-      identifier: "Read"
-      params:
-        icon: "messages"
-    - name: "Service"
-      url: "/service/"
+    - name: "Read"
+      url: "/read-books/"
       weight: 3
-      params:
-        icon: "hash"
-    - name: "Photography"
-      url: "/photography/"
+    - name: "Newsletter"
+      url: "/tags/newsletter/"
       weight: 4
-      params:
-        icon: "arrow-back"
-    - name: "Story"
-      url: "https://storywith.in"
+    - name: "UK Company"
+      url: "/run-a-uk-company/"
       weight: 5
-      params:
-        icon: "link"
-        newTab: true
+    - name: "Service 和爱发电"
+      url: "/service-and-afdian/"
+      weight: 6
+    - name: "Business 商业分析"
+      url: "/business-reports/"
+      weight: 7
     - name: "About"
       url: "/about/"
-      weight: 6
-      params:
-        icon: "user"
-    - name: "Subscribe"
-      url: "/feed"
+      weight: 8
+    - name: "搜索"
+      url: "/search/"
       weight: 9
-      params:
-        icon: "rss"
-        newTab: true
-    - name: "Newsletter"
-      url: "https://world.hey.com/xiaowen/post-e21b61eb"
-      weight: 10
-      params:
-        icon: "rss"
-        newTab: true
-    - name: "Research"
-      url: "/research"
-      weight: 11
-      params:
-        icon: "rss"
-        newTab: true
-    - name: "UK Company Guide"
-      url: "/run-a-uk-company"
-      weight: 12
-      params:
-        icon: "clock"
-        newTab: true
-    - name: ""
-      url: ""
-      weight: 15
-    - name: "X(Twitter)"
-      url: "https://x.com/ixiaowenz"
-      weight: 19
-      params:
-        icon: "brand-twitter"
-        newTab: true
-
-module:
-    hugoVersion:
-        extended: true
-        min: "0.87.0"
 
 params:
-    description: "\"We all learn by making mistakes, and make mistakes again to learn more.\""
-    mainSections:
-        - blog
-        - post
-    featuredImageField: image
-    rssFullContent: true
-    favicon: /images/logo.jpg
-    twitterImage: "/images/xiaowenz_twitter_image.webp"
-    footer:
-        since: 2007
-        customText: 
-
-    dateFormat:
-        published: Jan 02, 2006
-        lastUpdated: Jan 02, 2006 15:04 MST
-
-    sidebar:
-        compact: false
-        emoji: 🤦‍♂️
-        subtitle: "\"We all learn by making mistakes, and make mistakes again to learn more.\""
-        avatar:
-            enabled: true
-            local: true
-            src: /img/logo.jpg
-
-    article:
-        math: false
-        toc: true
-        readingTime: true
-        license:
-            enabled: true
-            default: Licensed under CC BY-NC-SA 4.0
-
-    comments:
-        enabled: true
-        provider: cusdis
-
-        disqusjs:
-            shortname:
-            apiUrl:
-            apiKey:
-            admin:
-            adminLabel:
-
-        utterances:
-            repo:
-            issueTerm: pathname
-            label:
-
-        remark42:
-            host:
-            site:
-            locale:
-
-        vssue:
-            platform:
-            owner:
-            repo:
-            clientId:
-            clientSecret:
-            autoCreateIssue: false
-
-        # Waline client configuration see: https://waline.js.org/en/reference/client.html
-        waline:
-            serverURL:
-            lang:
-            visitor:
-            avatar:
-            emoji:
-                - https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo
-            requiredMeta:
-                - nick
-                - mail
-            placeholder:
-            locale:
-                admin: Admin
-
-        twikoo:
-            envId:
-            region:
-            path:
-            lang:
-
-        giscus:
-            repo:
-            repoID:
-            category:
-            categoryID:
-            mapping:
-            strict:
-            lightTheme:
-            darkTheme:
-            reactionsEnabled: 1
-            emitMetadata: 0
-            inputPosition:
-            lang:
-
-        gitalk:
-            owner:
-            admin:
-            repo:
-            clientID:
-            clientSecret:
-
-        cusdis:
-            host: "https://cusdis.com"
-            id: "0c8f5787-1a16-489e-810b-8893a58fee7c"
-
-    widgets:
-        homepage:
-            - type: search
-            - type: categories
-              params:
-                  limit: 20
-            - type: archives
-              params:
-                  limit: 20
-            - type: tag-cloud
-              params:
-                  limit: 30
-        page:
-            - type: toc
-
-    opengraph:
-        twitter:
-            # Your Twitter username
-            site: iamshaynez
-
-            # Available values: summary, summary_large_image
-            card: summary_large_image
-
-    defaultImage: 
-        opengraph:
-            enabled: true
-            local: false
-            src: https://cdn.sa.net/2024/02/21/x69uWYqrJMTRczb.png
-
-    colorScheme:
-        # Display toggle
-        toggle: true
-
-        # Available values: auto, light, dark
-        default: light
-
-    imageProcessing:
-        cover:
-            enabled: true
-        content:
-            enabled: true
-
-sitemap:
-  changefreq: always
-  filename: sitemap.xml
-  priority: 0.5
-
-related:
-    includeNewer: true
-    threshold: 60
-    toLower: false
-    indices:
-        - name: tags
-          weight: 100
-
-        - name: categories
-          weight: 200
-
-markup:
-    goldmark:
-        renderer:
-            ## Set to true if you have HTML content inside Markdown
-            unsafe: true
-    tableOfContents:
-        endLevel: 4
-        ordered: true
-        startLevel: 2
-    highlight:
-        noClasses: false
-        codeFences: true
-        guessSyntax: true
-        lineNoStart: 1
-        lineNos: true
-        lineNumbersInTable: true
-        tabWidth: 4
+  description: "一个写了将近20年的博客，突然开始有趣起来了……"
+  tagline: "以吾之秩序 丈量二进制的世界"
+  heroTitle: "以吾之秩序<br>丈量二进制的世界"
+  author: "Xiaowen Zhang"
+  # —— 动态服务对接（core）——
+  coreAPI: "https://core.xiaowenz.com"      # core 服务地址：评论/订阅/统计
+  turnstileSiteKey: ""                       # Cloudflare Turnstile site key（可空=dev）
+  gaID: "G-7T4RZQ5V58"                       # Google Analytics，置空关闭
+  # —— 播客 enclosure 计数地址前缀（core 的 302 统计端点）——
+  audioBase: "https://core.xiaowenz.com/a/"
+  # —— 播客平台元数据（与 Typlog feed 保持一致）——
+  podcast:
+    guid: "3c09eb14-0c6a-5777-a8ac-e06f8b21b2c4"
+    title: "三杯过后"
+    subtitle: "商业和科技的深度小样"
+    author: "Xiaowen Zhang"
+    email: "xiaowen.z@outlook.com"
+    keywords: "商业,科技,职场,投资"
+    explicit: "no"
+    type: "episodic"
+    image: "https://media.xiaowenz.com/images/podcast-cover.jpg"
+    categories: ["Technology", "Business:Management", "Business:Investing", "News:Tech News"]
+    spotify: ""
+    apple: ""
+    xiaoyuzhou: ""
+    netease: ""
+  social:
+    rss: "/feed.xml"

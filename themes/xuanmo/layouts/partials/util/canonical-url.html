@@ -1,0 +1,12 @@
+{{/* util/canonical-url.html — input: a Page. returns its canonical (absolute) URL string.
+     Rules (ground truth = Typlog live URLs):
+       (a) .Permalink ends with ".html/" (blog posts) → trim trailing slash → /blog/{slug}.html
+       (b) regular page in section "episodes" or "pages" → trim trailing slash → /episodes/{slug}, /about
+       (c) everything else (home, sections, year/archive stubs, taxonomy/terms) → unchanged (trailing slash) */}}
+{{ $u := .Permalink }}
+{{ if strings.HasSuffix $u ".html/" }}
+  {{ $u = strings.TrimSuffix "/" $u }}
+{{ else if and .IsPage (in (slice "episodes" "pages") .Section) }}
+  {{ $u = strings.TrimSuffix "/" $u }}
+{{ end }}
+{{ return $u }}

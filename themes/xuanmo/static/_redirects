@@ -1,0 +1,25 @@
+# Cloudflare Pages rewrites (status 200 = content served AT the slashless URL, no redirect).
+# Hugo emits every page as a directory (foo/index.html); Typlog served these URLs without
+# the trailing slash. These rules make the slashless canonical URLs work exactly like Typlog:
+#   /blog/x.html   -> fetches /blog/x.html/   (Hugo's directory for the post)
+#   /episodes/x    -> fetches /episodes/x/
+#   /about         -> fetches /about/         (and the other standalone pages)
+# Later lines only rewrite when the target exists, so real files are unaffected.
+
+/blog/:slug.html /blog/:slug.html/ 200
+/episodes/:slug /episodes/:slug/ 200
+
+/about /about/ 200
+/read-books /read-books/ 200
+/run-a-uk-company /run-a-uk-company/ 200
+/service-and-afdian /service-and-afdian/ 200
+/business-reports /business-reports/ 200
+/search /search/ 200
+/subscribed /subscribed/ 200
+/subscribe-expired /subscribe-expired/ 200
+
+# Legacy auxiliary feeds (Typlog used to serve these; fold them into the canonical feeds)
+/feed.json /feed.xml 301
+/feed/post.xml /feed.xml 301
+/feed/post.json /feed.xml 301
+/feed/audio.json /feed/audio.xml 301

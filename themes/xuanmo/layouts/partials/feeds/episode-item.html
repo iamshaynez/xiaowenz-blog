@@ -1,0 +1,22 @@
+{{/* feeds/episode-item.html — one podcast episode <item> (shared by index.rss.xml + index.podcast.xml).
+     input: episode Page. guid/link = permalink WITHOUT trailing slash (matches existing Apple/Spotify GUIDs). */}}
+{{ $p := . }}
+{{ $params := site.Params }}
+{{ $podcast := $params.podcast | default dict }}
+{{ $author := $podcast.author | default ($params.author | default "Xiaowen Zhang") }}
+{{ $afdian := $params.afdian | default "https://afdian.com/a/xiaowenz" }}
+{{ $pageURL := partial "util/canonical-url.html" $p }}
+{{ $audioURL := "" }}
+{{ with $p.Params.audio_slug }}{{ $audioURL = printf "%s%s.mp3" ($params.audioBase | default "") . }}{{ end }}
+{{ $dur := dict }}
+{{ with $p.Params.audio_duration }}{{ $dur = partial "util/duration.html" . }}{{ end }}
+{{ $explicit := "no" }}
+{{ with $p.Params.explicit }}
+  {{ if eq (printf "%T" .) "bool" }}
+    {{ if . }}{{ $explicit = "yes" }}{{ end }}
+  {{ else }}
+    {{ if in (slice "true" "yes" "explicit") (lower (printf "%v" .)) }}{{ $explicit = "yes" }}{{ end }}
+  {{ end }}
+{{ end }}
+{{ $epImg := $p.Params.image | default $p.Params.audio_image }}
+<item>{{ if $audioURL }}<enclosure url="{{ $audioURL | html }}" length="{{ $p.Params.audio_bytes | default 0 }}" type="audio/mpeg"/>{{ end }}{{ partial "feeds/cdtitle.html" $p.Title | safeHTML }}<guid>{{ $pageURL | html }}</guid><link>{{ $pageURL | html }}</link><itunes:author>{{ partial "feeds/cdata.html" $author | safeHTML }}</itunes:author><podcast:person role="host" href="{{ (printf "%sabout" site.BaseURL) | html }}" img="{{ "apple-touch-icon.jpg" | absURL | html }}">{{ partial "feeds/cdata.html" $author | safeHTML }}</podcast:person>{{ with $p.Params.subtitle | default $p.Params.description }}<itunes:subtitle>{{ partial "feeds/cdata.html" . | safeHTML }}</itunes:subtitle>{{ end }}{{ with $dur.display }}<itunes:duration>{{ . }}</itunes:duration>{{ end }}<itunes:explicit>{{ $explicit }}</itunes:explicit>{{ with $p.Params.season }}<itunes:season>{{ int . }}</itunes:season><podcast:season>{{ int . }}</podcast:season>{{ end }}{{ with $p.Params.episode }}<itunes:episode>{{ int . }}</itunes:episode><podcast:episode>{{ int . }}</podcast:episode>{{ end }}<itunes:episodeType>full</itunes:episodeType>{{ with $epImg }}<itunes:image href="{{ . | html }}" />{{ end }}<description>{{ partial "feeds/cdata.html" ($p.Plain | chomp) | safeHTML }}</description><itunes:summary>{{ partial "feeds/cdata.html" $p.Content | safeHTML }}</itunes:summary><content:encoded>{{ partial "feeds/cdata.html" (printf "%s<hr /><p><a rel=\"payment\" href=\"%s\">爱发电上赞助</a></p>" $p.Content $afdian) | safeHTML }}</content:encoded><pubDate>{{ $p.Date.UTC.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate></item>

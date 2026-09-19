@@ -1,0 +1,270 @@
+/* ============================================================
+   玄墨 · hugo-extra.css
+   Hugo 专属增量样式（不动 app.css）：
+   站脚署名 · 分享图标 · 订阅弹层 · 评论列表 · Pagefind · 蜜罐
+   ============================================================ */
+
+/* —— 站脚署名（替代 Typlog 平台脚注，沿用 .typlog-foot 结构） —— */
+.typlog-foot {
+  margin: 0;
+  padding: var(--space-5) var(--gutter) var(--space-6);
+  text-align: center;
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  color: var(--ink-3);
+}
+
+.typlog-foot a {
+  color: var(--ink-2);
+  text-decoration: none;
+  transition: color var(--dur-2) var(--ease-out);
+}
+
+.typlog-foot a:hover {
+  color: var(--red);
+}
+
+/* —— 分享/赞助图标：inline SVG 尺寸（平台版是 iconfont mask） —— */
+.entry-share a svg.icon,
+.entry-section.sponsorship svg.icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  fill: currentColor;
+  background-color: transparent;
+}
+
+.entry-section.sponsorship svg.icon {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+/* —— 订阅表单补充 —— */
+.xw-hp {
+  display: none !important;
+}
+
+.entry-section.subscribe .cf-turnstile {
+  grid-column: 1 / -1;
+  margin-top: var(--space-2);
+}
+
+.xw-form-status {
+  margin: var(--space-3) 0 0;
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  color: var(--ink-2);
+}
+
+.xw-form-status.is-ok {
+  color: #1a7f37;
+}
+
+.xw-form-status.is-err {
+  color: var(--red);
+}
+
+/* —— 订阅弹层（首页「订阅本刊」按钮触发；无平台 overlay 的替代实现） —— */
+.xw-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: var(--gutter);
+}
+
+.xw-modal.is-open {
+  display: flex;
+}
+
+.xw-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(20, 18, 16, 0.55);
+}
+
+.xw-modal__panel {
+  position: relative;
+  width: 100%;
+  max-width: 34rem;
+  background: var(--paper);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--space-6);
+}
+
+.xw-modal__close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition: color var(--dur-2) var(--ease-out), border-color var(--dur-2) var(--ease-out);
+}
+
+.xw-modal__close:hover {
+  color: var(--red);
+  border-color: var(--red);
+}
+
+.xw-modal .entry-section.subscribe {
+  margin-top: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.xw-modal .entry-section.subscribe form {
+  grid-template-columns: 1fr;
+}
+
+.xw-modal .entry-section.subscribe button {
+  width: 100%;
+}
+
+/* —— 评论列表（core API 渲染，变量沿用 app.css 的 --tc-*） —— */
+#comments .xw-comment-list {
+  list-style: none;
+  margin: 0 0 var(--space-5);
+  padding: 0;
+}
+
+#comments .xw-comment {
+  padding: var(--space-4) 0;
+  border-bottom: 1px solid var(--tc-c-divider, var(--hairline));
+}
+
+#comments .xw-comment:last-child {
+  border-bottom: 0;
+}
+
+#comments .xw-comment__meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--space-2);
+  font-family: var(--tc-f-meta, var(--font-sans));
+  font-size: var(--tc-fs-meta, 12px);
+  color: var(--tc-c-meta, var(--ink-3));
+  margin-bottom: var(--space-2);
+}
+
+#comments .xw-comment__name {
+  font-weight: var(--fw-medium);
+  color: var(--ink);
+}
+
+#comments .xw-comment__content {
+  font-family: var(--tc-f-content, var(--font-serif));
+  font-size: var(--tc-fs-content, 16px);
+  color: var(--tc-c-content, var(--ink));
+  line-height: 1.7;
+  word-wrap: break-word;
+}
+
+#comments .xw-comment__content p {
+  margin: 0 0 var(--space-2);
+}
+
+#comments .xw-comment__content p:last-child {
+  margin-bottom: 0;
+}
+
+#comments .xw-comment-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+#comments .xw-comment-form .xw-field--full {
+  grid-column: 1 / -1;
+}
+
+#comments .xw-comment-form input,
+#comments .xw-comment-form textarea {
+  font-family: var(--tc-f-input, var(--font-sans));
+  font-size: var(--tc-fs-input, 15px);
+  color: var(--tc-c-input, var(--ink));
+  background: var(--tc-c-input-bg, color-mix(in srgb, var(--ink) 3%, var(--paper)));
+  border: 1.5px solid var(--tc-c-input-border, var(--hairline));
+  border-radius: var(--radius);
+  padding: 0.75rem 0.9rem;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color var(--dur-2) var(--ease-out), box-shadow var(--dur-2) var(--ease-out);
+}
+
+#comments .xw-comment-form input:focus,
+#comments .xw-comment-form textarea:focus {
+  outline: none;
+  border-color: var(--ink);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+#comments .xw-comment-form textarea {
+  min-height: 6.5rem;
+  resize: vertical;
+  line-height: 1.65;
+}
+
+#comments .xw-comment-form button[type="submit"] {
+  justify-self: start;
+  font-family: var(--tc-f-reply, var(--font-sans));
+  font-size: var(--tc-fs-reply, 14px);
+  letter-spacing: var(--ls-wide);
+  color: var(--tc-c-reply, var(--cream));
+  background: var(--tc-c-reply-bg, var(--ink));
+  border: 1.5px solid var(--ink);
+  border-radius: var(--radius);
+  padding: var(--tc-s-reply-padding, 0.7rem 1.15rem);
+  cursor: pointer;
+  transition: background var(--dur-2) var(--ease-out), transform var(--dur-1) var(--ease-out);
+}
+
+#comments .xw-comment-form button[type="submit"]:hover {
+  background: var(--red);
+  border-color: var(--red);
+}
+
+#comments .xw-comment-form button[type="submit"]:active {
+  transform: scale(0.97);
+}
+
+#comments .xw-comment-empty {
+  color: var(--ink-3);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  letter-spacing: var(--ls-wide);
+}
+
+@media (max-width: 720px) {
+  #comments .xw-comment-form {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* —— Pagefind UI 主题变量映射 —— */
+.xw-search {
+  margin-top: var(--space-5);
+  --pagefind-ui-scale: 1;
+  --pagefind-ui-primary: var(--red);
+  --pagefind-ui-text: var(--ink);
+  --pagefind-ui-background: var(--paper);
+  --pagefind-ui-border: var(--hairline);
+  --pagefind-ui-tag: var(--paper);
+  --pagefind-ui-border-width: 2px;
+  --pagefind-ui-border-radius: var(--radius);
+  --pagefind-ui-font: var(--font-sans);
+}

@@ -1,0 +1,22 @@
+{{/* page-nav.html — prev/next nav within the page's section (chronological).
+     Live semantics: 上一篇 = older (.PrevInSection), 下一篇 = newer (.NextInSection). */}}
+{{ $older := .PrevInSection }}
+{{ $newer := .NextInSection }}
+{{ if or $older $newer }}
+<nav class="post-nav" aria-label="文章导航">
+  {{ with $older }}
+    <a class="nav-card" href="{{ partial "util/canonical-url.html" . | relURL }}">
+      <span class="nav-card__label">← 上一篇</span>
+      <span class="nav-card__title">{{ .Title }}</span>
+    </a>
+  {{ else }}
+    <div></div>
+  {{ end }}
+  {{ with $newer }}
+    <a class="nav-card nav-card--next" href="{{ partial "util/canonical-url.html" . | relURL }}">
+      <span class="nav-card__label">下一篇 →</span>
+      <span class="nav-card__title">{{ .Title }}</span>
+    </a>
+  {{ end }}
+</nav>
+{{ end }}

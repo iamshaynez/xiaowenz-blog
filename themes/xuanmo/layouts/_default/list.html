@@ -1,0 +1,61 @@
+{{ define "main" }}
+{{ $params := .Site.Params }}
+{{ $desc := .Params.description | default ($params.description | default "") }}
+
+{{/* posts: blog index shows the latest year only (live parity); other sections show everything */}}
+{{ $posts := .RegularPages.ByDate.Reverse }}
+{{ $currentYear := 0 }}
+{{ $prevYear := 0 }}
+{{ if eq .Section "blog" }}
+  {{ $years := slice }}
+  {{ range .RegularPages }}
+    {{ $y := .Date.Year }}
+    {{ if not (in $years $y) }}{{ $years = $years | append $y }}{{ end }}
+  {{ end }}
+  {{ $years = sort $years "value" "desc" }}
+  {{ if gt (len $years) 0 }}
+    {{ $currentYear = index $years 0 }}
+    {{ $posts = (where .RegularPages "Date.Year" $currentYear).ByDate.Reverse }}
+    {{ if gt (len $years) 1 }}{{ $prevYear = index $years 1 }}{{ end }}
+  {{ end }}
+{{ end }}
+
+<div class="container">
+  <header class="page-header">
+    <div class="masthead-bar">
+      <span><span class="masthead-bar__red">LIST</span></span>
+      <span>archive</span>
+      <span>{{ len $posts }} 篇</span>
+    </div>
+
+    <h1 class="page-header__title display">{{ .Title }}</h1>
+
+    {{ with $desc }}
+      <p class="page-header__desc">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  {{ if $posts }}
+    <div class="post-grid post-grid--uniform">
+      {{ range $i, $p := $posts }}
+        {{ partial "card.html" (dict "post" $p "style" "plain" "index" (add $i 1)) }}
+      {{ end }}
+    </div>
+  {{ else }}
+    <div class="empty-state">暂无内容</div>
+  {{ end }}
+
+  {{ if and (eq .Section "blog") (gt $prevYear 0) }}
+    <nav class="year-nav" aria-label="年份导航">
+      {{ $stub := .Site.GetPage (printf "/blog/%d" $prevYear) }}
+      {{ if $stub }}
+        <a href="{{ partial "util/canonical-url.html" $stub | relURL }}" rel="prev">← {{ $prevYear }}</a>
+      {{ else }}
+        <span style="opacity:.35">←</span>
+      {{ end }}
+      <span class="year-nav__current">{{ .Title }}</span>
+      <span style="opacity:.35">→</span>
+    </nav>
+  {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,105 @@
+{{/* header.html — port of _partials/shell_start.j2 (reading-progress + site-header + <main>) */}}
+{{ $params := .Site.Params }}
+{{ $brandMark := $params.brandMark | default "酒" }}
+{{ $podcast := $params.podcast | default dict }}
+
+{{/* primary menu = .Site.Menus.main minus the search entry */}}
+{{ $primary := slice }}
+{{ $search := "" }}
+{{ range .Site.Menus.main }}
+  {{ if eq .URL "/search/" }}
+    {{ $search = . }}
+  {{ else }}
+    {{ $primary = $primary | append . }}
+  {{ end }}
+{{ end }}
+
+{{/* secondary links: 本站播客 + podcast platforms */}}
+{{ $secondary := slice (dict "name" "本站播客" "url" ("/episodes/" | relURL) "blank" false) }}
+{{ with $podcast.spotify }}{{ $secondary = $secondary | append (dict "name" "Spotify" "url" . "blank" true) }}{{ end }}
+{{ with $podcast.apple }}{{ $secondary = $secondary | append (dict "name" "Apple Podcast" "url" . "blank" true) }}{{ end }}
+{{ with $podcast.xiaoyuzhou }}{{ $secondary = $secondary | append (dict "name" "小宇宙" "url" . "blank" true) }}{{ end }}
+{{ with $podcast.netease }}{{ $secondary = $secondary | append (dict "name" "网易云音乐" "url" . "blank" true) }}{{ end }}
+
+{{ $visibleMax := 4 }}
+{{ $hasOverflow := or (gt (len $primary) $visibleMax) (gt (len $secondary) 0) }}
+
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="site-header{{ if $hasOverflow }} site-header--hybrid{{ end }}">
+  <div class="site-header__inner">
+    <a class="site-brand" href="{{ "/" | relURL }}" aria-label="{{ .Site.Title }}">
+      <span class="site-brand__mark" aria-hidden="true">{{ $brandMark }}</span>
+      <span class="site-brand__text">{{ .Site.Title }}</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <ul class="site-nav__list">
+        {{ if not $primary }}
+          <li>
+            <a class="site-nav__link" href="{{ "/" | relURL }}">首页</a>
+          </li>
+        {{ end }}
+
+        {{ range $i, $link := $primary }}
+          {{ if lt $i $visibleMax }}
+            <li>
+              <a class="site-nav__link" href="{{ $link.URL | relURL }}">
+                {{ $link.Name }}
+              </a>
+            </li>
+          {{ end }}
+        {{ end }}
+
+        {{ if $hasOverflow }}
+          <li class="site-nav__more">
+            <button
+              type="button"
+              class="site-nav__link site-nav__more-btn"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="nav-more-menu"
+              id="nav-more-btn"
+            >
+              更多
+              <span class="site-nav__more-caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-more-menu" role="menu" hidden>
+              {{ range $i, $link := $primary }}
+                {{ if ge $i $visibleMax }}
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="{{ $link.URL | relURL }}">
+                      {{ $link.Name }}
+                    </a>
+                  </li>
+                {{ end }}
+              {{ end }}
+              {{ if and (gt (len $primary) $visibleMax) (gt (len $secondary) 0) }}
+                <li class="site-nav__dropdown-sep" role="separator" aria-hidden="true"></li>
+              {{ end }}
+              {{ range $secondary }}
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="{{ .url }}"{{ if .blank }} target="_blank" rel="noopener noreferrer"{{ end }}>
+                    {{ .name }}
+                  </a>
+                </li>
+              {{ end }}
+            </ul>
+          </li>
+        {{ end }}
+
+        {{ with $search }}
+          <li>
+            <a class="site-nav__link" href="{{ .URL | relURL }}" aria-label="搜索">{{ .Name }}</a>
+          </li>
+        {{ end }}
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="site-main" id="main">

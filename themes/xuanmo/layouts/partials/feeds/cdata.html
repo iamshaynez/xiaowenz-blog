@@ -1,0 +1,2 @@
+{{/* feeds/cdata.html — CDATA-wrap a string, splitting any embedded "]]>" safely */}}
+{{ return (printf "<![CDATA[%s]]>" (replace . "]]>" "]]]]><![CDATA[>")) }}

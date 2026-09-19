@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+  <link rel="preconnect" href="https://typlog.com/">
+  <link rel="preconnect" href="https://s.typlog.com/">
+  <link rel="preconnect" href="https://i.typlog.com/">
+  <meta name="generator" content="Typlog 3.1">
+  <meta name="provider" content="https://typlog.com">
+    <meta name="theme" content="xiaowenyf 0.2.0">
+    <link rel="icon" type="image/png" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss">
+    <link rel="apple-touch-icon" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+  <title>Serverless AI？ - 三杯过后 | Xiaowen.Z Deployed</title>
+  <meta name="description" content="Cloudflare 的更新 昨天，Cloudflare 更新了数篇博客，分别发布了Serverless的开源模型接口，和基于 Worker 和 Pages 的 AI 开发包。 链接：https://blog.cloudflare.com/...">
+  <meta name="page:id" content="85927">
+  <meta name="page:slug" content="serverless-ai">
+  <meta name="page:type" content="post">
+      <link rel="amphtml" href="https://xiaowenz.com/amp/85927">
+    <link rel="webmention" href="https://typlog.com/s/xiaowenz/webmention">
+  <link rel="canonical" href="https://xiaowenz.com/blog/serverless-ai.html">
+  <meta property="og:site_name" content="三杯过后 | Xiaowen.Z Deployed">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Serverless AI？">
+  <meta property="og:description" content="Cloudflare 的更新 昨天，Cloudflare 更新了数篇博客，分别发布了Serverless的开源模型接口，和基于 Worker 和 Pages 的 AI 开发包。 链接：https://blog.cloudflare.com/...">
+  <meta property="og:url" content="https://xiaowenz.com/blog/serverless-ai.html">
+    <meta property="og:image" content="https://vip2.loli.io/2023/09/28/pSxgzjREYTmQ1Ma.png">
+      <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@typlog">
+  <script>SITE={"active": true, "algolia_id": "9X73WK7G3L", "algolia_key": "95e5a920d7081c87c0d57b1fbe5920d6", "base_url": "https://xiaowenz.com/", "icon": "https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss", "id": 4810, "level": "pro", "name": "\u4e09\u676f\u8fc7\u540e | Xiaowen.Z Deployed", "slug": "xiaowenz", "socials": {"behance": "", "email": "xiaowen.z@outlook.com", "github": "iamshaynez", "instagram": "", "linkedin": "zhangxiaowen", "telegram": "", "twitter": "ixiaowenz", "unsplash": "", "vsco": "", "weibo": "", "zhihu": null}, "subscriber": true}</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T4RZQ5V58"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-7T4RZQ5V58');
+    </script>
+<link rel="stylesheet" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.css">  <style>:root{ --t-rc-primary:0,0,0;--primary-color-hex:#000;--primary-color-rgb:0,0,0;--t-on-primary:255,255,255;--primary-text-rgb:255,255,255;--t-rc-secondary:255,255,255;--secondary-color-hex:#fff;--secondary-color-rgb:255,255,255;--t-on-secondary:0,0,0;--secondary-text-rgb:0,0,0 }</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F1F1EF">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/css/app.css">
+
+  <link rel="preload" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js" as="script">
+</head>
+<body>
+
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="site-header site-header--hybrid">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/" aria-label="三杯过后 | Xiaowen.Z Deployed">
+      <span class="site-brand__mark" aria-hidden="true">酒</span>
+      <span class="site-brand__text">三杯过后 | Xiaowen.Z Deployed</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <ul class="site-nav__list">
+
+            <li>
+              <a class="site-nav__link" href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="https://xiaowenz.com/episodes/">
+                本站播客
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/read-books">
+                Read
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/tags/newsletter/">
+                Newsletter
+              </a>
+            </li>
+
+          <li class="site-nav__more">
+            <button
+              type="button"
+              class="site-nav__link site-nav__more-btn"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="nav-more-menu"
+              id="nav-more-btn"
+            >
+              更多
+              <span class="site-nav__more-caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-more-menu" role="menu" hidden>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/run-a-uk-company">
+                      UK Company
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/service-and-afdian">
+                      Service 和爱发电
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/business-reports">
+                      Business 商业分析
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/about">
+                      About
+                    </a>
+                  </li>
+                <li class="site-nav__dropdown-sep" role="separator" aria-hidden="true"></li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://xiaowenz.com/episodes/">
+                    本站播客
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                    Spotify
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                    Apple Podcast
+                  </a>
+                </li>
+            </ul>
+          </li>
+
+          <li>
+            <button type="button" class="site-nav__link js-search" aria-label="搜索">搜索</button>
+          </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="site-main" id="main">
+
+
+  <article class="container article h-entry" itemscope itemtype="http://schema.org/Article">
+    <header class="article__header">
+      <div class="article__eyebrow">
+        <span class="hero__eyebrow-line" aria-hidden="true"></span>
+          <span class="section-index">
+            <a href="/tags/technology/" style="color:inherit">科技</a>
+          </span>
+      </div>
+
+      <h1 class="article__title p-name" itemprop="headline">Serverless AI？</h1>
+
+
+      <div class="article__meta-row meta">
+          <time class="dt-published" datetime="2023-09-29T09:31:05Z" itemprop="datePublished">
+            2023.09.29
+          </time>
+          <span class="dot" aria-hidden="true"></span>
+          <span>
+              <a href="/by/xiaowenz/" class="p-author">Xiaowen Zhang</a>          </span>
+      </div>
+    </header>
+
+      <figure class="reveal" style="margin-bottom: var(--space-7);">
+        <img src="https://vip2.loli.io/2023/09/28/pSxgzjREYTmQ1Ma.png" alt="Serverless AI？" style="width:100%;border-radius:var(--radius);">
+      </figure>
+
+
+    <div class="article__body prose e-content js-content" itemprop="articleBody">
+          <div class="photo"><figure><picture><img src="https://vip2.loli.io/2023/09/28/pSxgzjREYTmQ1Ma.png" alt="image.png" /></picture></figure></div><h2>Cloudflare 的更新</h2>
+<p>昨天，Cloudflare 更新了数篇博客，分别发布了Serverless的开源模型接口，和基于 Worker 和 Pages 的 AI 开发包。</p>
+<div class="photo"><figure><picture><img src="https://vip2.loli.io/2023/09/28/iDlMwIJsF8Vg1Z2.png" alt="image.png" /></picture></figure></div><p>链接：<a href="https://blog.cloudflare.com/workers-ai/">https://blog.cloudflare.com/workers-ai/</a></p>
+<p>同时，更新了向量数据库，D1 关系型数据库的 Open Beta 等。事实上，Cloudflare 以极快的速度，表现出了极大的野心让 Serverless 的生态，基本上具备了构建完整的中型乃至大型应用的能力。</p>
+<h2>简单的开发和兼容</h2>
+<p>于是，很容易的，我给自己的 Telegram 机器人助手增加了翻译的能力。</p>
+<div class="block-code" data-language="javascript"><div class="highlight"><pre><span></span><code><div class="line"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">AI</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s2">&quot;./env.js&quot;</span><span class="p">;</span><span class="w"></span>
+</div><div class="line"><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">Ai</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@cloudflare/ai&#39;</span><span class="w"></span>
+</div><div class="line">
+</div><div class="line"><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">translate</span><span class="p">(</span><span class="nx">sentence</span><span class="p">,</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;chinese&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;english&quot;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</div><div class="line"><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">ai</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">Ai</span><span class="p">(</span><span class="nx">AI</span><span class="p">);</span><span class="w"></span>
+</div><div class="line"><span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">response</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">ai</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="s1">&#39;@cf/meta/m2m100-1.2b&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+</div><div class="line"><span class="w">        </span><span class="nx">text</span><span class="o">:</span><span class="w"> </span><span class="nx">sentence</span><span class="p">,</span><span class="w"></span>
+</div><div class="line"><span class="w">        </span><span class="nx">source_lang</span><span class="o">:</span><span class="w"> </span><span class="kr">from</span><span class="p">,</span><span class="w"> </span><span class="c1">// defaults to english</span><span class="w"></span>
+</div><div class="line"><span class="w">        </span><span class="nx">target_lang</span><span class="o">:</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span>
+</div><div class="line"><span class="w">      </span><span class="p">}</span><span class="w"></span>
+</div><div class="line"><span class="w">    </span><span class="p">);</span><span class="w"></span>
+</div><div class="line"><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">response</span><span class="p">[</span><span class="s2">&quot;translated_text&quot;</span><span class="p">];</span><span class="w"></span>
+</div><div class="line"><span class="p">}</span><span class="w"></span>
+</div></code></pre></div>
+</div>
+<div class="blockquote"><blockquote><p>Wrangler 需要升级到最新的3.10.0，否则不能绑定 AI 资源</p>
+</blockquote></div>
+<p>毕竟是开源的模型，翻译效果和 ChatGPT 差了十条街。</p>
+<div class="photo"><figure><picture><img src="https://vip2.loli.io/2023/09/28/KCl1IVkjuAa2TO9.png" alt="image.png" /></picture></figure></div><p>当前有的模型也只有这些：</p>
+<ul>
+<li>Text generation (large language model): meta/llama-2-7b-chat-int8</li>
+<li>Automatic speech recognition (ASR): openai/whisper</li>
+<li>Translation: meta/m2m100-1.2</li>
+<li>Text classification: huggingface/distilbert-sst-2-int8</li>
+<li>Image classification: microsoft/resnet-50</li>
+<li>Embeddings: baai/bge-base-en-v1.5</li>
+</ul>
+<h2>为什么</h2>
+<p>Cloudflare 的全球网络，意味着同样的服务，你可以轻松的构建全球范围内更低延迟，更低成本的环境依赖。</p>
+<p>当前的商用大模型，几乎都构建在中心化的数据中心里；当前的数据中心，也在拿出为人工智能企业服务的，GPU 算力的池的方案，用来缓解大功耗带来的潮汐现象，高成本问题。</p>
+<p>Cloudflare 作为全球基础设施的基础设施，有更好的条件去摊平这些成本，提供真正的边缘 GPU 计算资源，并让人按需付费的使用。</p>
+<h2>等什么</h2>
+<p>等等吧，等 Cloudflare 提供 Serverless 的私有化模型部署（那个时候肯定就会出真正的收费模型，当前的开源模型都是免费的），更多开源模型的接入（如 Stable Diffusion 来几个啊），甚至是 Fine-tune 模型的 Serverless 方案。</p>
+<p>小企业，甚至个人开发者，就有了更低入局的门槛。</p>
+<h2>最后</h2>
+<p>很啰嗦，感谢你读完。</p>
+<p>我真实喜欢 Cloudflare 啊……</p>
+
+    
+      <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="https://vip2.loli.io/2023/09/28/pSxgzjREYTmQ1Ma.png">
+        <meta itemprop="width" content="896">
+        <meta itemprop="height" content="512">
+    </div>
+    <meta itemprop="dateModified" content="2026-02-19T09:31:41Z"/>
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+        <meta itemprop="width" content="768">
+        <meta itemprop="height" content="768">
+      </div>
+    <meta itemprop="name" content="三杯过后 | Xiaowen.Z Deployed"/>
+    <meta itemprop="url" content="https://xiaowenz.com/"/>
+  </div>
+
+
+    </div>
+
+    <footer class="article__footer">
+        <ul class="tag-list">
+            <li>
+              <a class="tag p-category" href="/tags/technology/">科技</a>
+            </li>
+        </ul>
+
+        <div class="article__actions" style="margin-top: var(--space-6);">
+<div class="entry-enjoy">
+  <button class="enjoy js-enjoy">Enjoy</button>
+</div>
+<div class="entry-share">
+  <a class="js-share" data-type="tw" href="#" aria-label="Share to Twitter"><i class="icon icon-twitter"></i></a>
+    <a class="js-share" data-type="wb" href="#" aria-label="分享到微博"><i class="icon icon-weibo"></i></a>
+    <a class="js-share" data-type="wx" href="#" aria-label="分享到微信"><i class="icon icon-wechat"></i></a>
+  <a class="js-share" data-type="tg" href="#" aria-label="Share to Telegram">
+    <i class="icon icon-telegram"></i></a>
+</div>        </div>
+
+        <nav class="post-nav" aria-label="文章导航">
+            <a class="nav-card" href="/blog/my-noting-practice.html">
+              <span class="nav-card__label">← 上一篇</span>
+              <span class="nav-card__title">我的笔记实践的变化。</span>
+            </a>
+            <a class="nav-card nav-card--next" href="/blog/modal-serverless-tg-bot.html">
+              <span class="nav-card__label">下一篇 →</span>
+              <span class="nav-card__title">把 Serverless TG机器人架构模块化。</span>
+            </a>
+        </nav>
+
+
+  <div class="entry-section sponsorship">
+    <div class="inner">
+        <a href="https://afdian.com/a/xiaowenz" class="afdian">
+          <i class="icon icon-afdian"></i>
+          <span>去爱发电上赞助</span>
+        </a>
+    </div>
+  </div>
+
+  <section class="entry-section subscribe">
+    <div class="inner">
+      <h2>Subscribe</h2>
+      <form method="post" class="js-subscribe">
+        <input name="name" placeholder="Your name">
+        <input name="email" type="email" placeholder="Your email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+    <section class="entry-section prev-subject">
+      <div class="inner">
+          <h2>Read This</h2>
+          <div class="item" lang="zh">
+            <a class="item-main" href="/blog/my-noting-practice.html">
+              <h3>我的笔记实践的变化。</h3>
+            </a>
+          </div>
+      </div>
+    </section>
+
+  <section class="entry-section comment">
+    <div class="inner">
+        <div id="comment_thread"></div>
+    </div>
+  </section>
+    </footer>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div>
+        <div class="site-footer__brand">三杯过后 | Xiaowen.Z Deployed</div>
+        <p class="site-footer__desc">新的博客设计来自 Grok + Kimi，以杂志的版式重新想象博客：强反差字号、克制的红色点睛、每一次点击都有回应。</p>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">导航</div>
+        <ul class="site-footer__links">
+          <li><a href="/">首页</a></li>
+              <li>
+                <a href="/">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="/read-books">
+                  Read
+                </a>
+              </li>
+              <li>
+                <a href="/tags/newsletter/">
+                  Newsletter
+                </a>
+              </li>
+              <li>
+                <a href="/run-a-uk-company">
+                  UK Company
+                </a>
+              </li>
+              <li>
+                <a href="/service-and-afdian">
+                  Service 和爱发电
+                </a>
+              </li>
+              <li>
+                <a href="/business-reports">
+                  Business 商业分析
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                  Spotify
+                </a>
+              </li>
+              <li>
+                <a href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                  Apple Podcast
+                </a>
+              </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">社交</div>
+        <ul class="site-footer__links">
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>
+        © 三杯过后 | Xiaowen.Z Deployed
+ · {&#39;key&#39;: &#39;cc.by-nc-sa&#39;, &#39;title&#39;: &#39;Attribution-NonCommercial-ShareAlike&#39;}      </span>
+      <span>
+        以 <span class="site-footer__red">冷漆红</span> 点睛 · 玄墨主题
+      </span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<div class="typlog-foot">
+  <div>Powered by <a class="title" href="https://typlog.com/?utm_source=xiaowenz&utm_medium=foot">Typlog</a></div>
+</div><script async src="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js"></script>  <script src="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/js/main.js" defer></script>
+</body>
+</html>

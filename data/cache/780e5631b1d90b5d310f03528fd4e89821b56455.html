@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+  <link rel="preconnect" href="https://typlog.com/">
+  <link rel="preconnect" href="https://s.typlog.com/">
+  <link rel="preconnect" href="https://i.typlog.com/">
+  <meta name="generator" content="Typlog 3.1">
+  <meta name="provider" content="https://typlog.com">
+    <meta name="theme" content="xiaowenyf 0.2.0">
+    <link rel="icon" type="image/png" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss">
+    <link rel="apple-touch-icon" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+  <title>Shape Up 阅读笔记（2）- 基本工作模式 - 三杯过后 | Xiaowen.Z Deployed</title>
+  <meta name="description" content="Shape Up 的基本工作模式 Shape Up 中描述的关键工作包含三个部分 Shaping：对应一般软件研发产品需求分析阶段的需求分析过程 Betting：对应一般软件研发过程中的立项或需求排期决策过程 Building：对应一般软件...">
+  <meta name="page:id" content="85953">
+  <meta name="page:slug" content="shape-up-methodology-2">
+  <meta name="page:type" content="post">
+      <link rel="amphtml" href="https://xiaowenz.com/amp/85953">
+    <link rel="webmention" href="https://typlog.com/s/xiaowenz/webmention">
+  <link rel="canonical" href="https://xiaowenz.com/blog/shape-up-methodology-2.html">
+  <meta property="og:site_name" content="三杯过后 | Xiaowen.Z Deployed">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Shape Up 阅读笔记（2）- 基本工作模式">
+  <meta property="og:description" content="Shape Up 的基本工作模式 Shape Up 中描述的关键工作包含三个部分 Shaping：对应一般软件研发产品需求分析阶段的需求分析过程 Betting：对应一般软件研发过程中的立项或需求排期决策过程 Building：对应一般软件...">
+  <meta property="og:url" content="https://xiaowenz.com/blog/shape-up-methodology-2.html">
+    <meta property="og:image" content="https://cdn.sa.net/2025/01/15/1sz6KO2tr4ETYog.png">
+      <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@typlog">
+  <script>SITE={"active": true, "algolia_id": "9X73WK7G3L", "algolia_key": "95e5a920d7081c87c0d57b1fbe5920d6", "base_url": "https://xiaowenz.com/", "icon": "https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss", "id": 4810, "level": "pro", "name": "\u4e09\u676f\u8fc7\u540e | Xiaowen.Z Deployed", "slug": "xiaowenz", "socials": {"behance": "", "email": "xiaowen.z@outlook.com", "github": "iamshaynez", "instagram": "", "linkedin": "zhangxiaowen", "telegram": "", "twitter": "ixiaowenz", "unsplash": "", "vsco": "", "weibo": "", "zhihu": null}, "subscriber": true}</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T4RZQ5V58"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-7T4RZQ5V58');
+    </script>
+<link rel="stylesheet" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.css">  <style>:root{ --t-rc-primary:0,0,0;--primary-color-hex:#000;--primary-color-rgb:0,0,0;--t-on-primary:255,255,255;--primary-text-rgb:255,255,255;--t-rc-secondary:255,255,255;--secondary-color-hex:#fff;--secondary-color-rgb:255,255,255;--t-on-secondary:0,0,0;--secondary-text-rgb:0,0,0 }</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F1F1EF">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/css/app.css">
+
+  <link rel="preload" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js" as="script">
+</head>
+<body>
+
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="site-header site-header--hybrid">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/" aria-label="三杯过后 | Xiaowen.Z Deployed">
+      <span class="site-brand__mark" aria-hidden="true">酒</span>
+      <span class="site-brand__text">三杯过后 | Xiaowen.Z Deployed</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <ul class="site-nav__list">
+
+            <li>
+              <a class="site-nav__link" href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="https://xiaowenz.com/episodes/">
+                本站播客
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/read-books">
+                Read
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/tags/newsletter/">
+                Newsletter
+              </a>
+            </li>
+
+          <li class="site-nav__more">
+            <button
+              type="button"
+              class="site-nav__link site-nav__more-btn"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="nav-more-menu"
+              id="nav-more-btn"
+            >
+              更多
+              <span class="site-nav__more-caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-more-menu" role="menu" hidden>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/run-a-uk-company">
+                      UK Company
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/service-and-afdian">
+                      Service 和爱发电
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/business-reports">
+                      Business 商业分析
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/about">
+                      About
+                    </a>
+                  </li>
+                <li class="site-nav__dropdown-sep" role="separator" aria-hidden="true"></li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://xiaowenz.com/episodes/">
+                    本站播客
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                    Spotify
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                    Apple Podcast
+                  </a>
+                </li>
+            </ul>
+          </li>
+
+          <li>
+            <button type="button" class="site-nav__link js-search" aria-label="搜索">搜索</button>
+          </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="site-main" id="main">
+
+
+  <article class="container article h-entry" itemscope itemtype="http://schema.org/Article">
+    <header class="article__header">
+      <div class="article__eyebrow">
+        <span class="hero__eyebrow-line" aria-hidden="true"></span>
+          <span class="section-index">
+            <a href="/tags/work/" style="color:inherit">工作</a>
+          </span>
+      </div>
+
+      <h1 class="article__title p-name" itemprop="headline">Shape Up 阅读笔记（2）- 基本工作模式</h1>
+
+
+      <div class="article__meta-row meta">
+          <time class="dt-published" datetime="2025-01-14T10:56:17Z" itemprop="datePublished">
+            2025.01.14
+          </time>
+          <span class="dot" aria-hidden="true"></span>
+          <span>
+              <a href="/by/xiaowenz/" class="p-author">Xiaowen Zhang</a>          </span>
+      </div>
+    </header>
+
+      <figure class="reveal" style="margin-bottom: var(--space-7);">
+        <img src="https://cdn.sa.net/2025/01/15/1sz6KO2tr4ETYog.png" alt="Shape Up 阅读笔记（2）- 基本工作模式" style="width:100%;border-radius:var(--radius);">
+      </figure>
+
+
+    <div class="article__body prose e-content js-content" itemprop="articleBody">
+          <div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2025/01/15/1sz6KO2tr4ETYog.png" type="image/webp"><img src="https://cdn.sa.net/2025/01/15/1sz6KO2tr4ETYog.png" alt=""loading="lazy" decoding="async" width="1312" height="736" /></picture></figure></div><h2>Shape Up 的基本工作模式</h2>
+<p><strong>Shape Up 中描述的关键工作包含三个部分</strong></p>
+<ul>
+<li>Shaping：对应一般软件研发产品需求分析阶段的需求分析过程</li>
+<li>Betting：对应一般软件研发过程中的立项或需求排期决策过程</li>
+<li>Building：对应一般软件研发过程中的开发实施过程</li>
+</ul>
+<p><strong>Shape Up 的时间安排</strong></p>
+<ul>
+<li>整个工作节奏，分为一个六周的 Cycle 和一个两周的 Cool Down</li>
+<li>Shaping + Betting 和 Building 是并行的而非串行的</li>
+</ul>
+<div class="photo"><figure><picture><img src="https://cdn.sa.net/2025/01/14/xnXVp9H1Em7Si4R.png" alt=""loading="lazy" decoding="async" width="3244" height="1464" /></picture></figure></div><h1>强制和承诺</h1>
+<div class="photo"><figure><picture><img src="https://cdn.sa.net/2025/01/14/1MZrWwXbD2OzHax.png" alt=""loading="lazy" decoding="async" width="4060" height="1128" /></picture></figure></div><ul>
+<li>整个公司不同产品线的研发工作，都强制使用同样的工作节奏。<ul>
+<li>原因：允许不同周期的项目并行，会导致资源的调配越来越复杂，最终项目管理工作变成了 Calendar 上的甘特图游戏，疲劳而无效。</li>
+<li>Shape 选择了让需求的体量（后续其实叫赌注）配合实施项目全都强制一致，系统性的降低了全公司的项目管理成本。</li>
+</ul>
+</li>
+<li>承诺一个不被任何干扰打断的项目周期<ul>
+<li>Shape Up 理解每一个人最佳工作效率是怎么形成的，尽可能避免任何会干扰员工高效输出的因素。</li>
+<li>从来都没有 just few hours 或者 one day 的工作，人类跳转与不同的工作之间是需要极大的心智负担，因此效率最高的流程，就是让员工持续工作不要被轻易打断的流程。</li>
+<li>不轻易打断项目，是一种很难做到的管理承诺。</li>
+</ul>
+</li>
+</ul>
+<h1>为什么是项目 Cycle 是六周？</h1>
+<ul>
+<li>6 周时间的长度是价值和投入之间比较合适的比例。</li>
+<li>更短的周期会导致需求太过碎片，太频繁的「Planning」会导致项目管理成本太高。</li>
+<li>太长的周期会导致 Deadline 太远，团队容易对进度失去足够的警觉和感知，导致项目逾期风险。</li>
+<li>原文：Six weeks is long enough to build something meaningful start-to-finish and short enough that everyone can feel the deadline looming from the start, so they use the time wisely.</li>
+</ul>
+<h2>两周的 Cool Down 是什么？</h2>
+<ul>
+<li>自由时间，员工可任意支配。<ul>
+<li>用来消化项目和项目之间的微小需要，如小的优化，调整</li>
+<li>用来修复已知的或者觉得值得修复的 bug 们</li>
+<li>用来思考和总结。</li>
+<li>用来自己做 research，尝试和创新</li>
+</ul>
+</li>
+<li>浪费吗？<ul>
+<li>我觉得不浪费。任何产品都存在不可描述的缝隙，需要工程师们自驱的去填满；任何项目都不会是完美的，需要持续的雕刻。</li>
+<li>极端的情况，我见过连修复 bug 都需要立项审批否则没有资源的企业。</li>
+<li>全公司资源 25% 的自由时间，事实上消化了上述这些工作以及「如果这些工作全都纳入正式管理需要耗费的管理成本和损耗」，性价比极高。</li>
+</ul>
+</li>
+<li>这需要管理者有极其深刻的技术理解和魄力，才能让这样的工作组织方式落地实施。</li>
+</ul>
+
+    
+      <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="https://cdn.sa.net/2025/01/15/1sz6KO2tr4ETYog.png">
+        <meta itemprop="width" content="1312">
+        <meta itemprop="height" content="736">
+    </div>
+    <meta itemprop="dateModified" content="2026-02-20T02:26:27Z"/>
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+        <meta itemprop="width" content="768">
+        <meta itemprop="height" content="768">
+      </div>
+    <meta itemprop="name" content="三杯过后 | Xiaowen.Z Deployed"/>
+    <meta itemprop="url" content="https://xiaowenz.com/"/>
+  </div>
+
+
+    </div>
+
+    <footer class="article__footer">
+        <ul class="tag-list">
+            <li>
+              <a class="tag p-category" href="/tags/work/">工作</a>
+            </li>
+            <li>
+              <a class="tag p-category" href="/tags/think/">思考</a>
+            </li>
+            <li>
+              <a class="tag p-category" href="/tags/methodology/">方法论</a>
+            </li>
+            <li>
+              <a class="tag p-category" href="/tags/office/">职场</a>
+            </li>
+            <li>
+              <a class="tag p-category" href="/tags/newsletter/">专栏</a>
+            </li>
+        </ul>
+
+        <div class="article__actions" style="margin-top: var(--space-6);">
+<div class="entry-enjoy">
+  <button class="enjoy js-enjoy">Enjoy</button>
+</div>
+<div class="entry-share">
+  <a class="js-share" data-type="tw" href="#" aria-label="Share to Twitter"><i class="icon icon-twitter"></i></a>
+    <a class="js-share" data-type="wb" href="#" aria-label="分享到微博"><i class="icon icon-weibo"></i></a>
+    <a class="js-share" data-type="wx" href="#" aria-label="分享到微信"><i class="icon icon-wechat"></i></a>
+  <a class="js-share" data-type="tg" href="#" aria-label="Share to Telegram">
+    <i class="icon icon-telegram"></i></a>
+</div>        </div>
+
+        <nav class="post-nav" aria-label="文章导航">
+            <a class="nav-card" href="/blog/shape-up-methodology-1.html">
+              <span class="nav-card__label">← 上一篇</span>
+              <span class="nav-card__title">Shape Up 阅读笔记（1）- 概览：一本非典型性软件研发担当手册</span>
+            </a>
+            <a class="nav-card nav-card--next" href="/blog/shape-up-methodology-3.html">
+              <span class="nav-card__label">下一篇 →</span>
+              <span class="nav-card__title">Shape Up 阅读笔记（3）- Shaping: 如何真正对需求负责</span>
+            </a>
+        </nav>
+
+
+  <div class="entry-section sponsorship">
+    <div class="inner">
+        <a href="https://afdian.com/a/xiaowenz" class="afdian">
+          <i class="icon icon-afdian"></i>
+          <span>去爱发电上赞助</span>
+        </a>
+    </div>
+  </div>
+
+  <section class="entry-section subscribe">
+    <div class="inner">
+      <h2>Subscribe</h2>
+      <form method="post" class="js-subscribe">
+        <input name="name" placeholder="Your name">
+        <input name="email" type="email" placeholder="Your email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+    <section class="entry-section prev-subject">
+      <div class="inner">
+          <h2>Read This</h2>
+          <div class="item" lang="zh">
+            <a class="item-main" href="/blog/shape-up-methodology-1.html">
+              <h3>Shape Up 阅读笔记（1）- 概览：一本非典型性软件研发担当手册</h3>
+            </a>
+          </div>
+      </div>
+    </section>
+
+  <section class="entry-section comment">
+    <div class="inner">
+        <div id="comment_thread"></div>
+    </div>
+  </section>
+    </footer>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div>
+        <div class="site-footer__brand">三杯过后 | Xiaowen.Z Deployed</div>
+        <p class="site-footer__desc">新的博客设计来自 Grok + Kimi，以杂志的版式重新想象博客：强反差字号、克制的红色点睛、每一次点击都有回应。</p>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">导航</div>
+        <ul class="site-footer__links">
+          <li><a href="/">首页</a></li>
+              <li>
+                <a href="/">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="/read-books">
+                  Read
+                </a>
+              </li>
+              <li>
+                <a href="/tags/newsletter/">
+                  Newsletter
+                </a>
+              </li>
+              <li>
+                <a href="/run-a-uk-company">
+                  UK Company
+                </a>
+              </li>
+              <li>
+                <a href="/service-and-afdian">
+                  Service 和爱发电
+                </a>
+              </li>
+              <li>
+                <a href="/business-reports">
+                  Business 商业分析
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                  Spotify
+                </a>
+              </li>
+              <li>
+                <a href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                  Apple Podcast
+                </a>
+              </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">社交</div>
+        <ul class="site-footer__links">
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>
+        © 三杯过后 | Xiaowen.Z Deployed
+ · {&#39;key&#39;: &#39;cc.by-nc-sa&#39;, &#39;title&#39;: &#39;Attribution-NonCommercial-ShareAlike&#39;}      </span>
+      <span>
+        以 <span class="site-footer__red">冷漆红</span> 点睛 · 玄墨主题
+      </span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<div class="typlog-foot">
+  <div>Powered by <a class="title" href="https://typlog.com/?utm_source=xiaowenz&utm_medium=foot">Typlog</a></div>
+</div><script async src="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js"></script>  <script src="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{{ define "main" }}
+{{/* taxonomy.html — tags index: all terms. */}}
+{{ $terms := .Site.Taxonomies.tags.Alphabetical }}
+<div class="container">
+  <header class="page-header">
+    <div class="masthead-bar">
+      <span><span class="masthead-bar__red">TAG</span></span>
+      <span>tags</span>
+      <span>{{ len $terms }} 个</span>
+    </div>
+
+    <h1 class="page-header__title display">{{ .Title | default "Tags" }}</h1>
+
+    {{ with .Site.Params.description }}
+      <p class="page-header__desc">{{ . }}</p>
+    {{ end }}
+
+    {{ if $terms }}
+      <ul class="tag-list" style="margin-top: var(--space-5);">
+        {{ range $terms }}
+          <li>
+            <a class="tag" href="{{ partial "util/canonical-url.html" .Page | relURL }}">{{ .Page.Title }}</a>
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+  </header>
+</div>
+{{ end }}

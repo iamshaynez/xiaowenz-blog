@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+  <link rel="preconnect" href="https://typlog.com/">
+  <link rel="preconnect" href="https://s.typlog.com/">
+  <link rel="preconnect" href="https://i.typlog.com/">
+  <meta name="generator" content="Typlog 3.1">
+  <meta name="provider" content="https://typlog.com">
+    <meta name="theme" content="xiaowenyf 0.2.0">
+    <link rel="icon" type="image/png" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss">
+    <link rel="apple-touch-icon" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+  <title>Problem Management Methodology 问题管理的基本逻辑 - 三杯过后 | Xiaowen.Z Deployed</title>
+  <meta name="description" content="问题的定义 Problem is an issue that could cause an incident. 相比较于事故（Incident），问题描述的是一种可能产生事故的概率，是一种对于已知风险的量化表达。问题并不需要总是用来代表技术...">
+  <meta name="page:id" content="85888">
+  <meta name="page:slug" content="problem-management-methodology">
+  <meta name="page:type" content="post">
+      <link rel="amphtml" href="https://xiaowenz.com/amp/85888">
+    <link rel="webmention" href="https://typlog.com/s/xiaowenz/webmention">
+  <link rel="canonical" href="https://xiaowenz.com/blog/problem-management-methodology.html">
+  <meta property="og:site_name" content="三杯过后 | Xiaowen.Z Deployed">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Problem Management Methodology 问题管理的基本逻辑">
+  <meta property="og:description" content="问题的定义 Problem is an issue that could cause an incident. 相比较于事故（Incident），问题描述的是一种可能产生事故的概率，是一种对于已知风险的量化表达。问题并不需要总是用来代表技术...">
+  <meta property="og:url" content="https://xiaowenz.com/blog/problem-management-methodology.html">
+    <meta property="og:image" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss">
+    <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@typlog">
+  <script>SITE={"active": true, "algolia_id": "9X73WK7G3L", "algolia_key": "95e5a920d7081c87c0d57b1fbe5920d6", "base_url": "https://xiaowenz.com/", "icon": "https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss", "id": 4810, "level": "pro", "name": "\u4e09\u676f\u8fc7\u540e | Xiaowen.Z Deployed", "slug": "xiaowenz", "socials": {"behance": "", "email": "xiaowen.z@outlook.com", "github": "iamshaynez", "instagram": "", "linkedin": "zhangxiaowen", "telegram": "", "twitter": "ixiaowenz", "unsplash": "", "vsco": "", "weibo": "", "zhihu": null}, "subscriber": true}</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T4RZQ5V58"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-7T4RZQ5V58');
+    </script>
+<link rel="stylesheet" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.css">  <style>:root{ --t-rc-primary:0,0,0;--primary-color-hex:#000;--primary-color-rgb:0,0,0;--t-on-primary:255,255,255;--primary-text-rgb:255,255,255;--t-rc-secondary:255,255,255;--secondary-color-hex:#fff;--secondary-color-rgb:255,255,255;--t-on-secondary:0,0,0;--secondary-text-rgb:0,0,0 }</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F1F1EF">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/css/app.css">
+
+  <link rel="preload" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js" as="script">
+</head>
+<body>
+
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="site-header site-header--hybrid">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/" aria-label="三杯过后 | Xiaowen.Z Deployed">
+      <span class="site-brand__mark" aria-hidden="true">酒</span>
+      <span class="site-brand__text">三杯过后 | Xiaowen.Z Deployed</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <ul class="site-nav__list">
+
+            <li>
+              <a class="site-nav__link" href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="https://xiaowenz.com/episodes/">
+                本站播客
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/read-books">
+                Read
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/tags/newsletter/">
+                Newsletter
+              </a>
+            </li>
+
+          <li class="site-nav__more">
+            <button
+              type="button"
+              class="site-nav__link site-nav__more-btn"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="nav-more-menu"
+              id="nav-more-btn"
+            >
+              更多
+              <span class="site-nav__more-caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-more-menu" role="menu" hidden>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/run-a-uk-company">
+                      UK Company
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/service-and-afdian">
+                      Service 和爱发电
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/business-reports">
+                      Business 商业分析
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/about">
+                      About
+                    </a>
+                  </li>
+                <li class="site-nav__dropdown-sep" role="separator" aria-hidden="true"></li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://xiaowenz.com/episodes/">
+                    本站播客
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                    Spotify
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                    Apple Podcast
+                  </a>
+                </li>
+            </ul>
+          </li>
+
+          <li>
+            <button type="button" class="site-nav__link js-search" aria-label="搜索">搜索</button>
+          </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="site-main" id="main">
+
+
+  <article class="container article h-entry" itemscope itemtype="http://schema.org/Article">
+    <header class="article__header">
+      <div class="article__eyebrow">
+        <span class="hero__eyebrow-line" aria-hidden="true"></span>
+          <span class="section-index">
+            <a href="/tags/work/" style="color:inherit">工作</a>
+          </span>
+      </div>
+
+      <h1 class="article__title p-name" itemprop="headline">Problem Management Methodology 问题管理的基本逻辑</h1>
+
+
+      <div class="article__meta-row meta">
+          <time class="dt-published" datetime="2022-03-17T07:27:12Z" itemprop="datePublished">
+            2022.03.17
+          </time>
+          <span class="dot" aria-hidden="true"></span>
+          <span>
+              <a href="/by/xiaowenz/" class="p-author">Xiaowen Zhang</a>          </span>
+      </div>
+    </header>
+
+
+
+    <div class="article__body prose e-content js-content" itemprop="articleBody">
+          <h2><strong>问题的定义</strong></h2>
+<div class="blockquote"><blockquote><p>Problem is an issue that could cause an incident.</p>
+</blockquote></div>
+<p>相比较于事故（Incident），问题描述的是一种可能产生事故的概率，是一种对于已知风险的量化表达。问题并不需要总是用来代表技术性的缺陷（如代码Bug），问题也不应该用来代表RCA的过程（Root Cause Analysis），而应该仅在RCA或Post Mortem完成后，记录和跟踪风险及风险的后续的修复或补偿措施。</p>
+<h2><strong>问题的定级</strong></h2>
+<p>基于问题的定义，因为问题是描述可能产生事故的风险，可以很容易理解问题定级的两个参考维度：</p>
+<ul>
+<li>对应类型事故，有多大的可能产生？高频？低频？（Probability）</li>
+<li>如果产生了该类型的事故，这个事故的影响有多大？（对应事故的定级，在问题中，描述为Criticality）</li>
+</ul>
+<p>结合这两个维度，得出问题定级的矩阵（Matrix）。</p>
+<p>经典风险管理理论中，风险的量化表达 = 风险的概率 * 风险的损失 * 时间跨度。因此，实质的风险在ITSM中可描述为 <strong>问题的定级（风险的概率 * 风险的损失） * 时间。</strong></p>
+<p>问题的定级约高，意味着相同的风险暴露时间内，对应的损伤相对企业来说约大，因此问题责任方有义务在更快的时间内修复或补偿该问题。<strong>定级约高，要求修复的时间应约快。而实际上，在此公式中，{问题的定级（风险的概率 * 风险的损失） * 时间}</strong> 对应的量化，应随着企业的整体风险偏好**（Risk appetite）**做调整——企业在某个阶段的风险偏好低，那么同样等级的问题要求的修复时效应该约低，反之亦然。</p>
+<h2><strong>问题的降级</strong></h2>
+<p>定级问题的修复往往随着问题的复杂度，修复难度，和修复问题所产生的其他风险，对应了“修复成本”，“修复时间”和现实情况的冲突。很多时候，对于已完成根因分析的问题（Known Issue），是存在经过验证的补偿性措施（Workaround）可以通过降低：</p>
+<ul>
+<li>事故发生的概率（Probability）</li>
+<li>事故发生的影响（Criticality）</li>
+</ul>
+<p>中的一种，或两种同时，来降低问题对应的风险实质的敞口。基于补偿性措施就绪后，问题的实质性风险降低，通过重新的定级（一般是降级）后可获得对应的更长的修复时效，甚至无需修复（见后章节）。</p>
+<p>例子：</p>
+<ul>
+<li>对于某些内存泄漏问题（Memory Leak Caused Out Of Memory），在永久修复前，通过运维团队定期的重启服务器，可极大降低实际问题发生的概率。</li>
+<li>对于某些程序缺陷造成的业务功能影响，在永久修复前，每次发生后通过固定的数据变更补丁，快速修复问题（降低MTTR），实际降低了事故发生的业务影响。实际操作上，一般会对这类补丁做一次性测试，纳入应急手册中，后续发生后无需经过开发团队，运维直接发起数据变更修复，对应MTTR较低。</li>
+</ul>
+<h2><strong>问题的修复的要求</strong></h2>
+<p>一般来说，对于企业的风险管理的角度，并不要求绝对的0风险。只有在风险敞口大于企业风险偏好的情况下，该风险应要求进行控制。问题的控制（Mitigation）可能是：</p>
+<ul>
+<li>修复：即该风险完全消除</li>
+<li>临时补偿（Workaround）：低成本的快速上线补偿性措施，问题降级，直到问题进入终态</li>
+<li>无需修复：当修复成本大于风险带来的损失，或补偿性措施就绪后，风险降低到企业可以承担的风险偏好内，问题可认定为无需修复。</li>
+</ul>
+<p><strong>不是所有的问题都是需要永久修复的，因为不是所有的风险，都是能够被完全消除的。</strong></p>
+<h2><strong>问题的识别</strong></h2>
+<p>为确保科技部门内的风险，能够有效的进入问题管理的流程，问题管理的一般实践会明确定义问题入口，即识别过程且部分识别过程是强制的。</p>
+<ul>
+<li>重大生产事故必须进入问题管理的流程</li>
+<li>问题管理经理可能分析历史事故（低级别），对高频事故提起问题甄别。</li>
+<li>其他入口，如科技团队上报，经问题经理审批后，进入问题甄别。</li>
+</ul>
+<p>具体方法论参考：</p>
+<h2><strong>问题管理的有效性前提</strong></h2>
+<ul>
+<li>严格制度：将公平合理的流程落入制度，明确问题归属和责任人。确保识别的问题在有效约束的工作流程内被控制和有效闭环的生命周期。</li>
+<li>问题治理：由于问题的本质等同于一类科技风险，优秀的问题管理应该将开口问题纳入企业风险管理指标内，同时将问题关闭的时效，纳入对应团队的正向考核指标。</li>
+</ul>
+
+    
+      <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+      <meta itemprop="width" content="768">
+      <meta itemprop="height" content="768">
+    </div>
+    <meta itemprop="dateModified" content="2026-02-19T07:28:50Z"/>
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+        <meta itemprop="width" content="768">
+        <meta itemprop="height" content="768">
+      </div>
+    <meta itemprop="name" content="三杯过后 | Xiaowen.Z Deployed"/>
+    <meta itemprop="url" content="https://xiaowenz.com/"/>
+  </div>
+
+
+    </div>
+
+    <footer class="article__footer">
+        <ul class="tag-list">
+            <li>
+              <a class="tag p-category" href="/tags/work/">工作</a>
+            </li>
+            <li>
+              <a class="tag p-category" href="/tags/methodology/">方法论</a>
+            </li>
+        </ul>
+
+        <div class="article__actions" style="margin-top: var(--space-6);">
+<div class="entry-enjoy">
+  <button class="enjoy js-enjoy">Enjoy</button>
+</div>
+<div class="entry-share">
+  <a class="js-share" data-type="tw" href="#" aria-label="Share to Twitter"><i class="icon icon-twitter"></i></a>
+    <a class="js-share" data-type="wb" href="#" aria-label="分享到微博"><i class="icon icon-weibo"></i></a>
+    <a class="js-share" data-type="wx" href="#" aria-label="分享到微信"><i class="icon icon-wechat"></i></a>
+  <a class="js-share" data-type="tg" href="#" aria-label="Share to Telegram">
+    <i class="icon icon-telegram"></i></a>
+</div>        </div>
+
+        <nav class="post-nav" aria-label="文章导航">
+            <a class="nav-card" href="/blog/all-problems-are-management-problems.html">
+              <span class="nav-card__label">← 上一篇</span>
+              <span class="nav-card__title">一切问题都是管理问题。</span>
+            </a>
+            <a class="nav-card nav-card--next" href="/blog/incident-rca-and-problem-identification.html">
+              <span class="nav-card__label">下一篇 →</span>
+              <span class="nav-card__title">Incident RCA and Problem Identification</span>
+            </a>
+        </nav>
+
+
+  <div class="entry-section sponsorship">
+    <div class="inner">
+        <a href="https://afdian.com/a/xiaowenz" class="afdian">
+          <i class="icon icon-afdian"></i>
+          <span>去爱发电上赞助</span>
+        </a>
+    </div>
+  </div>
+
+  <section class="entry-section subscribe">
+    <div class="inner">
+      <h2>Subscribe</h2>
+      <form method="post" class="js-subscribe">
+        <input name="name" placeholder="Your name">
+        <input name="email" type="email" placeholder="Your email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+    <section class="entry-section prev-subject">
+      <div class="inner">
+          <h2>Read This</h2>
+          <div class="item" lang="zh">
+            <a class="item-main" href="/blog/all-problems-are-management-problems.html">
+              <h3>一切问题都是管理问题。</h3>
+            </a>
+          </div>
+      </div>
+    </section>
+
+  <section class="entry-section comment">
+    <div class="inner">
+        <div id="comment_thread"></div>
+    </div>
+  </section>
+    </footer>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div>
+        <div class="site-footer__brand">三杯过后 | Xiaowen.Z Deployed</div>
+        <p class="site-footer__desc">新的博客设计来自 Grok + Kimi，以杂志的版式重新想象博客：强反差字号、克制的红色点睛、每一次点击都有回应。</p>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">导航</div>
+        <ul class="site-footer__links">
+          <li><a href="/">首页</a></li>
+              <li>
+                <a href="/">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="/read-books">
+                  Read
+                </a>
+              </li>
+              <li>
+                <a href="/tags/newsletter/">
+                  Newsletter
+                </a>
+              </li>
+              <li>
+                <a href="/run-a-uk-company">
+                  UK Company
+                </a>
+              </li>
+              <li>
+                <a href="/service-and-afdian">
+                  Service 和爱发电
+                </a>
+              </li>
+              <li>
+                <a href="/business-reports">
+                  Business 商业分析
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                  Spotify
+                </a>
+              </li>
+              <li>
+                <a href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                  Apple Podcast
+                </a>
+              </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">社交</div>
+        <ul class="site-footer__links">
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>
+        © 三杯过后 | Xiaowen.Z Deployed
+ · {&#39;key&#39;: &#39;cc.by-nc-sa&#39;, &#39;title&#39;: &#39;Attribution-NonCommercial-ShareAlike&#39;}      </span>
+      <span>
+        以 <span class="site-footer__red">冷漆红</span> 点睛 · 玄墨主题
+      </span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<div class="typlog-foot">
+  <div>Powered by <a class="title" href="https://typlog.com/?utm_source=xiaowenz&utm_medium=foot">Typlog</a></div>
+</div><script async src="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js"></script>  <script src="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/js/main.js" defer></script>
+</body>
+</html>

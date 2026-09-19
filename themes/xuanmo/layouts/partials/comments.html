@@ -1,0 +1,12 @@
+{{/* comments.html — comments section backed by core API.
+     div#comments[data-post=slug]; js/comments.js fetches GET {coreAPI}/api/comments?post=slug
+     and wires the submit form (POST {coreAPI}/api/comments; fields name/email/content/website).
+     No-JS: whole section stays hidden. */}}
+{{ $slug := .Params.slug | default .File.ContentBaseName }}
+{{ if not $slug }}{{ $slug = path.Base .RelPermalink }}{{ end }}
+<section class="entry-section comment" data-xw-comments hidden>
+  <div class="inner">
+    <div id="comments" data-post="{{ $slug }}"></div>
+  </div>
+</section>
+<script src="{{ "js/comments.js" | relURL }}" defer></script>

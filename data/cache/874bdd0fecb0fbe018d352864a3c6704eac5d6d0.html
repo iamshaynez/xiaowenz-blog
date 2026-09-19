@@ -1,0 +1,483 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+  <link rel="preconnect" href="https://typlog.com/">
+  <link rel="preconnect" href="https://s.typlog.com/">
+  <link rel="preconnect" href="https://i.typlog.com/">
+  <meta name="generator" content="Typlog 3.1">
+  <meta name="provider" content="https://typlog.com">
+    <meta name="theme" content="xiaowenyf 0.2.0">
+    <link rel="icon" type="image/png" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss">
+    <link rel="apple-touch-icon" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+  <title>一篇精彩的推文，一年后的推特工程实践。 - 三杯过后 | Xiaowen.Z Deployed</title>
+  <meta name="description" content="马斯克的一周年。 昨天是2023年10月27日，马斯克入主推特一周年。推特官方和关联账号，发布了若干这一周年从第一视角，企业发生的变化。之前我写过一篇《Twitter 要去哪里。》，站在当时充满质疑的一系列操作的进行时中，试图思考从商业上，...">
+  <meta name="page:id" content="85930">
+  <meta name="page:slug" content="twitter-engineering-after-a-year">
+  <meta name="page:type" content="post">
+      <link rel="amphtml" href="https://xiaowenz.com/amp/85930">
+    <link rel="webmention" href="https://typlog.com/s/xiaowenz/webmention">
+  <link rel="canonical" href="https://xiaowenz.com/blog/twitter-engineering-after-a-year.html">
+  <meta property="og:site_name" content="三杯过后 | Xiaowen.Z Deployed">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="一篇精彩的推文，一年后的推特工程实践。">
+  <meta property="og:description" content="马斯克的一周年。 昨天是2023年10月27日，马斯克入主推特一周年。推特官方和关联账号，发布了若干这一周年从第一视角，企业发生的变化。之前我写过一篇《Twitter 要去哪里。》，站在当时充满质疑的一系列操作的进行时中，试图思考从商业上，...">
+  <meta property="og:url" content="https://xiaowenz.com/blog/twitter-engineering-after-a-year.html">
+    <meta property="og:image" content="https://vip2.loli.io/2023/10/28/UygXHTBsdnVo7bL.png">
+      <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@typlog">
+  <script>SITE={"active": true, "algolia_id": "9X73WK7G3L", "algolia_key": "95e5a920d7081c87c0d57b1fbe5920d6", "base_url": "https://xiaowenz.com/", "icon": "https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss", "id": 4810, "level": "pro", "name": "\u4e09\u676f\u8fc7\u540e | Xiaowen.Z Deployed", "slug": "xiaowenz", "socials": {"behance": "", "email": "xiaowen.z@outlook.com", "github": "iamshaynez", "instagram": "", "linkedin": "zhangxiaowen", "telegram": "", "twitter": "ixiaowenz", "unsplash": "", "vsco": "", "weibo": "", "zhihu": null}, "subscriber": true}</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T4RZQ5V58"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-7T4RZQ5V58');
+    </script>
+<link rel="stylesheet" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.css">  <style>:root{ --t-rc-primary:0,0,0;--primary-color-hex:#000;--primary-color-rgb:0,0,0;--t-on-primary:255,255,255;--primary-text-rgb:255,255,255;--t-rc-secondary:255,255,255;--secondary-color-hex:#fff;--secondary-color-rgb:255,255,255;--t-on-secondary:0,0,0;--secondary-text-rgb:0,0,0 }</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F1F1EF">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/css/app.css">
+
+  <link rel="preload" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js" as="script">
+</head>
+<body>
+
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="site-header site-header--hybrid">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/" aria-label="三杯过后 | Xiaowen.Z Deployed">
+      <span class="site-brand__mark" aria-hidden="true">酒</span>
+      <span class="site-brand__text">三杯过后 | Xiaowen.Z Deployed</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <ul class="site-nav__list">
+
+            <li>
+              <a class="site-nav__link" href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="https://xiaowenz.com/episodes/">
+                本站播客
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/read-books">
+                Read
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/tags/newsletter/">
+                Newsletter
+              </a>
+            </li>
+
+          <li class="site-nav__more">
+            <button
+              type="button"
+              class="site-nav__link site-nav__more-btn"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="nav-more-menu"
+              id="nav-more-btn"
+            >
+              更多
+              <span class="site-nav__more-caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-more-menu" role="menu" hidden>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/run-a-uk-company">
+                      UK Company
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/service-and-afdian">
+                      Service 和爱发电
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/business-reports">
+                      Business 商业分析
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/about">
+                      About
+                    </a>
+                  </li>
+                <li class="site-nav__dropdown-sep" role="separator" aria-hidden="true"></li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://xiaowenz.com/episodes/">
+                    本站播客
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                    Spotify
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                    Apple Podcast
+                  </a>
+                </li>
+            </ul>
+          </li>
+
+          <li>
+            <button type="button" class="site-nav__link js-search" aria-label="搜索">搜索</button>
+          </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="site-main" id="main">
+
+
+  <article class="container article h-entry" itemscope itemtype="http://schema.org/Article">
+    <header class="article__header">
+      <div class="article__eyebrow">
+        <span class="hero__eyebrow-line" aria-hidden="true"></span>
+          <span class="section-index">
+            <a href="/tags/world/" style="color:inherit">观察世界</a>
+          </span>
+      </div>
+
+      <h1 class="article__title p-name" itemprop="headline">一篇精彩的推文，一年后的推特工程实践。</h1>
+
+
+      <div class="article__meta-row meta">
+          <time class="dt-published" datetime="2023-10-28T09:34:04Z" itemprop="datePublished">
+            2023.10.28
+          </time>
+          <span class="dot" aria-hidden="true"></span>
+          <span>
+              <a href="/by/xiaowenz/" class="p-author">Xiaowen Zhang</a>          </span>
+      </div>
+    </header>
+
+      <figure class="reveal" style="margin-bottom: var(--space-7);">
+        <img src="https://vip2.loli.io/2023/10/28/UygXHTBsdnVo7bL.png" alt="一篇精彩的推文，一年后的推特工程实践。" style="width:100%;border-radius:var(--radius);">
+      </figure>
+
+
+    <div class="article__body prose e-content js-content" itemprop="articleBody">
+          <div class="photo"><figure><picture><img src="https://vip2.loli.io/2023/10/28/UygXHTBsdnVo7bL.png" alt="Musk moving servers" /></picture></figure></div><h2>马斯克的一周年。</h2>
+<p>昨天是2023年10月27日，马斯克入主推特<strong>一周年</strong>。推特官方和关联账号，发布了若干这一周年从第一视角，企业发生的变化。之前我写过一篇《Twitter 要去哪里。》，站在当时充满质疑的一系列操作的进行时中，试图思考从商业上，这家企业究竟在做什么。</p>
+<p>如今，已经更名为 X 的这家企业，工程技术部门也发了一篇长推，总结了这波澜壮阔的一年里，从工程师的视角，究竟发生了些什么。</p>
+<div class="photo"><figure><picture><img src="https://vip2.loli.io/2023/10/28/wKgP4DFmXn8Wxus.png" alt="@XEngineering" /></picture></figure></div><p>非常有意思，值得一读。</p>
+<h2>全文如下，配上我的逐段备注解读。</h2>
+<p>This has been a year full of engineering excellence that sometimes can go unnoticed. Besides all the visible changes you see on our app, here are some of the most important improvements we have made under the hood.</p>
+<p>这是一个充满也许会被忽视的卓越工程实践的一年。除了你在我们的应用中肉眼可见的功能性改变，这里是我们在幕后做出的一些最重要的改进。</p>
+<div class="blockquote"><blockquote><p>Comment：是的，非功能和功能，同样重要。</p>
+</blockquote></div>
+<ul>
+<li><p>Consolidated the tech stacks for For you, Following, Search, Profiles, Lists, Communities and Explore around a singular product framework.</p>
+</li>
+<li><p>我们整合了“为你”、“关注”、“搜索”、“个人资料”、“列表”、“社区”和“探索”等功能背后的技术架构，整个产品统一了内部框架。</p>
+</li>
+</ul>
+<div class="blockquote"><blockquote><p>Comment：软件研发出生的朋友，更能理解这意味着什么——更容易维护的软件架构，显著降低的未来研发成本，更低的不确定性。</p>
+</blockquote></div>
+<ul>
+<li><p>Completely rebuilt the For you serving and ranking systems from the ground up, resulting in a decrease 90% reduction in lines of code from 700K to 70K, a 50% decrease in our compute footprint, and an 80% increase in the throughput of posts scored per request.</p>
+</li>
+<li><p>我们从头开始完全重建了&quot;为你&quot;的服务和排名推荐系统，结果代码行数从700K减少到70K，减少了90%，我们的计算足迹减少了50%，吞吐量增加了80%。</p>
+</li>
+</ul>
+<div class="blockquote"><blockquote><p>Comment: 90%的冗余代码，这可能吗？如果一个系统维护了几十年，那必然是可能的。但如此大规模的重构（所带来的风险），对工程师来说，也许只是个梦境。很高兴在 X，这件事实现了。</p>
+</blockquote></div>
+<ul>
+<li><p>Unified the For you and video personalization and ranking models, which significantly improved video recommendation quality.</p>
+</li>
+<li><p>我们统一了&quot;为你&quot;和视频个性化和排名模型，这大大提高了视频推荐的质量。</p>
+</li>
+</ul>
+<div class="blockquote"><blockquote><p>Comment: 虽然我并不会在推特看视频，我不看任何短视频。</p>
+</blockquote></div>
+<ul>
+<li><p>Refactored the API middleware layer of our tech stack and in doing so simplified the architecture by  removing more than 100K lines of code and thousands of unused internal endpoints and eliminating unadopted client services.</p>
+</li>
+<li><p>我们重构了我们技术堆栈的API中间件层，通过移除超过100K行的代码和数千个未使用的内部端点，以及消除未被采纳的客户端服务，从而简化了架构。</p>
+</li>
+</ul>
+<div class="blockquote"><blockquote><p>Comment: 不知道为什么，这样的描述让我这个局外人，由衷的感觉到快乐。</p>
+</blockquote></div>
+<ul>
+<li><p>Reduced post metadata sourcing latency by 50%, and global API timeout errors by 90%.</p>
+</li>
+<li><p>我们把帖子元数据的获取延迟降低了50%，全球API超时错误降低了90%。</p>
+</li>
+</ul>
+<div class="blockquote"><blockquote><p>Comment: 发帖子确实感觉顺畅一些了，其他倒是感觉不深。</p>
+</blockquote></div>
+<ul>
+<li><p>Blocked bots and content scrapers at a rate +37% greater than 2022. On average, we prevent more than 1M bots signup attacks each day and we’ve reduced DM spam by 95%.</p>
+</li>
+<li><p>我们以比2022年高37%的速度阻止了机器人和内容抓取器。平均每天，我们阻止超过1M个机器人注册攻击，我们已经把DM垃圾邮件降低了95%。</p>
+</li>
+</ul>
+<div class="blockquote"><blockquote><p>Comment: 我一直认为，马斯克上任的第一件事，就是挤掉职业经理人经营多年的水份。机器人和自动化垃圾营销内容，显然是大头。</p>
+</blockquote></div>
+<ul>
+<li><p>Shutdown the Sacramento data center and re-provisioned the 5,200 racks and 148,000 servers, which generated more than $100M in annual savings. In total, we freed up 48 MW of capacity and tore down 60k lbs. of network ladder rack before re-provisioning it to other data centers.</p>
+</li>
+<li><p>我们关闭了萨克拉门托数据中心，并重新配置了5,200个机架和148,000个服务器，这为我们每年节省了超过1亿美元。总的来说，我们释放了48 MW的容量，并拆除了60k磅的网络梯子，然后将它重新配置到其他数据中心。</p>
+</li>
+</ul>
+<div class="blockquote"><blockquote><p>Comment: 如果你感兴趣，可以去读读马老板自己开车冲到数据中心拔网线的故事。非常有趣的体验。</p>
+</blockquote></div>
+<ul>
+<li><p>Optimized our usage of cloud service providers and began doing much more on-prem. This shift has reduced our monthly cloud costs by 60%. Among the changes we made was a shift of all media/blob artifacts out of the cloud, which reduced our overall cloud data storage size by 60%, and separately, we succeeded in reducing cloud data processing costs by 75%.</p>
+</li>
+<li><p>我们优化了我们对云服务提供商的使用，并开始在本地做更多的事情。这个转变使我们每月的云成本减少了60%。我们做出的改变中，有一个是把所有的媒体/blob工件从云中移出，这使我们的整体云数据存储大小减少了60%，另外，我们成功地把云数据处理成本降低了75%。</p>
+</li>
+</ul>
+<div class="blockquote"><blockquote><p>Comment: 多年来，我始终坚定的认为，云对于成本的影响是要精细化来看的，不能一概而论。不同于算力的弹性伸缩，大部分时候，系统的存储是线性而非弹性的。算力上云，意味着不为闲置的谷底埋单，但存储上云，除了数据容灾少一些工程成本外，整体上是昂贵的。</p>
+<p>「媒体/blob」从云上拿出来，显然是把推特的存储部分，回归了自己的数据中心内。</p>
+<p>结合 37signals 创始人 @DHH 这几年大张旗鼓的规模化去云服务的论调，从技术决策的角度其实越来越清晰了：云服务的经济性和企业规模成反比，虽然临界值并不容易测算，但精细化的算算账，不是难事。</p>
+</blockquote></div>
+<ul>
+<li><p>Built on-prem GPU Supercompute clusters and designed, developed, and delivered 43.2Tbps of new network fabric architecture to support the clusters.</p>
+</li>
+<li><p>我们在本地建立了GPU超级计算集群，设计、开发并交付了43.2Tbps的新网络布局架构来支持这些集群。</p>
+</li>
+</ul>
+<div class="blockquote"><blockquote><p>Comment: 算力的天下，推特迟早会踏上这条大船的。</p>
+</blockquote></div>
+<ul>
+<li><p>Scaled network backbone capacity and redundancy, which resulted in $13.9M/year in savings.</p>
+</li>
+<li><p>我们扩大了网络骨干的容量和冗余，这为我们每年节省了1390万美元。</p>
+</li>
+</ul>
+<div class="blockquote"><blockquote><p>Comment: 网络的规划和成本测算，也是需要跟随应用规模不断观测和调整的。</p>
+</blockquote></div>
+<ul>
+<li><p>Started automated peak traffic failover tests to validate the scalability and availability of the entire platform continuously.</p>
+</li>
+<li><p>我们开始进行自动化的高峰流量故障切换测试，以持续验证整个平台的可扩展性和可用性。</p>
+</li>
+</ul>
+<div class="blockquote"><blockquote><p>Comment: 哈？以前不是吗？</p>
+</blockquote></div>
+<h2>所以呢？</h2>
+<p>所以，这意味着推特的工程团队，投入了巨大的成本承担了巨大的风险，进行了几乎「伤筋动骨」的重构。这一年里，虽然平台也出过些小问题，但看起来，大部分的重构已经完成，推特最终实现了风险可控的大规模改造，为以后的<strong>轻装上阵</strong>铺平了路。</p>
+<h2>非功能性的成本和收益。</h2>
+<p>应用系统的非功能性，对业务部门不可见，对用户也不可见，但是对于软件本身的可维护性，健壮度，至关重要。</p>
+<p>但换句话说，这意味着只有技术人员更能看明白其价值，非技术背景的相关方，很容易被<strong>忽悠</strong>。</p>
+<p>这也就是为什么，在很多企业里，工程师们坚持长期的维护<strong>屎山</strong>，却无法立一个项目来给存量填填坑————重构的成本高，风险大，但收益难以度量————这个项目存在风险，批准这样的项目，往往才是最大的风险。</p>
+<h2>所以呢？</h2>
+<p>所以，需要的是一个懂技术，有意愿承担风险，有能力承担成本的老板。</p>
+<p>大概这样规模的工程投入，这世界上只有推特能做到了。</p>
+<h2>最后。</h2>
+<p>虽不能至，心向往之，替推特的工程师们高兴。</p>
+<h2>最后的最后。</h2>
+<p>感谢你读完。</p>
+
+    
+      <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="https://vip2.loli.io/2023/10/28/UygXHTBsdnVo7bL.png">
+        <meta itemprop="width" content="1024">
+        <meta itemprop="height" content="1024">
+    </div>
+    <meta itemprop="dateModified" content="2026-02-19T09:34:41Z"/>
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+        <meta itemprop="width" content="768">
+        <meta itemprop="height" content="768">
+      </div>
+    <meta itemprop="name" content="三杯过后 | Xiaowen.Z Deployed"/>
+    <meta itemprop="url" content="https://xiaowenz.com/"/>
+  </div>
+
+
+    </div>
+
+    <footer class="article__footer">
+        <ul class="tag-list">
+            <li>
+              <a class="tag p-category" href="/tags/world/">观察世界</a>
+            </li>
+            <li>
+              <a class="tag p-category" href="/tags/technology/">科技</a>
+            </li>
+        </ul>
+
+        <div class="article__actions" style="margin-top: var(--space-6);">
+<div class="entry-enjoy">
+  <button class="enjoy js-enjoy">Enjoy</button>
+</div>
+<div class="entry-share">
+  <a class="js-share" data-type="tw" href="#" aria-label="Share to Twitter"><i class="icon icon-twitter"></i></a>
+    <a class="js-share" data-type="wb" href="#" aria-label="分享到微博"><i class="icon icon-weibo"></i></a>
+    <a class="js-share" data-type="wx" href="#" aria-label="分享到微信"><i class="icon icon-wechat"></i></a>
+  <a class="js-share" data-type="tg" href="#" aria-label="Share to Telegram">
+    <i class="icon icon-telegram"></i></a>
+</div>        </div>
+
+        <nav class="post-nav" aria-label="文章导航">
+            <a class="nav-card" href="/blog/unpacking-sweet-and-soft-home.html">
+              <span class="nav-card__label">← 上一篇</span>
+              <span class="nav-card__title">最柔软的地方，《Unpacking》推荐。</span>
+            </a>
+            <a class="nav-card nav-card--next" href="/blog/smallchat-in-java.html">
+              <span class="nav-card__label">下一篇 →</span>
+              <span class="nav-card__title">70行代码实现一个简单的聊天室。</span>
+            </a>
+        </nav>
+
+
+  <div class="entry-section sponsorship">
+    <div class="inner">
+        <a href="https://afdian.com/a/xiaowenz" class="afdian">
+          <i class="icon icon-afdian"></i>
+          <span>去爱发电上赞助</span>
+        </a>
+    </div>
+  </div>
+
+  <section class="entry-section subscribe">
+    <div class="inner">
+      <h2>Subscribe</h2>
+      <form method="post" class="js-subscribe">
+        <input name="name" placeholder="Your name">
+        <input name="email" type="email" placeholder="Your email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+    <section class="entry-section prev-subject">
+      <div class="inner">
+          <h2>Read This</h2>
+          <div class="item" lang="zh">
+            <a class="item-main" href="/blog/unpacking-sweet-and-soft-home.html">
+              <h3>最柔软的地方，《Unpacking》推荐。</h3>
+            </a>
+          </div>
+      </div>
+    </section>
+
+  <section class="entry-section comment">
+    <div class="inner">
+        <div id="comment_thread"></div>
+    </div>
+  </section>
+    </footer>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div>
+        <div class="site-footer__brand">三杯过后 | Xiaowen.Z Deployed</div>
+        <p class="site-footer__desc">新的博客设计来自 Grok + Kimi，以杂志的版式重新想象博客：强反差字号、克制的红色点睛、每一次点击都有回应。</p>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">导航</div>
+        <ul class="site-footer__links">
+          <li><a href="/">首页</a></li>
+              <li>
+                <a href="/">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="/read-books">
+                  Read
+                </a>
+              </li>
+              <li>
+                <a href="/tags/newsletter/">
+                  Newsletter
+                </a>
+              </li>
+              <li>
+                <a href="/run-a-uk-company">
+                  UK Company
+                </a>
+              </li>
+              <li>
+                <a href="/service-and-afdian">
+                  Service 和爱发电
+                </a>
+              </li>
+              <li>
+                <a href="/business-reports">
+                  Business 商业分析
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                  Spotify
+                </a>
+              </li>
+              <li>
+                <a href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                  Apple Podcast
+                </a>
+              </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">社交</div>
+        <ul class="site-footer__links">
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>
+        © 三杯过后 | Xiaowen.Z Deployed
+ · {&#39;key&#39;: &#39;cc.by-nc-sa&#39;, &#39;title&#39;: &#39;Attribution-NonCommercial-ShareAlike&#39;}      </span>
+      <span>
+        以 <span class="site-footer__red">冷漆红</span> 点睛 · 玄墨主题
+      </span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<div class="typlog-foot">
+  <div>Powered by <a class="title" href="https://typlog.com/?utm_source=xiaowenz&utm_medium=foot">Typlog</a></div>
+</div><script async src="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js"></script>  <script src="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/js/main.js" defer></script>
+</body>
+</html>

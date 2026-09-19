@@ -1,0 +1,19 @@
+{{ define "main" }}
+<div class="container">
+  <header class="page-header">
+    <div class="masthead-bar">
+      <span><span class="masthead-bar__red">404</span></span>
+      <span>not found</span>
+      <span>—</span>
+    </div>
+
+    <h1 class="page-header__title display">404</h1>
+
+    <p class="page-header__desc">这一页不存在，或者已经被移动。</p>
+  </header>
+
+  <div class="empty-state">
+    <p><a class="btn" href="{{ "/" | relURL }}">返回首页 <span class="btn__arrow" aria-hidden="true">→</span></a></p>
+  </div>
+</div>
+{{ end }}

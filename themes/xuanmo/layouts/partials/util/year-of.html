@@ -1,0 +1,11 @@
+{{/* util/year-of.html — input: a stub Page. returns the year (int) from .Params.year,
+     else the first 4-digit run in .File.ContentBaseName, else in .Title, else 0. */}}
+{{ $y := 0 }}
+{{ if .Params.year }}
+  {{ $y = int .Params.year }}
+{{ else }}
+  {{ $m := findRE "[12][0-9]{3}" (.File.ContentBaseName | default "") 1 }}
+  {{ if not $m }}{{ $m = findRE "[12][0-9]{3}" .Title 1 }}{{ end }}
+  {{ if $m }}{{ $y = int (index $m 0) }}{{ end }}
+{{ end }}
+{{ return $y }}

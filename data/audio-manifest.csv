@@ -1,0 +1,11 @@
+# Audio originals manifest. The r.typlog.com URLs below are EXPIRING
+# signed URLs kept for provenance only -- do NOT hotlink them.
+# Action needed: supply the original .mp3 for each episode and upload
+# to R2 as audio/{episode_slug}.mp3 (see scripts/sync/upload_media.sh).
+episode_slug,original_url,bytes,duration
+ai-knowledge-and-education,https://r.typlog.com/eyJzIjo0ODEwLCJlIjo4OTE1MywidCI6MX0.hecw1YVKpynjG8No3k3YDAAxsBM/xiaowenz/8213846179_127347.mp3,13704861,17:46
+career-answer-in-business,https://r.typlog.com/eyJzIjo0ODEwLCJlIjo4OTI2MSwidCI6MX0.xDYov2By32Pc_Gu6k_qfu_sV2g8/xiaowenz/8213061597_058304.mp3,11728269,14:09
+ep001,https://r.typlog.com/eyJzIjo0ODEwLCJlIjo4NjMyNywidCI6MX0.Tctnil_lSUZWRkxc08bSRJMpvBg/xiaowenz/8227990431_586428.mp3,17926110,12:26
+ep003,https://r.typlog.com/eyJzIjo0ODEwLCJlIjo4NjQ0MiwidCI6MX0.OZGkNvP8h0tgrQdR77KHMmkbIrI/xiaowenz/8227017197_532782.mp3,19940464,13:50
+freetime-is-the-most-important-to-survive-in-business,https://r.typlog.com/eyJzIjo0ODEwLCJlIjo4OTMzNCwidCI6MX0.JmfuhBDyx1nIFlrvAw3eH7kVS9I/xiaowenz/8212811906_981331.mp3,14277501,16:45
+humanity-last-exam-and-agi,https://r.typlog.com/eyJzIjo0ODEwLCJlIjo4NjM3MiwidCI6MX0.9Xrn_gB563u4yzgDNf-LEwIkIIQ/xiaowenz/8227643310_052353.mp3,24650028,17:07

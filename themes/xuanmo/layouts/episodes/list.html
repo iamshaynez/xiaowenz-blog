@@ -1,0 +1,3 @@
+{{ define "main" }}
+{{ partial "episodes-show.html" (dict "page" . "items" .RegularPages.ByDate.Reverse) }}
+{{ end }}

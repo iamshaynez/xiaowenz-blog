@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+  <link rel="preconnect" href="https://typlog.com/">
+  <link rel="preconnect" href="https://s.typlog.com/">
+  <link rel="preconnect" href="https://i.typlog.com/">
+  <meta name="generator" content="Typlog 3.1">
+  <meta name="provider" content="https://typlog.com">
+    <meta name="theme" content="xiaowenyf 0.2.0">
+    <link rel="icon" type="image/png" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss">
+    <link rel="apple-touch-icon" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+  <title>Shape Up 阅读笔记（3）- Shaping: 如何真正对需求负责 - 三杯过后 | Xiaowen.Z Deployed</title>
+  <meta name="description" content="大部分软件研发行业说到“增效”，思考的都是怎么让“开发过程”更快。 就像所有的管理问题，从顶层设计才有效一样，所有的效率问题，从最上游找才会出现真正的答案。 Shaping 也许可以给你其中一个优秀的答案。 Shaping: 如何真正对需求...">
+  <meta name="page:id" content="85954">
+  <meta name="page:slug" content="shape-up-methodology-3">
+  <meta name="page:type" content="post">
+      <link rel="amphtml" href="https://xiaowenz.com/amp/85954">
+    <link rel="webmention" href="https://typlog.com/s/xiaowenz/webmention">
+  <link rel="canonical" href="https://xiaowenz.com/blog/shape-up-methodology-3.html">
+  <meta property="og:site_name" content="三杯过后 | Xiaowen.Z Deployed">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Shape Up 阅读笔记（3）- Shaping: 如何真正对需求负责">
+  <meta property="og:description" content="大部分软件研发行业说到“增效”，思考的都是怎么让“开发过程”更快。 就像所有的管理问题，从顶层设计才有效一样，所有的效率问题，从最上游找才会出现真正的答案。 Shaping 也许可以给你其中一个优秀的答案。 Shaping: 如何真正对需求...">
+  <meta property="og:url" content="https://xiaowenz.com/blog/shape-up-methodology-3.html">
+    <meta property="og:image" content="https://cdn.sa.net/2025/01/16/FVw3O2A8LWCoycu.png">
+      <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@typlog">
+  <script>SITE={"active": true, "algolia_id": "9X73WK7G3L", "algolia_key": "95e5a920d7081c87c0d57b1fbe5920d6", "base_url": "https://xiaowenz.com/", "icon": "https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss", "id": 4810, "level": "pro", "name": "\u4e09\u676f\u8fc7\u540e | Xiaowen.Z Deployed", "slug": "xiaowenz", "socials": {"behance": "", "email": "xiaowen.z@outlook.com", "github": "iamshaynez", "instagram": "", "linkedin": "zhangxiaowen", "telegram": "", "twitter": "ixiaowenz", "unsplash": "", "vsco": "", "weibo": "", "zhihu": null}, "subscriber": true}</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T4RZQ5V58"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-7T4RZQ5V58');
+    </script>
+<link rel="stylesheet" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.css">  <style>:root{ --t-rc-primary:0,0,0;--primary-color-hex:#000;--primary-color-rgb:0,0,0;--t-on-primary:255,255,255;--primary-text-rgb:255,255,255;--t-rc-secondary:255,255,255;--secondary-color-hex:#fff;--secondary-color-rgb:255,255,255;--t-on-secondary:0,0,0;--secondary-text-rgb:0,0,0 }</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F1F1EF">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/css/app.css">
+
+  <link rel="preload" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js" as="script">
+</head>
+<body>
+
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="site-header site-header--hybrid">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/" aria-label="三杯过后 | Xiaowen.Z Deployed">
+      <span class="site-brand__mark" aria-hidden="true">酒</span>
+      <span class="site-brand__text">三杯过后 | Xiaowen.Z Deployed</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <ul class="site-nav__list">
+
+            <li>
+              <a class="site-nav__link" href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="https://xiaowenz.com/episodes/">
+                本站播客
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/read-books">
+                Read
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/tags/newsletter/">
+                Newsletter
+              </a>
+            </li>
+
+          <li class="site-nav__more">
+            <button
+              type="button"
+              class="site-nav__link site-nav__more-btn"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="nav-more-menu"
+              id="nav-more-btn"
+            >
+              更多
+              <span class="site-nav__more-caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-more-menu" role="menu" hidden>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/run-a-uk-company">
+                      UK Company
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/service-and-afdian">
+                      Service 和爱发电
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/business-reports">
+                      Business 商业分析
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/about">
+                      About
+                    </a>
+                  </li>
+                <li class="site-nav__dropdown-sep" role="separator" aria-hidden="true"></li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://xiaowenz.com/episodes/">
+                    本站播客
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                    Spotify
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                    Apple Podcast
+                  </a>
+                </li>
+            </ul>
+          </li>
+
+          <li>
+            <button type="button" class="site-nav__link js-search" aria-label="搜索">搜索</button>
+          </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="site-main" id="main">
+
+
+  <article class="container article h-entry" itemscope itemtype="http://schema.org/Article">
+    <header class="article__header">
+      <div class="article__eyebrow">
+        <span class="hero__eyebrow-line" aria-hidden="true"></span>
+          <span class="section-index">
+            <a href="/tags/work/" style="color:inherit">工作</a>
+          </span>
+      </div>
+
+      <h1 class="article__title p-name" itemprop="headline">Shape Up 阅读笔记（3）- Shaping: 如何真正对需求负责</h1>
+
+
+      <div class="article__meta-row meta">
+          <time class="dt-published" datetime="2025-01-15T10:57:36Z" itemprop="datePublished">
+            2025.01.15
+          </time>
+          <span class="dot" aria-hidden="true"></span>
+          <span>
+              <a href="/by/xiaowenz/" class="p-author">Xiaowen Zhang</a>          </span>
+      </div>
+    </header>
+
+      <figure class="reveal" style="margin-bottom: var(--space-7);">
+        <img src="https://cdn.sa.net/2025/01/16/FVw3O2A8LWCoycu.png" alt="Shape Up 阅读笔记（3）- Shaping: 如何真正对需求负责" style="width:100%;border-radius:var(--radius);">
+      </figure>
+
+
+    <div class="article__body prose e-content js-content" itemprop="articleBody">
+          <div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2025/01/16/FVw3O2A8LWCoycu.png" type="image/webp"><img src="https://cdn.sa.net/2025/01/16/FVw3O2A8LWCoycu.png" alt=""loading="lazy" decoding="async" width="1312" height="736" /></picture></figure></div><p>大部分软件研发行业说到“增效”，思考的都是怎么让“开发过程”更快。</p>
+<p>就像所有的管理问题，从顶层设计才有效一样，所有的效率问题，从最上游找才会出现真正的答案。</p>
+<p>Shaping 也许可以给你其中一个优秀的答案。</p>
+<h2>Shaping: 如何真正对需求负责</h2>
+<p>大部分企业，需求分析不过是软件开发流水线中的必要一环。因为大部分的企业，整个流水线上的产品，设计，开发，测试，每一环，都是拿工资干活的工人而已。</p>
+<div class="photo"><figure><picture><img src="https://cdn.sa.net/2025/01/15/gr5FNPlIC6RBMqp.png" alt=""loading="lazy" decoding="async" width="2054" height="300" /></picture></figure></div><div class="blockquote"><blockquote><p>Instead of asking how much time it will take to do some work, we ask: How much time do we want to spend? How much is this idea worth? This is the task of shaping: narrowing down the problem and designing the outline of a solution that fits within the constraints of our appetite.</p>
+</blockquote></div>
+<p>Shaping 定义的软件需求的思考过程，强制要求先定义价值投入的关系，并只在这个「成本范围内」寻找方案。这意味着如果商业上不值得，在源头上就很难往后流下去，变成浪费资源的垃圾项目。</p>
+<div class="photo"><figure><picture><img src="https://cdn.sa.net/2025/01/15/lEFiO2orDdcZIJK.png" alt=""loading="lazy" decoding="async" width="2814" height="1048" /></picture></figure></div><h2>Shaping 的大致工作流程</h2>
+<ul>
+<li><p>从一句话的想法「Idea」开始，先进行思考，不要直接渐入任何设计</p>
+</li>
+<li><p>首先思考「appetite」，一个好的点子 idea 很容易让人过度兴奋。需要首先回到真实世界来：我们愿意为此投入多少。</p>
+<ul>
+<li>实操上：1-2 weeks or 6 weeks 两种</li>
+</ul>
+</li>
+<li><p>挖掘需求背后准确的问题才能聚焦价值，不要浮于系统功能</p>
+</li>
+<li><p>粗略设计出关键元素</p>
+</li>
+<li><p>（以上，是需求分析的过程，以下，是排坑的过程）</p>
+</li>
+<li><p>评估风险，所有标准的评估角度见书本身，和技术专家一起评估可行性。</p>
+<ul>
+<li><p>注意：任何风险评估不到位，都可能导致后续资源极大的浪费</p>
+</li>
+<li><p>注意：如果后续实施阶段遇到任何不确定性导致的困境，都是 Shaping 阶段的责任</p>
+</li>
+</ul>
+</li>
+<li><p>最终，把上述关键关键信息，编写成一份叫 Pitch 的文档。</p>
+</li>
+</ul>
+<h1>Pitch 模板</h1>
+<h3>问题 Problem</h3>
+<div class="blockquote"><blockquote><p>The raw idea, a use case, or something we’ve seen that motivates us to work on this</p>
+</blockquote></div>
+<h3>时间预算 Appetite</h3>
+<div class="blockquote"><blockquote><p>How much time we want to spend and how that constrains the solution</p>
+</blockquote></div>
+<h3>方案 Solution</h3>
+<div class="blockquote"><blockquote><p>The core elements we came up with, presented in a form that’s easy for people to immediately understand</p>
+</blockquote></div>
+<h3>潜在陷阱 Rabbit Holes</h3>
+<div class="blockquote"><blockquote><p>Details about the solution worth calling out to avoid problems</p>
+</blockquote></div>
+<h3>明确排除 No-gos</h3>
+<div class="blockquote"><blockquote><p>Anything specifically excluded from the concept: functionality or use cases we intentionally aren’t cover-ing to fit the appetite or make the problem tractable</p>
+</blockquote></div>
+<h2>Shaping 的关键原则</h2>
+<ul>
+<li><p>Shaping 的产出物是一份代表「待办需求」的 Pitch 文档：这份需求最大的特点是：Fixed Time，Variable Scope 时间周期固定，实现程度灵活。</p>
+</li>
+<li><p>不要画原型图，原型图会限制实现的方式，丧失让实施团队自助找到最优解的可能性（边界，边界，边界）</p>
+</li>
+<li><p>从 UI 或者原型图开始设计，很容易掩盖实施阶段的复杂度，因此过度设计更容易导致评估不准，项目逾期。</p>
+</li>
+<li><p>项目不逾期的最佳办法，就是把自由度留给实施团队，只保留最核心的要求和固定的时间窗口。</p>
+</li>
+<li><p>除了约定什么需要做，更重要的是约定哪些是明确不做的，划清边界。</p>
+</li>
+</ul>
+<h2>Shaping 工作需要的专业素养</h2>
+<p>提出正确，准确的高阶需求，需要非常专业技能：</p>
+<ul>
+<li><p>专业产品设计能力</p>
+</li>
+<li><p>业务理解和商业目标，才能准确判断需求的胃口</p>
+</li>
+<li><p>要有能力判断技术可行性：因此不一定需要是开发人员，但一定要真的懂技术</p>
+</li>
+</ul>
+<p>基于上面的要求，很多时候 Shaping 工作需要不止一个人，因为很难有同一个人有所有上述技能。</p>
+<p>Shaping 的工作主要是一个产品设计的工作，但比一般的「产品经理」有更大的权利和更高的要求。</p>
+<h2>Shaping 工作不是任何项目的一部分</h2>
+<p>注意，前文提到过，Shaping 工作是和 Building（对应真正的开发实施阶段）同步进行的。Shaping 工作不是任何既有项目的一环，Shaping 工作旨在把商业上的 Idea 转化为 Actionable 的记录，仅此而已。</p>
+<p>Shaping 工作本身不含有任何的决策成分，任何 Shaping 的产出物，最终都是很可能不被批准实施的。</p>
+<p>但 Shaping 是如此的前置性的工作，他的沉没成本，换来的是避免未来数倍的资源浪费；而所有没有沉没的 Shaping，换来的则是未来开发项目的极大「确定性」和「自由度」。</p>
+<p>从任何一个角度来说，在公司的全局视角，Shaping 才是「降本增效」的关键。</p>
+<p>而真正决策的过程，叫做 <strong>Betting</strong>，我们下一篇见。</p>
+
+    
+      <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="https://cdn.sa.net/2025/01/16/FVw3O2A8LWCoycu.png">
+        <meta itemprop="width" content="1312">
+        <meta itemprop="height" content="736">
+    </div>
+    <meta itemprop="dateModified" content="2026-02-20T02:26:20Z"/>
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+        <meta itemprop="width" content="768">
+        <meta itemprop="height" content="768">
+      </div>
+    <meta itemprop="name" content="三杯过后 | Xiaowen.Z Deployed"/>
+    <meta itemprop="url" content="https://xiaowenz.com/"/>
+  </div>
+
+
+    </div>
+
+    <footer class="article__footer">
+        <ul class="tag-list">
+            <li>
+              <a class="tag p-category" href="/tags/work/">工作</a>
+            </li>
+            <li>
+              <a class="tag p-category" href="/tags/think/">思考</a>
+            </li>
+            <li>
+              <a class="tag p-category" href="/tags/methodology/">方法论</a>
+            </li>
+            <li>
+              <a class="tag p-category" href="/tags/office/">职场</a>
+            </li>
+            <li>
+              <a class="tag p-category" href="/tags/newsletter/">专栏</a>
+            </li>
+        </ul>
+
+        <div class="article__actions" style="margin-top: var(--space-6);">
+<div class="entry-enjoy">
+  <button class="enjoy js-enjoy">Enjoy</button>
+</div>
+<div class="entry-share">
+  <a class="js-share" data-type="tw" href="#" aria-label="Share to Twitter"><i class="icon icon-twitter"></i></a>
+    <a class="js-share" data-type="wb" href="#" aria-label="分享到微博"><i class="icon icon-weibo"></i></a>
+    <a class="js-share" data-type="wx" href="#" aria-label="分享到微信"><i class="icon icon-wechat"></i></a>
+  <a class="js-share" data-type="tg" href="#" aria-label="Share to Telegram">
+    <i class="icon icon-telegram"></i></a>
+</div>        </div>
+
+        <nav class="post-nav" aria-label="文章导航">
+            <a class="nav-card" href="/blog/shape-up-methodology-2.html">
+              <span class="nav-card__label">← 上一篇</span>
+              <span class="nav-card__title">Shape Up 阅读笔记（2）- 基本工作模式</span>
+            </a>
+            <a class="nav-card nav-card--next" href="/blog/shape-up-methodology-4.html">
+              <span class="nav-card__label">下一篇 →</span>
+              <span class="nav-card__title">Shape Up 阅读笔记（4）- Betting: 决策最重要的是发生在正确的层级</span>
+            </a>
+        </nav>
+
+
+  <div class="entry-section sponsorship">
+    <div class="inner">
+        <a href="https://afdian.com/a/xiaowenz" class="afdian">
+          <i class="icon icon-afdian"></i>
+          <span>去爱发电上赞助</span>
+        </a>
+    </div>
+  </div>
+
+  <section class="entry-section subscribe">
+    <div class="inner">
+      <h2>Subscribe</h2>
+      <form method="post" class="js-subscribe">
+        <input name="name" placeholder="Your name">
+        <input name="email" type="email" placeholder="Your email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+    <section class="entry-section prev-subject">
+      <div class="inner">
+          <h2>Read This</h2>
+          <div class="item" lang="zh">
+            <a class="item-main" href="/blog/shape-up-methodology-2.html">
+              <h3>Shape Up 阅读笔记（2）- 基本工作模式</h3>
+            </a>
+          </div>
+      </div>
+    </section>
+
+  <section class="entry-section comment">
+    <div class="inner">
+        <div id="comment_thread"></div>
+    </div>
+  </section>
+    </footer>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div>
+        <div class="site-footer__brand">三杯过后 | Xiaowen.Z Deployed</div>
+        <p class="site-footer__desc">新的博客设计来自 Grok + Kimi，以杂志的版式重新想象博客：强反差字号、克制的红色点睛、每一次点击都有回应。</p>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">导航</div>
+        <ul class="site-footer__links">
+          <li><a href="/">首页</a></li>
+              <li>
+                <a href="/">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="/read-books">
+                  Read
+                </a>
+              </li>
+              <li>
+                <a href="/tags/newsletter/">
+                  Newsletter
+                </a>
+              </li>
+              <li>
+                <a href="/run-a-uk-company">
+                  UK Company
+                </a>
+              </li>
+              <li>
+                <a href="/service-and-afdian">
+                  Service 和爱发电
+                </a>
+              </li>
+              <li>
+                <a href="/business-reports">
+                  Business 商业分析
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                  Spotify
+                </a>
+              </li>
+              <li>
+                <a href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                  Apple Podcast
+                </a>
+              </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">社交</div>
+        <ul class="site-footer__links">
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>
+        © 三杯过后 | Xiaowen.Z Deployed
+ · {&#39;key&#39;: &#39;cc.by-nc-sa&#39;, &#39;title&#39;: &#39;Attribution-NonCommercial-ShareAlike&#39;}      </span>
+      <span>
+        以 <span class="site-footer__red">冷漆红</span> 点睛 · 玄墨主题
+      </span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<div class="typlog-foot">
+  <div>Powered by <a class="title" href="https://typlog.com/?utm_source=xiaowenz&utm_medium=foot">Typlog</a></div>
+</div><script async src="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js"></script>  <script src="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/js/main.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{{/* article-sections.html — article footer extras below post-nav.
+     blog/episodes: sponsorship + subscribe + Read This + comments.
+     standalone pages: sponsorship + comments (live parity). */}}
+{{ $afdian := site.Params.afdian | default "https://afdian.com/a/xiaowenz" }}
+{{ $isEntry := in (slice "blog" "episodes") .Section }}
+
+<div class="entry-section sponsorship">
+  <div class="inner">
+    <a href="{{ $afdian }}" class="afdian" target="_blank" rel="noopener">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+      <span>去爱发电上赞助</span>
+    </a>
+  </div>
+</div>
+
+{{ if $isEntry }}
+  {{ partial "subscribe-form.html" . }}
+
+  {{ with .PrevInSection }}
+    <section class="entry-section prev-subject">
+      <div class="inner">
+        <h2>Read This</h2>
+        <div class="item" lang="zh">
+          <a class="item-main" href="{{ partial "util/canonical-url.html" . | relURL }}">
+            <h3>{{ .Title }}</h3>
+            {{ with .Params.subtitle }}
+              <div class="item-subtitle">{{ . }}</div>
+            {{ end }}
+          </a>
+        </div>
+      </div>
+    </section>
+  {{ end }}
+{{ end }}
+
+{{ partial "comments.html" . }}

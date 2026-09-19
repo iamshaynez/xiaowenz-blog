@@ -1,0 +1,119 @@
+{{/* episodes-show.html — the podcast show page body (shared by layouts/episodes/list.html
+     and the episodes branch of _default/year.html).
+     input: dict "page" Page (context) "items" Pages (episodes, date desc). */}}
+{{ $page := .page }}
+{{ $items := .items }}
+{{ $params := site.Params }}
+{{ $podcast := $params.podcast | default dict }}
+{{ $author := $podcast.author | default ($params.author | default "Xiaowen Zhang") }}
+{{ $count := len $items }}
+{{ $cats := $podcast.categories | default (slice) }}
+{{ $firstCat := "" }}
+{{ if gt (len $cats) 0 }}
+  {{ $firstCat = index $cats 0 }}
+  {{ if strings.Contains $firstCat ":" }}{{ $firstCat = index (split $firstCat ":") 0 }}{{ end }}
+{{ end }}
+
+<div class="container">
+  {{/* —— 播客列表：杂志刊头 + 单集行卡 —— */}}
+  <header class="podcast-show">
+    <div class="masthead-bar">
+      <span><span class="masthead-bar__red">PODCAST</span></span>
+      <span>episodes</span>
+      <span>{{ $count }} 集</span>
+    </div>
+
+    <div class="podcast-show__layout">
+      {{ with $podcast.image }}
+        <div class="podcast-show__art" aria-hidden="true">
+          <img src="{{ . }}" alt="">
+        </div>
+      {{ end }}
+
+      <div class="podcast-show__body">
+        <div class="podcast-show__eyebrow">
+          <span class="hero__eyebrow-line" aria-hidden="true"></span>
+          <span class="section-index">本期节目</span>
+        </div>
+        <h1 class="podcast-show__title display">
+          {{ $podcast.title | default $page.Title }}
+        </h1>
+        {{ with $podcast.subtitle }}
+          {{ if ne . $page.Title }}<p class="podcast-show__subtitle">{{ . }}</p>{{ end }}
+        {{ end }}
+        {{ with $params.description }}
+          <p class="podcast-show__desc">{{ . }}</p>
+        {{ end }}
+        <div class="podcast-show__meta meta">
+          {{ with $author }}
+            <span>{{ . }}</span>
+          {{ end }}
+          {{ if gt $count 0 }}
+            {{ if $author }}<span class="dot" aria-hidden="true"></span>{{ end }}
+            <span>{{ $count }} 集</span>
+          {{ end }}
+          {{ with $firstCat }}
+            <span class="dot" aria-hidden="true"></span>
+            <span>{{ . }}</span>
+          {{ end }}
+        </div>
+        <ul class="podcast-show__links">
+          <li>
+            <a class="tag" href="{{ "/episodes/" | relURL }}">
+              本站播客
+            </a>
+          </li>
+          {{ with $podcast.spotify }}
+            <li>
+              <a class="tag" href="{{ . }}" target="_blank" rel="noopener">
+                Spotify
+              </a>
+            </li>
+          {{ end }}
+          {{ with $podcast.apple }}
+            <li>
+              <a class="tag" href="{{ . }}" target="_blank" rel="noopener">
+                Apple Podcast
+              </a>
+            </li>
+          {{ end }}
+          {{ with $podcast.xiaoyuzhou }}
+            <li>
+              <a class="tag" href="{{ . }}" target="_blank" rel="noopener">
+                小宇宙
+              </a>
+            </li>
+          {{ end }}
+          {{ with $podcast.netease }}
+            <li>
+              <a class="tag" href="{{ . }}" target="_blank" rel="noopener">
+                网易云音乐
+              </a>
+            </li>
+          {{ end }}
+          <li>
+            <a class="tag" href="{{ "feed/audio.xml" | relURL }}">
+              RSS
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  {{ if $items }}
+    <section class="ep-list" aria-label="节目列表">
+      <div class="section-head">
+        <div class="section-head__title">
+          <span class="section-index">EP</span>
+          <h2>节目单</h2>
+        </div>
+      </div>
+      {{ range $i, $p := $items }}
+        {{ partial "card.html" (dict "post" $p "style" "episode" "index" (add $i 1)) }}
+      {{ end }}
+    </section>
+  {{ else }}
+    <div class="empty-state">暂无节目</div>
+  {{ end }}
+</div>

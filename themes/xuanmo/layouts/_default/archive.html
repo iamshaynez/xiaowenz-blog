@@ -1,0 +1,71 @@
+{{ define "main" }}
+{{/* archive.html — /archive/YYYY/ stubs (layout: archive). That year's blog posts, uniform grid.
+     h1 is the constant "Archive" (live parity: /archive/2025/ shows h1 "Archive"). */}}
+{{ $year := partial "util/year-of.html" . }}
+{{ $posts := (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
+{{ $posts = where $posts "Date.Year" $year }}
+
+{{ $years := slice }}
+{{ range where .Site.RegularPages "Section" "blog" }}
+  {{ $y := .Date.Year }}
+  {{ if not (in $years $y) }}{{ $years = $years | append $y }}{{ end }}
+{{ end }}
+{{ $years = sort $years "value" "desc" }}
+{{ $pos := -1 }}
+{{ range $i, $y := $years }}{{ if eq $y $year }}{{ $pos = $i }}{{ end }}{{ end }}
+{{ $newer := 0 }}{{ $older := 0 }}
+{{ if gt $pos 0 }}{{ $newer = index $years (sub $pos 1) }}{{ end }}
+{{ if and (ge $pos 0) (lt $pos (sub (len $years) 1)) }}{{ $older = index $years (add $pos 1) }}{{ end }}
+
+<div class="container">
+  <header class="page-header">
+    <div class="masthead-bar">
+      <span><span class="masthead-bar__red">LIST</span></span>
+      <span>archive</span>
+      <span>{{ len $posts }} 篇</span>
+    </div>
+
+    <h1 class="page-header__title display">Archive</h1>
+
+    {{ with .Site.Params.description }}
+      <p class="page-header__desc">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  {{ if $posts }}
+    <div class="post-grid post-grid--uniform">
+      {{ range $i, $p := $posts }}
+        {{ partial "card.html" (dict "post" $p "style" "plain" "index" (add $i 1)) }}
+      {{ end }}
+    </div>
+  {{ else }}
+    <div class="empty-state">暂无内容</div>
+  {{ end }}
+
+  {{ if or $older $newer }}
+    <nav class="year-nav" aria-label="年份导航">
+      {{ if $older }}
+        {{ $stub := .Site.GetPage (printf "/archive/%d" $older) }}
+        {{ if $stub }}
+          <a href="{{ partial "util/canonical-url.html" $stub | relURL }}" rel="prev">← {{ $older }}</a>
+        {{ else }}
+          <span style="opacity:.35">←</span>
+        {{ end }}
+      {{ else }}
+        <span style="opacity:.35">←</span>
+      {{ end }}
+      <span class="year-nav__current">Archive</span>
+      {{ if $newer }}
+        {{ $stub := .Site.GetPage (printf "/archive/%d" $newer) }}
+        {{ if $stub }}
+          <a href="{{ partial "util/canonical-url.html" $stub | relURL }}" rel="next">{{ $newer }} →</a>
+        {{ else }}
+          <span style="opacity:.35">→</span>
+        {{ end }}
+      {{ else }}
+        <span style="opacity:.35">→</span>
+      {{ end }}
+    </nav>
+  {{ end }}
+</div>
+{{ end }}

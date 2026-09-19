@@ -1,0 +1,121 @@
+{{/* head.html — full <head> contents. Mirrors live xiaowenz.com head structure. */}}
+{{ $site := .Site }}
+{{ $params := $site.Params }}
+{{ $podcast := $params.podcast | default dict }}
+{{ $author := $params.author | default "Xiaowen Zhang" }}
+{{ $icon := "apple-touch-icon.jpg" | absURL }}
+{{ $isEpisode := and .IsPage (eq .Section "episodes") }}
+{{ $isEntry := and .IsPage (in (slice "blog" "episodes") .Section) }}
+{{ $canon := partial "util/canonical-url.html" . }}
+
+{{/* —— title (archive stubs render as "Archive - site", matching live) —— */}}
+{{ $title := $site.Title }}
+{{ if not .IsHome }}
+  {{ $titlePage := .Title }}
+  {{ if eq .Params.layout "archive" }}{{ $titlePage = "Archive" }}{{ end }}
+  {{ $title = printf "%s - %s" $titlePage $site.Title }}
+{{ end }}
+
+{{/* —— description —— */}}
+{{ $desc := $params.description | default "" }}
+{{ if .IsPage }}
+  {{ if .Params.subtitle }}
+    {{ $desc = .Params.subtitle }}
+  {{ else if .Params.description }}
+    {{ $desc = .Params.description }}
+  {{ else }}
+    {{ $desc = .Summary | plainify | truncate 160 }}
+  {{ end }}
+{{ else }}
+  {{ with .Params.description }}{{ $desc = . }}{{ end }}
+{{ end }}
+{{ if not $desc }}{{ $desc = $params.description | default "" }}{{ end }}
+
+{{/* —— og image —— */}}
+{{ $cover := partial "util/cover.html" . }}
+{{ $ogImage := $icon }}
+{{ if $cover }}
+  {{ $ogImage = $cover | absURL }}
+{{ else if $isEpisode }}
+  {{ with $podcast.image }}{{ $ogImage = . }}{{ end }}
+{{ end }}
+
+{{/* —— audio (episodes) —— */}}
+{{ $audioURL := "" }}
+{{ $dur := dict }}
+{{ if $isEpisode }}
+  {{ with .Params.audio_slug }}{{ $audioURL = printf "%s%s.mp3" ($params.audioBase | default "") . }}{{ end }}
+  {{ with .Params.audio_duration }}{{ $dur = partial "util/duration.html" . }}{{ end }}
+{{ end }}
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+<meta name="generator" content="Hugo {{ hugo.Version }}">
+<meta name="theme" content="xuanmo 1.0.0 (玄墨, ported from xiaowenyf 0.2.0)">
+<link rel="icon" type="image/jpeg" href="{{ "favicon.jpg" | relURL }}">
+<link rel="apple-touch-icon" href="{{ "apple-touch-icon.jpg" | relURL }}">
+<title>{{ $title }}</title>
+{{ with $desc }}<meta name="description" content="{{ . }}">
+{{ end -}}
+{{ if .IsPage }}<meta name="page:type" content="{{ cond $isEpisode "audio" (cond (eq .Section "blog") "post" "page") }}">
+{{ end -}}
+<link rel="canonical" href="{{ $canon }}">
+<link rel="alternate" type="application/atom+xml" title="{{ $site.Title }} - RSS Feed" href="{{ "feed.xml" | absURL }}">
+<link rel="alternate" type="application/atom+xml" title="{{ $podcast.title | default $site.Title }} - Podcast RSS Feed" href="{{ "feed/audio.xml" | absURL }}">
+<meta property="og:site_name" content="{{ $site.Title }}">
+<meta property="og:type" content="{{ cond .IsPage "article" "website" }}">
+<meta property="og:title" content="{{ cond .IsHome $site.Title .Title }}">
+{{ with $desc }}<meta property="og:description" content="{{ . }}">
+{{ end -}}
+<meta property="og:url" content="{{ $canon }}">
+<meta property="og:image" content="{{ $ogImage }}">
+{{ if $audioURL }}<meta property="og:audio" content="{{ $audioURL }}">
+{{ with $dur.seconds }}<meta property="music:duration" content="{{ . }}">
+{{ end }}{{ end -}}
+<meta name="twitter:card" content="{{ cond (and .IsPage (eq .Section "blog") (gt (len $cover) 0)) "summary_large_image" "summary" }}">
+{{ if $isEpisode }}
+<script type="application/ld+json">
+  {{ $ld := dict
+    "@context" "https://schema.org/"
+    "@type" "PodcastEpisode"
+    "url" $canon
+    "name" .Title
+    "datePublished" (.Date.UTC.Format "2006-01-02T15:04:05Z")
+    "description" $desc
+  }}
+  {{ with $dur.iso8601 }}{{ $ld = merge $ld (dict "timeRequired" .) }}{{ end }}
+  {{ with .Params.season }}{{ $ld = merge $ld (dict "seasonNumber" (int .)) }}{{ end }}
+  {{ with .Params.episode }}{{ $ld = merge $ld (dict "episodeNumber" (int .)) }}{{ end }}
+  {{ if $audioURL }}{{ $ld = merge $ld (dict "associatedMedia" (dict "@type" "MediaObject" "contentUrl" $audioURL)) }}{{ end }}
+  {{ $ld | jsonify | safeJS }}
+</script>
+{{ else if and .IsPage (eq .Section "blog") }}
+<script type="application/ld+json">
+  {{ $ld := dict
+    "@context" "https://schema.org/"
+    "@type" "Article"
+    "headline" .Title
+    "datePublished" (.Date.UTC.Format "2006-01-02T15:04:05Z")
+    "dateModified" (.Lastmod.UTC.Format "2006-01-02T15:04:05Z")
+    "author" (dict "@type" "Person" "name" $author)
+    "image" $ogImage
+    "mainEntityOfPage" (dict "@type" "WebPage" "@id" $canon)
+    "publisher" (dict "@type" "Organization" "name" $site.Title "url" $site.BaseURL "logo" (dict "@type" "ImageObject" "url" $icon))
+  }}
+  {{ $ld | jsonify | safeJS }}
+</script>
+{{ end -}}
+{{ with $params.gaID }}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ . }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', '{{ . }}');
+</script>
+{{ end -}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F1F1EF">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="{{ "css/app.css" | relURL }}">
+<link rel="stylesheet" href="{{ "css/hugo-extra.css" | relURL }}">

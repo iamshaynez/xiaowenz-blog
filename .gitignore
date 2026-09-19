@@ -8,3 +8,11 @@ themes/hugo-theme-stack/*
 __pycache__
 .frontmatter
 .venv
+# v3 rebuild
+public/
+resources/_gen/
+.hugo_build.lock
+media-sync/
+node_modules/
+pagefind*
+.DS_Store

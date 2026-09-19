@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+  <link rel="preconnect" href="https://typlog.com/">
+  <link rel="preconnect" href="https://s.typlog.com/">
+  <link rel="preconnect" href="https://i.typlog.com/">
+  <meta name="generator" content="Typlog 3.1">
+  <meta name="provider" content="https://typlog.com">
+    <meta name="theme" content="xiaowenyf 0.2.0">
+    <link rel="icon" type="image/png" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss">
+    <link rel="apple-touch-icon" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+  <title>开发一个Poe Server Bot的例子 - 三杯过后 | Xiaowen.Z Deployed</title>
+  <meta name="description" content="Poe 是什么 虽然 ChatGPT 是生成式 AI 的领头羊，但我个人的 AI 订阅，过去一年一直是 Quora 旗下的 Poe。因为你可以用同样的订阅费用，使用世界上几乎所有的最新的模型，闭源，开源，都有。 详见Poe 尝试创建一个 P...">
+  <meta name="page:id" content="85939">
+  <meta name="page:slug" content="poe-server-bot-example">
+  <meta name="page:type" content="post">
+      <link rel="amphtml" href="https://xiaowenz.com/amp/85939">
+    <link rel="webmention" href="https://typlog.com/s/xiaowenz/webmention">
+  <link rel="canonical" href="https://xiaowenz.com/blog/poe-server-bot-example.html">
+  <meta property="og:site_name" content="三杯过后 | Xiaowen.Z Deployed">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="开发一个Poe Server Bot的例子">
+  <meta property="og:description" content="Poe 是什么 虽然 ChatGPT 是生成式 AI 的领头羊，但我个人的 AI 订阅，过去一年一直是 Quora 旗下的 Poe。因为你可以用同样的订阅费用，使用世界上几乎所有的最新的模型，闭源，开源，都有。 详见Poe 尝试创建一个 P...">
+  <meta property="og:url" content="https://xiaowenz.com/blog/poe-server-bot-example.html">
+    <meta property="og:image" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss">
+    <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@typlog">
+  <script>SITE={"active": true, "algolia_id": "9X73WK7G3L", "algolia_key": "95e5a920d7081c87c0d57b1fbe5920d6", "base_url": "https://xiaowenz.com/", "icon": "https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss", "id": 4810, "level": "pro", "name": "\u4e09\u676f\u8fc7\u540e | Xiaowen.Z Deployed", "slug": "xiaowenz", "socials": {"behance": "", "email": "xiaowen.z@outlook.com", "github": "iamshaynez", "instagram": "", "linkedin": "zhangxiaowen", "telegram": "", "twitter": "ixiaowenz", "unsplash": "", "vsco": "", "weibo": "", "zhihu": null}, "subscriber": true}</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T4RZQ5V58"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-7T4RZQ5V58');
+    </script>
+<link rel="stylesheet" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.css">  <style>:root{ --t-rc-primary:0,0,0;--primary-color-hex:#000;--primary-color-rgb:0,0,0;--t-on-primary:255,255,255;--primary-text-rgb:255,255,255;--t-rc-secondary:255,255,255;--secondary-color-hex:#fff;--secondary-color-rgb:255,255,255;--t-on-secondary:0,0,0;--secondary-text-rgb:0,0,0 }</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F1F1EF">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/css/app.css">
+
+  <link rel="preload" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js" as="script">
+</head>
+<body>
+
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="site-header site-header--hybrid">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/" aria-label="三杯过后 | Xiaowen.Z Deployed">
+      <span class="site-brand__mark" aria-hidden="true">酒</span>
+      <span class="site-brand__text">三杯过后 | Xiaowen.Z Deployed</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <ul class="site-nav__list">
+
+            <li>
+              <a class="site-nav__link" href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="https://xiaowenz.com/episodes/">
+                本站播客
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/read-books">
+                Read
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/tags/newsletter/">
+                Newsletter
+              </a>
+            </li>
+
+          <li class="site-nav__more">
+            <button
+              type="button"
+              class="site-nav__link site-nav__more-btn"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="nav-more-menu"
+              id="nav-more-btn"
+            >
+              更多
+              <span class="site-nav__more-caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-more-menu" role="menu" hidden>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/run-a-uk-company">
+                      UK Company
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/service-and-afdian">
+                      Service 和爱发电
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/business-reports">
+                      Business 商业分析
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/about">
+                      About
+                    </a>
+                  </li>
+                <li class="site-nav__dropdown-sep" role="separator" aria-hidden="true"></li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://xiaowenz.com/episodes/">
+                    本站播客
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                    Spotify
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                    Apple Podcast
+                  </a>
+                </li>
+            </ul>
+          </li>
+
+          <li>
+            <button type="button" class="site-nav__link js-search" aria-label="搜索">搜索</button>
+          </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="site-main" id="main">
+
+
+  <article class="container article h-entry" itemscope itemtype="http://schema.org/Article">
+    <header class="article__header">
+      <div class="article__eyebrow">
+        <span class="hero__eyebrow-line" aria-hidden="true"></span>
+          <span class="section-index">
+            <a href="/tags/technology/" style="color:inherit">科技</a>
+          </span>
+      </div>
+
+      <h1 class="article__title p-name" itemprop="headline">开发一个Poe Server Bot的例子</h1>
+
+        <p class="article__lead lead p-summary">距离 ChatGPT 发布所标志着的人工智能卖过金线，已经一年多了。这一年里，借助各方 AI 模型的能力和蛮力，我做了很多过去的自己一定做不到的事儿。</p>
+
+      <div class="article__meta-row meta">
+          <time class="dt-published" datetime="2024-03-03T10:41:08Z" itemprop="datePublished">
+            2024.03.03
+          </time>
+          <span class="dot" aria-hidden="true"></span>
+          <span>
+              <a href="/by/xiaowenz/" class="p-author">Xiaowen Zhang</a>          </span>
+      </div>
+    </header>
+
+
+
+    <div class="article__body prose e-content js-content" itemprop="articleBody">
+          <h2>Poe 是什么</h2>
+<p>虽然 ChatGPT 是生成式 AI 的领头羊，但我个人的 AI 订阅，过去一年一直是 Quora 旗下的 Poe。因为你可以用同样的订阅费用，使用世界上几乎所有的最新的模型，闭源，开源，都有。</p>
+<div class="blockquote"><blockquote><p>详见<a href="https://poe.com">Poe</a></p>
+</blockquote></div>
+<h2>尝试创建一个 Poe Server Bot</h2>
+<p>Poe 提供了可编程的 Server Bot，可以让你更容易的调用所有 Poe 生态里的ChatBot，包括官方提供的模型，和基于官方模型的定制化模型。官方文档在<a href="https://creator.poe.com/">这里</a></p>
+<p>也就是说，你可以用代码把这些 Bot 作为可随时调用的资源，「串」起一个带有定制逻辑的聊天机器人来。</p>
+<p>在通过不同渠道反馈了很多次后，@poe_platform 终于修好了一个很基础的 SDK 问题……我的 Bot 才总算是跑起来了。</p>
+<h2>Meme-Creator-Bot</h2>
+<div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2024/03/03/F1P3bnuY95IlRvz.png" type="image/webp"><img src="https://cdn.sa.net/2024/03/03/F1P3bnuY95IlRvz.png" alt="image.png"loading="lazy" decoding="async" width="1200" height="677" /></picture></figure></div><p>尝试创建了一个简单的讲笑话的机器人。这个机器人会根据你提供的任何话题，创作一段 meme quote，并使用画图机器人画一张配图给你。</p>
+<p>使用方法很简单，不赘述。</p>
+<p><strong>设计逻辑：</strong></p>
+<ul>
+<li>接受用户提供的任何一个「话题」</li>
+<li>用一个 LLM 来创造一个 meme 的傻句子，并提供一个配合这个句子的图片描述。</li>
+<li>把图片描述进一步转发到 ImageModel，生成一张图片出来。</li>
+<li>把这句 meme 和图片都渲染给用户。</li>
+</ul>
+<p><strong>Poe 的优势</strong></p>
+<p>理论上，这个序列里的 LLM 和 ImageModel 可以替换成任何一个 Poe 生态里可调用的模型。</p>
+<ul>
+<li>LLM：GPT3.5，GPT4，Claude, Mistral, Gemini</li>
+<li>Image: StableDiffusionXL, Playground-V2.5, DALLE3</li>
+</ul>
+<p>Poe 会根据这个声明，自动计算用户使用这个 Bot 的总成本并扣除使用用户对应的点数。因此，如果按照当前的定价，最贵的是 Claude + DALLE3 的组合。</p>
+<p>我当前选择了 Mistral-Large + Playground-V2.5，一共 205 分一次，约等于不要钱。</p>
+<p>最终的交互图如下（下面的序列图使用内部未发布的新版 @ZenUML 创建）</p>
+<div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2024/03/03/wqYEPDy7s5Mhb1Z.png" type="image/webp"><img src="https://cdn.sa.net/2024/03/03/wqYEPDy7s5Mhb1Z.png" alt="image.png"loading="lazy" decoding="async" width="1200" height="833" /></picture></figure></div><h2>部署 Deployment</h2>
+<p>Poe 官方推荐使用 Python 语言，并提供了 SDK 更好的集成和部署到 <a href="https://modal.com/">@modal_labs</a> 。</p>
+<div class="photo"><figure><picture><img src="https://cdn.sa.net/2024/03/03/CQ7rS5OAUXKVPHW.png" alt="image.png"loading="lazy" decoding="async" width="2510" height="656" /></picture></figure></div><p>因此，本质上可作为无状态的 Serverless Python App 在后台运行，无需开发者自己提供服务器和管理后端资源，很方便。</p>
+<p>Modal 提供每个月 30 美元的免费额度，目前看起来可以支撑不小的调用次数，约等于不要钱。</p>
+<h2>最终的效果</h2>
+<p>如图：</p>
+<div class="photo"><figure><picture><source srcset="https://cdn.sa.net/2024/03/03/ecRZTnNhC6HgfOI.png" type="image/webp"><img src="https://cdn.sa.net/2024/03/03/ecRZTnNhC6HgfOI.png" alt="image.png"loading="lazy" decoding="async" width="1044" height="1200" /></picture></figure></div><p>当个有趣的玩具，还是不错的。Poe 最大的优势，还是在于订阅后在一个 Credit 的池子里，让你可以使用到这个世界上大部分的模型，对大部分个人使用者来说，虽然便利性和时效性弱于订阅 ChatGPT Plus，却也提供了更多可能（比如你也许没有 Claude 开发者 API 权限，也不一定想充钱，但 Poe 生态里你已经可以当成所有模型都有 API 调用的能力来构建产品了）。</p>
+<h2>最后</h2>
+<p>有点啰嗦，感谢你读完。</p>
+<p>代码在这里：<a href="https://github.com/iamshaynez/poe-bot-master/blob/main/memes_creator.py">https://github.com/iamshaynez/poe-bot-master/blob/main/memes_creator.py</a></p>
+
+    
+      <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+      <meta itemprop="width" content="768">
+      <meta itemprop="height" content="768">
+    </div>
+    <meta itemprop="dateModified" content="2026-02-21T08:29:44Z"/>
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+        <meta itemprop="width" content="768">
+        <meta itemprop="height" content="768">
+      </div>
+    <meta itemprop="name" content="三杯过后 | Xiaowen.Z Deployed"/>
+    <meta itemprop="url" content="https://xiaowenz.com/"/>
+  </div>
+
+
+    </div>
+
+    <footer class="article__footer">
+        <ul class="tag-list">
+            <li>
+              <a class="tag p-category" href="/tags/technology/">科技</a>
+            </li>
+        </ul>
+
+        <div class="article__actions" style="margin-top: var(--space-6);">
+<div class="entry-enjoy">
+  <button class="enjoy js-enjoy">Enjoy</button>
+</div>
+<div class="entry-share">
+  <a class="js-share" data-type="tw" href="#" aria-label="Share to Twitter"><i class="icon icon-twitter"></i></a>
+    <a class="js-share" data-type="wb" href="#" aria-label="分享到微博"><i class="icon icon-weibo"></i></a>
+    <a class="js-share" data-type="wx" href="#" aria-label="分享到微信"><i class="icon icon-wechat"></i></a>
+  <a class="js-share" data-type="tg" href="#" aria-label="Share to Telegram">
+    <i class="icon icon-telegram"></i></a>
+</div>        </div>
+
+        <nav class="post-nav" aria-label="文章导航">
+            <a class="nav-card" href="/blog/one-year-after-chatgpt-generative-ai.html">
+              <span class="nav-card__label">← 上一篇</span>
+              <span class="nav-card__title">生成式 AI 爆发的一年后……</span>
+            </a>
+            <a class="nav-card nav-card--next" href="/blog/business-made-simple-and-sales-story-bot.html">
+              <span class="nav-card__label">下一篇 →</span>
+              <span class="nav-card__title">《商业至简》和人工智能销售机器人。</span>
+            </a>
+        </nav>
+
+
+  <div class="entry-section sponsorship">
+    <div class="inner">
+        <a href="https://afdian.com/a/xiaowenz" class="afdian">
+          <i class="icon icon-afdian"></i>
+          <span>去爱发电上赞助</span>
+        </a>
+    </div>
+  </div>
+
+  <section class="entry-section subscribe">
+    <div class="inner">
+      <h2>Subscribe</h2>
+      <form method="post" class="js-subscribe">
+        <input name="name" placeholder="Your name">
+        <input name="email" type="email" placeholder="Your email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+    <section class="entry-section prev-subject">
+      <div class="inner">
+          <h2>Read This</h2>
+          <div class="item" lang="zh">
+            <a class="item-main" href="/blog/one-year-after-chatgpt-generative-ai.html">
+              <h3>生成式 AI 爆发的一年后……</h3>
+                <div class="item-subtitle">距离 ChatGPT 发布所标志着的人工智能卖过金线，已经一年多了。这一年里，借助各方 AI 模型的能力和蛮力，我做了很多过去的自己一定做不到的事儿。</div>
+            </a>
+          </div>
+      </div>
+    </section>
+
+  <section class="entry-section comment">
+    <div class="inner">
+        <div id="comment_thread"></div>
+    </div>
+  </section>
+    </footer>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div>
+        <div class="site-footer__brand">三杯过后 | Xiaowen.Z Deployed</div>
+        <p class="site-footer__desc">新的博客设计来自 Grok + Kimi，以杂志的版式重新想象博客：强反差字号、克制的红色点睛、每一次点击都有回应。</p>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">导航</div>
+        <ul class="site-footer__links">
+          <li><a href="/">首页</a></li>
+              <li>
+                <a href="/">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="/read-books">
+                  Read
+                </a>
+              </li>
+              <li>
+                <a href="/tags/newsletter/">
+                  Newsletter
+                </a>
+              </li>
+              <li>
+                <a href="/run-a-uk-company">
+                  UK Company
+                </a>
+              </li>
+              <li>
+                <a href="/service-and-afdian">
+                  Service 和爱发电
+                </a>
+              </li>
+              <li>
+                <a href="/business-reports">
+                  Business 商业分析
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                  Spotify
+                </a>
+              </li>
+              <li>
+                <a href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                  Apple Podcast
+                </a>
+              </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">社交</div>
+        <ul class="site-footer__links">
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>
+        © 三杯过后 | Xiaowen.Z Deployed
+ · {&#39;key&#39;: &#39;cc.by-nc-sa&#39;, &#39;title&#39;: &#39;Attribution-NonCommercial-ShareAlike&#39;}      </span>
+      <span>
+        以 <span class="site-footer__red">冷漆红</span> 点睛 · 玄墨主题
+      </span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<div class="typlog-foot">
+  <div>Powered by <a class="title" href="https://typlog.com/?utm_source=xiaowenz&utm_medium=foot">Typlog</a></div>
+</div><script async src="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js"></script>  <script src="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/js/main.js" defer></script>
+</body>
+</html>

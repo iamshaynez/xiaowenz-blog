@@ -1,0 +1,16 @@
+name = "xuanmo"
+license = "MIT"
+licenselink = "https://github.com/iamshaynez/typlog-theme-xiaowenyf/blob/main/LICENSE"
+description = "玄墨 · 中文杂志感 Hugo 主题。冷灰底、玄黑字、冷漆红点睛。Ported from the Typlog theme xiaowenyf (玄墨)."
+homepage = "https://xiaowenz.com/"
+tags = ["blog", "magazine", "chinese", "minimal", "typography", "podcast"]
+features = ["podcast", "rss", "itunes-feed", "comments", "subscribe"]
+min_version = "0.164.0"
+
+[author]
+  name = "xiaowenz"
+  homepage = "https://xiaowenz.com/"
+
+[original]
+  name = "xiaowenyf (玄墨) for Typlog"
+  repo = "https://github.com/iamshaynez/typlog-theme-xiaowenyf"

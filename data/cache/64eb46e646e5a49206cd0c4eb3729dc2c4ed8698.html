@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover">
+  <link rel="preconnect" href="https://typlog.com/">
+  <link rel="preconnect" href="https://s.typlog.com/">
+  <link rel="preconnect" href="https://i.typlog.com/">
+  <meta name="generator" content="Typlog 3.1">
+  <meta name="provider" content="https://typlog.com">
+    <meta name="theme" content="xiaowenyf 0.2.0">
+    <link rel="icon" type="image/png" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss">
+    <link rel="apple-touch-icon" href="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+  <title>感知生成式 AI。 - 三杯过后 | Xiaowen.Z Deployed</title>
+  <meta name="description" content="AI 是啥 和很多朋友聊天的时候，我发现即使是很多软件行业从业者，对生成式 AI 的原理其实也几乎完全没有感知。人们一直都知道机器学习，神经网络这类词汇，但这玩意究竟如何工作，其实很难一言蔽之。 当前是 2023 年，实际上，虽然很多人把 ...">
+  <meta name="page:id" content="85920">
+  <meta name="page:slug" content="get-a-feeling-on-aigc">
+  <meta name="page:type" content="post">
+      <link rel="amphtml" href="https://xiaowenz.com/amp/85920">
+    <link rel="webmention" href="https://typlog.com/s/xiaowenz/webmention">
+  <link rel="canonical" href="https://xiaowenz.com/blog/get-a-feeling-on-aigc.html">
+  <meta property="og:site_name" content="三杯过后 | Xiaowen.Z Deployed">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="感知生成式 AI。">
+  <meta property="og:description" content="AI 是啥 和很多朋友聊天的时候，我发现即使是很多软件行业从业者，对生成式 AI 的原理其实也几乎完全没有感知。人们一直都知道机器学习，神经网络这类词汇，但这玩意究竟如何工作，其实很难一言蔽之。 当前是 2023 年，实际上，虽然很多人把 ...">
+  <meta property="og:url" content="https://xiaowenz.com/blog/get-a-feeling-on-aigc.html">
+    <meta property="og:image" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss">
+    <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@typlog">
+  <script>SITE={"active": true, "algolia_id": "9X73WK7G3L", "algolia_key": "95e5a920d7081c87c0d57b1fbe5920d6", "base_url": "https://xiaowenz.com/", "icon": "https://i.typlog.com/xiaowenz/8228500561_863045.jpg?x-oss-process=style/ss", "id": 4810, "level": "pro", "name": "\u4e09\u676f\u8fc7\u540e | Xiaowen.Z Deployed", "slug": "xiaowenz", "socials": {"behance": "", "email": "xiaowen.z@outlook.com", "github": "iamshaynez", "instagram": "", "linkedin": "zhangxiaowen", "telegram": "", "twitter": "ixiaowenz", "unsplash": "", "vsco": "", "weibo": "", "zhihu": null}, "subscriber": true}</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7T4RZQ5V58"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}gtag('js', new Date());gtag('config', 'G-7T4RZQ5V58');
+    </script>
+<link rel="stylesheet" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.css">  <style>:root{ --t-rc-primary:0,0,0;--primary-color-hex:#000;--primary-color-rgb:0,0,0;--t-on-primary:255,255,255;--primary-text-rgb:255,255,255;--t-rc-secondary:255,255,255;--secondary-color-hex:#fff;--secondary-color-rgb:255,255,255;--t-on-secondary:0,0,0;--secondary-text-rgb:0,0,0 }</style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#F1F1EF">
+<meta name="color-scheme" content="light">
+<link rel="stylesheet" href="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/css/app.css">
+
+  <link rel="preload" href="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js" as="script">
+</head>
+<body>
+
+<div class="reading-progress" aria-hidden="true"></div>
+<header class="site-header site-header--hybrid">
+  <div class="site-header__inner">
+    <a class="site-brand" href="/" aria-label="三杯过后 | Xiaowen.Z Deployed">
+      <span class="site-brand__mark" aria-hidden="true">酒</span>
+      <span class="site-brand__text">三杯过后 | Xiaowen.Z Deployed</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-label="打开菜单" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle__bars" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+    </button>
+
+    <nav class="site-nav" id="site-nav" aria-label="主导航">
+      <ul class="site-nav__list">
+
+            <li>
+              <a class="site-nav__link" href="/">
+                Home
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="https://xiaowenz.com/episodes/">
+                本站播客
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/read-books">
+                Read
+              </a>
+            </li>
+            <li>
+              <a class="site-nav__link" href="/tags/newsletter/">
+                Newsletter
+              </a>
+            </li>
+
+          <li class="site-nav__more">
+            <button
+              type="button"
+              class="site-nav__link site-nav__more-btn"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-controls="nav-more-menu"
+              id="nav-more-btn"
+            >
+              更多
+              <span class="site-nav__more-caret" aria-hidden="true"></span>
+            </button>
+            <ul class="site-nav__dropdown" id="nav-more-menu" role="menu" hidden>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/run-a-uk-company">
+                      UK Company
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/service-and-afdian">
+                      Service 和爱发电
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/business-reports">
+                      Business 商业分析
+                    </a>
+                  </li>
+                  <li role="none">
+                    <a class="site-nav__dropdown-link" role="menuitem" href="/about">
+                      About
+                    </a>
+                  </li>
+                <li class="site-nav__dropdown-sep" role="separator" aria-hidden="true"></li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://xiaowenz.com/episodes/">
+                    本站播客
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                    Spotify
+                  </a>
+                </li>
+                <li role="none">
+                  <a class="site-nav__dropdown-link site-nav__dropdown-link--secondary" role="menuitem" href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                    Apple Podcast
+                  </a>
+                </li>
+            </ul>
+          </li>
+
+          <li>
+            <button type="button" class="site-nav__link js-search" aria-label="搜索">搜索</button>
+          </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+<main class="site-main" id="main">
+
+
+  <article class="container article h-entry" itemscope itemtype="http://schema.org/Article">
+    <header class="article__header">
+      <div class="article__eyebrow">
+        <span class="hero__eyebrow-line" aria-hidden="true"></span>
+          <span class="section-index">
+            <a href="/tags/think/" style="color:inherit">思考</a>
+          </span>
+      </div>
+
+      <h1 class="article__title p-name" itemprop="headline">感知生成式 AI。</h1>
+
+
+      <div class="article__meta-row meta">
+          <time class="dt-published" datetime="2023-08-15T09:25:27Z" itemprop="datePublished">
+            2023.08.15
+          </time>
+          <span class="dot" aria-hidden="true"></span>
+          <span>
+              <a href="/by/xiaowenz/" class="p-author">Xiaowen Zhang</a>          </span>
+      </div>
+    </header>
+
+
+
+    <div class="article__body prose e-content js-content" itemprop="articleBody">
+          <h2>AI 是啥</h2>
+<p>和很多朋友聊天的时候，我发现即使是很多软件行业从业者，对生成式 AI 的原理其实也几乎完全没有感知。人们一直都知道机器学习，神经网络这类词汇，但这玩意究竟如何工作，其实很难一言蔽之。</p>
+<p>当前是 2023 年，实际上，虽然很多人把 2022 年作为 AI 元年，如今并不长的一段时间后，大模型的热度已经逐渐冷却，人们意识到大模型的局限，算力的匮乏，以及对应的落地场景竟然比想象中的少而困难，创业团队们也开始把风口逐渐的转向专精的小模型们，专精的场景。</p>
+<p>但大模型终究还是出来了，也真的产生了不可估量的价值，但由于其运行原理的特殊性，竟然诞生出了 Prompt 工程师这样神奇的岗位。Prompt 工程师本质上就是比你更懂模型原理的人，用看起来啰嗦而反复的「咒语」，让愚笨的大模型吐（生成）出更精确的答案。</p>
+<p>所以，我始终觉得，如何你希望更好的使用这些已经存在模型，你并不需要是 AI 行业的直接从业者，定性（区分于定量）的理解仍然可以很有用。</p>
+<h2>路径</h2>
+<p>我个人推荐的路径大概是这样的，难度由难到简，其实符合很多知识的学习曲线，入个大门槛有点辛苦，但之后的路会特别开阔。</p>
+<h3>Coursera 课程 - Neural Networks and Deep Learning</h3>
+<div class="photo"><figure><picture><img src="https://vip2.loli.io/2023/08/15/cR9rFb62zmy7Aqa.png" alt="image.png" /></picture></figure></div><p>看图就知道，如果肝一点，甚至一天就可以学完这门课。而你只需要会一点点 Python 基础，就可以跟着做完一整套练习。</p>
+<p>这门课让你用最浅显上手的方式，跨入机器学习的门槛，让你知道机器学习根本不是什么高深莫测的技术，不过是最简单的递归和算法形成的数学设计，是人类智慧的一点点系统性实现。</p>
+<p>跨过这道门槛，图像，语音，自然语言识别到数据模型之间的转换，你就不会觉得多莫遥不可及了。</p>
+<div class="photo"><figure><picture><img src="https://vip2.loli.io/2023/08/15/rYaKCbfOQ3loTPj.png" alt="image.png" /></picture></figure></div><h3>机器学习场景的简单实现</h3>
+<div class="blockquote"><blockquote><p>说白了，就是用最简单的现成的框架，去实现最简单的机器学习的场景。</p>
+</blockquote></div>
+<p>这里推荐 Sklearn，这是最即开即用的 Python 封装，配合下面这张 CheatBook，初步的了解一下所有机器学习的模型，算法和对应的使用场景，也许脑子里就能够建立最完整的（虽然粗糙的）地图 MOC（Map of Content）。</p>
+<div class="photo"><figure><picture><img src="https://vip2.loli.io/2023/08/15/ldIvzA1iKG7HORy.png" alt="image.png" /></picture></figure></div><p>我自己在生活里的入门的场景是两个：</p>
+<div class="blockquote"><blockquote><p>项目1：基于监督学习的算法去计算股票价格的走势（当然不赚钱，但是不方案你练习必要的技能，和理解从显示生活的数据到模型数据的转换思路）</p>
+</blockquote></div>
+<div class="blockquote"><blockquote><p>项目2：基于<strong>非监督学习</strong>的知识案例库建设：把历史上的上万生产事故单，用 NLP（自然语言处理） 向量化以后，放入非监督学习的模型中，形成自动去重，具有基本语意检索能力的小模型。</p>
+</blockquote></div>
+<p>由此，你就有了自己的实践经验，虽然里商用的工程化的实践经验仍然有 9999 年的距离，但不妨碍你可以定量的思考所有 AI 背后的原理，也更容易看懂相关的论文一些。毕竟大部分目前的 AI，也不过是算力，参数和数据量突破的某一个奇点以后，形成的所谓<strong>涌现</strong>。</p>
+<h3>论文</h3>
+<p>学习，终究还是应该回到正途的。没有什么比看论文的学习效率更高了。</p>
+<p>推荐已经存在的相关论文和知识点的大合集：</p>
+<p><a href="https://gofurther.feishu.cn/docx/Enofdl25BotoVrxth8ec4rNBn5c">https://gofurther.feishu.cn/docx/Enofdl25BotoVrxth8ec4rNBn5c</a></p>
+<h2>然后</h2>
+<p>每次最后都要写个然后，其实也没有什么然后。</p>
+<p>如果你对一个新的技术感兴趣，扎实一些的做法，还是把手弄脏一些，亲自下场摸一摸。</p>
+<p><strong>风口真不应该只是人们口里的风。</strong></p>
+
+    
+      <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+      <meta itemprop="width" content="768">
+      <meta itemprop="height" content="768">
+    </div>
+    <meta itemprop="dateModified" content="2026-02-19T09:26:05Z"/>
+  <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" content="https://i.typlog.com/xiaowenz/8228500561_863045.jpg">
+        <meta itemprop="width" content="768">
+        <meta itemprop="height" content="768">
+      </div>
+    <meta itemprop="name" content="三杯过后 | Xiaowen.Z Deployed"/>
+    <meta itemprop="url" content="https://xiaowenz.com/"/>
+  </div>
+
+
+    </div>
+
+    <footer class="article__footer">
+        <ul class="tag-list">
+            <li>
+              <a class="tag p-category" href="/tags/think/">思考</a>
+            </li>
+            <li>
+              <a class="tag p-category" href="/tags/technology/">科技</a>
+            </li>
+        </ul>
+
+        <div class="article__actions" style="margin-top: var(--space-6);">
+<div class="entry-enjoy">
+  <button class="enjoy js-enjoy">Enjoy</button>
+</div>
+<div class="entry-share">
+  <a class="js-share" data-type="tw" href="#" aria-label="Share to Twitter"><i class="icon icon-twitter"></i></a>
+    <a class="js-share" data-type="wb" href="#" aria-label="分享到微博"><i class="icon icon-weibo"></i></a>
+    <a class="js-share" data-type="wx" href="#" aria-label="分享到微信"><i class="icon icon-wechat"></i></a>
+  <a class="js-share" data-type="tg" href="#" aria-label="Share to Telegram">
+    <i class="icon icon-telegram"></i></a>
+</div>        </div>
+
+        <nav class="post-nav" aria-label="文章导航">
+            <a class="nav-card" href="/blog/read-a-book-with-heptabase.html">
+              <span class="nav-card__label">← 上一篇</span>
+              <span class="nav-card__title">如何拆掉一本书 - Heptabase 阅读摘要实践。</span>
+            </a>
+            <a class="nav-card nav-card--next" href="/blog/think-like-a-large-model.html">
+              <span class="nav-card__label">下一篇 →</span>
+              <span class="nav-card__title">学会像大模型一样思考。</span>
+            </a>
+        </nav>
+
+
+  <div class="entry-section sponsorship">
+    <div class="inner">
+        <a href="https://afdian.com/a/xiaowenz" class="afdian">
+          <i class="icon icon-afdian"></i>
+          <span>去爱发电上赞助</span>
+        </a>
+    </div>
+  </div>
+
+  <section class="entry-section subscribe">
+    <div class="inner">
+      <h2>Subscribe</h2>
+      <form method="post" class="js-subscribe">
+        <input name="name" placeholder="Your name">
+        <input name="email" type="email" placeholder="Your email address">
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+    <section class="entry-section prev-subject">
+      <div class="inner">
+          <h2>Read This</h2>
+          <div class="item" lang="zh">
+            <a class="item-main" href="/blog/read-a-book-with-heptabase.html">
+              <h3>如何拆掉一本书 - Heptabase 阅读摘要实践。</h3>
+            </a>
+          </div>
+      </div>
+    </section>
+
+  <section class="entry-section comment">
+    <div class="inner">
+        <div id="comment_thread"></div>
+    </div>
+  </section>
+    </footer>
+  </article>
+
+</main>
+
+<footer class="site-footer">
+  <div class="site-footer__inner">
+    <div class="site-footer__top">
+      <div>
+        <div class="site-footer__brand">三杯过后 | Xiaowen.Z Deployed</div>
+        <p class="site-footer__desc">新的博客设计来自 Grok + Kimi，以杂志的版式重新想象博客：强反差字号、克制的红色点睛、每一次点击都有回应。</p>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">导航</div>
+        <ul class="site-footer__links">
+          <li><a href="/">首页</a></li>
+              <li>
+                <a href="/">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="/read-books">
+                  Read
+                </a>
+              </li>
+              <li>
+                <a href="/tags/newsletter/">
+                  Newsletter
+                </a>
+              </li>
+              <li>
+                <a href="/run-a-uk-company">
+                  UK Company
+                </a>
+              </li>
+              <li>
+                <a href="/service-and-afdian">
+                  Service 和爱发电
+                </a>
+              </li>
+              <li>
+                <a href="/business-reports">
+                  Business 商业分析
+                </a>
+              </li>
+              <li>
+                <a href="/about">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="https://xiaowenz.com/episodes/">
+                  本站播客
+                </a>
+              </li>
+              <li>
+                <a href="https://open.spotify.com/show/5UB7ISFZ9zUeX8Tr71ciBT?si=RhJoctv1T9aBLHuCrHx4gA">
+                  Spotify
+                </a>
+              </li>
+              <li>
+                <a href="https://podcasts.apple.com/us/podcast/三杯过后/id1880021392">
+                  Apple Podcast
+                </a>
+              </li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="site-footer__col-title">社交</div>
+        <ul class="site-footer__links">
+          <li><a href="/feed.xml">RSS</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="site-footer__bottom">
+      <span>
+        © 三杯过后 | Xiaowen.Z Deployed
+ · {&#39;key&#39;: &#39;cc.by-nc-sa&#39;, &#39;title&#39;: &#39;Attribution-NonCommercial-ShareAlike&#39;}      </span>
+      <span>
+        以 <span class="site-footer__red">冷漆红</span> 点睛 · 玄墨主题
+      </span>
+    </div>
+  </div>
+</footer>
+
+<button class="back-top" type="button" aria-label="返回顶部" title="返回顶部">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M12 19V5M5 12l7-7 7 7"/>
+  </svg>
+</button>
+
+<div class="typlog-foot">
+  <div>Powered by <a class="title" href="https://typlog.com/?utm_source=xiaowenz&utm_medium=foot">Typlog</a></div>
+</div><script async src="https://s.typlog.com/ui/20231124-6d5af0b0/typlog.js"></script>  <script src="https://s3.typlog.com/gh/iamshaynez/typlog-theme-xiaowenyf@0.2.0/js/main.js" defer></script>
+</body>
+</html>

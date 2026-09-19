@@ -1,0 +1,12 @@
+{{/* util/entry-kind.html — input: a Page. returns dict: kind ("tag"|"播客"|"页面"|"文章") + optional term */}}
+{{ $p := . }}
+{{ $result := dict "kind" "文章" }}
+{{ $terms := $p.GetTerms "tags" }}
+{{ if gt (len $terms) 0 }}
+  {{ $result = dict "kind" "tag" "term" (index $terms 0) }}
+{{ else if eq $p.Section "episodes" }}
+  {{ $result = dict "kind" "播客" }}
+{{ else if ne $p.Section "blog" }}
+  {{ $result = dict "kind" "页面" }}
+{{ end }}
+{{ return $result }}

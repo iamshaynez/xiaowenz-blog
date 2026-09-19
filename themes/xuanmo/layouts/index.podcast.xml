@@ -1,0 +1,20 @@
+{{ "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" | safeHTML }}
+{{/* index.podcast.xml — iTunes podcast feed at /feed/audio.xml. Replicates the live Typlog feed.
+     items = all pages of section episodes (date desc). guid/link = permalink WITHOUT trailing slash. */}}
+{{ $params := .Site.Params }}
+{{ $podcast := $params.podcast | default dict }}
+{{ $author := $podcast.author | default ($params.author | default "Xiaowen Zhang") }}
+{{ $items := (where .Site.RegularPages "Section" "episodes").ByDate.Reverse }}
+{{ $baseNoSlash := .Site.BaseURL | strings.TrimSuffix "/" }}
+{{ $last := now }}{{ if gt (len $items) 0 }}{{ $last = (index $items 0).Date }}{{ end }}
+{{/* categories: "Parent:Child" colon-notation → nested itunes:category; consecutive same-parent rows share one parent element */}}
+{{ $rows := slice }}
+{{ range $c := ($podcast.categories | default (slice)) }}
+  {{ $parts := split (printf "%v" $c) ":" }}
+  {{ $parent := trim (index $parts 0) " " }}
+  {{ $child := "" }}{{ if gt (len $parts) 1 }}{{ $child = trim (index $parts 1) " " }}{{ end }}
+  {{ $rows = $rows | append (dict "parent" $parent "child" $child) }}
+{{ end }}
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:podcast="https://podcastindex.org/namespace/1.0" version="2.0"><channel><generator>Hugo {{ hugo.Version }} (https://gohugo.io)</generator>{{ partial "feeds/cdtitle.html" ($podcast.title | default .Site.Title) | safeHTML }}<description>{{ partial "feeds/cdata.html" ($params.description | default "") | safeHTML }}</description><link>{{ $baseNoSlash | html }}</link><language>zh</language><copyright>{{ partial "feeds/cdata.html" (printf "Copyright %d %s" now.Year ($podcast.title | default .Site.Title)) | safeHTML }}</copyright>{{ with $podcast.guid }}<podcast:guid>{{ . | html }}</podcast:guid>{{ end }}<itunes:type>{{ $podcast.type | default "episodic" }}</itunes:type>{{ with $podcast.keywords }}<itunes:keywords>{{ . | html }}</itunes:keywords>{{ end }}<itunes:subtitle>{{ partial "feeds/cdata.html" ($podcast.subtitle | default "") | safeHTML }}</itunes:subtitle><itunes:summary>{{ partial "feeds/cdata.html" ($params.description | default "") | safeHTML }}</itunes:summary><itunes:author>{{ partial "feeds/cdata.html" $author | safeHTML }}</itunes:author><itunes:owner><itunes:name>{{ partial "feeds/cdata.html" $author | safeHTML }}</itunes:name><itunes:email>{{ partial "feeds/cdata.html" ($podcast.email | default "") | safeHTML }}</itunes:email></itunes:owner><image><url>{{ $podcast.image | default ("apple-touch-icon.jpg" | absURL) | html }}</url>{{ partial "feeds/cdtitle.html" .Site.Title | safeHTML }}<link>{{ $baseNoSlash | html }}</link></image><itunes:image href="{{ $podcast.image | default ("apple-touch-icon.jpg" | absURL) | html }}" /><itunes:explicit>{{ $podcast.explicit | default "no" }}</itunes:explicit>{{ $catOpen := false }}{{ $catPrev := "" }}{{ range $r := $rows }}{{ if gt (len $r.child) 0 }}{{ if ne $r.parent $catPrev }}{{ if $catOpen }}</itunes:category>{{ end }}<itunes:category text="{{ $r.parent | html }}"><itunes:category text="{{ $r.child | html }}"/>{{ $catOpen = true }}{{ else }}<itunes:category text="{{ $r.child | html }}"/>{{ end }}{{ else }}{{ if $catOpen }}</itunes:category>{{ $catOpen = false }}{{ end }}<itunes:category text="{{ $r.parent | html }}"/>{{ end }}{{ $catPrev = $r.parent }}{{ end }}{{ if $catOpen }}</itunes:category>{{ end }}<atom:link href="{{ "feed/audio.xml" | absURL | html }}" rel="self" type="application/rss+xml"/><atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/><pubDate>{{ $last.UTC.Format "Mon, 02 Jan 2006 15:04:05 -0700" }}</pubDate>{{ range $items }}
+{{ partial "feeds/episode-item.html" . | safeHTML }}{{ end }}
+</channel></rss>

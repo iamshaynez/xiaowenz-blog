@@ -1,0 +1,45 @@
+{{ define "main" }}
+{{/* archive section index (/archive/) — list of years with counts. */}}
+{{ $counts := dict }}
+{{ $years := slice }}
+{{ range where .Site.RegularPages "Section" "blog" }}
+  {{ $y := .Date.Year }}
+  {{ $counts = merge $counts (dict (printf "%d" $y) (add (index $counts (printf "%d" $y) | default 0) 1)) }}
+  {{ if not (in $years $y) }}{{ $years = $years | append $y }}{{ end }}
+{{ end }}
+{{ $years = sort $years "value" "desc" }}
+
+<div class="container">
+  <header class="page-header">
+    <div class="masthead-bar">
+      <span><span class="masthead-bar__red">LIST</span></span>
+      <span>archive</span>
+      <span>{{ len $years }} 年</span>
+    </div>
+
+    <h1 class="page-header__title display">{{ .Title | default "Archive" }}</h1>
+
+    {{ with .Site.Params.description }}
+      <p class="page-header__desc">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  {{ if $years }}
+    <div class="post-list">
+      {{ range $i, $y := $years }}
+        <article class="post-card post-card--list">
+          <div class="post-card__index" aria-hidden="true">{{ printf "%02d" (add $i 1) }}</div>
+          <div class="post-card__body">
+            <div class="post-card__cat">{{ index $counts (printf "%d" $y) }} 篇</div>
+            <h3 class="post-card__title">
+              <a class="post-card__title-link" href="{{ printf "/archive/%d/" $y | relURL }}">{{ $y }}</a>
+            </h3>
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  {{ else }}
+    <div class="empty-state">暂无内容</div>
+  {{ end }}
+</div>
+{{ end }}

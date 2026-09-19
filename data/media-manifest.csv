@@ -1,0 +1,8 @@
+# Downloaded from i/s/s3.typlog.com (x-oss-process suffix stripped =
+# original). Upload media-sync/images/ to R2 as images/ so final_url
+# resolves (see scripts/sync/upload_media.sh).
+original_url,basename,local_file,final_url,bytes
+https://i.typlog.com/xiaowenz/8212811724_907417.png,episode-freetime-is-the-most-important-to-survive-in-business.png,media-sync/images/episode-freetime-is-the-most-important-to-survive-in-business.png,https://media.xiaowenz.com/images/episode-freetime-is-the-most-important-to-survive-in-business.png,2493490
+https://i.typlog.com/xiaowenz/8213044163_975122.png,episode-career-answer-in-business.png,media-sync/images/episode-career-answer-in-business.png,https://media.xiaowenz.com/images/episode-career-answer-in-business.png,3180459
+https://i.typlog.com/xiaowenz/8213846255_4853325.png,episode-ai-knowledge-and-education.png,media-sync/images/episode-ai-knowledge-and-education.png,https://media.xiaowenz.com/images/episode-ai-knowledge-and-education.png,3415441
+https://i.typlog.com/xiaowenz/8228449389_178477.jpg,podcast-cover.jpg,media-sync/images/podcast-cover.jpg,https://media.xiaowenz.com/images/podcast-cover.jpg,2070942

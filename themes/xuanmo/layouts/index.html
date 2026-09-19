@@ -1,0 +1,88 @@
+{{ define "main" }}
+{{ $params := .Site.Params }}
+{{ $brandMark := $params.brandMark | default "酒" }}
+{{ $mastheadTagline := $params.mastheadTagline | default "潇文有方 · INTJ" }}
+{{ $heroEyebrow := $params.heroEyebrow | default "如今我想说" }}
+{{ $heroTitle := $params.heroTitle | default ($params.tagline | default "以吾之秩序<br>丈量二进制的世界") }}
+{{ $heroLead := $params.heroLead | default ($params.description | default "") }}
+{{ $quoteText := $params.quoteText | default "我想了很久，决定在这里不写什么了。" }}
+{{ $quoteCite := $params.quoteCite | default ($params.author | default "Xiaowen Zhang") }}
+{{ $archiveURL := "/blog/" }}
+
+{{ $posts := (where .Site.RegularPages "Section" "in" (slice "blog" "episodes")).ByDate.Reverse }}
+{{ $posts = first 12 $posts }}
+
+<div class="container">
+  {{/* —— 刊头 —— */}}
+  <div class="masthead-bar reveal">
+    <span><span class="masthead-bar__red">VOL.</span> 玄墨</span>
+    <span>{{ $mastheadTagline }}</span>
+    <span>{{ $brandMark }}</span>
+  </div>
+
+  {{/* —— 英雄区 —— */}}
+  <section class="hero">
+    <div>
+      <div class="hero__eyebrow">
+        <span class="hero__eyebrow-line" aria-hidden="true"></span>
+        <span class="section-index">{{ $heroEyebrow }}</span>
+      </div>
+      <h1 class="hero__title display">{{ $heroTitle | safeHTML }}</h1>
+      <p class="hero__lead lead">{{ $heroLead }}</p>
+      <div class="hero__meta">
+        <a class="btn" href="{{ $archiveURL | relURL }}">
+          阅读文章
+          <span class="btn__arrow" aria-hidden="true">→</span>
+        </a>
+        <button type="button" class="btn btn--ghost js-subscribe">订阅本刊</button>
+      </div>
+    </div>
+  </section>
+
+  {{/* —— 文章网格 —— */}}
+  {{ if $posts }}
+    <section>
+      <div class="section-head reveal">
+        <div class="section-head__title">
+          <span class="section-index">01</span>
+          <h2>目录</h2>
+        </div>
+        <a class="section-head__more" href="{{ $archiveURL | relURL }}">
+          全部文章 <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <div class="post-grid">
+        {{ range $i, $p := first 6 $posts }}
+          {{ partial "card.html" (dict "post" $p "style" (cond (eq $i 0) "featured" "plain") "index" (add $i 1)) }}
+        {{ end }}
+      </div>
+    </section>
+  {{ else }}
+    <div class="empty-state">暂无文章</div>
+  {{ end }}
+
+  {{/* —— 金句板 —— */}}
+  <aside class="quote-panel reveal" style="margin-top: var(--space-9);">
+    <p class="quote-panel__text">{{ $quoteText }}</p>
+    <cite class="quote-panel__cite">{{ $quoteCite }}</cite>
+  </aside>
+
+  {{/* —— 续刊列表 —— */}}
+  {{ if gt (len $posts) 6 }}
+    <section style="margin-top: var(--space-9);">
+      <div class="section-head reveal">
+        <div class="section-head__title">
+          <span class="section-index">02</span>
+          <h2>续刊</h2>
+        </div>
+      </div>
+      <div class="post-list">
+        {{ range $i, $p := after 6 $posts }}
+          {{ partial "card.html" (dict "post" $p "style" "list" "index" (add $i 7)) }}
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+</div>
+{{ end }}

@@ -1,0 +1,85 @@
+{{ define "main" }}
+{{ $params := .Site.Params }}
+{{ $author := $params.author | default "Xiaowen Zhang" }}
+{{ $cover := partial "util/cover.html" . }}
+{{ $terms := .GetTerms "tags" }}
+{{ $kind := partial "util/entry-kind.html" . }}
+{{ $icon := "apple-touch-icon.jpg" | absURL }}
+
+<article class="container article h-entry" itemscope itemtype="http://schema.org/Article">
+  <header class="article__header">
+    <div class="article__eyebrow">
+      <span class="hero__eyebrow-line" aria-hidden="true"></span>
+      {{ if eq $kind.kind "tag" }}
+        <span class="section-index">
+          <a href="{{ partial "util/canonical-url.html" $kind.term | relURL }}" style="color:inherit">{{ $kind.term.Title }}</a>
+        </span>
+      {{ else }}
+        <span class="section-index">{{ $kind.kind }}</span>
+      {{ end }}
+    </div>
+
+    <h1 class="article__title p-name" itemprop="headline">{{ .Title }}</h1>
+
+    {{ with .Params.subtitle }}
+      <p class="article__lead lead p-summary">{{ . }}</p>
+    {{ end }}
+
+    <div class="article__meta-row meta">
+      {{ if not .Date.IsZero }}
+        <time class="dt-published" datetime="{{ .Date.UTC.Format "2006-01-02T15:04:05Z" }}" itemprop="datePublished">
+          {{ .Date.UTC.Format "2006.01.02" }}
+        </time>
+      {{ end }}
+      {{ if and $author (in (slice "blog" "episodes") .Section) }}
+        <span class="dot" aria-hidden="true"></span>
+        <span>
+          <a href="{{ "/about" | relURL }}" class="p-author">{{ $author }}</a>
+        </span>
+      {{ end }}
+    </div>
+  </header>
+
+  {{ with $cover }}
+    <figure class="reveal" style="margin-bottom: var(--space-7);">
+      <img src="{{ . }}" alt="{{ $.Title }}" style="width:100%;border-radius:var(--radius);">
+    </figure>
+  {{ end }}
+
+  <div class="article__body prose e-content js-content" itemprop="articleBody">
+    {{ .Content }}
+
+    <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+      <meta itemprop="url" content="{{ cond (gt (len $cover) 0) ($cover | absURL) $icon }}">
+    </div>
+    <meta itemprop="dateModified" content="{{ .Lastmod.UTC.Format "2006-01-02T15:04:05Z" }}"/>
+    <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+      <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+        <meta itemprop="url" content="{{ $icon }}">
+      </div>
+      <meta itemprop="name" content="{{ .Site.Title }}"/>
+      <meta itemprop="url" content="{{ .Site.BaseURL }}"/>
+    </div>
+  </div>
+
+  <footer class="article__footer">
+    {{ if gt (len $terms) 0 }}
+      <ul class="tag-list">
+        {{ range $terms }}
+          <li>
+            <a class="tag p-category" href="{{ partial "util/canonical-url.html" . | relURL }}">{{ .Title }}</a>
+          </li>
+        {{ end }}
+      </ul>
+    {{ end }}
+
+    <div class="article__actions" style="margin-top: var(--space-6);">
+      {{ partial "share-actions.html" . }}
+    </div>
+
+    {{ partial "page-nav.html" . }}
+
+    {{ partial "article-sections.html" . }}
+  </footer>
+</article>
+{{ end }}

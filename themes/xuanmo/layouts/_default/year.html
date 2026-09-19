@@ -1,0 +1,83 @@
+{{ define "main" }}
+{{/* year.html — year-stub pages (layout: year). SECTION-AWARE:
+     filters site.RegularPages by the stub page's own .Section and .Params.year
+     (util/year-of falls back to filename/title parsing when the param is absent).
+     blog → uniform grid of plain cards + year-nav (live /blog/YYYY/ parity).
+     episodes → podcast-show body filtered to the year (live /episodes/YYYY/ parity). */}}
+{{ $year := partial "util/year-of.html" . }}
+{{ $section := .Section }}
+{{ $posts := (where .Site.RegularPages "Section" $section).ByDate.Reverse }}
+{{ $posts = where $posts "Date.Year" $year }}
+
+{{ if eq $section "episodes" }}
+
+  {{ partial "episodes-show.html" (dict "page" . "items" $posts) }}
+
+{{ else }}
+
+{{ $years := slice }}
+{{ range where .Site.RegularPages "Section" $section }}
+  {{ $y := .Date.Year }}
+  {{ if not (in $years $y) }}{{ $years = $years | append $y }}{{ end }}
+{{ end }}
+{{ $years = sort $years "value" "desc" }}
+{{ $pos := -1 }}
+{{ range $i, $y := $years }}{{ if eq $y $year }}{{ $pos = $i }}{{ end }}{{ end }}
+{{ $newer := 0 }}{{ $older := 0 }}
+{{ if gt $pos 0 }}{{ $newer = index $years (sub $pos 1) }}{{ end }}
+{{ if and (ge $pos 0) (lt $pos (sub (len $years) 1)) }}{{ $older = index $years (add $pos 1) }}{{ end }}
+
+<div class="container">
+  <header class="page-header">
+    <div class="masthead-bar">
+      <span><span class="masthead-bar__red">LIST</span></span>
+      <span>archive</span>
+      <span>{{ len $posts }} 篇</span>
+    </div>
+
+    <h1 class="page-header__title display">{{ .Title }}</h1>
+  </header>
+
+  {{ if $posts }}
+    <div class="post-grid post-grid--uniform">
+      {{ range $i, $p := $posts }}
+        {{ partial "card.html" (dict "post" $p "style" "plain" "index" (add $i 1)) }}
+      {{ end }}
+    </div>
+  {{ else }}
+    <div class="empty-state">暂无内容</div>
+  {{ end }}
+
+  {{ if or $older $newer }}
+    <nav class="year-nav" aria-label="年份导航">
+      {{ if $older }}
+        {{ $stub := .Site.GetPage (printf "/%s/%d" $section $older) }}
+        {{ if $stub }}
+          <a href="{{ partial "util/canonical-url.html" $stub | relURL }}" rel="prev">← {{ $older }}</a>
+        {{ else }}
+          <span style="opacity:.35">←</span>
+        {{ end }}
+      {{ else }}
+        <span style="opacity:.35">←</span>
+      {{ end }}
+      <span class="year-nav__current">{{ .Title }}</span>
+      {{ if $newer }}
+        {{ $latest := index $years 0 }}
+        {{ if eq $newer $latest }}
+          <a href="{{ printf "/%s/" $section | relURL }}" rel="next">{{ $newer }} →</a>
+        {{ else }}
+          {{ $stub := .Site.GetPage (printf "/%s/%d" $section $newer) }}
+          {{ if $stub }}
+            <a href="{{ partial "util/canonical-url.html" $stub | relURL }}" rel="next">{{ $newer }} →</a>
+          {{ else }}
+            <span style="opacity:.35">→</span>
+          {{ end }}
+        {{ end }}
+      {{ else }}
+        <span style="opacity:.35">→</span>
+      {{ end }}
+    </nav>
+  {{ end }}
+</div>
+{{ end }}
+{{ end }}

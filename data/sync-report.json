@@ -1,0 +1,10 @@
+{
+  "posts": 152,
+  "episodes": 6,
+  "pages": 8,
+  "year_stubs": 24,
+  "images_downloaded": 5,
+  "images_failed": [],
+  "failures": [],
+  "notes": "Standalone pages on the live site serve at /about (no trailing slash; /about/ is 404). Hugo url frontmatter uses /about/; with pretty-URL hosting (e.g. Cloudflare Pages) the canonical served path matches the no-slash form. itunes:episode 4 is shared by ['career-answer-in-business', 'ai-knowledge-and-education'] (upstream feed data inconsistency; kept as-is)."
+}
