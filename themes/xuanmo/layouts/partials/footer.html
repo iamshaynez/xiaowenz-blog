@@ -75,6 +75,9 @@
   <div>Powered by <a class="title" href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> · Theme <a class="title" href="https://github.com/iamshaynez/typlog-theme-xiaowenyf" target="_blank" rel="noopener">玄墨 Xuanmo</a></div>
 </div>
 <script>window.XW = {{ dict "coreAPI" ($params.coreAPI | default "") "turnstileSiteKey" ($params.turnstileSiteKey | default "") | jsonify | safeJS }};</script>
+{{ with $params.turnstileSiteKey }}
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+{{ end }}
 <script src="{{ "js/main.js" | relURL }}" defer></script>
 <script src="{{ "js/hugo-extra.js" | relURL }}" defer></script>
 <script src="{{ "js/pv.js" | relURL }}" defer></script>

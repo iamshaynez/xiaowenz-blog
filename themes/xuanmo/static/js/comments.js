@@ -1,7 +1,7 @@
 /**
  * 玄墨 · comments.js
  * 评论区：GET {coreAPI}/api/comments?post=slug 渲染列表；
- * 提交表单 POST {coreAPI}/api/comments（字段 post/name/email/content/蜜罐 website）。
+ * 提交表单 POST {coreAPI}/api/comments（字段 post/name/email/content/蜜罐 website/turnstile_token）。
  * 无 JS 时整个 section 保持 hidden。
  */
 (function () {
@@ -33,7 +33,7 @@
       html +=
         '<li class="xw-comment">' +
         '<div class="xw-comment__meta">' +
-        '<span class="xw-comment__name">' + esc(c.name || "匿名") + "</span>" +
+        '<span class="xw-comment__name">' + esc(c.author_name || c.name || "匿名") + "</span>" +
         "<span>" + esc(fmtDate(c.created_at || c.date || c.createdAt)) + "</span>" +
         "</div>" +
         '<div class="xw-comment__content"><p>' + esc(c.content || "").replace(/\n{2,}/g, "</p><p>").replace(/\n/g, "<br>") + "</p></div>" +
@@ -42,7 +42,14 @@
     return html + "</ul>";
   }
 
+  function turnstileSiteKey() {
+    return (window.XW && window.XW.turnstileSiteKey) || "";
+  }
+
   function renderForm(slug) {
+    var ts = turnstileSiteKey()
+      ? '<div class="cf-turnstile" data-sitekey="' + esc(turnstileSiteKey()) + '"></div>'
+      : "";
     return (
       '<form class="xw-comment-form" method="post" action="' + coreAPI() + '/api/comments">' +
       '<input type="hidden" name="post" value="' + esc(slug) + '">' +
@@ -50,10 +57,31 @@
       '<input name="email" type="email" placeholder="邮箱（不公开）">' +
       '<textarea name="content" class="xw-field--full" placeholder="写下你的评论…" required></textarea>' +
       '<input name="website" type="text" class="xw-hp" value="" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+      ts +
       '<button type="submit">提交评论</button>' +
       '<p class="xw-form-status xw-field--full" role="status" aria-live="polite" hidden></p>' +
       "</form>"
     );
+  }
+
+  // Turnstile api.js 是 async 加载的：就绪前轮询，就绪后渲染容器里的 widget
+  function mountTurnstile(form) {
+    var container = form.querySelector(".cf-turnstile");
+    if (!container || !window.turnstile) {
+      if (container && !container.getAttribute("data-xw-ts")) {
+        container.setAttribute("data-xw-ts", "1");
+        var tries = 0;
+        var timer = setInterval(function () {
+          tries += 1;
+          if (window.turnstile || tries > 50) { // 约 5s 后放弃（api.js 加载失败时表单仍可提交，由 core 拒绝）
+            clearInterval(timer);
+            if (window.turnstile) mountTurnstile(form);
+          }
+        }, 100);
+      }
+      return;
+    }
+    window.turnstile.render(container);
   }
 
   function init() {
@@ -84,6 +112,7 @@
     function bindForm() {
       var form = box.querySelector(".xw-comment-form");
       if (!form) return;
+      mountTurnstile(form);
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         var status = form.querySelector(".xw-form-status");
@@ -95,6 +124,8 @@
           content: (form.elements.content.value || "").trim(),
           website: (form.elements.website.value || "").trim()
         };
+        var ts = form.querySelector('[name="cf-turnstile-response"]');
+        if (ts && ts.value) payload.turnstile_token = ts.value;
         if (!payload.name || !payload.content) {
           if (status) {
             status.hidden = false;

@@ -1,6 +1,6 @@
 {{/* comments.html — comments section backed by core API.
      div#comments[data-post=slug]; js/comments.js fetches GET {coreAPI}/api/comments?post=slug
-     and wires the submit form (POST {coreAPI}/api/comments; fields name/email/content/website).
+     and wires the submit form (POST {coreAPI}/api/comments; fields name/email/content/website/turnstile_token).
      No-JS: whole section stays hidden. */}}
 {{ $slug := .Params.slug | default .File.ContentBaseName }}
 {{ if not $slug }}{{ $slug = path.Base .RelPermalink }}{{ end }}
@@ -9,4 +9,6 @@
     <div id="comments" data-post="{{ $slug }}"></div>
   </div>
 </section>
+{{/* Turnstile api.js 由 footer.html 全站统一加载（配了 turnstileSiteKey 时）；
+     评论区 widget 由 comments.js 显式渲染。 */}}
 <script src="{{ "js/comments.js" | relURL }}" defer></script>

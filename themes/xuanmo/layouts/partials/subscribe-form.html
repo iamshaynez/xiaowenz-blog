@@ -1,6 +1,6 @@
 {{/* subscribe-form.html — subscription section.
      Posts to .Site.Params.coreAPI + /api/subscribe (fields: name, email, honeypot `website`,
-     cf-turnstile-response when turnstileSiteKey set). Vanilla JS: js/subscribe.js.
+     turnstile_token when turnstileSiteKey set). Vanilla JS: js/subscribe.js.
      No-JS fallback: plain <form method="post" action="...">. */}}
 {{ $core := site.Params.coreAPI | default "" }}
 <section class="entry-section subscribe" id="subscribe">
@@ -18,7 +18,6 @@
     <p class="xw-form-status" role="status" aria-live="polite" hidden></p>
   </div>
 </section>
-{{ with site.Params.turnstileSiteKey }}
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-{{ end }}
+{{/* Turnstile api.js 由 footer.html 全站统一加载（配了 turnstileSiteKey 时）；
+     此处的 .cf-turnstile 由隐式渲染接管。 */}}
 <script src="{{ "js/subscribe.js" | relURL }}" defer></script>

@@ -64,6 +64,7 @@
   function buildModal() {
     const tpl = qs(".entry-section.subscribe form");
     const core = (window.XW && window.XW.coreAPI) || "";
+    const tsKey = (window.XW && window.XW.turnstileSiteKey) || "";
     const modal = document.createElement("div");
     modal.className = "xw-modal";
     modal.setAttribute("role", "dialog");
@@ -80,6 +81,7 @@
       '<input name="name" placeholder="Your name" autocomplete="name">' +
       '<input name="email" type="email" placeholder="Your email address" required autocomplete="email">' +
       '<input name="website" type="text" class="xw-hp" value="" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+      (tsKey ? '<div class="cf-turnstile" data-sitekey="' + tsKey + '"></div>' : "") +
       "<button type=\"submit\">Subscribe</button>" +
       "</form>" +
       '<p class="xw-form-status" role="status" aria-live="polite" hidden></p>' +
@@ -117,6 +119,12 @@
         if (!modal) modal = buildModal();
         modal.classList.add("is-open");
         document.body.style.overflow = "hidden";
+        // 弹层里的 Turnstile 容器需可见后显式渲染（隐式渲染只管页面加载时已在 DOM 里的）
+        const tsBox = qs(".cf-turnstile", modal);
+        if (tsBox && window.turnstile && !tsBox.hasAttribute("data-xw-ts-rendered")) {
+          tsBox.setAttribute("data-xw-ts-rendered", "1");
+          window.turnstile.render(tsBox);
+        }
         const email = qs('input[name="email"]', modal);
         if (email) setTimeout(() => email.focus(), 60);
       });

@@ -1,6 +1,6 @@
 /**
  * 玄墨 · subscribe.js
- * 订阅表单：POST {coreAPI}/api/subscribe（字段 email / name / 蜜罐 website / cf-turnstile-response）。
+ * 订阅表单：POST {coreAPI}/api/subscribe（字段 email / name / 蜜罐 website / turnstile_token）。
  * 事件委托，兼容 hugo-extra.js 动态注入的弹层表单；无 JS 时 <form action> 原生提交。
  */
 (function () {
@@ -37,7 +37,7 @@
       website: (form.elements.website && form.elements.website.value || "").trim() // 蜜罐：正常用户留空
     };
     const ts = form.querySelector('[name="cf-turnstile-response"]');
-    if (ts && ts.value) payload["cf-turnstile-response"] = ts.value;
+    if (ts && ts.value) payload.turnstile_token = ts.value;
 
     if (!payload.email) {
       setStatus(form, "请填写邮箱地址。", false);
