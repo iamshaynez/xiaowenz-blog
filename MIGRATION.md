@@ -2,6 +2,12 @@
 
 切换原则：**先全部就绪，再切 DNS；播客 feed 连续性是最高优先级；旧站保留观察期。**
 
+> **2026-10-25 勘察备注**：线上仍为 Typlog（经 Cloudflare）；`core.xiaowenz.com` 尚无公开 DNS 记录。
+> 本地内容与线上已全量对齐（152 篇博客 + 6 集播客，slug 零缺漏）——Typlog 2026-10 的
+> lastmod 批量变化只是其模板升级（`<picture>` webp/懒加载标记），重跑 `sync.py --refresh`
+> 仅产生 frontmatter 噪声（YAML 引号风格、`&quot;` 实体、episode 丢 season/subtitle），
+> 正文零变化，已验证并回滚；**迁移前不必再同步**，除非在 Typlog 后台新发内容。
+
 ## 阶段 0：资产抢救（动手最早，互不依赖）
 
 - [ ] Typlog 后台导出订阅者名单 CSV
