@@ -16,3 +16,5 @@ media-sync/
 node_modules/
 pagefind*
 .DS_Store
+# 本机无关工具误装（gb-* 内部 skill，不得进公开仓库）
+.agents/
