@@ -42,9 +42,14 @@
 - [ ] 自查清单：sitemap 217 条 URL 与线上一致；`/feed.xml`、`/feed/audio.xml` 可解析且 enclosure 指向 core；
       随机 10 篇文章与线上逐屏对比；`/search/` 可用；订阅表单能收到验证邮件；评论提交后 admin 可见
       （机器侧抽查已过；逐屏人工对比、订阅/评论闭环待 SMTP+R2 后在 blog.xiaowenz.com 上做）
-- [ ] DNS：`xiaowenz.com` 切到 Pages（CNAME  flattening 或 A 记录按 Pages 提示）——**最后一步，勿急**
+- [x] DNS：`xiaowenz.com` 切到 Pages（2026-10-29 完成：Pages 自定义域挂载 apex，
+      www 302 → apex；注意**必须把域挂到 Pages 项目**，只改 DNS 会 522）
 
-## 阶段 3：观察期（2–4 周，Typlog 不急着退）
+## 阶段 3：观察期（2026-10-29 起算，2–4 周，Typlog 不急着退）
+
+- [x] **2026-10-29 切换当日验收**：apex=v3（Hugo 0.164）；feed/audio.xml=Hugo 版且 GUID 延续
+      （Apple/小宇宙订阅者无感）；enclosure 走 core 302；www→apex 302；CORE_SITE_URL 已回切
+      apex（CORS/回跳/feed 联动归位，分发页显示 Apple「已同步」）
 
 - [ ] Apple Podcasts / Spotify / 小宇宙后台确认 feed 抓取正常（新 URL 同内容，GUID 不变则听众无感）
 - [ ] GA / core 统计面板流量正常；抽查播客下载计数在跳动
