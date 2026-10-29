@@ -39,7 +39,7 @@ feed 里的 enclosure URL 由 `config.yaml` 的 `params.audioBase`（core 的 30
 ## 发布流
 
 - **写文章**：新建 `content/blog/{slug}.md` → push 到 main → Pages 自动构建上线。
-- **发播客**：① 用 core 管理台或 `scripts/sync/upload_media.sh` 把 MP3 传 R2 的 `audio/` 前缀；② 新建剧集 md 填好 frontmatter → push。Apple/Spotify/小宇宙下次抓取自动更新。
+- **发播客**（音频先于文字，防 enclosure 404）：① core 管理台上传 MP3（文件名 `{audio_slug}.mp3`，按此注册 302 计数）；② 管理台「媒体库 → 播客对账」复制该音频的 frontmatter 片段（slug/bytes 与媒体库一致），写 `content/episodes/{slug}.md` + shownotes；③ push——pre-push lint 自动对账 core 302 与字节数，Apple/Spotify/小宇宙抓取 feed 自动更新。
 - **Newsletter**：在 core 管理台写 markdown 群发，不在本仓库。发文后可在管理台「新建 Newsletter」页直接粘贴文章 URL 抓取生成草稿（标题/导语/链接自动填），人工检查后发送。
 
 ### 内容门禁（slug 与 frontmatter 守护）
