@@ -87,7 +87,7 @@ params:
   author: "Xiaowen Zhang"
   # —— 动态服务对接（core）——
   coreAPI: "https://core.xiaowenz.com"      # core 服务地址：评论/订阅/统计
-  turnstileSiteKey: ""                       # Cloudflare Turnstile site key（可空=dev）
+  turnstileSiteKey: "0x4AAAAAAD9ld48ic8P_EOhV"   # Cloudflare Turnstile site key（公开标识符，可入公开仓库）
   gaID: "G-7T4RZQ5V58"                       # Google Analytics，置空关闭
   # —— 播客 enclosure 计数地址前缀（core 的 302 统计端点）——
   audioBase: "https://core.xiaowenz.com/a/"
