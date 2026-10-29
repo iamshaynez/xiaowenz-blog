@@ -40,7 +40,18 @@ feed 里的 enclosure URL 由 `config.yaml` 的 `params.audioBase`（core 的 30
 
 - **写文章**：新建 `content/blog/{slug}.md` → push 到 main → Pages 自动构建上线。
 - **发播客**：① 用 core 管理台或 `scripts/sync/upload_media.sh` 把 MP3 传 R2 的 `audio/` 前缀；② 新建剧集 md 填好 frontmatter → push。Apple/Spotify/小宇宙下次抓取自动更新。
-- **Newsletter**：在 core 管理台写 markdown 群发，不在本仓库。
+- **Newsletter**：在 core 管理台写 markdown 群发，不在本仓库。发文后可在管理台「新建 Newsletter」页直接粘贴文章 URL 抓取生成草稿（标题/导语/链接自动填），人工检查后发送。
+
+### 内容门禁（slug 与 frontmatter 守护）
+
+直推即发布，URL 是冻结资产——推前门禁把守命名与元数据不变量：
+
+```bash
+python3 scripts/lint-content.py          # 手动跑
+git config core.hooksPath .githooks      # 一次性启用 pre-push 自动跑（本仓已配置）
+```
+
+CI（`content-lint` 工作流）在每次 push/PR 上提供同样检查的快速失败信号；Pages 构建不看它状态，所以本地钩子是第一道闸。
 
 ## URL 策略（重要）
 

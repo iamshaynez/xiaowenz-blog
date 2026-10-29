@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# pre-push — 直推 content/ 即发布，推前跑内容门禁（安装：git config core.hooksPath .githooks）
+set -euo pipefail
+ROOT="$(git rev-parse --show-toplevel)"
+python3 "$ROOT/scripts/lint-content.py"
