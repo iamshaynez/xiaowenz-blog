@@ -54,7 +54,7 @@
       '<form class="xw-comment-form" method="post" action="' + coreAPI() + '/api/comments">' +
       '<input type="hidden" name="post" value="' + esc(slug) + '">' +
       '<input name="name" placeholder="名字" required>' +
-      '<input name="email" type="email" placeholder="邮箱（不公开）" required>' +
+      '<input name="email" type="email" placeholder="邮箱（选填，不公开）">' +
       '<textarea name="content" class="xw-field--full" placeholder="写下你的评论…" required></textarea>' +
       '<input name="website" type="text" class="xw-hp" value="" tabindex="-1" autocomplete="off" aria-hidden="true">' +
       ts +
@@ -126,10 +126,10 @@
         };
         var ts = form.querySelector('[name="cf-turnstile-response"]');
         if (ts && ts.value) payload.turnstile_token = ts.value;
-        if (!payload.name || !payload.content || !payload.email) {
+        if (!payload.name || !payload.content) {
           if (status) {
             status.hidden = false;
-            status.textContent = "请填写名字、邮箱和评论内容。";
+            status.textContent = "请填写名字和评论内容。";
             status.classList.add("is-err");
           }
           return;
