@@ -16,23 +16,23 @@
 ## 阶段 0：资产抢救（动手最早，互不依赖）
 
 - [ ] Typlog 后台导出订阅者名单 CSV
-- [x] 下载 6 集播客音频原件（r.typlog.com 是签名 URL，会过期；清单在 `data/audio-manifest.csv`）——
-      成片已在本地 `garden/av/` 各项目内（episode.mp3），上传 R2 时以 `audio_slug` 命名
+- [x] 下载 6 集播客音频原件（2026-10-29 完成）：3 集为本地 `garden/av/` 成片，
+      3 集（ep001/ep003/humanity）从线上 feed enclosure 补下，全部与 `audio-manifest.csv` 字节数精确校验
 - [ ] 确认 Typlog 评论是否可导出（大概率不能，接受割舍或手工搬运精品）
 
 ## 阶段 1：基础设施
 
-- [ ] R2 建桶 → 绑定 `media.xiaowenz.com`（**该子域目前尚无 DNS 记录**）→ 上传媒体：
-      `media-sync/images/` → `images/` 前缀（`scripts/sync/upload_media.sh` 有命令模板）；
-      音频原件 → `audio/{episode-slug}.mp3`（文件名必须与剧集 `audio_slug` 一致）
-- [x] core 部署 ~~到 Zeabur~~ **到 gb-test**（2026-10-28，落点变更：DNS 已由 CF 代理指向 gb-test）：
-      镜像 `/opt/apps/core/src`（GOPROXY=goproxy.cn 服务器侧补丁）→ 容器 `xiaowenz-core`
-      （apps 网络 + `/opt/apps/core/data` 持久卷 + 127.0.0.1:18092）→ openresty `conf.d/core.conf`
-      反代（CF Flexible 走 80）。**当前 `CORE_ENV=dev`（staging）**：admin token 在服务器
-      `/opt/apps/core/env`（600，root 可读）；SMTP 凭据到位后改 `CORE_ENV=prod` 并补
-      `CORE_SMTP_*` / `CORE_TURNSTILE_SECRET` / `CORE_R2_*` 重启容器
-- [ ] core 冒烟：`/admin` 导入订阅者 CSV → 发一封测试 newsletter 给自己 → 上传一个测试音频并确认 `/a/test.mp3` 302
-      （已远端验证：healthz / admin 303 / API 参数校验 / CORS 仅放行 xiaowenz.com；其余待 SMTP+R2）
+- [x] R2 建桶 `blog` + 绑定 `media.xiaowenz.com`（2026-10-29）：5 张图片（`images/`）+ 6 集音频
+      （`audio/{slug}.mp3`）已上传并经 core `/admin/media` 注册（含 immutable 缓存头）；
+      **遗留**：`audio/ep001.mp3` 与 `images/podcast-cover.jpg` 两条 URL 有上传前探测产生的
+      404 负缓存，需在 CF 面板 Purge Cache
+- [x] core 部署到 gb-test（2026-10-28 上线，2026-10-29 转 **prod**）：SMTP 走
+      **Cloudflare Email Service**（`smtp.mx.cloudflare.net:465`，Workers Paid 含 3000 封/月）；
+      `CORE_R2_*` 已配（备份每日快照已验证）；`CORE_TURNSTILE_SECRET` 仍空（上线前配）；
+      **`CORE_SITE_URL` 当前为 `https://blog.xiaowenz.com`（staging 实际服务域）——
+      apex DNS 切换 Pages 时必须改回 `https://xiaowenz.com` 并重启容器**
+- [x] core 冒烟（2026-10-29）：healthz ✓ / admin 登录 ✓ / 订阅 API 真发验证邮件到站长邮箱 ✓ /
+      音频上传注册 ✓ / `/a/ep001.mp3` 302 计数 ✓；剩余：CSV 导入订阅者 → 群发一封测试 newsletter
 
 ## 阶段 2：静态站上线
 
