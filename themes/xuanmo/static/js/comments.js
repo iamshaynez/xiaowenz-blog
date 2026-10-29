@@ -54,7 +54,7 @@
       '<form class="xw-comment-form" method="post" action="' + coreAPI() + '/api/comments">' +
       '<input type="hidden" name="post" value="' + esc(slug) + '">' +
       '<input name="name" placeholder="名字" required>' +
-      '<input name="email" type="email" placeholder="邮箱（不公开）">' +
+      '<input name="email" type="email" placeholder="邮箱（不公开）" required>' +
       '<textarea name="content" class="xw-field--full" placeholder="写下你的评论…" required></textarea>' +
       '<input name="website" type="text" class="xw-hp" value="" tabindex="-1" autocomplete="off" aria-hidden="true">' +
       ts +
@@ -126,10 +126,10 @@
         };
         var ts = form.querySelector('[name="cf-turnstile-response"]');
         if (ts && ts.value) payload.turnstile_token = ts.value;
-        if (!payload.name || !payload.content) {
+        if (!payload.name || !payload.content || !payload.email) {
           if (status) {
             status.hidden = false;
-            status.textContent = "请填写名字和评论内容。";
+            status.textContent = "请填写名字、邮箱和评论内容。";
             status.classList.add("is-err");
           }
           return;
@@ -141,7 +141,11 @@
           body: JSON.stringify(payload)
         })
           .then(function (res) {
-            if (!res.ok) throw new Error("HTTP " + res.status);
+            if (!res.ok) {
+              return res.json().catch(function () {}).then(function (body) {
+                throw new Error((body && body.error) || "HTTP " + res.status);
+              });
+            }
             if (status) {
               status.hidden = false;
               status.textContent = "评论已提交。";
@@ -151,10 +155,13 @@
             form.reset();
             load();
           })
-          .catch(function () {
+          .catch(function (err) {
             if (status) {
               status.hidden = false;
-              status.textContent = "提交失败，请稍后重试。";
+              // 服务端 4xx 带具体原因（如 invalid email），直接透出便于自查
+              status.textContent = err && err.message
+                ? "提交失败：" + err.message
+                : "提交失败，请稍后重试。";
               status.classList.add("is-err");
             }
           })
