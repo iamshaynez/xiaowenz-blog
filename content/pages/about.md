@@ -37,8 +37,7 @@ type: "page"
   - 单口播客：小宇宙 - 三杯过后 —— 低频率更新中，不会弃坑的。
   - 摄影（崩塌中，好几年没摸到相机了）
 
-> 其实还在筹备提供一些咨询类的服务……如果您有任何需要也可以直接联系我。mailto: [[email protected]](/cdn-cgi/l/email-protection)
-
+> 其实还在筹备提供一些咨询类的服务……如果您有任何需要也可以直接联系我。[i@xiaowenz.com](mailto:i@xiaowenz.com)
 
 
 ## **我能提供什么**
