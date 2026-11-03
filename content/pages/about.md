@@ -21,7 +21,7 @@ type: "page"
 >
 > **Update 20260219**: 更换到 Typelog，和 Newsletter 及未来的 Podcast 合并。
 >
-> **Update 20261003**: 完全自研了一套平替 Typlog 的方案，前端的 Hugo 保持不变的情况下集成了后端，实现了用户留言，Newsletter 订阅，Podcast 分发，站点内部统计等一系列功能。
+> **Update 20261003**: 完全自研了一套平替 Typlog 的方案，前端的 Hugo 保持不变的情况下集成了后端，实现了用户留言，Newsletter 订阅，Podcast 分发，站点内部统计等一系列功能。同时，主题是完全自研的哈哈哈。
 
 ## **我目前在做什么 WHAT I'M WORKING ON**
 
@@ -40,6 +40,10 @@ type: "page"
 > 其实还在筹备提供一些咨询类的服务……如果您有任何需要也可以直接联系我。[i@xiaowenz.com](mailto:i@xiaowenz.com)
 
 
-## **我能提供什么**
+## **我能提供什么** WHAT I CAN OFFER
 
-- 我不确定，也许您可以留言给我。
+- 关于职场，商业，副业
+- 关于 AI，关于信息化和数字化
+- 关于一切创造和美好
+
+您都可以和我探讨。
