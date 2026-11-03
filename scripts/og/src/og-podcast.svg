@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- 三杯过后 Podcast — 播客 OG 卡（渲染：scripts/og/render.sh → static/og/og-podcast.png） -->
+  <defs>
+    <linearGradient id="ink" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1B1A18"/>
+      <stop offset="1" stop-color="#131215"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#2C2A26" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#2C2A26" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#ink)"/>
+  <rect x="22" y="22" width="1156" height="586" fill="none" stroke="#2E2C28" stroke-width="1.5"/>
+  <circle cx="890" cy="280" r="330" fill="url(#glow)"/>
+
+  <!-- 声波（钟形，中心朱红与纸白点缀） -->
+  <g>
+    <rect x="620" y="279" width="10" height="22"  rx="5" fill="#3E3B36"/><rect x="640" y="275" width="10" height="30"  rx="5" fill="#3E3B36"/><rect x="660" y="270" width="10" height="40"  rx="5" fill="#413E38"/><rect x="680" y="264" width="10" height="52"  rx="5" fill="#44413A"/><rect x="700" y="257" width="10" height="66"  rx="5" fill="#48453E"/><rect x="720" y="249" width="10" height="82"  rx="5" fill="#4C4941"/><rect x="740" y="242" width="10" height="96"  rx="5" fill="#504C43"/><rect x="760" y="235" width="10" height="110" rx="5" fill="#544F45"/><rect x="780" y="228" width="10" height="124" rx="5" fill="#585347"/><rect x="800" y="221" width="10" height="138" rx="5" fill="#5D574A"/><rect x="820" y="215" width="10" height="150" rx="5" fill="#625B4D"/><rect x="840" y="210" width="10" height="160" rx="5" fill="#C24332"/><rect x="860" y="206" width="10" height="168" rx="5" fill="#EDE9DE"/><rect x="880" y="204" width="10" height="172" rx="5" fill="#C24332"/><rect x="900" y="206" width="10" height="168" rx="5" fill="#EDE9DE"/><rect x="920" y="210" width="10" height="160" rx="5" fill="#C24332"/><rect x="940" y="215" width="10" height="150" rx="5" fill="#625B4D"/><rect x="960" y="221" width="10" height="138" rx="5" fill="#5D574A"/><rect x="980" y="228" width="10" height="124" rx="5" fill="#585347"/><rect x="1000" y="235" width="10" height="110" rx="5" fill="#544F45"/><rect x="1020" y="242" width="10" height="96"  rx="5" fill="#504C43"/><rect x="1040" y="249" width="10" height="82"  rx="5" fill="#4C4941"/><rect x="1060" y="257" width="10" height="66"  rx="5" fill="#48453E"/><rect x="1080" y="264" width="10" height="52"  rx="5" fill="#44413A"/><rect x="1100" y="270" width="10" height="40"  rx="5" fill="#413E38"/><rect x="1120" y="275" width="10" height="30"  rx="5" fill="#3E3B36"/><rect x="1140" y="279" width="10" height="22"  rx="5" fill="#3E3B36"/>
+  </g>
+
+  <!-- 三只酒杯（线稿） -->
+  <g fill="none" stroke="#7A766B" stroke-width="3.5" stroke-linecap="round">
+    <path d="M 764 470 Q 790 500 816 470"/>
+    <path d="M 790 487 L 790 528"/>
+    <path d="M 774 534 L 806 534"/>
+    <path d="M 864 470 Q 890 500 916 470"/>
+    <path d="M 890 487 L 890 528"/>
+    <path d="M 874 534 L 906 534"/>
+    <path d="M 964 470 Q 990 500 1016 470"/>
+    <path d="M 990 487 L 990 528"/>
+    <path d="M 974 534 L 1006 534"/>
+  </g>
+
+  <!-- 眉头 -->
+  <g>
+    <line x1="96" y1="150" x2="146" y2="150" stroke="#C24332" stroke-width="3"/>
+    <text x="162" y="158" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="22"
+          fill="#8F8B82" letter-spacing="8">单口播客 · PODCAST</text>
+  </g>
+
+  <!-- 主标题 -->
+  <text x="86" y="348" font-family="Songti SC, STSong, serif" font-weight="900" font-size="120"
+        fill="#F2EFE6">三杯过后</text>
+  <text x="96" y="416" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-weight="600"
+        font-size="30" fill="#C24332" letter-spacing="20">PODCAST</text>
+  <line x1="97" y1="440" x2="360" y2="440" stroke="#3A3733" stroke-width="1.5"/>
+  <text x="96" y="486" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="22"
+        fill="#8F8B82" letter-spacing="4">小宇宙 · Apple Podcast 同步更新</text>
+
+  <!-- 页脚 -->
+  <text x="96" y="560" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="22"
+        fill="#6E6A62" letter-spacing="5">xiaowenz.com</text>
+</svg>

@@ -31,13 +31,21 @@
 {{ end }}
 {{ if not $desc }}{{ $desc = $params.description | default "" }}{{ end }}
 
-{{/* —— og image —— */}}
+{{/* —— og image ——
+     播客页统一品牌卡；博客文章有封面优先封面，否则 slogan 卡；其余页面回退站点图标。
+     卡片源稿与渲染：scripts/og/（render.sh → static/og/*.png） */}}
 {{ $cover := partial "util/cover.html" . }}
 {{ $ogImage := $icon }}
-{{ if $cover }}
+{{ $bigCard := false }}
+{{ if $isEpisode }}
+  {{ $ogImage = "og/og-podcast.png" | absURL }}
+  {{ $bigCard = true }}
+{{ else if $cover }}
   {{ $ogImage = $cover | absURL }}
-{{ else if $isEpisode }}
-  {{ with $podcast.image }}{{ $ogImage = . }}{{ end }}
+  {{ $bigCard = true }}
+{{ else if and .IsPage (eq .Section "blog") }}
+  {{ $ogImage = "og/og-blog.png" | absURL }}
+  {{ $bigCard = true }}
 {{ end }}
 
 {{/* —— audio (episodes) —— */}}
@@ -72,7 +80,7 @@
 {{ if $audioURL }}<meta property="og:audio" content="{{ $audioURL }}">
 {{ with $dur.seconds }}<meta property="music:duration" content="{{ . }}">
 {{ end }}{{ end -}}
-<meta name="twitter:card" content="{{ cond (and .IsPage (eq .Section "blog") (gt (len $cover) 0)) "summary_large_image" "summary" }}">
+<meta name="twitter:card" content="{{ cond $bigCard "summary_large_image" "summary" }}">
 {{ if $isEpisode }}
 <script type="application/ld+json">
   {{ $ld := dict

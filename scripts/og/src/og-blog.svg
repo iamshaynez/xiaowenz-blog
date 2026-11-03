@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <!-- 以吾之秩序 丈量二进制的世界 — 博客默认 OG 卡（渲染：scripts/og/render.sh → static/og/og-blog.png） -->
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F5F3ED"/>
+      <stop offset="1" stop-color="#EFECe3"/>
+    </linearGradient>
+    <linearGradient id="sealred" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#B7402E"/>
+      <stop offset="1" stop-color="#9E3223"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#paper)"/>
+  <rect x="22" y="22" width="1156" height="586" fill="none" stroke="#DCD8CB" stroke-width="1.5"/>
+
+  <!-- 二进制暗纹 -->
+  <g font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="24" fill="#E3E0D3" letter-spacing="7">
+    <text x="96"  y="82">01001011 0101010 01010011 01000101 01001100</text>
+    <text x="700" y="596">01001100 01001111 01000111 01001001 01000011</text>
+    <text x="905" y="130" font-size="20">01010011</text>
+    <text x="905" y="560" font-size="20">01000101</text>
+  </g>
+
+  <!-- 眉头 -->
+  <g>
+    <line x1="96" y1="150" x2="146" y2="150" stroke="#B23A2A" stroke-width="3"/>
+    <text x="162" y="158" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="22"
+          fill="#8A857A" letter-spacing="8">三杯过后 · BLOG</text>
+  </g>
+
+  <!-- slogan -->
+  <g font-family="Songti SC, STSong, serif" font-weight="900" fill="#26231E">
+    <text x="90" y="312" font-size="104">以吾之秩序</text>
+    <text x="90" y="462" font-size="104">丈量二进制的世界</text>
+  </g>
+
+  <!-- 「二进制」朱笔底线 -->
+  <path d="M296 486 C 366 496, 500 496, 574 484 L 574 496 C 500 508, 366 508, 296 498 Z"
+        fill="#B23A2A" opacity="0.92"/>
+
+  <!-- 印章：三杯过后（右起竖读） -->
+  <g transform="translate(954,268)">
+    <rect width="150" height="150" rx="10" fill="url(#sealred)"/>
+    <rect x="7" y="7" width="136" height="136" rx="6" fill="none" stroke="#F5F3ED" stroke-width="2" opacity="0.55"/>
+    <g font-family="Songti SC, STSong, serif" font-weight="700" fill="#F7F4EC" font-size="50"
+       text-anchor="middle">
+      <text x="106" y="72">三</text>
+      <text x="106" y="130">杯</text>
+      <text x="44"  y="72">过</text>
+      <text x="44"  y="130">后</text>
+    </g>
+  </g>
+
+  <!-- 页脚 -->
+  <text x="96" y="560" font-family="Hiragino Sans GB, STHeiti, sans-serif" font-size="22"
+        fill="#A29C8E" letter-spacing="5">xiaowenz.com</text>
+</svg>
