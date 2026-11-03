@@ -43,7 +43,7 @@
 {{ else if $cover }}
   {{ $ogImage = $cover | absURL }}
   {{ $bigCard = true }}
-{{ else if and .IsPage (eq .Section "blog") }}
+{{ else if and .IsPage (in (slice "blog" "pages") .Section) }}
   {{ $ogImage = "og/og-blog.png" | absURL }}
   {{ $bigCard = true }}
 {{ end }}
