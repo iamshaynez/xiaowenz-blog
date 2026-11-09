@@ -8,6 +8,7 @@
   2. frontmatter 的 slug 字段（若有）必须与文件名一致
   3. title 非空、date 可解析、draft 不为 true
   4. episodes：同上（slug 同样是 /episodes/{slug} 冻结资产）
+  5. recipes：同上（slug 是 /recipes/{slug} 冻结资产，拼音命名）
 
 用法: python3 scripts/lint-content.py   （在 site 仓库根执行；退出码非 0 = 有问题）
 """
@@ -49,7 +50,7 @@ def check(path: Path, kind: str) -> None:
     if fm.get("draft") is True:
         problems.append(f"{path}: draft=true 会不构建（要么删掉这行，要么别推）")
 
-for pattern, kind in (("blog/*.md", "blog"), ("episodes/*.md", "episodes")):
+for pattern, kind in (("blog/*.md", "blog"), ("episodes/*.md", "episodes"), ("recipes/*.md", "recipes")):
     for p in sorted((ROOT / "content").glob(pattern)):
         check(p, kind)
 

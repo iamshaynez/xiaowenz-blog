@@ -18,6 +18,7 @@ content/
   blog/{YYYY}/_index.md   # 年度索引 /blog/{YYYY}/
   episodes/{slug}.md      # 播客，URL = /episodes/{slug}，frontmatter 见下
   archive/{YYYY}.md       # /archive/{YYYY}/ 归档页
+  recipes/{slug}.md       # 菜谱，URL = /recipes/{slug}（拼音 slug，frontmatter 带 category 分类；/_index.md 为手工维护的索引页）
   pages/*.md              # 独立页（about / read-books / search / subscribed ...）
 themes/xuanmo/            # 玄墨主题（自研，Typlog 版移植）
 scripts/sync/             # Typlog 内容同步脚本 + 媒体清单（迁移一次性用途）

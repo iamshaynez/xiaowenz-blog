@@ -23,3 +23,7 @@
 /feed/post.xml /feed.xml 301
 /feed/post.json /feed.xml 301
 /feed/audio.json /feed/audio.xml 301
+
+# Recipes (2026-11 new URL family, episodes-style slashless canonicals)
+/recipes /recipes/ 200
+/recipes/:slug /recipes/:slug/ 200

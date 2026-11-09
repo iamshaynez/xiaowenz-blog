@@ -11,6 +11,7 @@ summaryLength: 90
 permalinks:
   blog: "/blog/:slug.html"
   episodes: "/episodes/:slug"
+  recipes: "/recipes/:slug"   # 菜谱（2026-11 新增 URL 族，拼音 slug，与 episodes 同风格）
 
 taxonomies:
   tag: "tags"
@@ -61,24 +62,27 @@ menu:
     - name: "Read"
       url: "/read-books/"
       weight: 3
+    - name: "菜谱"
+      url: "/recipes/"
+      weight: 4
     - name: "Newsletter"
       url: "/tags/newsletter/"
-      weight: 4
+      weight: 5
     - name: "UK Company"
       url: "/run-a-uk-company/"
-      weight: 5
+      weight: 6
     - name: "Service 和爱发电"
       url: "/service-and-afdian/"
-      weight: 6
+      weight: 7
     - name: "Business 商业分析"
       url: "/business-reports/"
-      weight: 7
+      weight: 8
     - name: "About"
       url: "/about/"
-      weight: 8
+      weight: 9
     - name: "搜索"
       url: "/search/"
-      weight: 9
+      weight: 10
 
 params:
   description: "一个写了将近20年的博客，突然开始有趣起来了……"

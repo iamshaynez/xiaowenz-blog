@@ -1,0 +1,22 @@
+{{ define "main" }}
+{{/* recipes 索引页：_index.md 手工维护的分类索引即页面本体（read-books 同款玩法） */}}
+<div class="container">
+  <header class="page-header">
+    <div class="masthead-bar">
+      <span><span class="masthead-bar__red">COOK</span></span>
+      <span>recipes</span>
+      <span>{{ len .RegularPages }} 道</span>
+    </div>
+
+    <h1 class="page-header__title display">{{ .Title }}</h1>
+
+    {{ with .Params.description }}
+      <p class="page-header__desc">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  <div class="article__body prose js-content">
+    {{ .Content }}
+  </div>
+</div>
+{{ end }}
