@@ -5,6 +5,7 @@
 ## 快速开始
 
 ```bash
+npm ci                  # 安装构建依赖（pagefind，锁定于 package-lock.json）
 hugo server -D          # 本地预览 http://localhost:1313
 hugo --minify           # 产出到 public/
 npx pagefind --site public   # 生成搜索索引（/search/ 依赖）
@@ -65,7 +66,7 @@ Hugo 0.164 对 `/blog/:slug.html` 输出目录式页面（尾斜杠 URL）。为
 
 ## Cloudflare Pages 部署
 
-- 构建命令：`hugo --minify && npx pagefind --site public`
+- 构建命令：`npm ci && hugo --minify && npx pagefind --site public`（pagefind 锁定在 package-lock.json，npx 离线可用）
 - 输出目录：`public`
 - 环境变量：`HUGO_VERSION=0.164.0`（钉版本）
 - 域名：`xiaowenz.com` 绑定到 Pages 项目

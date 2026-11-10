@@ -1,0 +1,8 @@
+{
+  "name": "xiaowenz-blog",
+  "private": true,
+  "description": "xiaowenz.com — 构建依赖仅 pagefind（/search/ 的客户端搜索索引）",
+  "devDependencies": {
+    "pagefind": "1.6.0"
+  }
+}
