@@ -53,8 +53,8 @@
       {{ else }}
         <span style="opacity:.35">←</span>
       {{ end }}
-      <span class="year-nav__current">{{ .Title }}</span>
-      <span style="opacity:.35">→</span>
+      <span class="year-nav__current">{{ $currentYear }}</span>
+      <a href="{{ "/archive/" | relURL }}">年份总览 →</a>
     </nav>
   {{ end }}
 </div>

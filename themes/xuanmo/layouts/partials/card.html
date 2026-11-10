@@ -82,9 +82,9 @@
   {{ end }}
   <div class="post-card__body">
     {{ if $cat }}
-      <div class="post-card__cat">{{ $cat }}</div>
+      <a class="post-card__cat" href="{{ $catURL | relURL }}">{{ $cat }}</a>
     {{ else }}
-      <div class="post-card__cat">{{ cond (eq $p.Section "episodes") "播客" "文章" }}</div>
+      <div class="post-card__cat">{{ if eq $p.Section "episodes" }}播客{{ else if eq $p.Section "recipes" }}菜谱{{ else }}文章{{ end }}</div>
     {{ end }}
     <h3 class="post-card__title">
       <a class="post-card__title-link" href="{{ $link }}">{{ $p.Title }}</a>
@@ -107,7 +107,7 @@
   {{ end }}
   <div class="post-card__body">
     {{ if $cat }}
-      <div class="post-card__cat">{{ $cat }}</div>
+      <a class="post-card__cat" href="{{ $catURL | relURL }}">{{ $cat }}</a>
     {{ else }}
       <div class="post-card__cat">特稿</div>
     {{ end }}
@@ -134,7 +134,7 @@
   {{ end }}
   <div class="post-card__body">
     {{ with $cat }}
-      <div class="post-card__cat">{{ . }}</div>
+      <a class="post-card__cat" href="{{ $catURL | relURL }}">{{ . }}</a>
     {{ end }}
     <h3 class="post-card__title">
       <a class="post-card__title-link" href="{{ $link }}">{{ $p.Title }}</a>

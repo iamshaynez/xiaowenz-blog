@@ -14,6 +14,14 @@
         <span class="section-index">
           <a href="{{ partial "util/canonical-url.html" $kind.term | relURL }}" style="color:inherit">{{ $kind.term.Title }}</a>
         </span>
+      {{ else if eq .Section "blog" }}
+        <span class="section-index">
+          <a href="{{ "/blog/" | relURL }}" style="color:inherit">文章</a>
+        </span>
+      {{ else if eq .Section "recipes" }}
+        <span class="section-index">
+          <a href="{{ "/recipes/" | relURL }}" style="color:inherit">菜谱</a>
+        </span>
       {{ else }}
         <span class="section-index">{{ $kind.kind }}</span>
       {{ end }}
@@ -46,6 +54,15 @@
     </figure>
   {{ end }}
 
+  {{ with .TableOfContents }}
+    {{ if gt (len (findRE "<li" . 1)) 0 }}
+      <aside class="toc" aria-label="文章目录">
+        <div class="toc__title">目录</div>
+        {{ . | safeHTML }}
+      </aside>
+    {{ end }}
+  {{ end }}
+
   <div class="article__body prose e-content js-content" itemprop="articleBody">
     {{ .Content }}
 
@@ -71,6 +88,14 @@
           </li>
         {{ end }}
       </ul>
+    {{ end }}
+
+    {{ if eq .Section "blog" }}
+      <div style="margin-top: var(--space-5); font-size: var(--fs-sm);">
+        <a href="{{ "/blog/" | relURL }}">← 全部文章</a>
+        <span aria-hidden="true" style="opacity:.35;">·</span>
+        <a href="{{ "/archive/" | relURL }}">年份总览</a>
+      </div>
     {{ end }}
 
     <div class="article__actions" style="margin-top: var(--space-6);">

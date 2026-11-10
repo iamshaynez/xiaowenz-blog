@@ -28,6 +28,8 @@
         <div class="site-footer__col-title">导航</div>
         <ul class="site-footer__links">
           <li><a href="{{ "/" | relURL }}">首页</a></li>
+          <li><a href="{{ "/archive/" | relURL }}">归档</a></li>
+          <li><a href="{{ "/tags/" | relURL }}">标签</a></li>
           {{ range $primary }}
             <li>
               <a href="{{ .URL | relURL }}">

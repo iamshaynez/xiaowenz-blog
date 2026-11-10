@@ -51,9 +51,15 @@
       body: JSON.stringify(payload)
     })
       .then(function (res) {
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        setStatus(form, "订阅成功，请查收确认邮件。", true);
-        form.reset();
+        if (res.ok) {
+          setStatus(form, "订阅成功，请查收确认邮件。", true);
+          form.reset();
+          return null;
+        }
+        // 透出服务端错误（如重复订阅），与 comments.js 同款体验
+        return res.json().catch(function () { return null; }).then(function (body) {
+          setStatus(form, (body && body.error) ? body.error : "提交失败，请稍后重试。", false);
+        });
       })
       .catch(function () {
         setStatus(form, "提交失败，请稍后重试。", false);

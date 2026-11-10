@@ -1,6 +1,7 @@
 {{ define "main" }}
-{{/* archive.html — /archive/YYYY/ stubs (layout: archive). That year's blog posts, uniform grid.
-     h1 is the constant "Archive" (live parity: /archive/2025/ shows h1 "Archive"). */}}
+{{/* archive-year.html — /archive/YYYY/ stubs (layout: archive-year). That year's blog posts, uniform grid.
+     Renamed from "archive": the layout name collided with the section name and Hugo's
+     section lookup let this file hijack the /archive/ index rendering. */}}
 {{ $year := partial "util/year-of.html" . }}
 {{ $posts := (where .Site.RegularPages "Section" "blog").ByDate.Reverse }}
 {{ $posts = where $posts "Date.Year" $year }}
@@ -25,7 +26,7 @@
       <span>{{ len $posts }} 篇</span>
     </div>
 
-    <h1 class="page-header__title display">Archive</h1>
+    <h1 class="page-header__title display">{{ .Title }}</h1>
 
     {{ with .Site.Params.description }}
       <p class="page-header__desc">{{ . }}</p>
@@ -54,7 +55,7 @@
       {{ else }}
         <span style="opacity:.35">←</span>
       {{ end }}
-      <span class="year-nav__current">Archive</span>
+      <span class="year-nav__current"><a href="{{ "/archive/" | relURL }}" title="回到年份总览">{{ .Title }}</a></span>
       {{ if $newer }}
         {{ $stub := .Site.GetPage (printf "/archive/%d" $newer) }}
         {{ if $stub }}

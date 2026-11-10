@@ -1,4 +1,5 @@
 {{ define "main" }}
+{{ $latest := first 6 (where .Site.RegularPages "Section" "in" (slice "blog" "episodes")).ByDate.Reverse }}
 <div class="container">
   <header class="page-header">
     <div class="masthead-bar">
@@ -9,11 +10,50 @@
 
     <h1 class="page-header__title display">404</h1>
 
-    <p class="page-header__desc">这一页不存在，或者已经被移动。</p>
+    <p class="page-header__desc">这一页不存在，或者已经被移动。试试搜索，或者从下面继续读。</p>
   </header>
 
-  <div class="empty-state">
-    <p><a class="btn" href="{{ "/" | relURL }}">返回首页 <span class="btn__arrow" aria-hidden="true">→</span></a></p>
+  <div id="search404" class="xw-search">
+    <noscript><p class="empty-state">搜索需要启用 JavaScript。</p></noscript>
   </div>
+
+  <div class="hero__meta" style="margin-top: var(--space-6); display:flex; gap:var(--space-3); flex-wrap:wrap;">
+    <a class="btn" href="{{ "/" | relURL }}">返回首页 <span class="btn__arrow" aria-hidden="true">→</span></a>
+    <a class="btn btn--ghost" href="{{ "/archive/" | relURL }}">按年份找文章</a>
+    <a class="btn btn--ghost" href="{{ "/search/" | relURL }}">去搜索页</a>
+  </div>
+
+  {{ if $latest }}
+    <section style="margin-top: var(--space-9);">
+      <div class="section-head">
+        <div class="section-head__title">
+          <span class="section-index">NOW</span>
+          <h2>最新文章</h2>
+        </div>
+      </div>
+      <div class="post-list">
+        {{ range $i, $p := $latest }}
+          {{ partial "card.html" (dict "post" $p "style" "list" "index" (add $i 1)) }}
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
 </div>
+<script>
+(function () {
+  var el = document.getElementById("search404");
+  if (!el) return;
+  var s = document.createElement("script");
+  s.src = "{{ "pagefind/pagefind-ui.js" | relURL }}";
+  s.onload = function () {
+    if (window.PagefindUI) new PagefindUI({ element: "#search404", showSubResults: true, showImages: false });
+  };
+  s.onerror = function () { el.hidden = true; }; // 索引未生成时静默隐藏，按钮区仍有出路
+  document.head.appendChild(s);
+  var css = document.createElement("link");
+  css.rel = "stylesheet";
+  css.href = "{{ "pagefind/pagefind-ui.css" | relURL }}";
+  document.head.appendChild(css);
+})();
+</script>
 {{ end }}

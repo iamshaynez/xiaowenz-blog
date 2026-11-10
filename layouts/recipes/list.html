@@ -1,5 +1,19 @@
 {{ define "main" }}
-{{/* recipes 索引页：_index.md 手工维护的分类索引即页面本体（read-books 同款玩法） */}}
+{{/* recipes 索引页：_index.md 前言 + 按 front matter `category` 自动分组的全量清单。
+     新增菜谱只需建文件并写 category；新分类追加到 $order 即可（漏掉的分类兜底排在末尾）。 */}}
+{{ $order := slice "主菜" "炒菜" "主食" "汤" "小吃辅食" "空气炸锅" "其他" }}
+{{ $cats := slice }}
+{{ range $order }}{{ $cats = $cats | append (dict "name" . "pages" (where $.RegularPages "Params.category" .)) }}{{ end }}
+{{/* 未列入 $order 的分类兜底去重后追加 */}}
+{{ range $p := .RegularPages }}
+  {{ $c := $p.Params.category | default "其他" }}
+  {{ if not (in $order $c) }}
+    {{ $found := false }}
+    {{ range $cats }}{{ if eq .name $c }}{{ $found = true }}{{ end }}{{ end }}
+    {{ if not $found }}{{ $cats = $cats | append (dict "name" $c "pages" (where $.RegularPages "Params.category" $c)) }}{{ end }}
+  {{ end }}
+{{ end }}
+
 <div class="container">
   <header class="page-header">
     <div class="masthead-bar">
@@ -18,5 +32,24 @@
   <div class="article__body prose js-content">
     {{ .Content }}
   </div>
+
+  {{ range $ci, $c := $cats }}
+    {{ if $c.pages }}
+      <section style="margin-top: var(--space-8);">
+        <div class="section-head">
+          <div class="section-head__title">
+            <span class="section-index">{{ printf "%02d" (add $ci 1) }}</span>
+            <h2>{{ $c.name }}</h2>
+          </div>
+          <span class="section-head__more">{{ len $c.pages }} 道</span>
+        </div>
+        <div class="post-list">
+          {{ range $i, $p := $c.pages.ByDate.Reverse }}
+            {{ partial "card.html" (dict "post" $p "style" "list" "index" (add $i 1)) }}
+          {{ end }}
+        </div>
+      </section>
+    {{ end }}
+  {{ end }}
 </div>
 {{ end }}

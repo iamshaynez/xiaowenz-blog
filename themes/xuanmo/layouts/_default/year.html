@@ -60,7 +60,7 @@
       {{ else }}
         <span style="opacity:.35">←</span>
       {{ end }}
-      <span class="year-nav__current">{{ .Title }}</span>
+      <span class="year-nav__current"><a href="{{ "/archive/" | relURL }}" title="回到年份总览">{{ .Title }}</a></span>
       {{ if $newer }}
         {{ $latest := index $years 0 }}
         {{ if eq $newer $latest }}

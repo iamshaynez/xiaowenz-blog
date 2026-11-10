@@ -3,6 +3,9 @@ title: "商业分析报告"
 date: "2026-03-24T17:03:26+08:00"
 url: "/business-reports/"
 type: "page"
+layout: "landing"
+listTag: "business-report"
+description: "用自研的商业分析 Agent Loop 产出的企业商业模式报告——名创优品、胖东来、豆包、霸王茶姬等"
 ---
 
 ## 大语言模型时代的价值
@@ -47,10 +50,7 @@ type: "page"
 
 如果有兴趣尝试应用在你面对的一个具体问题上，可以联系我。
 
-- [商业战略报告：2026 名创优品](https://xiaowenz.com/blog/report-miniso-2026.html)
-- [商业战略报告：胖东来](https://xiaowenz.com/blog/report-pangdonglai.html)
-- [商业战略报告：豆包走到哪里去](https://xiaowenz.com/blog/report-doubao-ai-app.html)
-- [商业战略报告：霸王茶姬](https://xiaowenz.com/blog/report-bawangchaji-cha.html)
+已发布的报告按时间倒序列在本页底部（同步自博客 [business-report 标签](/tags/business-report/)）。
 
 ## 最后
 

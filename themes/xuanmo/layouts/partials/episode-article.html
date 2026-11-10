@@ -20,7 +20,7 @@
           <a href="{{ partial "util/canonical-url.html" (index $terms 0) | relURL }}" style="color:inherit">{{ (index $terms 0).Title }}</a>
         </span>
       {{ else }}
-        <span class="section-index">播客</span>
+        <span class="section-index"><a href="{{ "/episodes/" | relURL }}" style="color:inherit">播客</a></span>
       {{ end }}
     </div>
 
@@ -66,6 +66,29 @@
       </audio>
     </div>
   {{ end }}
+
+  {{/* 订阅收听行：节目单 + 各平台（配置后显示）+ 播客 RSS */}}
+  {{ $podcastLinks := $params.podcast | default dict }}
+  <ul class="podcast-show__links" style="margin-bottom: var(--space-7);">
+    <li>
+      <a class="tag" href="{{ "/episodes/" | relURL }}">节目单</a>
+    </li>
+    {{ with $podcastLinks.spotify }}
+      <li><a class="tag" href="{{ . }}" target="_blank" rel="noopener">Spotify</a></li>
+    {{ end }}
+    {{ with $podcastLinks.apple }}
+      <li><a class="tag" href="{{ . }}" target="_blank" rel="noopener">Apple Podcast</a></li>
+    {{ end }}
+    {{ with $podcastLinks.xiaoyuzhou }}
+      <li><a class="tag" href="{{ . }}" target="_blank" rel="noopener">小宇宙</a></li>
+    {{ end }}
+    {{ with $podcastLinks.netease }}
+      <li><a class="tag" href="{{ . }}" target="_blank" rel="noopener">网易云音乐</a></li>
+    {{ end }}
+    <li>
+      <a class="tag" href="{{ "feed/audio.xml" | relURL }}">RSS</a>
+    </li>
+  </ul>
 
   <div class="article__body prose e-content js-content" itemprop="articleBody">
     {{ .Content }}

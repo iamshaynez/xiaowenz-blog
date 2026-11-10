@@ -8,12 +8,10 @@
 {{ $isEntry := and .IsPage (in (slice "blog" "episodes") .Section) }}
 {{ $canon := partial "util/canonical-url.html" . }}
 
-{{/* —— title (archive stubs render as "Archive - site", matching live) —— */}}
+{{/* —— title —— */}}
 {{ $title := $site.Title }}
 {{ if not .IsHome }}
-  {{ $titlePage := .Title }}
-  {{ if eq .Params.layout "archive" }}{{ $titlePage = "Archive" }}{{ end }}
-  {{ $title = printf "%s - %s" $titlePage $site.Title }}
+  {{ $title = printf "%s - %s" .Title $site.Title }}
 {{ end }}
 
 {{/* —— description —— */}}

@@ -84,5 +84,45 @@
       </div>
     </section>
   {{ end }}
+
+  {{/* —— 播客板块 —— */}}
+  {{ $episodes := first 2 (where .Site.RegularPages "Section" "episodes").ByDate.Reverse }}
+  {{ if $episodes }}
+    <section class="ep-list" style="margin-top: var(--space-9);" aria-label="最新播客">
+      <div class="section-head reveal">
+        <div class="section-head__title">
+          <span class="section-index">03</span>
+          <h2>播客</h2>
+        </div>
+        <a class="section-head__more" href="{{ "/episodes/" | relURL }}">
+          全部节目 <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      {{ range $i, $p := $episodes }}
+        {{ partial "card.html" (dict "post" $p "style" "episode" "index" (add $i 1)) }}
+      {{ end }}
+    </section>
+  {{ end }}
+
+  {{/* —— 菜谱板块 —— */}}
+  {{ $recipes := first 3 (where .Site.RegularPages "Section" "recipes").ByDate.Reverse }}
+  {{ if $recipes }}
+    <section style="margin-top: var(--space-9);" aria-label="最新菜谱">
+      <div class="section-head reveal">
+        <div class="section-head__title">
+          <span class="section-index">04</span>
+          <h2>菜谱</h2>
+        </div>
+        <a class="section-head__more" href="{{ "/recipes/" | relURL }}">
+          全部菜谱 <span aria-hidden="true">→</span>
+        </a>
+      </div>
+      <div class="post-list">
+        {{ range $i, $p := $recipes }}
+          {{ partial "card.html" (dict "post" $p "style" "list" "index" (add $i 1)) }}
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
 </div>
 {{ end }}

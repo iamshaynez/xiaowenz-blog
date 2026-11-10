@@ -268,3 +268,14 @@
   --pagefind-ui-border-radius: var(--radius);
   --pagefind-ui-font: var(--font-sans);
 }
+
+/* —— 卡片分类标签可点击（card.html 改为 <a>，样式沿用 .post-card__cat）—— */
+a.post-card__cat {
+  text-decoration: none;
+}
+
+/* —— 年份导航 current 位链接（year.html / archive-year.html）—— */
+.year-nav__current a {
+  color: inherit;
+  text-decoration: none;
+}

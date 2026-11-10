@@ -1,0 +1,47 @@
+{{ define "main" }}
+{{/* landing.html — 栏目落地页：front matter prose（.Content）+ 可选自动列表。
+     用法：layout: "landing" + listTag: "read" → 页尾自动列出 /tags/read/ 全部文章（新在前），
+     免手工维护链接清单。 */}}
+<div class="container">
+  <header class="page-header">
+    <div class="masthead-bar">
+      <span><span class="masthead-bar__red">LIST</span></span>
+      <span>{{ .Section | default "page" }}</span>
+      <span>—</span>
+    </div>
+
+    <h1 class="page-header__title display">{{ .Title }}</h1>
+
+    {{ with .Params.description }}
+      <p class="page-header__desc">{{ . }}</p>
+    {{ end }}
+  </header>
+
+  <div class="article__body prose js-content">
+    {{ .Content }}
+  </div>
+
+  {{ with .Params.listTag }}
+    {{ $term := $.Site.GetPage (printf "/tags/%s" .) }}
+    {{ with $term }}
+      {{ $items := $term.Pages.ByDate.Reverse }}
+      {{ if $items }}
+        <section style="margin-top: var(--space-9);">
+          <div class="section-head">
+            <div class="section-head__title">
+              <span class="section-index">{{ printf "%02d" 1 }}</span>
+              <h2>{{ $term.Title | default $.Params.listTag }}</h2>
+            </div>
+            <span class="section-head__more">{{ len $items }} 篇 · 新在前</span>
+          </div>
+          <div class="post-list">
+            {{ range $i, $p := $items }}
+              {{ partial "card.html" (dict "post" $p "style" "list" "index" (add $i 1)) }}
+            {{ end }}
+          </div>
+        </section>
+      {{ end }}
+    {{ end }}
+  {{ end }}
+</div>
+{{ end }}

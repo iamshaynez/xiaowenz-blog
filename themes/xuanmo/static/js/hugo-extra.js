@@ -29,33 +29,22 @@
     });
   }
 
-  /* ---------- 分享链接 ---------- */
+  /* ---------- 分享链接 ----------
+     tw/wb/tg 由 share-actions.html 服务端渲染真实 href，原生跳转（含中键/右键）。
+     仅微信需要 JS：无 Web 分享端点，复制链接。 */
   function bindShare() {
     qsa(".js-share").forEach((a) => {
+      if (a.dataset.type !== "wx") return;
       a.addEventListener("click", (e) => {
         e.preventDefault();
         const url = window.location.href;
-        const title = document.title;
-        const type = a.dataset.type;
-        let target = "";
-        if (type === "tw") {
-          target = "https://twitter.com/intent/tweet?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(title);
-        } else if (type === "wb") {
-          target = "https://service.weibo.com/share/share.php?url=" + encodeURIComponent(url) + "&title=" + encodeURIComponent(title);
-        } else if (type === "tg") {
-          target = "https://t.me/share/url?url=" + encodeURIComponent(url) + "&text=" + encodeURIComponent(title);
-        } else if (type === "wx") {
-          // 微信无 Web 分享端点：复制链接
-          const done = () => {
-            a.setAttribute("aria-label", "链接已复制");
-            setTimeout(() => a.setAttribute("aria-label", "分享到微信"), 1600);
-          };
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(url).then(done, done);
-          }
-          return;
+        const done = () => {
+          a.setAttribute("aria-label", "链接已复制");
+          setTimeout(() => a.setAttribute("aria-label", "分享到微信"), 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(url).then(done, done);
         }
-        if (target) window.open(target, "_blank", "noopener,noreferrer,width=640,height=480");
       });
     });
   }

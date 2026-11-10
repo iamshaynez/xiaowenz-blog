@@ -1,7 +1,7 @@
 {{ define "main" }}
-{{/* term.html — single tag page: masthead + full tag list + list cards (oldest first, live parity). */}}
+{{/* term.html — single tag page: masthead + full tag list + list cards (newest first). */}}
 {{ $terms := .Site.Taxonomies.tags.Alphabetical }}
-{{ $items := .Pages.ByDate }}
+{{ $items := .Pages.ByDate.Reverse }}
 <div class="container">
   <header class="page-header">
     <div class="masthead-bar">

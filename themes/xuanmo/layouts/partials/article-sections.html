@@ -1,8 +1,45 @@
 {{/* article-sections.html — article footer extras below post-nav.
-     blog/episodes: sponsorship + subscribe + Read This + comments.
+     blog/episodes: subscribe + related posts + sponsorship + comments.
      standalone pages: sponsorship + comments (live parity). */}}
 {{ $afdian := site.Params.afdian | default "https://afdian.com/a/xiaowenz" }}
 {{ $isEntry := in (slice "blog" "episodes") .Section }}
+
+{{ if $isEntry }}
+  {{ partial "subscribe-form.html" . }}
+
+  {{/* 相关阅读：同首标签的最新 3 篇（排除本文）；无标签时回退上一篇。 */}}
+  {{ $related := slice }}
+  {{ $terms := .GetTerms "tags" }}
+  {{ if gt (len $terms) 0 }}
+    {{ $term := index $terms 0 }}
+    {{ range $p := first 5 $term.Pages.ByDate.Reverse }}
+      {{ if and (ne $p.Permalink $.Permalink) (lt (len $related) 3) }}
+        {{ $related = $related | append $p }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ if not $related }}
+    {{ with .PrevInSection }}{{ $related = slice . }}{{ end }}
+  {{ end }}
+
+  {{ if $related }}
+    <section class="entry-section prev-subject">
+      <div class="inner">
+        <h2>{{ if gt (len $terms) 0 }}相关阅读{{ else }}Read This{{ end }}</h2>
+        {{ range $related }}
+          <div class="item" lang="zh">
+            <a class="item-main" href="{{ partial "util/canonical-url.html" . | relURL }}">
+              <h3>{{ .Title }}</h3>
+              {{ with .Params.subtitle }}
+                <div class="item-subtitle">{{ . }}</div>
+              {{ end }}
+            </a>
+          </div>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+{{ end }}
 
 <div class="entry-section sponsorship">
   <div class="inner">
@@ -12,25 +49,5 @@
     </a>
   </div>
 </div>
-
-{{ if $isEntry }}
-  {{ partial "subscribe-form.html" . }}
-
-  {{ with .PrevInSection }}
-    <section class="entry-section prev-subject">
-      <div class="inner">
-        <h2>Read This</h2>
-        <div class="item" lang="zh">
-          <a class="item-main" href="{{ partial "util/canonical-url.html" . | relURL }}">
-            <h3>{{ .Title }}</h3>
-            {{ with .Params.subtitle }}
-              <div class="item-subtitle">{{ . }}</div>
-            {{ end }}
-          </a>
-        </div>
-      </div>
-    </section>
-  {{ end }}
-{{ end }}
 
 {{ partial "comments.html" . }}
