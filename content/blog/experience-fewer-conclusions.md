@@ -7,7 +7,7 @@ tags:
   - "work"
   - "think"
   - "life"
-draft: true
+draft: false
 type: "blog"
 ---
 
