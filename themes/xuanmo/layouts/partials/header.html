@@ -3,26 +3,26 @@
 {{ $brandMark := $params.brandMark | default "酒" }}
 {{ $podcast := $params.podcast | default dict }}
 
-{{/* primary menu = .Site.Menus.main minus the search entry */}}
+{{/* menu.main entries grouped by params.nav (config.yaml is the single source of truth):
+     nav=primary (default) renders flat; nav=more goes into the「更多」dropdown. */}}
 {{ $primary := slice }}
-{{ $search := "" }}
+{{ $more := slice }}
 {{ range .Site.Menus.main }}
-  {{ if eq .URL "/search/" }}
-    {{ $search = . }}
+  {{ if eq .Params.nav "more" }}
+    {{ $more = $more | append . }}
   {{ else }}
     {{ $primary = $primary | append . }}
   {{ end }}
 {{ end }}
 
-{{/* secondary links: 本站播客 + podcast platforms */}}
-{{ $secondary := slice (dict "name" "本站播客" "url" ("/episodes/" | relURL) "blank" false) }}
+{{/* secondary links: podcast platforms (external, rendered only when configured) */}}
+{{ $secondary := slice }}
 {{ with $podcast.spotify }}{{ $secondary = $secondary | append (dict "name" "Spotify" "url" . "blank" true) }}{{ end }}
 {{ with $podcast.apple }}{{ $secondary = $secondary | append (dict "name" "Apple Podcast" "url" . "blank" true) }}{{ end }}
 {{ with $podcast.xiaoyuzhou }}{{ $secondary = $secondary | append (dict "name" "小宇宙" "url" . "blank" true) }}{{ end }}
 {{ with $podcast.netease }}{{ $secondary = $secondary | append (dict "name" "网易云音乐" "url" . "blank" true) }}{{ end }}
 
-{{ $visibleMax := 4 }}
-{{ $hasOverflow := or (gt (len $primary) $visibleMax) (gt (len $secondary) 0) }}
+{{ $hasOverflow := or (gt (len $more) 0) (gt (len $secondary) 0) }}
 
 <div class="reading-progress" aria-hidden="true"></div>
 <header class="site-header{{ if $hasOverflow }} site-header--hybrid{{ end }}">
@@ -46,14 +46,12 @@
           </li>
         {{ end }}
 
-        {{ range $i, $link := $primary }}
-          {{ if lt $i $visibleMax }}
-            <li>
-              <a class="site-nav__link" href="{{ $link.URL | relURL }}">
-                {{ $link.Name }}
-              </a>
-            </li>
-          {{ end }}
+        {{ range $link := $primary }}
+          <li>
+            <a class="site-nav__link" href="{{ $link.URL | relURL }}">
+              {{ $link.Name }}
+            </a>
+          </li>
         {{ end }}
 
         {{ if $hasOverflow }}
@@ -70,16 +68,14 @@
               <span class="site-nav__more-caret" aria-hidden="true"></span>
             </button>
             <ul class="site-nav__dropdown" id="nav-more-menu" role="menu" hidden>
-              {{ range $i, $link := $primary }}
-                {{ if ge $i $visibleMax }}
-                  <li role="none">
-                    <a class="site-nav__dropdown-link" role="menuitem" href="{{ $link.URL | relURL }}">
-                      {{ $link.Name }}
-                    </a>
-                  </li>
-                {{ end }}
+              {{ range $link := $more }}
+                <li role="none">
+                  <a class="site-nav__dropdown-link" role="menuitem" href="{{ $link.URL | relURL }}">
+                    {{ $link.Name }}
+                  </a>
+                </li>
               {{ end }}
-              {{ if and (gt (len $primary) $visibleMax) (gt (len $secondary) 0) }}
+              {{ if and (gt (len $more) 0) (gt (len $secondary) 0) }}
                 <li class="site-nav__dropdown-sep" role="separator" aria-hidden="true"></li>
               {{ end }}
               {{ range $secondary }}
@@ -90,12 +86,6 @@
                 </li>
               {{ end }}
             </ul>
-          </li>
-        {{ end }}
-
-        {{ with $search }}
-          <li>
-            <a class="site-nav__link" href="{{ .URL | relURL }}" aria-label="搜索">{{ .Name }}</a>
           </li>
         {{ end }}
       </ul>

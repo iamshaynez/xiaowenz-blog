@@ -51,38 +51,42 @@ sitemap:
 minify:
   minifyOutput: true
 
+# 顶部导航唯一数据源：nav=primary 一级平铺，nav=more 进「更多」下拉（见 header.html）。
+# 首页入口由 brand 与页脚承担，不设菜单项；播客平台外链见 params.podcast，配置后自动出现在下拉底部。
 menu:
   main:
-    - name: "Home"
-      url: "/"
-      weight: 1
     - name: "本站播客"
       url: "/episodes/"
+      weight: 1
+      params: { nav: primary }
+    - name: "专栏文章"
+      url: "/tags/newsletter/"
       weight: 2
-    - name: "Read"
+      params: { nav: primary }
+    - name: "读书"
       url: "/read-books/"
       weight: 3
-    - name: "菜谱"
-      url: "/recipes/"
+      params: { nav: primary }
+    - name: "商业分析"
+      url: "/business-reports/"
       weight: 4
-    - name: "Newsletter"
-      url: "/tags/newsletter/"
+      params: { nav: primary }
+    - name: "关于"
+      url: "/about/"
       weight: 5
-    - name: "UK Company"
-      url: "/run-a-uk-company/"
-      weight: 6
+      params: { nav: primary }
     - name: "Service 和爱发电"
       url: "/service-and-afdian/"
+      weight: 6
+      params: { nav: more }
+    - name: "菜谱收藏"
+      url: "/recipes/"
       weight: 7
-    - name: "Business 商业分析"
-      url: "/business-reports/"
-      weight: 8
-    - name: "About"
-      url: "/about/"
-      weight: 9
+      params: { nav: more }
     - name: "搜索"
       url: "/search/"
-      weight: 10
+      weight: 8
+      params: { nav: more }
 
 params:
   description: "一个写了将近20年的博客，突然开始有趣起来了……"
