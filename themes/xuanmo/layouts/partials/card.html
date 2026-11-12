@@ -9,7 +9,8 @@
 {{ $terms := $p.GetTerms "tags" }}
 {{ $cat := "" }}
 {{ $catURL := "" }}
-{{ if gt (len $terms) 0 }}{{ $cat = (index $terms 0).Title }}{{ $catURL = (index $terms 0).RelPermalink }}{{ end }}
+{{ if gt (len $terms) 0 }}{{ $cat = (index $terms 0).Title }}{{ $catURL = (index $terms 0).RelPermalink }}
+{{ else if $p.Params.category }}{{ $cat = $p.Params.category }}{{ end }}{{/* 无 tags 回退自带分类（如菜谱 category），无聚合页故不加链接 */}}
 
 {{/* 类型戳：栏目大类竖排印章（博客/专栏/播客/菜谱），混合列表分辨用；单一类型板块传 nochip 免盖 */}}
 {{ $kind := "文章" }}
@@ -93,9 +94,7 @@
     <div class="post-card__index" aria-hidden="true">{{ printf "%02d" $idx }}</div>
   {{ end }}
   <div class="post-card__body">
-    {{ with $cat }}
-      <a class="post-card__cat" href="{{ $catURL | relURL }}">{{ . }}</a>
-    {{ end }}
+    {{ with $cat }}{{ if $catURL }}<a class="post-card__cat" href="{{ $catURL | relURL }}">{{ . }}</a>{{ else }}<div class="post-card__cat">{{ . }}</div>{{ end }}{{ end }}
     <h3 class="post-card__title">
       <a class="post-card__title-link" href="{{ $link }}">{{ $p.Title }}</a>
     </h3>
@@ -117,10 +116,10 @@
     <div class="post-card__index" aria-hidden="true">{{ printf "%02d" $idx }}</div>
   {{ end }}
   <div class="post-card__body">
-    {{ if $cat }}
+    {{ if $catURL }}
       <a class="post-card__cat" href="{{ $catURL | relURL }}">{{ $cat }}</a>
     {{ else }}
-      <div class="post-card__cat">特稿</div>
+      <div class="post-card__cat">{{ $cat | default "特稿" }}</div>
     {{ end }}
     <h2 class="post-card__title">
       <a class="post-card__title-link" href="{{ $link }}">{{ $p.Title }}</a>
@@ -141,9 +140,7 @@
 <article class="post-card post-card--plain">
   {{ with $kindChip }}<span class="card-kind">{{ . }}</span>{{ end }}
   <div class="post-card__body">
-    {{ with $cat }}
-      <a class="post-card__cat" href="{{ $catURL | relURL }}">{{ . }}</a>
-    {{ end }}
+    {{ with $cat }}{{ if $catURL }}<a class="post-card__cat" href="{{ $catURL | relURL }}">{{ . }}</a>{{ else }}<div class="post-card__cat">{{ . }}</div>{{ end }}{{ end }}
     <h3 class="post-card__title">
       <a class="post-card__title-link" href="{{ $link }}">{{ $p.Title }}</a>
     </h3>
