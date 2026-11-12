@@ -5,6 +5,9 @@ slug: "career-answer-in-business"
 description: "一句话摘要 年终绩效季，在去上海的高速上聊聊中年职场焦虑：大厂像学校一样把工作与真实商业结果隔开，而当增长红利退去，个体缺乏独立被定价的能力，才是焦虑的本源。 章节 00:43 开场：去上海的路上，聊聊中年职场焦虑 01:47 大厂工作为什..."
 draft: false
 type: "episode"
+tags:
+  - "office"
+  - "business"
 episode: 4
 audio_slug: "career-answer-in-business"
 audio_bytes: 11728269

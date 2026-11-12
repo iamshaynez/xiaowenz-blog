@@ -4,6 +4,10 @@ date: '2026-08-20T09:11:25+08:00'
 slug: freetime-is-the-most-important-to-survive-in-business
 description: 一句话摘要 从"朋友很努力却得不到回报"聊起：增长时代努力就有回报，存量时代蛋糕不再变大——无论企业还是个人，能穿越周期的关键都是"余闲"：用效率买回时间，再把时间投资给试错和积累，换回未来的机会。
   ...
+tags:
+  - "finance"
+  - "business"
+
 draft: false
 type: episode
 episode: 6

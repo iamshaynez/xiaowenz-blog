@@ -4,6 +4,10 @@ date: '2026-08-08T09:50:34+08:00'
 slug: ai-knowledge-and-education
 description: 一句话摘要 "适应 AI 时代"是个功利的问题——竞争力从来和有没有 AI 无关；真正会变的是学习的路径：AI 第一次让人类可以"先见经验、再倒推知识"，但学知识这件事本身，你跑不掉。
   章节 00:3...
+tags:
+  - "ai"
+  - "life"
+
 draft: false
 type: episode
 season: 1

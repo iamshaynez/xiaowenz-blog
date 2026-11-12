@@ -5,6 +5,9 @@ slug: "humanity-last-exam-and-agi"
 description: "HLE 论文地址 https://www.research-collection.ethz.ch/server/api/core/bitstreams/1902b5a9-4209-4529-b278-c258aad557ba/content..."
 draft: false
 type: "episode"
+tags:
+  - "ai"
+  - "technology"
 season: 1
 episode: 2
 audio_slug: "humanity-last-exam-and-agi"
