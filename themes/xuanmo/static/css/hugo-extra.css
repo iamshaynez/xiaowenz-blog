@@ -297,7 +297,7 @@ a.post-card__cat {
   color: var(--ink);
   border: 1px solid color-mix(in srgb, var(--ink-2) 58%, transparent);
   border-radius: 2px;
-  background: color-mix(in srgb, var(--paper) 55%, transparent);
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
   pointer-events: none;
   user-select: none;
 }
@@ -318,18 +318,20 @@ a.post-card__cat {
   font-weight: 700;
 }
 
-/* 特稿卡右上被巨号序号占用，戳改盖左上 */
+/* 特稿卡：顶部是分类标签、右上被巨号序号占用，戳钉右缘竖中 */
 .post-card--featured .card-kind {
-  top: var(--space-6);
-  left: var(--space-6);
-  right: auto;
+  top: 50%;
+  right: var(--space-6);
+  left: auto;
+  transform: translateY(-50%);
 }
 
-/* 正文让位：文字不钻到戳底下 */
+/* 正文让位：戳占区 = 16px 偏移 + 24px 宽，留 48px 安全距离 */
 .post-card--plain .post-card__body,
 .post-card--list .post-card__body,
+.post-card--featured .post-card__body,
 .ep-card .ep-card__body {
-  padding-right: var(--space-6);
+  padding-right: 3rem;
 }
 
 /* 播客单集 noart 变体（首页）：去封面列，行卡保底高度容纳竖戳 */

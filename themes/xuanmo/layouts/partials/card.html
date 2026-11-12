@@ -12,7 +12,7 @@
 {{ if gt (len $terms) 0 }}{{ $cat = (index $terms 0).Title }}{{ $catURL = (index $terms 0).RelPermalink }}{{ end }}
 
 {{/* 类型戳：栏目大类竖排印章（博客/专栏/播客/菜谱），混合列表分辨用；单一类型板块传 nochip 免盖 */}}
-{{ $kind := "博客" }}
+{{ $kind := "文章" }}
 {{ if eq $p.Section "episodes" }}{{ $kind = "播客" }}
 {{ else if eq $p.Section "recipes" }}{{ $kind = "菜谱" }}
 {{ else if $p.Params.tags }}{{ if in $p.Params.tags "newsletter" }}{{ $kind = "专栏" }}{{ end }}
