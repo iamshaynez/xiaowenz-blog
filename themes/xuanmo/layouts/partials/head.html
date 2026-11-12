@@ -30,20 +30,15 @@
 {{ if not $desc }}{{ $desc = $params.description | default "" }}{{ end }}
 
 {{/* —— og image ——
-     播客页统一品牌卡；博客文章有封面优先封面，否则 slogan 卡；其余页面回退站点图标。
-     卡片源稿与渲染：scripts/og/（render.sh → static/og/*.png） */}}
+     播客页统一品牌卡；有封面优先封面；否则全站默认品牌卡 og/og-site.png（水墨茶杯 · 三杯过后，所有无封面文章的分享预览都用它）。
+     og-podcast 源稿 scripts/og/src/og-podcast.svg（render.sh 渲染）；og-site 为位图资产，源稿 scripts/og/src/og-site.master.png（1024×572，deploy 前镜像补边成 1200×630）。 */}}
 {{ $cover := partial "util/cover.html" . }}
-{{ $ogImage := $icon }}
-{{ $bigCard := false }}
+{{ $ogImage := "og/og-site.png" | absURL }}
+{{ $bigCard := true }}
 {{ if $isEpisode }}
   {{ $ogImage = "og/og-podcast.png" | absURL }}
-  {{ $bigCard = true }}
 {{ else if $cover }}
   {{ $ogImage = $cover | absURL }}
-  {{ $bigCard = true }}
-{{ else if and .IsPage (in (slice "blog" "pages") .Section) }}
-  {{ $ogImage = "og/og-blog.png" | absURL }}
-  {{ $bigCard = true }}
 {{ end }}
 
 {{/* —— audio (episodes) —— */}}
