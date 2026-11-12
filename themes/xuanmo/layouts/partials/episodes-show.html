@@ -110,7 +110,7 @@
         </div>
       </div>
       {{ range $i, $p := $items }}
-        {{ partial "card.html" (dict "post" $p "style" "episode" "index" (add $i 1)) }}
+        {{ partial "card.html" (dict "post" $p "style" "episode" "index" (add $i 1) "nochip" true) }}
       {{ end }}
     </section>
   {{ else }}

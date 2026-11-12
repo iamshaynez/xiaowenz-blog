@@ -99,7 +99,7 @@
         </a>
       </div>
       {{ range $i, $p := $episodes }}
-        {{ partial "card.html" (dict "post" $p "style" "episode" "index" (add $i 1)) }}
+        {{ partial "card.html" (dict "post" $p "style" "episode" "index" (add $i 1) "noart" true "nochip" true) }}
       {{ end }}
     </section>
   {{ end }}
@@ -119,7 +119,7 @@
       </div>
       <div class="post-list">
         {{ range $i, $p := $recipes }}
-          {{ partial "card.html" (dict "post" $p "style" "list" "index" (add $i 1)) }}
+          {{ partial "card.html" (dict "post" $p "style" "list" "index" (add $i 1) "nochip" true) }}
         {{ end }}
       </div>
     </section>

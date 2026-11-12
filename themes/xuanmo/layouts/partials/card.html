@@ -1,5 +1,6 @@
 {{/* card.html — port of _partials/card.j2
-   input: dict "post" Page "style" (featured|plain|list|episode) "index" int(optional) */}}
+   input: dict "post" Page "style" (featured|plain|list|episode) "index" int(optional)
+          "noart" bool(episode 卡不显示封面) "nochip" bool(不盖类型戳，单一类型板块用) */}}
 {{ $p := .post }}
 {{ $style := .style | default "plain" }}
 {{ $hasIndex := isset . "index" }}
@@ -9,6 +10,15 @@
 {{ $cat := "" }}
 {{ $catURL := "" }}
 {{ if gt (len $terms) 0 }}{{ $cat = (index $terms 0).Title }}{{ $catURL = (index $terms 0).RelPermalink }}{{ end }}
+
+{{/* 类型戳：栏目大类竖排印章（博客/专栏/播客/菜谱），混合列表分辨用；单一类型板块传 nochip 免盖 */}}
+{{ $kind := "博客" }}
+{{ if eq $p.Section "episodes" }}{{ $kind = "播客" }}
+{{ else if eq $p.Section "recipes" }}{{ $kind = "菜谱" }}
+{{ else if $p.Params.tags }}{{ if in $p.Params.tags "newsletter" }}{{ $kind = "专栏" }}{{ end }}
+{{ end }}
+{{ $kindChip := "" }}{{ if not (isset . "nochip") }}{{ $kindChip = $kind }}{{ end }}
+
 {{ $excerpt := $p.Params.subtitle | default ($p.Params.description | default ($p.Summary | plainify) | truncate 140) }}
 {{ $dateAttr := $p.Date.UTC.Format "2006-01-02T15:04:05Z" }}
 {{ $dateDisp := $p.Date.UTC.Format "2006.01.02" }}
@@ -17,24 +27,27 @@
 {{ $author := site.Params.author | default "Xiaowen Zhang" }}
 
 {{ if eq $style "episode" }}
-{{/* 播客单集：方形封面 · 季集印章 · 时长 · 杂志行卡 */}}
-{{ $epImg := $cover }}
-{{ if not $epImg }}{{ with $podcast.image }}{{ $epImg = . }}{{ end }}{{ end }}
+{{/* 播客单集：季集印章 · 时长 · 杂志行卡（noart 时不带方形封面） */}}
 {{ $dur := dict }}{{ with $p.Params.audio_duration }}{{ $dur = partial "util/duration.html" . }}{{ end }}
-<article class="ep-card{{ if eq $idx 1 }} ep-card--lead{{ end }}">
+<article class="ep-card{{ if eq $idx 1 }} ep-card--lead{{ end }}{{ if isset . "noart" }} ep-card--noart{{ end }}">
+  {{ with $kindChip }}<span class="card-kind">{{ . }}</span>{{ end }}
   {{ if $hasIndex }}
     <div class="ep-card__index" aria-hidden="true">{{ printf "%02d" $idx }}</div>
   {{ end }}
 
-  <div class="ep-card__art{{ if not $epImg }} ep-card__art--empty{{ end }}" aria-hidden="true">
-    {{ if $epImg }}
-      <img src="{{ $epImg }}" alt="" loading="lazy">
-    {{ else }}
-      <span class="ep-card__play" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-      </span>
-    {{ end }}
-  </div>
+  {{ if not (isset . "noart") }}
+    {{ $epImg := $cover }}
+    {{ if not $epImg }}{{ with $podcast.image }}{{ $epImg = . }}{{ end }}{{ end }}
+    <div class="ep-card__art{{ if not $epImg }} ep-card__art--empty{{ end }}" aria-hidden="true">
+      {{ if $epImg }}
+        <img src="{{ $epImg }}" alt="" loading="lazy">
+      {{ else }}
+        <span class="ep-card__play" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </span>
+      {{ end }}
+    </div>
+  {{ end }}
 
   <div class="ep-card__body">
     <div class="ep-card__topline">
@@ -43,8 +56,6 @@
           <span class="ep-card__se">
             {{ with $p.Params.season }}S{{ printf "%02d" (int .) }}{{ end }}{{ if and $p.Params.season $p.Params.episode }} · {{ end }}{{ with $p.Params.episode }}E{{ printf "%02d" (int .) }}{{ end }}
           </span>
-        {{ else }}
-          <span class="ep-card__se">播客</span>
         {{ end }}
         {{ if eq $p.Params.explicit true }}
           <span class="ep-card__explicit">E</span>
@@ -77,14 +88,13 @@
 
 {{ else if eq $style "list" }}
 <article class="post-card post-card--list">
+  {{ with $kindChip }}<span class="card-kind">{{ . }}</span>{{ end }}
   {{ if $hasIndex }}
     <div class="post-card__index" aria-hidden="true">{{ printf "%02d" $idx }}</div>
   {{ end }}
   <div class="post-card__body">
-    {{ if $cat }}
-      <a class="post-card__cat" href="{{ $catURL | relURL }}">{{ $cat }}</a>
-    {{ else }}
-      <div class="post-card__cat">{{ if eq $p.Section "episodes" }}播客{{ else if eq $p.Section "recipes" }}菜谱{{ else }}文章{{ end }}</div>
+    {{ with $cat }}
+      <a class="post-card__cat" href="{{ $catURL | relURL }}">{{ . }}</a>
     {{ end }}
     <h3 class="post-card__title">
       <a class="post-card__title-link" href="{{ $link }}">{{ $p.Title }}</a>
@@ -102,6 +112,7 @@
 
 {{ else if eq $style "featured" }}
 <article class="post-card post-card--featured">
+  {{ with $kindChip }}<span class="card-kind">{{ . }}</span>{{ end }}
   {{ if $hasIndex }}
     <div class="post-card__index" aria-hidden="true">{{ printf "%02d" $idx }}</div>
   {{ end }}
@@ -126,12 +137,9 @@
 </article>
 
 {{ else }}
+{{/* plain：纯文字卡（列表页不展示封面图，类型靠角标印章分辨） */}}
 <article class="post-card post-card--plain">
-  {{ with $cover }}
-    <a class="post-card__media" href="{{ $link }}" tabindex="-1" aria-hidden="true">
-      <img src="{{ . }}" alt="" loading="lazy">
-    </a>
-  {{ end }}
+  {{ with $kindChip }}<span class="card-kind">{{ . }}</span>{{ end }}
   <div class="post-card__body">
     {{ with $cat }}
       <a class="post-card__cat" href="{{ $catURL | relURL }}">{{ . }}</a>
