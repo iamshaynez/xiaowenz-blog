@@ -126,10 +126,12 @@
 </article>
 
 {{ else }}
+{{/* plain：有封面用封面，无封面回退水墨品牌卡缩略图（16:10 预裁 640×400，派生自 scripts/og/src/og-site.master.png）*/}}
+{{ $thumb := $cover | default "images/card-default.webp" }}
 <article class="post-card post-card--plain">
-  {{ with $cover }}
+  {{ with $thumb }}
     <a class="post-card__media" href="{{ $link }}" tabindex="-1" aria-hidden="true">
-      <img src="{{ . }}" alt="" loading="lazy">
+      <img src="{{ . | relURL }}" alt="" loading="lazy">
     </a>
   {{ end }}
   <div class="post-card__body">
