@@ -1,5 +1,5 @@
 {{ define "main" }}
-{{ $projects := hugo.Data.projects | default (slice) }}
+{{ $projects := .Site.Data.projects | default (slice) }}
 <div class="container container--full projects-page">
   <section class="projects-hero" aria-labelledby="projects-title">
     <div class="projects-hero__kicker">{{ .Params.heroKicker | default "SIDE PROJECTS · A COLLECTION OF SIDE QUESTS" }}</div>
