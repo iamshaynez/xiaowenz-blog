@@ -1,0 +1,585 @@
+/* Side Projects · 剪贴拼贴
+   内容由 data/projects.yaml 驱动；每四个项目形成一组拼贴。 */
+
+.projects-page {
+  position: relative;
+}
+
+.projects-hero {
+  max-width: 58rem;
+  margin-inline: auto;
+  padding: var(--space-5) 0 var(--space-8);
+  text-align: center;
+}
+
+.projects-hero__kicker {
+  margin-bottom: var(--space-5);
+  color: var(--red);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  letter-spacing: var(--ls-wider);
+}
+
+.projects-hero__title {
+  font-size: clamp(3.25rem, 6.8vw, 5.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.055em;
+}
+
+.projects-hero__title em {
+  color: var(--red);
+  font-style: normal;
+}
+
+.projects-hero__lead {
+  max-width: 32rem;
+  margin: var(--space-5) auto 0;
+  color: var(--ink-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  line-height: 1.85;
+}
+
+.projects-collage__group {
+  position: relative;
+  height: 65rem;
+  margin-bottom: var(--space-8);
+}
+
+.projects-collage__group::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(color-mix(in srgb, var(--ink) 15%, transparent) 0.65px, transparent 0.65px);
+  background-size: 20px 20px;
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.project-card {
+  --project-rotate: 0deg;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--cream) 36%, var(--paper));
+  border: 1px solid color-mix(in srgb, var(--ink) 8%, transparent);
+  border-radius: var(--radius);
+  box-shadow: 0 2px 3px rgb(20 18 16 / 3%), 0 18px 44px rgb(20 18 16 / 9%);
+  transform: rotate(var(--project-rotate));
+  transition: transform var(--dur-3) var(--ease-out), box-shadow var(--dur-3) var(--ease-out);
+}
+
+.project-card:hover {
+  z-index: 8;
+  box-shadow: 0 3px 4px rgb(20 18 16 / 3%), 0 28px 64px rgb(20 18 16 / 14%);
+  transform: translateY(-6px) rotate(0deg);
+}
+
+.project-card:active {
+  transform: translateY(-2px) rotate(0deg) scale(0.995);
+}
+
+.project-card--slot-0 {
+  --project-rotate: -1.3deg;
+  top: 2.5rem;
+  left: 0;
+  z-index: 2;
+  width: 49%;
+  height: 29rem;
+}
+
+.project-card--slot-1 {
+  --project-rotate: 1.8deg;
+  top: 0;
+  right: 1%;
+  z-index: 3;
+  width: 39%;
+  height: 25rem;
+}
+
+.project-card--slot-2 {
+  --project-rotate: 1.2deg;
+  top: 35rem;
+  left: 6%;
+  z-index: 2;
+  width: 43%;
+  height: 25rem;
+}
+
+.project-card--slot-3 {
+  --project-rotate: -1.5deg;
+  top: 32rem;
+  right: 2%;
+  z-index: 3;
+  width: 34%;
+  height: 30rem;
+}
+
+.project-card--ink {
+  color: var(--cream);
+  background: var(--ink);
+  border-color: var(--ink);
+}
+
+.project-card--cream {
+  background: var(--cream);
+}
+
+.project-card__top {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-5) 0;
+  color: var(--ink-3);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  line-height: 1.4;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+}
+
+.project-card--ink .project-card__top {
+  color: var(--cream-3);
+}
+
+.project-card__arrow {
+  flex: 0 0 auto;
+  color: var(--red);
+  font-size: var(--fs-h3);
+  line-height: 1;
+  letter-spacing: 0;
+  transition: transform var(--dur-2) var(--ease-out);
+}
+
+.project-card:hover .project-card__arrow {
+  transform: translate(3px, -3px);
+}
+
+.project-card__art {
+  position: relative;
+  flex: 1;
+  min-height: 11rem;
+  pointer-events: none;
+}
+
+.project-card__art img {
+  width: 100%;
+  height: 100%;
+  margin-top: var(--space-4);
+  object-fit: cover;
+}
+
+.project-card__body {
+  position: relative;
+  z-index: 3;
+  margin-top: auto;
+  padding: var(--space-5) var(--space-6) var(--space-6);
+}
+
+.project-card__title {
+  margin-bottom: var(--space-3);
+  font-size: clamp(1.625rem, 2.7vw, 2.25rem);
+  overflow-wrap: anywhere;
+}
+
+.project-card--large .project-card__title {
+  font-size: clamp(2rem, 3.2vw, 2.75rem);
+}
+
+.project-card--ink .project-card__title {
+  color: var(--cream);
+}
+
+.project-card__description {
+  margin: 0;
+  color: var(--ink-2);
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  line-height: 1.75;
+}
+
+.project-card--ink .project-card__description {
+  color: var(--cream-2);
+}
+
+/* Ask Someone · 对话 */
+.project-art--chat {
+  min-height: 15rem;
+  overflow: hidden;
+}
+
+.project-chat__question {
+  position: absolute;
+  top: -3rem;
+  right: 2%;
+  color: transparent;
+  font-family: Georgia, serif;
+  font-size: 17rem;
+  line-height: 1;
+  -webkit-text-stroke: 1px rgb(237 234 227 / 17%);
+  transform: rotate(7deg);
+}
+
+.project-chat__bubble {
+  position: absolute;
+  padding: 0.8rem 1rem;
+  color: var(--cream);
+  background: rgb(237 234 227 / 4%);
+  border: 1px solid rgb(237 234 227 / 25%);
+  border-radius: 18px 18px 18px 3px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  backdrop-filter: blur(4px);
+}
+
+.project-chat__bubble--one {
+  top: 24%;
+  left: 8%;
+}
+
+.project-chat__bubble--two {
+  top: 55%;
+  right: 9%;
+  color: var(--ink);
+  background: var(--cream);
+  border-color: var(--cream);
+  border-radius: 18px 18px 3px 18px;
+}
+
+.project-chat__bubble--two span {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: 5px;
+  background: var(--red);
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+/* 三国 · 牌桌 */
+.project-poker__table {
+  position: absolute;
+  inset: var(--space-5) var(--space-5) 0;
+  overflow: hidden;
+  background: var(--cream);
+  border-radius: var(--radius-sm);
+}
+
+.project-poker__table::before {
+  content: "";
+  position: absolute;
+  top: 54%;
+  left: 50%;
+  width: 14rem;
+  height: 14rem;
+  border: 1px solid rgb(20 18 16 / 18%);
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 25px rgb(20 18 16 / 2.5%);
+  transform: translate(-50%, -50%);
+}
+
+.project-poker__card {
+  position: absolute;
+  top: 48%;
+  left: 50%;
+  width: 5rem;
+  height: 7rem;
+  padding: var(--space-2);
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid rgb(20 18 16 / 14%);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 20px rgb(20 18 16 / 12%);
+  font-family: Georgia, serif;
+  font-size: var(--fs-h3);
+  line-height: 1.15;
+}
+
+.project-poker__card span {
+  display: block;
+}
+
+.project-poker__card span + span {
+  margin-top: var(--space-2);
+  font-size: 1.75rem;
+}
+
+.project-poker__card--back {
+  transform: translate(-78%, -50%) rotate(-13deg);
+}
+
+.project-poker__card--front {
+  color: var(--red);
+  transform: translate(-10%, -44%) rotate(10deg);
+}
+
+/* YNAB · 信封预算 */
+.project-art--envelope {
+  min-height: 14rem;
+  overflow: hidden;
+}
+
+.project-envelope {
+  position: absolute;
+  width: 62%;
+  height: 9rem;
+  padding: var(--space-4);
+  background: var(--paper);
+  border: 1px solid rgb(20 18 16 / 20%);
+  box-shadow: 0 12px 24px rgb(20 18 16 / 8%);
+  font-family: var(--font-sans);
+}
+
+.project-envelope::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 42%;
+  background: color-mix(in srgb, var(--ink) 5%, transparent);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.project-envelope span {
+  position: absolute;
+  bottom: var(--space-3);
+  left: var(--space-4);
+  color: var(--ink-2);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+}
+
+.project-envelope strong {
+  position: absolute;
+  right: var(--space-4);
+  bottom: var(--space-2);
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: 2.5rem;
+  font-weight: var(--fw-regular);
+}
+
+.project-envelope--back {
+  top: 22%;
+  left: 12%;
+  transform: rotate(-7deg);
+}
+
+.project-envelope--middle {
+  top: 20%;
+  right: 9%;
+  transform: rotate(6deg);
+}
+
+.project-envelope--front {
+  top: 34%;
+  left: 18%;
+  z-index: 2;
+  transform: rotate(-2deg);
+}
+
+.project-envelope__ai {
+  position: absolute;
+  top: 13%;
+  right: 12%;
+  z-index: 3;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--cream);
+  background: var(--red);
+  border-radius: 50%;
+  box-shadow: 0 0 0 5px var(--cream);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  letter-spacing: 0;
+  transform: rotate(8deg);
+}
+
+/* Chengdu · 雨城 */
+.project-art--city {
+  min-height: 17rem;
+  overflow: hidden;
+}
+
+.project-city__skyline {
+  position: absolute;
+  inset: var(--space-5) var(--space-5) 0;
+  background: linear-gradient(90deg, transparent 49.7%, rgb(20 18 16 / 9%) 50%, transparent 50.3%);
+  border: 1px solid rgb(20 18 16 / 20%);
+  border-bottom: 0;
+}
+
+.project-city__skyline::before,
+.project-city__skyline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  border: 1px solid rgb(20 18 16 / 22%);
+  border-bottom: 0;
+}
+
+.project-city__skyline::before {
+  left: 12%;
+  width: 30%;
+  height: 64%;
+}
+
+.project-city__skyline::after {
+  right: 10%;
+  width: 25%;
+  height: 42%;
+}
+
+.project-city__rain {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(105deg, transparent 0 19px, var(--ink) 20px, transparent 21px 39px);
+  opacity: 0.22;
+}
+
+.project-city__word {
+  position: absolute;
+  top: 42%;
+  left: 50%;
+  z-index: 2;
+  padding: 7px 4px;
+  color: var(--ink);
+  background: rgb(237 234 227 / 78%);
+  font-size: 3rem;
+  line-height: 1;
+  letter-spacing: var(--ls-wide);
+  writing-mode: vertical-rl;
+  transform: translate(-50%, -50%);
+}
+
+.project-city__status {
+  position: absolute;
+  right: var(--space-5);
+  bottom: var(--space-4);
+  z-index: 2;
+  padding: 3px 7px;
+  color: var(--red);
+  background: var(--cream);
+  border: 1px solid var(--red);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  transform: rotate(4deg);
+}
+
+.project-art__fallback {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  min-height: 12rem;
+  padding: var(--space-6);
+  color: var(--ink-3);
+  font-size: var(--fs-h2);
+  text-align: center;
+}
+
+@media (max-width: 960px) {
+  .projects-collage__group {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-6);
+    height: auto;
+  }
+
+  .project-card {
+    position: relative;
+    inset: auto;
+    width: auto;
+    height: auto;
+    min-height: 27rem;
+  }
+
+  .project-card--slot-0,
+  .project-card--slot-3 {
+    min-height: 30rem;
+  }
+
+  .project-card--slot-1,
+  .project-card--slot-3 {
+    margin-top: var(--space-7);
+  }
+}
+
+@media (max-width: 640px) {
+  .projects-hero {
+    padding: 0 0 var(--space-7);
+    text-align: left;
+  }
+
+  .projects-hero__kicker {
+    line-height: 1.7;
+  }
+
+  .projects-hero__title {
+    font-size: clamp(2.75rem, 12vw, 4rem);
+  }
+
+  .projects-hero__lead {
+    margin-left: 0;
+  }
+
+  .projects-collage__group {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+    margin-bottom: var(--space-6);
+  }
+
+  .projects-collage__group::before {
+    display: none;
+  }
+
+  .project-card,
+  .project-card--slot-0,
+  .project-card--slot-1,
+  .project-card--slot-2,
+  .project-card--slot-3 {
+    min-height: 27rem;
+    margin-top: 0;
+    transform: none;
+  }
+
+  .project-card--slot-0 {
+    min-height: 30rem;
+  }
+
+  .project-card--slot-3 {
+    min-height: 29rem;
+  }
+
+  .project-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .project-card__body {
+    padding: var(--space-5);
+  }
+
+  .project-card__title,
+  .project-card--large .project-card__title {
+    font-size: 1.875rem;
+  }
+
+  .project-chat__bubble {
+    max-width: 75%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-card__arrow {
+    transition: none;
+  }
+}

@@ -1,0 +1,28 @@
+{{ define "main" }}
+{{ $projects := hugo.Data.projects | default (slice) }}
+<div class="container container--full projects-page">
+  <section class="projects-hero" aria-labelledby="projects-title">
+    <div class="projects-hero__kicker">{{ .Params.heroKicker | default "SIDE PROJECTS · A COLLECTION OF SIDE QUESTS" }}</div>
+    <h1 class="projects-hero__title" id="projects-title">{{ .Params.heroTitle | default "实验、玩具，<br>以及一些<em>执念。</em>" | safeHTML }}</h1>
+    <p class="projects-hero__lead">{{ .Params.heroLead | default .Params.description }}</p>
+  </section>
+
+  {{ if $projects }}
+    <div class="projects-collage" aria-label="Side Projects 列表">
+      {{ range $i, $project := $projects }}
+        {{ if eq (mod $i 4) 0 }}
+          <div class="projects-collage__group">
+        {{ end }}
+
+        {{ partial "project-card.html" (dict "project" $project "index" $i "slot" (mod $i 4)) }}
+
+        {{ if or (eq (mod $i 4) 3) (eq (add $i 1) (len $projects)) }}
+          </div>
+        {{ end }}
+      {{ end }}
+    </div>
+  {{ else }}
+    <p class="empty-state">项目正在整理中。</p>
+  {{ end }}
+</div>
+{{ end }}

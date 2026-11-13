@@ -7,6 +7,12 @@ defaultContentLanguage: zh
 timeZone: "Asia/Shanghai"
 summaryLength: 90
 
+# Typlog 迁移原始物料只供 scripts/sync 使用，不作为 Hugo 数据解析。
+ignoreFiles:
+  - "/data/cache/"
+  - "/data/audio-manifest\\.csv$"
+  - "/data/media-manifest\\.csv$"
+
 # URL 冻结：与 Typlog 现状 1:1，迁移零 301
 permalinks:
   blog: "/blog/:slug.html"
@@ -71,25 +77,29 @@ menu:
       url: "/business-reports/"
       weight: 4
       params: { nav: primary }
+    - name: "项目"
+      url: "/projects/"
+      weight: 5
+      params: { nav: primary }
     - name: "关于"
       url: "/about/"
-      weight: 5
+      weight: 6
       params: { nav: primary }
     - name: "Service 和爱发电"
       url: "/service-and-afdian/"
-      weight: 6
+      weight: 7
       params: { nav: more }
     - name: "菜谱收藏"
       url: "/recipes/"
-      weight: 7
+      weight: 8
       params: { nav: more }
     - name: "服务器推荐"
       url: "/server-recommend/"
-      weight: 8
+      weight: 9
       params: { nav: more }
     - name: "搜索"
       url: "/search/"
-      weight: 9
+      weight: 10
       params: { nav: more }
 
 params:

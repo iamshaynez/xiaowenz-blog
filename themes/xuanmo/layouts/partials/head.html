@@ -120,3 +120,6 @@
 <meta name="color-scheme" content="light">
 <link rel="stylesheet" href="{{ "css/app.css" | relURL }}">
 <link rel="stylesheet" href="{{ "css/hugo-extra.css" | relURL }}">
+{{ range .Params.stylesheets }}
+<link rel="stylesheet" href="{{ . | relURL }}">
+{{ end }}
