@@ -1,0 +1,49 @@
+{{ $project := .project }}
+{{ $url := $project.url }}
+{{ $external := strings.HasPrefix $url "http" }}
+{{ $href := $url }}
+{{ if not $external }}{{ $href = $url | relURL }}{{ end }}
+<a
+  class="project-card project-card--slot-{{ .slot }} project-card--{{ $project.tone | default "paper" }} project-card--{{ $project.size | default "medium" }}"
+  href="{{ $href }}"
+  aria-label="{{ printf "%s：%s" $project.name $project.description }}"
+  {{ if $external }}target="_blank" rel="noopener noreferrer"{{ end }}
+>
+  <div class="project-card__top">
+    <span>{{ printf "%02d" (add .index 1) }} / {{ $project.category }}</span>
+    <span class="project-card__arrow" aria-hidden="true">{{ if $external }}↗{{ else }}→{{ end }}</span>
+  </div>
+
+  <div class="project-card__art project-art--{{ $project.art | default "fallback" }}" aria-hidden="true">
+    {{ with $project.image }}
+      <img src="{{ . }}" alt="" loading="lazy">
+    {{ else }}
+      {{ if eq $project.art "chat" }}
+        <span class="project-chat__question">?</span>
+        <span class="project-chat__bubble project-chat__bubble--one">「这道题，你会怎么想？」</span>
+        <span class="project-chat__bubble project-chat__bubble--two">先说说你的真实处境<span></span></span>
+      {{ else if eq $project.art "poker" }}
+        <div class="project-poker__table">
+          <div class="project-poker__card project-poker__card--back"><span>A</span><span>♠</span></div>
+          <div class="project-poker__card project-poker__card--front"><span>K</span><span>♥</span></div>
+        </div>
+      {{ else if eq $project.art "envelope" }}
+        <div class="project-envelope project-envelope--back"><span>储蓄</span></div>
+        <div class="project-envelope project-envelope--middle"><span>自由</span></div>
+        <div class="project-envelope project-envelope--front"><span>生活</span><strong>¥</strong></div>
+        <span class="project-envelope__ai">AI</span>
+      {{ else if eq $project.art "city" }}
+        <div class="project-city__skyline"><span class="project-city__rain"></span></div>
+        <span class="project-city__word">成都</span>
+        <span class="project-city__status">装修中</span>
+      {{ else }}
+        <span class="project-art__fallback">{{ $project.name }}</span>
+      {{ end }}
+    {{ end }}
+  </div>
+
+  <div class="project-card__body">
+    <h2 class="project-card__title">{{ $project.name }}</h2>
+    <p class="project-card__description">{{ $project.description }}</p>
+  </div>
+</a>

@@ -1,0 +1,35 @@
+- id: asksomeone
+  name: "Ask Someone"
+  description: "十年管理和职场思考，汇聚成一个可以认真聊聊的问答智能体。"
+  url: "https://asksomeone.now"
+  category: "AI · WORK & MANAGEMENT"
+  art: "chat"
+  tone: "ink"
+  size: "large"
+
+- id: sanguo
+  name: "三国：天下为注"
+  description: "把三国豪杰放上德州扑克牌桌，以牌局改写历史桥段。"
+  url: "/blog/sanguo-tianxia-weizhu.html"
+  category: "GAME · STORY"
+  art: "poker"
+  tone: "paper"
+  size: "medium"
+
+- id: xiaowen-ynab
+  name: "xiaowen-ynab"
+  description: "一个可以接入 AI 的信封记账开源软件。"
+  url: "https://github.com/iamshaynez/xiaowen-ynab"
+  category: "OPEN SOURCE · FINANCE"
+  art: "envelope"
+  tone: "cream"
+  size: "wide"
+
+- id: chengdu
+  name: "Chengdu"
+  description: "一个还在装修中的小说文字冒险游戏。"
+  url: "https://chengdu.xiaowenz.com"
+  category: "INTERACTIVE FICTION"
+  art: "city"
+  tone: "cream"
+  size: "tall"
