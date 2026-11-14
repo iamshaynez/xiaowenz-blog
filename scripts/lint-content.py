@@ -4,11 +4,14 @@
 直推 content/ 是合法发布路径（md 进仓库 = 发布），本脚本守住 publish.sh
 曾经把守的不变量，供 pre-push 钩子与 CI 使用：
 
-  1. 博客文件名即 slug：{slug}.md，且 ^[a-z0-9-]+$（URL 冻结资产的前提）
-  2. frontmatter 的 slug 字段（若有）必须与文件名一致
+  1. 博客布局：content/blog/{YYYY}/{yyyy-mm-dd}-{slug}.md，日期与年份取自 frontmatter date。
+     URL 只由 frontmatter slug 决定（/blog/{slug}.html 冻结资产），所以 slug 必填、
+     且 ^[a-z0-9-]+$；文件名只管排序，改名/挪目录不影响 URL。
+     例外：slug 本身已以本文日期开头的老文章（Typlog 时代的 2012-04-12-12），文件名 = {slug}.md
+  2. 博客年份目录必须有 _index.md 年份 stub（layout: year、year: YYYY），否则 /blog/YYYY/ 缺页
   3. title 非空、date 可解析、draft 不为 true
-  4. episodes：同上（slug 同样是 /episodes/{slug} 冻结资产）
-  5. recipes：同上（slug 是 /recipes/{slug} 冻结资产，拼音命名）
+  4. episodes：文件名即 slug（{slug}.md，slug 字段若有须一致；/episodes/{slug} 冻结资产）
+  5. recipes：同 episodes（slug 是 /recipes/{slug} 冻结资产，拼音命名）
 
 用法: python3 scripts/lint-content.py   （在 site 仓库根执行；退出码非 0 = 有问题）
 """
@@ -26,9 +29,29 @@ except ImportError:
 
 ROOT = Path(__file__).resolve().parent.parent
 SLUG_RE = re.compile(r"^[a-z0-9-]+$")
+DAY_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}[T ]\d{2}:\d{2}(:\d{2})?([+-]\d{2}:?\d{2}|Z)?$")
 
 problems: list[str] = []
+
+def check_blog_layout(path: Path, fm: dict) -> None:
+    """博客文章必须在 blog/{YYYY}/{yyyy-mm-dd}-{slug}.md（规则 1、2）。"""
+    slug = str(fm.get("slug") or "")
+    if not SLUG_RE.match(slug):
+        problems.append(f"{path}: slug 缺失或非法（必填，^[a-z0-9-]+$；URL 由它决定）: {slug!r}")
+        return
+    day = str(fm.get("date") or "")[:10]
+    if not DAY_RE.match(day):
+        return  # date 异常由通用检查报告
+    expect = f"{slug}.md" if slug.startswith(day + "-") else f"{day}-{slug}.md"
+    if path.name != expect:
+        problems.append(f"{path}: 文件名应为 {expect}（{{yyyy-mm-dd}}-{{slug}}.md，日期取自 date）")
+    year_dir = ROOT / "content" / "blog" / day[:4]
+    if path.parent != year_dir:
+        problems.append(f"{path}: 应位于 content/blog/{day[:4]}/（年份取自 date）")
+    stub = year_dir / "_index.md"
+    if not stub.exists():
+        problems.append(f"{year_dir}: 缺年份 stub _index.md（layout: year、year: {day[:4]}）")
 
 def check(path: Path, kind: str) -> None:
     text = path.read_text(encoding="utf-8", errors="replace")
@@ -38,7 +61,9 @@ def check(path: Path, kind: str) -> None:
         return
     fm = yaml.safe_load(m.group(1)) or {}
     stem = path.stem
-    if stem != "_index":
+    if kind == "blog":
+        check_blog_layout(path, fm)
+    elif stem != "_index":
         if not SLUG_RE.match(stem):
             problems.append(f"{path}: 文件名 {stem!r} 不是合法 slug（^[a-z0-9-]+$）")
         if fm.get("slug") and str(fm["slug"]) != stem:
@@ -50,8 +75,10 @@ def check(path: Path, kind: str) -> None:
     if fm.get("draft") is True:
         problems.append(f"{path}: draft=true 会不构建（要么删掉这行，要么别推）")
 
-for pattern, kind in (("blog/*.md", "blog"), ("episodes/*.md", "episodes"), ("recipes/*.md", "recipes")):
+for pattern, kind in (("blog/**/*.md", "blog"), ("episodes/*.md", "episodes"), ("recipes/*.md", "recipes")):
     for p in sorted((ROOT / "content").glob(pattern)):
+        if kind == "blog" and p.stem == "_index":
+            continue  # section 首页与年份 stub，不是文章
         check(p, kind)
 
 # ── 播客对账：剧集 md ↔ core 302 链路 ──────────────────────────────

@@ -15,8 +15,8 @@ npx pagefind --site public   # 生成搜索索引（/search/ 依赖）
 
 ```
 content/
-  blog/{slug}.md          # 博客，URL = /blog/{slug}.html（与 Typlog 时代一致）
-  blog/{YYYY}/_index.md   # 年度索引 /blog/{YYYY}/
+  blog/{YYYY}/{yyyy-mm-dd}-{slug}.md   # 博客，URL = /blog/{slug}.html（与 Typlog 时代一致），布局标准见下
+  blog/{YYYY}/_index.md   # 年度索引 /blog/{YYYY}/（年份 stub，layout: year）
   episodes/{slug}.md      # 播客，URL = /episodes/{slug}，frontmatter 见下
   archive/{YYYY}.md       # /archive/{YYYY}/ 归档页
   recipes/{slug}.md       # 菜谱，URL = /recipes/{slug}（拼音 slug，frontmatter 带 category 分类；/_index.md 为手工维护的索引页）
@@ -25,6 +25,17 @@ themes/xuanmo/            # 玄墨主题（自研，Typlog 版移植）
 scripts/sync/             # Typlog 内容同步脚本 + 媒体清单（迁移一次性用途）
 media-sync/               # 已下载的媒体原件（gitignored，待传 R2）
 ```
+
+### 博客布局标准
+
+- **路径**：`content/blog/{YYYY}/{yyyy-mm-dd}-{slug}.md`，`YYYY` 与 `yyyy-mm-dd` 都取 frontmatter `date` 的字面日期。文件名只为文件系统排序服务。
+- **URL 只由 frontmatter `slug` 决定**（`permalinks: blog: /blog/:slug.html`），所以 `slug` **必填**；改文件名、挪目录都不影响 URL，改 `slug` 才会。
+- **例外**：Typlog 时代的老文章 slug 本身以日期开头（如 `2012-04-12-12`），文件名就是 `{slug}.md`，不重复加前缀。
+- **跨年开箱**：新年份第一篇文章前，先建 `content/blog/{YYYY}/_index.md`（`title: "YYYY"`、`layout: "year"`、`year: YYYY`），否则 `/blog/{YYYY}/` 缺页。
+- **改日期**：改了 `date` 就要同步改文件名/目录（lint 会提示目标路径），URL 不变。
+- 主题里取文章一律用 `where site.RegularPages "Section" .Section`，不要用 `.RegularPages` / `.PrevInSection` / `.NextInSection`——它们只看页面所在目录，年份分桶后会漏文章。
+
+以上全部由 `scripts/lint-content.py` 把守。
 
 ### 播客剧集 frontmatter
 
@@ -40,13 +51,13 @@ feed 里的 enclosure URL 由 `config.yaml` 的 `params.audioBase`（core 的 30
 
 ## 发布流
 
-- **写文章**：新建 `content/blog/{slug}.md` → push 到 main → Pages 自动构建上线。
+- **写文章**：新建 `content/blog/{YYYY}/{yyyy-mm-dd}-{slug}.md`（frontmatter 必带 `slug`）→ push 到 main → Pages 自动构建上线。
 - **发播客**（音频先于文字，防 enclosure 404）：① core 管理台上传 MP3（文件名 `{audio_slug}.mp3`，按此注册 302 计数）；② 管理台「媒体库 → 播客对账」复制该音频的 frontmatter 片段（slug/bytes 与媒体库一致），写 `content/episodes/{slug}.md` + shownotes；③ push——pre-push lint 自动对账 core 302 与字节数，Apple/Spotify/小宇宙抓取 feed 自动更新。
 - **Newsletter**：在 core 管理台写 markdown 群发，不在本仓库。发文后可在管理台「新建 Newsletter」页直接粘贴文章 URL 抓取生成草稿（标题/导语/链接自动填），人工检查后发送。
 
 ### 内容门禁（slug 与 frontmatter 守护）
 
-直推即发布，URL 是冻结资产——推前门禁把守命名与元数据不变量：
+直推即发布，URL 是冻结资产——推前门禁把守布局、命名与元数据不变量（博客：年份目录 + 日期前缀文件名 + slug 必填；播客/菜谱：文件名即 slug）：
 
 ```bash
 python3 scripts/lint-content.py          # 手动跑

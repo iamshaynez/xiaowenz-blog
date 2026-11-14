@@ -27,6 +27,9 @@ The script is idempotent:
 | Path | Meaning |
 | --- | --- |
 | `content/blog/{slug}.md` | One file per `/blog/{slug}.html` post |
+
+> Historical: this one-off Typlog importer wrote posts flat as `content/blog/{slug}.md`. The repo has since moved to `content/blog/{YYYY}/{yyyy-mm-dd}-{slug}.md` (see the root README); re-running `sync.py` would violate the content lint.
+
 | `content/blog/{YYYY}/_index.md` | Year stub (`layout: year`) |
 | `content/episodes/{slug}.md` | Podcast show notes + audio frontmatter |
 | `content/pages/{name}.md` | Standalone pages (about, read-books, ...) |
