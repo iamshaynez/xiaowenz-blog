@@ -119,6 +119,18 @@
   height: 30rem;
 }
 
+.projects-collage__group:has(> .project-card:only-child) {
+  height: 37rem;
+}
+
+.projects-collage__group > .project-card:only-child {
+  --project-rotate: 1deg;
+  top: 2rem;
+  left: 21%;
+  width: 58%;
+  height: 30rem;
+}
+
 .project-card--ink {
   color: var(--cream);
   background: var(--ink);
@@ -475,6 +487,110 @@
   transform: rotate(4deg);
 }
 
+/* 小文卡片 · 中文排版 */
+.project-art--quote {
+  min-height: 19rem;
+  overflow: hidden;
+}
+
+.project-quote__sheet {
+  position: absolute;
+  width: 48%;
+  height: 15rem;
+  border: 1px solid rgb(20 18 16 / 18%);
+}
+
+.project-quote__sheet--back {
+  top: 12%;
+  left: 22%;
+  background: color-mix(in srgb, var(--ink) 5%, var(--cream));
+  transform: rotate(-7deg);
+}
+
+.project-quote__sheet--main {
+  top: 10%;
+  left: 27%;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-5);
+  background: var(--paper);
+  box-shadow: 0 16px 32px rgb(20 18 16 / 10%);
+  transform: rotate(3deg);
+}
+
+.project-quote__sheet--main::before,
+.project-quote__sheet--main::after {
+  content: "";
+  position: absolute;
+  top: var(--space-4);
+  bottom: var(--space-4);
+  width: 1px;
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.project-quote__sheet--main::before {
+  left: var(--space-3);
+}
+
+.project-quote__sheet--main::after {
+  right: var(--space-3);
+}
+
+.project-quote__brand {
+  color: var(--ink-3);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wider);
+}
+
+.project-quote__sheet--main p {
+  margin: auto 0;
+  color: var(--ink);
+  font-family: var(--font-serif);
+  font-size: clamp(1.25rem, 2.4vw, 1.875rem);
+  font-weight: var(--fw-bold);
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+}
+
+.project-quote__seal {
+  position: absolute;
+  right: var(--space-5);
+  bottom: var(--space-5);
+  display: grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  color: var(--red);
+  border: 1px solid var(--red);
+  font-size: var(--fs-xs);
+  line-height: 1.1;
+  letter-spacing: 0;
+  transform: rotate(-5deg);
+}
+
+.project-quote__author {
+  color: var(--ink-3);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+}
+
+.project-quote__format {
+  position: absolute;
+  right: 9%;
+  bottom: 9%;
+  z-index: 3;
+  padding: 5px 9px;
+  color: var(--cream);
+  background: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  transform: rotate(-3deg);
+}
+
 .project-art__fallback {
   display: grid;
   place-items: center;
@@ -510,6 +626,14 @@
   .project-card--slot-1,
   .project-card--slot-3 {
     margin-top: var(--space-7);
+  }
+
+  .projects-collage__group > .project-card:only-child {
+    inset: auto;
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: 72%;
+    height: auto;
   }
 }
 
@@ -557,6 +681,10 @@
 
   .project-card--slot-3 {
     min-height: 29rem;
+  }
+
+  .projects-collage__group > .project-card:only-child {
+    width: 100%;
   }
 
   .project-card:hover {

@@ -32,6 +32,15 @@
         <div class="project-envelope project-envelope--middle"><span>自由</span></div>
         <div class="project-envelope project-envelope--front"><span>生活</span><strong>¥</strong></div>
         <span class="project-envelope__ai">AI</span>
+      {{ else if eq $project.art "quote" }}
+        <div class="project-quote__sheet project-quote__sheet--back"></div>
+        <div class="project-quote__sheet project-quote__sheet--main">
+          <span class="project-quote__brand">小文卡片</span>
+          <p>以吾之秩序<br>丈量二进制的世界</p>
+          <span class="project-quote__seal">小文</span>
+          <span class="project-quote__author">XIAOWEN.Z</span>
+        </div>
+        <span class="project-quote__format">1080 PX · PNG</span>
       {{ else if eq $project.art "city" }}
         <div class="project-city__skyline"><span class="project-city__rain"></span></div>
         <span class="project-city__word">成都</span>

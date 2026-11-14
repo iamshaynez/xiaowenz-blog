@@ -19,7 +19,7 @@
 - id: xiaowen-ynab
   name: "xiaowen-ynab"
   description: "一个可以接入 AI 的信封记账开源软件。"
-  url: "https://github.com/iamshaynez/xiaowen-ynab"
+  url: "https://money.xiaowenz.com/landing/"
   category: "OPEN SOURCE · FINANCE"
   art: "envelope"
   tone: "cream"
@@ -33,3 +33,12 @@
   art: "city"
   tone: "cream"
   size: "tall"
+
+- id: xiaowen-card
+  name: "小文卡片"
+  description: "把金句和长文排成好看的中文卡片，一键生成、下载或分享。"
+  url: "https://card.xiaowenz.com"
+  category: "DESIGN TOOL · CHINESE TYPE"
+  art: "quote"
+  tone: "paper"
+  size: "wide"
