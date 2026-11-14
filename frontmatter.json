@@ -9,7 +9,8 @@
       "title": "content"
     },
     {
-      "path": "[[workspace]]/content/blog/posts"
+      "path": "[[workspace]]/content/blog",
+      "title": "blog"
     }
   ]
 }
