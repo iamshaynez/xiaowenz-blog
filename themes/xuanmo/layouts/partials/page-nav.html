@@ -1,7 +1,11 @@
 {{/* page-nav.html — prev/next nav within the page's section (chronological).
-     Live semantics: 上一篇 = older (.PrevInSection), 下一篇 = newer (.NextInSection). */}}
-{{ $older := .PrevInSection }}
-{{ $newer := .NextInSection }}
+     Live semantics: 上一篇 = older, 下一篇 = newer.
+     Neighbours come from the whole top-level section, NOT .PrevInSection/.NextInSection:
+     those only see the page's own directory, so posts filed under blog/YYYY/ would lose
+     their cross-year neighbours. */}}
+{{ $siblings := where site.RegularPages "Section" .Section }}
+{{ $older := $siblings.Prev . }}
+{{ $newer := $siblings.Next . }}
 {{ if or $older $newer }}
 <nav class="post-nav" aria-label="文章导航">
   {{ with $older }}

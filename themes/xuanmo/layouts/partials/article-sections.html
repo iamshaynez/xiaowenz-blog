@@ -19,7 +19,7 @@
     {{ end }}
   {{ end }}
   {{ if not $related }}
-    {{ with .PrevInSection }}{{ $related = slice . }}{{ end }}
+    {{ with (where site.RegularPages "Section" .Section).Prev . }}{{ $related = slice . }}{{ end }}
   {{ end }}
 
   {{ if $related }}

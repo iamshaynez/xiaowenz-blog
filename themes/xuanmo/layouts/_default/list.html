@@ -2,20 +2,23 @@
 {{ $params := .Site.Params }}
 {{ $desc := .Params.description | default ($params.description | default "") }}
 
-{{/* posts: blog index shows the latest year only (live parity); other sections show everything */}}
-{{ $posts := .RegularPages.ByDate.Reverse }}
+{{/* posts: blog index shows the latest year only (live parity); other sections show everything.
+     $all spans the whole top-level section: .RegularPages only sees direct children and
+     would miss posts filed under blog/YYYY/. */}}
+{{ $all := where .Site.RegularPages "Section" .Section }}
+{{ $posts := $all.ByDate.Reverse }}
 {{ $currentYear := 0 }}
 {{ $prevYear := 0 }}
 {{ if eq .Section "blog" }}
   {{ $years := slice }}
-  {{ range .RegularPages }}
+  {{ range $all }}
     {{ $y := .Date.Year }}
     {{ if not (in $years $y) }}{{ $years = $years | append $y }}{{ end }}
   {{ end }}
   {{ $years = sort $years "value" "desc" }}
   {{ if gt (len $years) 0 }}
     {{ $currentYear = index $years 0 }}
-    {{ $posts = (where .RegularPages "Date.Year" $currentYear).ByDate.Reverse }}
+    {{ $posts = (where $all "Date.Year" $currentYear).ByDate.Reverse }}
     {{ if gt (len $years) 1 }}{{ $prevYear = index $years 1 }}{{ end }}
   {{ end }}
 {{ end }}
