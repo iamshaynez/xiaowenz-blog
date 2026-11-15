@@ -32,6 +32,15 @@
         <div class="project-envelope project-envelope--middle"><span>自由</span></div>
         <div class="project-envelope project-envelope--front"><span>生活</span><strong>¥</strong></div>
         <span class="project-envelope__ai">AI</span>
+      {{ else if eq $project.art "toys" }}
+        <span class="project-toys__count">22</span>
+        <div class="project-toys__wall">
+          <span class="project-toys__tile project-toys__tile--red">2048</span>
+          <span class="project-toys__tile">{ JSON }</span>
+          <span class="project-toys__tile">1A2B</span>
+          <span class="project-toys__tile project-toys__tile--dice">⚄</span>
+        </div>
+        <span class="project-toys__caption">OPEN &amp; PLAY</span>
       {{ else if eq $project.art "quote" }}
         <div class="project-quote__sheet project-quote__sheet--back"></div>
         <div class="project-quote__sheet project-quote__sheet--main">

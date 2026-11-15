@@ -42,3 +42,12 @@
   art: "quote"
   tone: "paper"
   size: "wide"
+
+- id: toys
+  name: "玩具展馆"
+  description: "汇集 22 个中文单页玩具：经典游戏、创作工具与开发助手，打开就能玩。"
+  url: "https://toys.xiaowenz.com"
+  category: "PLAYGROUND · 22 TOYS"
+  art: "toys"
+  tone: "ink"
+  size: "medium"

@@ -123,6 +123,10 @@
   height: 37rem;
 }
 
+.projects-collage__group:has(> .project-card:nth-child(2):last-child) {
+  height: 38rem;
+}
+
 .projects-collage__group > .project-card:only-child {
   --project-rotate: 1deg;
   top: 2rem;
@@ -485,6 +489,82 @@
   font-size: var(--fs-xs);
   letter-spacing: var(--ls-wide);
   transform: rotate(4deg);
+}
+
+/* 玩具展馆 · 微型展墙 */
+.project-art--toys {
+  min-height: 15rem;
+  overflow: hidden;
+}
+
+.project-toys__count {
+  position: absolute;
+  top: -3.5rem;
+  right: 2%;
+  color: transparent;
+  font-family: var(--font-serif);
+  font-size: 13rem;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+  -webkit-text-stroke: 1px rgb(237 234 227 / 10%);
+}
+
+.project-toys__wall {
+  position: absolute;
+  inset: 10% 9% 17%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3);
+  transform: rotate(-3deg);
+}
+
+.project-toys__tile {
+  display: grid;
+  place-items: center;
+  min-height: 5.5rem;
+  color: var(--ink);
+  background: var(--cream);
+  border: 1px solid rgb(237 234 227 / 28%);
+  box-shadow: 0 10px 24px rgb(0 0 0 / 18%);
+  font-family: var(--font-sans);
+  font-size: var(--fs-h3);
+  font-weight: var(--fw-medium);
+  letter-spacing: -0.02em;
+}
+
+.project-toys__tile:nth-child(2) {
+  font-family: var(--font-mono);
+  font-size: var(--fs-body);
+  transform: translateY(10px);
+}
+
+.project-toys__tile:nth-child(3) {
+  font-family: var(--font-mono);
+  transform: translateY(-5px);
+}
+
+.project-toys__tile--red {
+  color: var(--red);
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: var(--fw-bold);
+}
+
+.project-toys__tile--dice {
+  color: var(--red);
+  font-size: 3rem;
+  line-height: 1;
+  transform: translateY(5px);
+}
+
+.project-toys__caption {
+  position: absolute;
+  bottom: var(--space-4);
+  left: var(--space-5);
+  color: var(--red);
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wider);
 }
 
 /* 小文卡片 · 中文排版 */
