@@ -12,6 +12,7 @@ episode: 7
 audio_slug: never-burn-boats
 audio_bytes: 16008668
 audio_duration: '18:34'
+audio_image: https://media.xiaowenz.com/images/episode-never-burn-boats.png
 subtitle: 破釜沉舟的故事指导不了生活：那是幸存者偏差。能贯彻二十年的原则只有一条——不下牌桌：用最悲观的运气估计人生、永远不让自己只有一个寄托、刻意构建多条反馈周期参差不齐的故事线。
 ---
 
