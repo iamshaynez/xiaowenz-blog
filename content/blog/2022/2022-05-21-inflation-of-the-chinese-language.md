@@ -2,7 +2,7 @@
 title: "中文的通货膨胀。"
 date: "2022-05-21T15:36:01+08:00"
 slug: "inflation-of-the-chinese-language"
-description: "这是微博上偶然看到的一个话题，就写了一小段。 https://s.weibo.com/weibo?q=%23%E4%B8%AD%E6%96%87%E7%9A%84%E9%80%9A%E8%B4%A7%E8%86%A8%E8%83%80%23..."
+description: "回应「中文通货膨胀」话题：网络新词与职场黑话并非语言退化，而是传播媒介变迁下不同代际的表达印记，真正有生命力的中文依然会在时间中留存。"
 tags:
   - "world"
 draft: false

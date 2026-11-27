@@ -2,9 +2,10 @@
 title: "Serverless AI？"
 date: "2023-09-29T17:31:05+08:00"
 slug: "serverless-ai"
-description: "Cloudflare 的更新 昨天，Cloudflare 更新了数篇博客，分别发布了Serverless的开源模型接口，和基于 Worker 和 Pages 的 AI 开发包。 链接：https://blog.cloudflare.com/..."
+description: "实测 Cloudflare Workers AI 与 D1/向量数据库生态：用 Serverless 架构为 Telegram 机器人接入翻译模型，并分析边缘 GPU 推理的成本与演化前景。"
 tags:
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

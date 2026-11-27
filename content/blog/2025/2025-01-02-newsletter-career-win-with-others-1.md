@@ -6,6 +6,7 @@ description: "我看了太多的职场「腹黑学」，告诉你职场没朋友
 tags:
   - "office"
   - "newsletter"
+  - "management"
 draft: false
 type: "blog"
 ---

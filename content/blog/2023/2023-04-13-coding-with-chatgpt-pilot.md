@@ -5,6 +5,7 @@ slug: "coding-with-chatgpt-pilot"
 description: "写在前面 因为从过年开始，断断续续的开始写一个自己用的记账工具，当时自己的想法是尽量小巧，尽量用自己不熟悉的技术栈来玩。那时候还没有横空出世的ChatGPT，我老老实实的在哄睡张小望的时候看B站的视频把Vue3撸了一遍，然后花了两三天搭了一..."
 tags:
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

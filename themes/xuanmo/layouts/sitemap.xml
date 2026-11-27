@@ -1,17 +1,35 @@
 {{ printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  {{ $pillarTags := slice "management" "ai" "technology" "office" "work" "business" "business-report" "newsletter" }}
+  {{ $pillarPages := slice "/about/" "/service-and-afdian/" "/business-reports/" "/projects/" }}
   {{ range .Data.Pages }}
-  <url>
-    <loc>{{ partial "util/canonical-url.html" . }}</loc>
-    {{ if not .Lastmod.IsZero }}
-    <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }}</lastmod>
+    {{ if not .Params.noindex }}
+      {{ $prio := "0.5" }}
+      {{ $freq := "monthly" }}
+      {{ if .IsHome }}
+        {{ $prio = "1.0" }}
+        {{ $freq = "daily" }}
+      {{ else if or (and .IsSection (eq .Section "episodes")) (in $pillarPages .RelPermalink) (and (eq .Kind "term") (in $pillarTags .Data.Term)) }}
+        {{ $prio = "0.8" }}
+        {{ $freq = "weekly" }}
+      {{ else if and .IsPage (in (slice "blog" "episodes") .Section) }}
+        {{ $prio = "0.7" }}
+        {{ $freq = "monthly" }}
+      {{ else if or (and .IsPage (in (slice "pages" "recipes") .Section)) (and .IsSection (eq .Section "blog")) }}
+        {{ $prio = "0.6" }}
+        {{ $freq = "monthly" }}
+      {{ else }}
+        {{ $prio = "0.4" }}
+        {{ $freq = "monthly" }}
+      {{ end }}
+      <url>
+        <loc>{{ partial "util/canonical-url.html" . }}</loc>
+        {{ if not .Lastmod.IsZero }}
+        <lastmod>{{ .Lastmod.Format "2006-01-02T15:04:05-07:00" }}</lastmod>
+        {{ end }}
+        <changefreq>{{ $freq }}</changefreq>
+        <priority>{{ $prio }}</priority>
+      </url>
     {{ end }}
-    {{ with .Sitemap.ChangeFreq }}
-    <changefreq>{{ . }}</changefreq>
-    {{ end }}
-    {{ with .Sitemap.Priority }}
-    <priority>{{ . }}</priority>
-    {{ end }}
-  </url>
   {{ end }}
 </urlset>

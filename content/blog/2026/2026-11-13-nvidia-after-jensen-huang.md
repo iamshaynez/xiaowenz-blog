@@ -4,8 +4,8 @@ date: 2026-11-13T20:42:36+08:00
 slug: "nvidia-after-jensen-huang"
 description: "大公司真正稀缺的不是平均水平，而是少数关键人物撬动规模的能力。人走了，报表还会漂亮很久，但创造未来的阶段可能已经过去了。"
 tags:
-  - "商业观察"
-  - "企业管理"
+  - "business"
+  - "management"
 draft: false
 type: "blog"
 ---

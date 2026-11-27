@@ -1,5 +1,7 @@
 ---
 title: "关于服务"
+seo_title: "职场与技术管理咨询、职业发展陪跑及爱发电赞助"
+description: "Xiaowen.Z 的一对一职场咨询、技术管理陪跑与商业 AI 实践探讨说明，以及专栏《职场不用喝咖啡》与三杯过后播客的爱发电支持方式。"
 date: "2026-03-01T14:45:24+08:00"
 url: "/service-and-afdian/"
 type: "page"

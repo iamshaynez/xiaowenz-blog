@@ -6,6 +6,7 @@ description: "这一年…… ChatGPT（全名：Chat Generative Pre-trained Tra
 tags:
   - "think"
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

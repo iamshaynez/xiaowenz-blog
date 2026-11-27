@@ -1,0 +1,204 @@
+{{/* seo/jsonld.html — unified JSON-LD (@graph) across the site.
+     Input dict: page, canon, desc, ogImage, audioURL, dur */}}
+{{- $page := .page -}}
+{{- if not $page.Params.noindex -}}
+{{- $canon := .canon -}}
+{{- $desc := .desc -}}
+{{- $ogImage := .ogImage -}}
+{{- $audioURL := .audioURL -}}
+{{- $dur := .dur -}}
+{{- $site := $page.Site -}}
+{{- $params := $site.Params -}}
+{{- $podcast := $params.podcast | default dict -}}
+{{- $social := $params.social | default dict -}}
+{{- $author := $params.author | default "Xiaowen Zhang" -}}
+{{- $afdian := $params.afdian | default "https://afdian.com/a/xiaowenz" -}}
+{{- $icon := "apple-touch-icon.jpg" | absURL -}}
+{{- $personID := printf "%s#person" $site.BaseURL -}}
+{{- $podcastID := printf "%s#podcast" $site.BaseURL -}}
+{{- $websiteID := printf "%s#website" $site.BaseURL -}}
+
+{{- $sameAs := slice -}}
+{{- with $social.twitter }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+{{- with $social.github }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+{{- with $podcast.xiaoyuzhou }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+{{- with $afdian }}{{ $sameAs = $sameAs | append . }}{{ end -}}
+
+{{- $person := dict
+  "@type" "Person"
+  "@id" $personID
+  "name" $author
+  "alternateName" (slice "Xiaowen.Z" "三杯过后")
+  "url" ("about" | absURL)
+  "image" $icon
+  "description" ($params.footerDesc | default $params.description)
+  "sameAs" $sameAs
+  "knowsAbout" (slice "技术管理" "组织管理" "人工智能与 AI 实践" "软件工程与架构" "职业发展" "商业分析" "职场与管理咨询" "中文播客")
+-}}
+
+{{- $podcastSameAs := slice -}}
+{{- with $podcast.xiaoyuzhou }}{{ $podcastSameAs = $podcastSameAs | append . }}{{ end -}}
+{{- with $podcast.apple }}{{ $podcastSameAs = $podcastSameAs | append . }}{{ end -}}
+{{- with $podcast.spotify }}{{ $podcastSameAs = $podcastSameAs | append . }}{{ end -}}
+{{- with $podcast.netease }}{{ $podcastSameAs = $podcastSameAs | append . }}{{ end -}}
+
+{{- $podcastSeries := dict
+  "@type" "PodcastSeries"
+  "@id" $podcastID
+  "name" ($podcast.title | default $site.Title)
+  "description" ($podcast.subtitle | default $params.description)
+  "url" ("episodes/" | absURL)
+  "webFeed" ("feed/audio.xml" | absURL)
+  "inLanguage" "zh-CN"
+  "image" ($podcast.image | default $icon)
+  "author" (dict "@id" $personID)
+-}}
+{{- if gt (len $podcastSameAs) 0 -}}
+  {{- $podcastSeries = merge $podcastSeries (dict "sameAs" $podcastSameAs) -}}
+{{- end -}}
+
+{{- $publisher := dict
+  "@type" "Organization"
+  "name" $site.Title
+  "url" $site.BaseURL
+  "logo" (dict "@type" "ImageObject" "url" $icon)
+-}}
+
+{{- $graph := slice -}}
+
+{{- if $page.IsHome -}}
+  {{- $website := dict
+    "@type" "WebSite"
+    "@id" $websiteID
+    "name" ($params.seoTitle | default $site.Title)
+    "alternateName" "三杯过后"
+    "url" $site.BaseURL
+    "description" $desc
+    "inLanguage" "zh-CN"
+    "publisher" (dict "@id" $personID)
+    "potentialAction" (dict
+      "@type" "SearchAction"
+      "target" (dict
+        "@type" "EntryPoint"
+        "urlTemplate" (printf "%s?q={search_term_string}" ("search/" | absURL))
+      )
+      "query-input" "required name=search_term_string"
+    )
+  -}}
+  {{- $graph = $graph | append $website $person $podcastSeries -}}
+{{- else -}}
+  {{/* —— Build BreadcrumbList —— */}}
+  {{- $crumbs := slice (dict "@type" "ListItem" "position" 1 "name" "首页" "item" $site.BaseURL) -}}
+  {{- if and $page.IsPage (eq $page.Section "blog") -}}
+    {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 2 "name" "文章" "item" ("blog/" | absURL)) -}}
+    {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 3 "name" $page.Title "item" $canon) -}}
+  {{- else if and $page.IsSection (eq $page.Section "episodes") -}}
+    {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 2 "name" "三杯过后播客" "item" $canon) -}}
+  {{- else if and $page.IsPage (eq $page.Section "episodes") -}}
+    {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 2 "name" "三杯过后播客" "item" ("episodes/" | absURL)) -}}
+    {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 3 "name" $page.Title "item" $canon) -}}
+  {{- else if and $page.IsPage (eq $page.Section "recipes") -}}
+    {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 2 "name" "菜谱" "item" ("recipes/" | absURL)) -}}
+    {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 3 "name" $page.Title "item" $canon) -}}
+  {{- else if eq $page.Kind "term" -}}
+    {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 2 "name" "标签" "item" ("tags/" | absURL)) -}}
+    {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 3 "name" $page.Title "item" $canon) -}}
+  {{- else -}}
+    {{- $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 2 "name" $page.Title "item" $canon) -}}
+  {{- end -}}
+  {{- $breadcrumb := dict "@type" "BreadcrumbList" "itemListElement" $crumbs -}}
+
+  {{- if and $page.IsPage (eq $page.Section "blog") -}}
+    {{- $tagTerms := $page.GetTerms "tags" -}}
+    {{- $tagNames := slice -}}
+    {{- range $tagTerms }}{{ $tagNames = $tagNames | append .Title }}{{ end -}}
+    {{- $sectionName := "博客" -}}
+    {{- if gt (len $tagTerms) 0 }}{{ $sectionName = (index $tagTerms 0).Title }}{{ end -}}
+    {{- $article := dict
+      "@type" "BlogPosting"
+      "headline" $page.Title
+      "description" $desc
+      "datePublished" ($page.Date.UTC.Format "2006-01-02T15:04:05Z")
+      "dateModified" ($page.Lastmod.UTC.Format "2006-01-02T15:04:05Z")
+      "inLanguage" "zh-CN"
+      "articleSection" $sectionName
+      "author" (dict "@type" "Person" "@id" $personID "name" $author "url" ("about" | absURL))
+      "image" $ogImage
+      "mainEntityOfPage" (dict "@type" "WebPage" "@id" $canon)
+      "publisher" $publisher
+    -}}
+    {{- if gt $page.WordCount 0 -}}
+      {{- $article = merge $article (dict "wordCount" $page.WordCount) -}}
+    {{- end -}}
+    {{- if gt (len $tagNames) 0 -}}
+      {{- $article = merge $article (dict "keywords" (delimit $tagNames ", ")) -}}
+    {{- end -}}
+    {{- $graph = $graph | append $article $breadcrumb -}}
+  {{- else if and $page.IsSection (eq $page.Section "episodes") -}}
+    {{- $graph = $graph | append $podcastSeries $breadcrumb -}}
+  {{- else if and $page.IsPage (eq $page.Section "episodes") -}}
+    {{- $tagTerms := $page.GetTerms "tags" -}}
+    {{- $tagNames := slice -}}
+    {{- range $tagTerms }}{{ $tagNames = $tagNames | append .Title }}{{ end -}}
+    {{- $ep := dict
+      "@type" "PodcastEpisode"
+      "url" $canon
+      "name" $page.Title
+      "datePublished" ($page.Date.UTC.Format "2006-01-02T15:04:05Z")
+      "description" $desc
+      "inLanguage" "zh-CN"
+      "image" $ogImage
+      "author" (dict "@type" "Person" "@id" $personID "name" $author "url" ("about" | absURL))
+      "partOfSeries" (dict "@type" "PodcastSeries" "@id" $podcastID "name" ($podcast.title | default $site.Title) "url" ("episodes/" | absURL))
+    -}}
+    {{- with $dur.iso8601 }}{{ $ep = merge $ep (dict "timeRequired" .) }}{{ end -}}
+    {{- with $page.Params.season }}{{ $ep = merge $ep (dict "seasonNumber" (int .)) }}{{ end -}}
+    {{- with $page.Params.episode }}{{ $ep = merge $ep (dict "episodeNumber" (int .)) }}{{ end -}}
+    {{- if $audioURL }}{{ $ep = merge $ep (dict "associatedMedia" (dict "@type" "MediaObject" "contentUrl" $audioURL "encodingFormat" "audio/mpeg")) }}{{ end -}}
+    {{- if gt (len $tagNames) 0 }}{{ $ep = merge $ep (dict "keywords" (delimit $tagNames ", ")) }}{{ end -}}
+    {{- $graph = $graph | append $ep $breadcrumb -}}
+  {{- else if eq $page.RelPermalink "/about/" -}}
+    {{- $profile := dict
+      "@type" "ProfilePage"
+      "url" $canon
+      "name" ($page.Params.seo_title | default $page.Title)
+      "description" $desc
+      "inLanguage" "zh-CN"
+      "mainEntity" $person
+    -}}
+    {{- $graph = $graph | append $profile $breadcrumb -}}
+  {{- else if eq $page.RelPermalink "/service-and-afdian/" -}}
+    {{- $svc := dict
+      "@type" "Service"
+      "name" "职场与技术管理咨询、职业发展陪跑服务"
+      "description" $desc
+      "url" $canon
+      "provider" $person
+      "serviceType" (slice "技术管理咨询" "职场与职业发展咨询" "管理陪跑" "商业与 AI 实践顾问")
+      "areaServed" "CN"
+    -}}
+    {{- $graph = $graph | append $svc $breadcrumb -}}
+  {{- else if or $page.IsSection (eq $page.Kind "taxonomy") (eq $page.Kind "term") -}}
+    {{- $col := dict
+      "@type" "CollectionPage"
+      "name" ($page.Params.seo_title | default $page.Title)
+      "description" $desc
+      "url" $canon
+      "inLanguage" "zh-CN"
+    -}}
+    {{- $graph = $graph | append $col $breadcrumb -}}
+  {{- else -}}
+    {{- $wp := dict
+      "@type" "WebPage"
+      "name" ($page.Params.seo_title | default $page.Title)
+      "description" $desc
+      "url" $canon
+      "inLanguage" "zh-CN"
+    -}}
+    {{- $graph = $graph | append $wp $breadcrumb -}}
+  {{- end -}}
+{{- end -}}
+
+{{- $doc := dict "@context" "https://schema.org" "@graph" $graph -}}
+<script type="application/ld+json">{{ $doc | jsonify | safeJS }}</script>
+{{- end -}}

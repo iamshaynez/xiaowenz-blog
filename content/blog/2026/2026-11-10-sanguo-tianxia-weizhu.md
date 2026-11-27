@@ -6,6 +6,7 @@ tags:
 - technology
 - ai
 slug: sanguo-tianxia-weizhu
+description: "用三天零散时间借助 AI 做出德州扑克三国游戏《三国：天下为注》的实践手记：比起效率提速，AI 更大的意义是让多年未曾开始的梦想终于落地，并变成可以反复玩味的日常。"
 draft: false
 type: blog
 ---

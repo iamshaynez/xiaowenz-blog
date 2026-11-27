@@ -5,6 +5,7 @@ slug: "serverless-telegram-bot"
 description: "最开始 Serverless最大的好处，就是不用操心工程和运行环境，而 Cloudflare 免费的额度，对所有非商用场景，都足够足够了。 计划用 Telegram Bot 作为前端，帮助自己记录一些需要周期性打卡的事儿。作为既没有写过 W..."
 tags:
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

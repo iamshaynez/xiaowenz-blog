@@ -6,6 +6,8 @@ description: "嗯，如下： 作为螺丝钉，每天高效运转，却始终�
 tags:
   - "office"
   - "newsletter"
+  - "management"
+  - "technology"
 draft: false
 type: "blog"
 ---

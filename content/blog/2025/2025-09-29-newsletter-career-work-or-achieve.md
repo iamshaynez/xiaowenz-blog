@@ -6,6 +6,7 @@ description: "你的办公室里，是不是总有这样两种人？ 一种是�
 tags:
   - "office"
   - "newsletter"
+  - "management"
 draft: false
 type: "blog"
 ---

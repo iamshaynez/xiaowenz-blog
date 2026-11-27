@@ -22,7 +22,7 @@ permalinks:
 taxonomies:
   tag: "tags"
 
-# /feed.xml（全文 RSS）与 /feed/audio.xml（播客 iTunes RSS）
+# /feed.xml（全文 RSS）、/feed/audio.xml（播客 iTunes RSS）与 /llms.txt（AI 搜索指引）
 outputFormats:
   rss:
     baseName: feed
@@ -30,13 +30,30 @@ outputFormats:
     mediaType: "application/rss+xml"
     baseName: audio
     path: feed
+  llms:
+    mediaType: "text/plain"
+    baseName: llms
+    isPlainText: true
+    notAlternative: true
 
 outputs:
-  home: [HTML, RSS, PODCAST]
+  home: [HTML, RSS, PODCAST, LLMS]
   section: [HTML]
   page: [HTML]
   taxonomy: [HTML]
   term: [HTML]
+
+related:
+  includeNewer: true
+  threshold: 60
+  toLower: true
+  indices:
+    - name: tags
+      weight: 100
+    - name: keywords
+      weight: 80
+    - name: date
+      weight: 10
 
 markup:
   goldmark:
@@ -103,9 +120,12 @@ menu:
       params: { nav: more }
 
 params:
-  description: "一个写了将近20年的博客，突然开始有趣起来了……"
+  seoTitle: "三杯过后 | Xiaowen.Z — 技术管理、AI 实践、职业发展与商业思考（博客 & 播客）"
+  description: "三杯过后（Xiaowen.Z）个人博客与播客：深耕技术管理、AI 实践、软件工程、职业发展与商业分析，围绕「从专业到经营」持续分享专栏文章、小宇宙播客与职场管理咨询思考。"
   tagline: "以吾之秩序 丈量二进制的世界"
   heroTitle: "以吾之秩序<br>丈量二进制的世界"
+  heroLead: "一个写了将近20年的博客，突然开始有趣起来了……"
+  footerDesc: "从专业到经营：经营自己、经营组织、经营业务。持续记录技术管理、AI 实践、软件工程、职业发展与商业分析，同步更新小宇宙播客「三杯过后」与职场管理咨询思考。"
   author: "Xiaowen Zhang"
   # —— 动态服务对接（core）——
   coreAPI: "https://core.xiaowenz.com"      # core 服务地址：评论/订阅/统计
@@ -117,17 +137,21 @@ params:
   podcast:
     guid: "3c09eb14-0c6a-5777-a8ac-e06f8b21b2c4"
     title: "三杯过后"
-    subtitle: "商业和科技的深度小样"
+    subtitle: "技术管理、AI 实践、商业分析与职业发展的深度思考"
     author: "Xiaowen Zhang"
     email: "xiaowen.z@outlook.com"
-    keywords: "商业,科技,职场,投资"
+    keywords: "技术管理,AI,人工智能,软件工程,商业分析,科技,职场,职业发展,咨询,播客,小宇宙"
     explicit: "no"
     type: "episodic"
     image: "https://media.xiaowenz.com/images/podcast-cover.jpg"
     categories: ["Technology", "Business:Management", "Business:Investing", "News:Tech News"]
     spotify: ""
     apple: ""
-    xiaoyuzhou: ""
+    xiaoyuzhou: "https://www.xiaoyuzhoufm.com/podcast/699fb3fd978774d18faae993"
     netease: ""
   social:
     rss: "/feed.xml"
+    twitter: "https://x.com/ixiaowenz"
+    twitterHandle: "@ixiaowenz"
+    github: "https://github.com/iamshaynez"
+    xiaoyuzhou: "https://www.xiaoyuzhoufm.com/podcast/699fb3fd978774d18faae993"

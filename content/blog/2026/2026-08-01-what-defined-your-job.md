@@ -6,6 +6,7 @@ description: "你的技能值多少钱，从来不是你说了算 裁员潮每�
 tags:
   - "work"
   - "think"
+  - "office"
 draft: false
 type: "blog"
 ---

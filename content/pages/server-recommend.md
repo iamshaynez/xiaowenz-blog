@@ -1,5 +1,6 @@
 ---
 title: "服务器推荐"
+description: "三杯过后动态后端（评论、Newsletter 订阅、统计与播客音频分发计数）长期运行于野草云香港服务器的实测体验与选购参考。"
 date: "2026-11-12T17:00:00+08:00"
 url: "/server-recommend/"
 type: "page"

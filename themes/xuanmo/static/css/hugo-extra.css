@@ -342,3 +342,25 @@ a.post-card__cat {
 .ep-card--lead.ep-card--noart {
   grid-template-columns: 3.5rem minmax(0, 1fr);
 }
+
+/* —— 首页英雄区专题导航条 —— */
+.topic-strip {
+  margin-top: var(--space-5);
+}
+
+.topic-strip .tag {
+  text-decoration: none;
+}
+
+.item-kind-badge {
+  display: inline-block;
+  margin-right: 0.45em;
+  padding: 0.1em 0.45em;
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  color: var(--red);
+  border: 1px solid color-mix(in srgb, var(--red) 45%, transparent);
+  border-radius: 3px;
+  vertical-align: 1px;
+}

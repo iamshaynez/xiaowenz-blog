@@ -7,6 +7,7 @@ tags:
   - "work"
   - "think"
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

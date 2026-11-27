@@ -5,6 +5,8 @@ slug: "report-doubao-ai-app"
 description: "为什么用户越多，亏得越多？ 豆包的免费扩张困局与战略破局 案例: 字节豆包商业模式诊断 报告版本: V3（终审版） 生成日期: 2026年3月22日 执行摘要 豆包正陷入一个反直觉的商业困境：用户增长越快，亏损越深。作为中国MAU最高的AI..."
 tags:
   - "business-report"
+  - "ai"
+  - "business"
 draft: false
 type: "blog"
 ---

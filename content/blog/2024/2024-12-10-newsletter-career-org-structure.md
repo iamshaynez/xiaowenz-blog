@@ -6,6 +6,7 @@ description: "看懂组织架构，看懂一个企业。 科技部门的组织�
 tags:
   - "office"
   - "newsletter"
+  - "management"
 draft: false
 type: "blog"
 ---

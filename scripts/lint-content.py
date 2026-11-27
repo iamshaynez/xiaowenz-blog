@@ -77,7 +77,7 @@ def check(path: Path, kind: str) -> None:
 
 for pattern, kind in (("blog/**/*.md", "blog"), ("episodes/*.md", "episodes"), ("recipes/*.md", "recipes")):
     for p in sorted((ROOT / "content").glob(pattern)):
-        if kind == "blog" and p.stem == "_index":
+        if p.stem == "_index":
             continue  # section 首页与年份 stub，不是文章
         check(p, kind)
 
@@ -114,6 +114,8 @@ def curl_head_info(url: str) -> tuple[int, str, dict[str, str]]:
 network_ok = True
 if os.environ.get("LINT_OFFLINE") != "1":
     for p in sorted((ROOT / "content").glob("episodes/*.md")):
+        if p.stem == "_index":
+            continue
         text = p.read_text(encoding="utf-8", errors="replace")
         m = re.match(r"^---\n(.*?)\n---\n?", text, re.DOTALL)
         fm = yaml.safe_load(m.group(1)) if m else {}

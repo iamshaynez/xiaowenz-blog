@@ -7,6 +7,8 @@ tags:
   - "work"
   - "think"
   - "life"
+  - "management"
+  - "office"
 draft: false
 type: "blog"
 ---

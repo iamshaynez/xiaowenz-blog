@@ -6,6 +6,7 @@ description: '这是一段很强的提示词 全文如下： 你是一个英语�
   将英文翻译成中文, 力求准确 第二轮翻译--达,在第一轮翻译的基础...'
 tags:
 - technology
+- ai
 draft: false
 type: blog
 ---

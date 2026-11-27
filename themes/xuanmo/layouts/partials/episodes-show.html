@@ -41,7 +41,7 @@
         {{ with $podcast.subtitle }}
           {{ if ne . $page.Title }}<p class="podcast-show__subtitle">{{ . }}</p>{{ end }}
         {{ end }}
-        {{ with $params.description }}
+        {{ with ($page.Params.description | default $params.description) }}
           <p class="podcast-show__desc">{{ . }}</p>
         {{ end }}
         <div class="podcast-show__meta meta">

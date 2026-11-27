@@ -5,6 +5,7 @@ slug: "vision-and-design-by-llm"
 description: "背景 ZenUML 是我业余时间参与玩耍的一个 Side Project。其功能是定义了一套自己的 DSL，并可以根据代码文本渲染出 UML 中的序列图（Sequence Diagram）。 如下图： 给企业客户的功能 我们在尝试为企业客户..."
 tags:
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

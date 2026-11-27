@@ -6,6 +6,8 @@ description: "说在最前面 最近，基于Service的机缘，和很多年轻�
 tags:
   - "think"
   - "business"
+  - "office"
+  - "technology"
 draft: false
 type: "blog"
 ---

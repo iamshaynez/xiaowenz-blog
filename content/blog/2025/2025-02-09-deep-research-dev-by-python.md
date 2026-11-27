@@ -5,6 +5,7 @@ slug: "deep-research-dev-by-python"
 description: "不断补充的例子(持续更新留档) 小米汽车全球汽车行业北极星指标对标及战略分析报告 中国信用卡消费市场综合分析报告(2015-2030) 微信R1搜索整合对内容生态的战略影响评估报告 背景 OpenAI 的 Deep Search 功能发布后..."
 tags:
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

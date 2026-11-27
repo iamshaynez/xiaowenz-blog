@@ -1,0 +1,48 @@
+{{- $params := .Site.Params -}}
+{{- $podcast := $params.podcast | default dict -}}
+{{- $social := $params.social | default dict -}}
+# {{ .Site.Title }}
+
+> 从专业到经营：经营自己，经营组织，也经营业务。Xiaowen.Z（Xiaowen Zhang）的个人博客与播客，持续记录技术管理、AI 实践、软件工程、职业发展与商业分析思考。
+
+## 关于作者与定位
+- 作者：{{ $params.author | default "Xiaowen Zhang" }}（Xiaowen.Z）
+- 主域：技术管理、组织与管理、人工智能与 AI 实践、软件工程与架构、商业分析、职场与职业发展、职场与管理咨询
+- 网站：{{ .Site.BaseURL }}
+- RSS（全文）：{{ "feed.xml" | absURL }}
+- 播客 RSS：{{ "feed/audio.xml" | absURL }}
+{{- with $podcast.xiaoyuzhou }}
+- 小宇宙播客：{{ . }}
+{{- end }}
+{{- with $social.twitter }}
+- X (Twitter)：{{ . }}
+{{- end }}
+{{- with $social.github }}
+- GitHub：{{ . }}
+{{- end }}
+
+## 核心页面
+- [关于 Xiaowen.Z]({{ "about" | absURL }}): 个人背景、工程与管理经历、长期写作与公开探索方向。
+- [三杯过后播客]({{ "episodes/" | absURL }}): 同步更新于小宇宙的个人单口播客，探讨技术管理、AI、商业与职业发展。
+- [职场与技术管理咨询、职业发展陪跑及爱发电]({{ "service-and-afdian" | absURL }}): 1 对 1 职场与管理咨询探讨及支持方式说明。
+- [商业分析报告]({{ "business-reports" | absURL }}): 基于自研商业分析 Agent Loop 的企业商业模式拆解报告。
+- [Side Projects]({{ "projects" | absURL }}): AI 问答智能体、工程实践与个人实验项目集合。
+- [我的阅读记录]({{ "read-books" | absURL }}): 长期书单与商业、管理、技术阅读沉淀。
+
+## 核心专题索引
+- [管理学 (/tags/management/)]({{ "tags/management/" | absURL }}): 组织设计、技术管理、授权激励与团队治理实践。
+- [人工智能 (/tags/ai/)]({{ "tags/ai/" | absURL }}): 大语言模型、Agent Loop、Vibe Coding 与 AI 工程及商业落地。
+- [科技与工程 (/tags/technology/)]({{ "tags/technology/" | absURL }}): 软件工程、系统架构、云原生与技术工具演进。
+- [职场与职业发展 (/tags/office/)]({{ "tags/office/" | absURL }}): 职业选择、角色转型、向上沟通与职场长期主义。
+- [专栏《职场不用喝咖啡》 (/tags/newsletter/)]({{ "tags/newsletter/" | absURL }}): 围绕职场、管理与个人成长的连续专栏文章。
+- [商业观察与分析 (/tags/business-report/)]({{ "tags/business-report/" | absURL }}): 企业商业模式、护城河与财务逻辑拆解。
+- [方法论 (/tags/methodology/)]({{ "tags/methodology/" | absURL }}): 商业、技术与个人决策中的结构化思维方法。
+
+## 播客节目单（三杯过后）
+{{ range (where .Site.RegularPages "Section" "episodes").ByDate.Reverse -}}
+- [{{ .Title }}]({{ partial "util/canonical-url.html" . }}){{ with .Params.audio_duration }} ({{ . }}){{ end }}: {{ .Params.description | default .Params.subtitle | plainify }}
+{{ end }}
+## 最新文章（精选前 20 篇）
+{{ range first 20 (where .Site.RegularPages "Section" "blog").ByDate.Reverse -}}
+- [{{ .Title }}]({{ partial "util/canonical-url.html" . }}) ({{ .Date.Format "2006-01-02" }}): {{ .Params.description | default .Params.subtitle | default (.Summary | plainify | truncate 120) }}
+{{ end -}}

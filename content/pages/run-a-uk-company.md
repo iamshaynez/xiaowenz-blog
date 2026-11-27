@@ -1,5 +1,6 @@
 ---
 title: "如何注册和维护一个英国公司 更新于 2026年2月"
+description: "英国 LTD 离岸公司注册与年度维护实操笔记：对比美国公司成本，涵盖 1stFormations 注册、Wise Business 开户、Confirmation Statement、Micro entity 财务申报与税务合规实录。"
 date: "2026-02-19T19:13:50+08:00"
 url: "/run-a-uk-company/"
 type: "page"

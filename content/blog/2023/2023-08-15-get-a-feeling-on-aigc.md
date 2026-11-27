@@ -6,6 +6,7 @@ description: "AI 是啥 和很多朋友聊天的时候，我发现即使是很�
 tags:
   - "think"
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

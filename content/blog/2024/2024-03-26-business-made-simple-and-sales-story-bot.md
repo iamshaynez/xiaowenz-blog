@@ -7,6 +7,8 @@ tags:
   - "read"
   - "book"
   - "technology"
+  - "ai"
+  - "business"
 draft: false
 type: "blog"
 ---

@@ -2,11 +2,11 @@
 title: 大模型的思维方式和辅助领域建模。
 date: '2023-07-20T17:21:18+08:00'
 slug: ddd-by-chatgpt
-description: 因为我一直在用类似的Prompt做事儿，正好参考 https://twitter.com/barret_china/status/1681850425983791104?s=12&t=90piq2L2KKHG1sqvpHgJYg
-  的...
+description: "探讨如何通过拆解子任务、明确链式思考与约束样例设计高质量 Prompt，辅助完成复杂业务需求与领域建模（DDD），克服大模型回答中庸的局限。"
 tags:
 - think
 - technology
+- ai
 draft: false
 type: blog
 ---

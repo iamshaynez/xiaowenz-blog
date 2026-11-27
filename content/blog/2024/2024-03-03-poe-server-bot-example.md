@@ -5,6 +5,7 @@ slug: "poe-server-bot-example"
 description: "Poe 是什么 虽然 ChatGPT 是生成式 AI 的领头羊，但我个人的 AI 订阅，过去一年一直是 Quora 旗下的 Poe。因为你可以用同样的订阅费用，使用世界上几乎所有的最新的模型，闭源，开源，都有。 详见Poe 尝试创建一个 P..."
 tags:
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

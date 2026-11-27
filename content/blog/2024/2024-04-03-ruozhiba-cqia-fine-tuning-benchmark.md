@@ -2,9 +2,10 @@
 title: "论文赏析 - 弱智吧才是中文世界的瑰宝。"
 date: "2024-04-03T18:43:41+08:00"
 slug: "ruozhiba-cqia-fine-tuning-benchmark"
-description: "背景 In case 你不知道弱智吧是什么。 弱智吧是百度贴吧里的一个著名板块，以超出理性和常识的弱智而闻名。这个吧里有严格的规矩，任何稍微正常一点的言论都会被立刻删帖…… 地址在这里：https://tieba.baidu.com/f?i..."
+description: "解析中文指令微调论文 COIG-CQIA：为什么百度弱智吧语料在微调大语言模型推理与中文理解评测中表现突出，高质量多样性数据集如何决定模型能力。"
 tags:
   - "technology"
+  - "ai"
   - "fun"
 draft: false
 type: "blog"

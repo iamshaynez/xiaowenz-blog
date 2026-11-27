@@ -9,6 +9,7 @@ tags:
   - "methodology"
   - "office"
   - "newsletter"
+  - "management"
 draft: false
 type: "blog"
 ---

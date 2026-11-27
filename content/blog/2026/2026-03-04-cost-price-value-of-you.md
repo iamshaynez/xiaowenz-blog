@@ -7,6 +7,8 @@ description: 本价值模型 本价值模型是刘润老师提出的一个底层
 tags:
 - work
 - newsletter
+- office
+- business
 draft: false
 type: blog
 ---

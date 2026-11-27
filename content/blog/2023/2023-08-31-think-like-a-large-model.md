@@ -6,6 +6,7 @@ description: "大模型的思考特征 目前，海量数据和知识训练出�
 tags:
   - "think"
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

@@ -6,6 +6,7 @@ description: "我们像一个尽职尽责的救火队员，扑灭一个火点，
 tags:
   - "office"
   - "newsletter"
+  - "management"
 draft: false
 type: "blog"
 ---

@@ -1,5 +1,5 @@
 {{/* article-sections.html — article footer extras below post-nav.
-     blog/episodes: subscribe + related posts + sponsorship + comments.
+     blog/episodes: subscribe + related posts (via Hugo Related + tag/prev fallback) + sponsorship + comments.
      standalone pages: sponsorship + comments (live parity). */}}
 {{ $afdian := site.Params.afdian | default "https://afdian.com/a/xiaowenz" }}
 {{ $isEntry := in (slice "blog" "episodes") .Section }}
@@ -7,10 +7,15 @@
 {{ if $isEntry }}
   {{ partial "subscribe-form.html" . }}
 
-  {{/* 相关阅读：同首标签的最新 3 篇（排除本文）；无标签时回退上一篇。 */}}
+  {{/* 相关阅读：优先利用 Hugo multi-dimensional Related（打通博客与播客，最多 4 篇）；不足时回退首标签或上一篇。 */}}
   {{ $related := slice }}
+  {{ range (site.RegularPages.Related .) }}
+    {{ if and (in (slice "blog" "episodes") .Section) (ne .Permalink $.Permalink) (lt (len $related) 4) }}
+      {{ $related = $related | append . }}
+    {{ end }}
+  {{ end }}
   {{ $terms := .GetTerms "tags" }}
-  {{ if gt (len $terms) 0 }}
+  {{ if and (lt (len $related) 1) (gt (len $terms) 0) }}
     {{ $term := index $terms 0 }}
     {{ range $p := first 5 $term.Pages.ByDate.Reverse }}
       {{ if and (ne $p.Permalink $.Permalink) (lt (len $related) 3) }}
@@ -25,13 +30,13 @@
   {{ if $related }}
     <section class="entry-section prev-subject">
       <div class="inner">
-        <h2>{{ if gt (len $terms) 0 }}相关阅读{{ else }}Read This{{ end }}</h2>
+        <h2>相关阅读</h2>
         {{ range $related }}
           <div class="item" lang="zh">
             <a class="item-main" href="{{ partial "util/canonical-url.html" . | relURL }}">
-              <h3>{{ .Title }}</h3>
-              {{ with .Params.subtitle }}
-                <div class="item-subtitle">{{ . }}</div>
+              <h3>{{ if eq .Section "episodes" }}<span class="item-kind-badge">播客</span>{{ end }}{{ .Title }}</h3>
+              {{ with (.Params.subtitle | default .Params.description) }}
+                <div class="item-subtitle">{{ . | truncate 90 }}</div>
               {{ end }}
             </a>
           </div>

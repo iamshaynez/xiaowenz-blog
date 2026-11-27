@@ -1,5 +1,7 @@
 ---
 title: "About"
+seo_title: "关于 Xiaowen.Z — 技术管理、AI 实践、职业发展与三杯过后播客"
+description: "关于 Xiaowen.Z（三杯过后博主与播客主理人）：近二十年软件工程、系统架构与技术管理经验，持续写作商业观察与 AI 实践，运营小宇宙播客「三杯过后」，并提供职场与管理咨询陪跑。"
 date: "2026-02-19T20:24:33+08:00"
 url: "/about/"
 type: "page"
@@ -34,7 +36,7 @@ type: "page"
     - 一个三国题材的德州扑克单机游戏：[地址](https://san.xiaowenz.com)
     - 正在写的游戏载体的悬疑小说：[地址](https://chengdu.xiaowenz.com)
   - 写一个职场和管理心得的[专栏](/tags/newsletter)，并有 [Service 和爱发电](/service-and-afdian)
-  - 单口播客：小宇宙 - 三杯过后 —— 低频率更新中，不会弃坑的。
+  - 单口播客：[三杯过后](/episodes/)（同步更新于[小宇宙主页](https://www.xiaoyuzhoufm.com/podcast/699fb3fd978774d18faae993)） —— 低频率更新中，不会弃坑的。
   - 摄影（崩塌中，好几年没摸到相机了）
 
 > 其实还在筹备提供一些咨询类的服务……如果您有任何需要也可以直接联系我。[i@xiaowenz.com](mailto:i@xiaowenz.com)

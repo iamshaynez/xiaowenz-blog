@@ -49,7 +49,17 @@
 
       <div>
         <div class="site-footer__col-title">社交</div>
+        {{ $social := $params.social | default dict }}
         <ul class="site-footer__links">
+          {{ with $social.twitter }}
+            <li><a href="{{ . }}" target="_blank" rel="noopener noreferrer me">X (Twitter)</a></li>
+          {{ end }}
+          {{ with $podcast.xiaoyuzhou }}
+            <li><a href="{{ . }}" target="_blank" rel="noopener noreferrer me">小宇宙播客</a></li>
+          {{ end }}
+          {{ with $social.github }}
+            <li><a href="{{ . }}" target="_blank" rel="noopener noreferrer me">GitHub</a></li>
+          {{ end }}
           <li><a href="{{ "feed.xml" | relURL }}">RSS</a></li>
           <li><a href="{{ "feed/audio.xml" | relURL }}">播客 RSS</a></li>
           <li><a href="{{ $afdian }}" target="_blank" rel="noopener noreferrer">爱发电</a></li>

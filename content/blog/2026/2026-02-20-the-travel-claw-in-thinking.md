@@ -6,6 +6,7 @@ description: "OpenClaw 最佳案例分享"
 tags:
   - "life"
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

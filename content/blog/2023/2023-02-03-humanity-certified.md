@@ -6,6 +6,7 @@ description: "当我发现，以ChatGPT 为首的人工智能，生成的语义�
 tags:
   - "think"
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

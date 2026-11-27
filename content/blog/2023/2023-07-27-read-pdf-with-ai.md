@@ -5,6 +5,7 @@ slug: "read-pdf-with-ai"
 description: "尝试用 AI 快速辅助阅读材料，并提取关键信息的两个例子。目前的大模型服务几乎都支持 pdf 等格式的上传，解析了。 注：Markdown 格式的大纲可以方便的导为脑图格式，让你更容易的进行后续的信息整理。 案例 1 - 行业报告 数据源：..."
 tags:
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

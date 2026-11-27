@@ -6,6 +6,7 @@ description: "写在前面 在大部分同学，努力的用人工智能写代�
 tags:
   - "read"
   - "technology"
+  - "ai"
 draft: false
 type: "blog"
 ---

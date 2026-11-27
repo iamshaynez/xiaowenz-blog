@@ -6,6 +6,8 @@ description: "每个人都快起来了，公司为什么没快起来？ 把 AI �
 tags:
   - "work"
   - "ai"
+  - "management"
+  - "technology"
 draft: false
 type: "blog"
 ---

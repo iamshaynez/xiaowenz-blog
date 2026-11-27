@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /subscribed
+Disallow: /subscribe-expired
 
 Sitemap: https://xiaowenz.com/sitemap.xml
